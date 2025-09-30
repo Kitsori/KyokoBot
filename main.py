@@ -35,25 +35,48 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~helpme", value="Wow.. it's this menu!", inline=False)
     helpEmbed.add_field(name="~ping", value="Pong...!! :3", inline=False)
     helpEmbed.add_field(name="~add (x) (y)", value="Adds 2 numbers together... I'm so smart! :D", inline=False)
-    helpEmbed.add_field(name="~subtract", value="Subtracts one number from another.. like magic!", inline=False)
+    helpEmbed.add_field(name="~subtract (x) (y)", value="Subtracts one number from another.. like magic!", inline=False)
+    helpEmbed.add_field(name="~multiply (x) (y)", value="Multiplies two numbers together.. woahhhh :O", inline=False)
+    helpEmbed.add_field(name="~divide (x) (y)", value="Divides one number from another number.. everyone gets a share..!", inline=False)
     helpEmbed.add_field(name="~randomGirl", value="Generate a picture of a random anime girl!", inline=False)
     helpEmbed.add_field(name="~GirlRanking", value="Start a Anime Girl Blind Ranking!!! (WIP)", inline=False)
 
     await ctx.send(embed=helpEmbed)
 
+
+
 @bot.command()
 async def ping(ctx):
     await ctx.send("Pong!")
+
+
+
 
 @bot.command()
 async def add(ctx, num1: int, num2: int):
     result = num1 + num2
     await ctx.send(f"Hai!! The sum of {num1} and {num2} is.... {result}! You're welcome!! :3")
 
+
 @bot.command()
 async def subtract(ctx, num1: int, num2: int):
     result = num1 - num2
     await ctx.send(f"Hai!! The difference of {num1} and {num2} is.... {result}! You're welcome!! :3")
+
+
+@bot.command()
+async def multiply(ctx, num1: int, num2: int):
+    result = num1 * num2
+    await ctx.send(f"Hai!! The product of {num1} and {num2} is.... {result}! You're welcome!! :3")
+
+
+@bot.command()
+async def divide(ctx, num1: int, num2: int):
+    result = num1 / num2
+    await ctx.send(f"Hai!! The quotient of {num1} and {num2} is.... {result}! You're welcome!! :3")
+
+
+
 
 @bot.command()
 async def randomGirl(ctx):
