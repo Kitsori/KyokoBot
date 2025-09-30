@@ -19,7 +19,7 @@ async def on_ready():
 
 
 @bot.command()
-async def help(ctx):
+async def helpme(ctx):
     help = """"
     Hai hai!!! You need some help?? You got it..!! :3
     
