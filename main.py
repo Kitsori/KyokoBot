@@ -16,6 +16,18 @@ bot = commands.Bot(command_prefix='~', intents=intents)
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
 
+
+
+@bot.command()
+async def help(ctx):
+    help = """"
+    Hai hai!!! You need some help?? You got it..!! :3
+    
+    ~ping - Pong!!! :3
+    ~add x y - adds 2 numbers together.. I'm so smart!
+    """
+    await ctx.send(help)
+
 @bot.command()
 async def ping(ctx):
     await ctx.send("Pong!")
@@ -23,7 +35,7 @@ async def ping(ctx):
 @bot.command()
 async def add(ctx, num1: int, num2: int):
     result = num1 + num2
-    await ctx.send(f"Hai!! The sum of {num1} and {num2} is {result}! Your welcome!! :3")
+    await ctx.send(f"Hai!! The sum of {num1} and {num2} is.... {result}! You're welcome!! :3")
 
 
 
