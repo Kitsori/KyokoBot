@@ -49,7 +49,7 @@ async def helpme(ctx):
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send("Pong!")
+    await ctx.send("Pong! :3")
 
 
 
@@ -159,7 +159,9 @@ async def on_message(message):
 
     # RESPOND TO NAME
     if "kyoko" in message.content.lower():
-        await message.channel.send(f"Hai hai {message.author.mention}")
+        await message.channel.send(f"Hai hai {message.author.mention}..! :3")
+
+    await bot.process_commands(message)
 
 
 
