@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 import discord
-from discord.ext import  commands
+from discord.ext import commands
 
 import random
 import asyncio
@@ -45,12 +45,15 @@ async def helpme(ctx):
 
 
 
+# PING PONG PING PONG
+
 @bot.command()
 async def ping(ctx):
     await ctx.send("Pong!")
 
 
 
+# MATH COMMANDS
 
 @bot.command()
 async def add(ctx, num1: int, num2: int):
@@ -78,6 +81,15 @@ async def divide(ctx, num1: int, num2: int):
 
 
 
+
+
+@bot.command()
+async def
+
+
+
+# RANDOM ANIME GIRL IMAGE GENERATOR
+
 @bot.command()
 async def randomGirl(ctx):
     images = [f for f in os.listdir("Girls") if f.endswith((".jpg"))]
@@ -85,6 +97,11 @@ async def randomGirl(ctx):
     chosen_image = random.choice(images)
 
     await ctx.send(file=discord.File(f"Girls/{chosen_image}"))
+
+
+
+
+# ANIME GIRL BLIND RANKING GAME (WIP)
 
 @bot.command()
 async def GirlRanking(ctx):
@@ -134,6 +151,21 @@ async def GirlRanking(ctx):
 
 
         rankCount += 1
+
+
+
+
+# BOT EVENTS
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    # RESPOND TO NAME
+    if "kyoko" in message.content.lower():
+        await message.channel.send(f"Hai hai {message.author.mention}")
+
 
 
 
