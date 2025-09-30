@@ -83,11 +83,6 @@ async def divide(ctx, num1: int, num2: int):
 
 
 
-@bot.command()
-async def
-
-
-
 # RANDOM ANIME GIRL IMAGE GENERATOR
 
 @bot.command()
