@@ -20,4 +20,15 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send("Pong!")
 
+@bot.command()
+async def add(ctx, num1: int, num2: int):
+    result = num1 + num2
+    await ctx.send(f"Hai!! The sum of {num1} and {num2} is {result}! Your welcome!! :3")
+
+
+
+
+
+
+
 bot.run(TOKEN)
