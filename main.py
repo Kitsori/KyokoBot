@@ -178,7 +178,7 @@ async def girlranking(ctx):
                 await countdown.edit(content=f"You have {i} seconds to decide..!")
                 if i == 0:
                     await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
-                    break
+                    return
                 await asyncio.sleep(6)
 
           # Make the countdown above a task so it can run at the same time as the code below
