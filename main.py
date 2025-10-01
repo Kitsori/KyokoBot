@@ -189,6 +189,8 @@ async def girlranking(ctx):
         # Loop for waiting for rank answer
         while loop == True:
 
+            await ctx.send(loop)
+            await asyncio.sleep(1)
             # Wait for 30 total seconds and then timeout if not given an answer.
             try:
                 response = await bot.wait_for('message', check=check)
