@@ -168,10 +168,10 @@ async def girlranking(ctx):
 
             countdown = await ctx.send("You have 30 seconds to decide..!")
 
-            async def countdown():
-                for i in [20, 25]:
-                    await asyncio.sleep(30 - i)
-                    await countdown.edit(content=f"You have {i} seconds to decide..!")
+            #async def countdown():
+            for i in [20, 25]:
+                await asyncio.sleep(30 - i)
+                await countdown.edit(content=f"You have {i} seconds to decide..!")
 
             # Wait 30 seconds for player to give an answer and then wait 2 seconds after
             try:
