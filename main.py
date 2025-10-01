@@ -196,7 +196,10 @@ async def girlranking(ctx):
                 response = await bot.wait_for('message', check=check)
                 content = response.content.strip()
 
-                if content.isdigit() and 1 <= int(content) <= 5 and loop == True:
+                if loop == False:
+                    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+                    return
+                elif content.isdigit() and 1 <= int(content) <= 5:
                     rank = int(content)
                     await ctx.send(f"You decided to rank her {rank}! :3")
                     ranks[rank - 1] = name
