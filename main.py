@@ -224,11 +224,14 @@ async def girlranking(ctx):
             #else:
             #    await ctx.send(f"That's not a correct ranking silly..!")
 
-        for i, rank in enumerate(ranks):
-            embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
+        if loop == False:
+            return
+        else:
+            for i, rank in enumerate(ranks):
+                embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
 
-        await ctx.send(embed=embedList)
-        await asyncio.sleep(2)
+            await ctx.send(embed=embedList)
+            await asyncio.sleep(2)
 
         rankCount += 1
 
