@@ -168,16 +168,16 @@ async def girlranking(ctx):
             return message.author == ctx.author # Only accept responses from the command user.
 
          # Initial countdown message
-         countdown = await ctx.send("You have 30 seconds to decide..!")
+        countdown = await ctx.send("You have 30 seconds to decide..!")
 
           # Countdown in increments of 5 seconds
-          async def rankCountdown():
-              for i in [30, 25, 20, 15, 10, 5]:
-                  await countdown.edit(content=f"You have {i} seconds to decide..!")
-                  await asyncio.sleep(6)
+        async def rankCountdown():
+            for i in [30, 25, 20, 15, 10, 5]:
+                await countdown.edit(content=f"You have {i} seconds to decide..!")
+                await asyncio.sleep(6)
 
           # Make the countdown above a task so it can run at the same time as the code below
-          countTask = asyncio.create_task(rankCountdown())
+        countTask = asyncio.create_task(rankCountdown())
 
         # Loop for waiting for rank answer
         while loop == True:
