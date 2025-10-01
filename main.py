@@ -169,7 +169,7 @@ async def girlranking(ctx):
             countdown = await ctx.send("You have 30 seconds to decide..!")
 
             async def rankCountdown():
-                for i in [10, 20, 25]:
+                for i in [5, 10, 15, 20, 25]:
                     await asyncio.sleep(30 - i)
                     await countdown.edit(content=f"You have {30 - i} seconds to decide..!")
 
@@ -181,6 +181,7 @@ async def girlranking(ctx):
                 rank = int(response.content)
                 countTask.cancel()
             except asyncio.TimeoutError:
+                countTask.cancel()
                 await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
 
