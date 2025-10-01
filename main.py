@@ -187,7 +187,18 @@ async def girlranking(ctx):
             # Wait for 30 total seconds and then timeout if not given an answer.
             try:
                 response = await bot.wait_for('message', check=check, timeout=36)
-                rank = int(response.content)
+                content = response.content.strip()
+
+                if content.isdigit() and 1 <= int(content) <= 5:
+                    rank = int(content)
+                    await ctx.send(f"You decided to rank her {rank}! :3")
+                    ranks[rank - 1] = name
+                    await asyncio.sleep(2)
+                    countTask.cancel()
+                    loop = False
+                else:
+                    await ctx.send(f"That's not a correct ranking silly..!")
+
             except asyncio.TimeoutError:
                 countTask.cancel()
                 await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
@@ -197,14 +208,14 @@ async def girlranking(ctx):
 
 
             # If a valid rank tell user and add to the rank list and exit the loop, otherwise repeat and say its not
-            if 1 <= rank <= 5:
-                await ctx.send(f"You decided to rank her {rank}! :3")
-                ranks[rank - 1] = name
-                await asyncio.sleep(2)
-                countTask.cancel()
-                loop = False
-            else:
-                await ctx.send(f"That's not a correct ranking silly..!")
+            #if 1 <= rank <= 5:
+            #    await ctx.send(f"You decided to rank her {rank}! :3")
+            #    ranks[rank - 1] = name
+            #    await asyncio.sleep(2)
+            #    countTask.cancel()
+            #    loop = False
+            #else:
+            #    await ctx.send(f"That's not a correct ranking silly..!")
 
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
