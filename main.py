@@ -168,18 +168,18 @@ async def girlranking(ctx):
 
             countdown = await ctx.send("You have 30 seconds to decide..!")
 
-            #async def countdown():
-            #for i in [10, 20, 25]:
-            #    await asyncio.sleep(30 - i)
-            #    await countdown.edit(content=f"You have {30 - i} seconds to decide..!")
+            async def rankCountdown():
+                for i in [10, 20, 25]:
+                    await asyncio.sleep(30 - i)
+                    await countdown.edit(content=f"You have {30 - i} seconds to decide..!")
+
+            countTask = asyncio.create_task(rankCountdown())
 
             # Wait 30 seconds for player to give an answer and then wait 2 seconds after
             try:
                 response = await bot.wait_for('message', check=check, timeout=30)
-                for i in [10, 20, 25]:
-                    await asyncio.sleep(30 - i)
-                    await countdown.edit(content=f"You have {30 - i} seconds to decide..!")
                 rank = int(response.content)
+                countTask.cancel()
             except asyncio.TimeoutError:
                 await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
