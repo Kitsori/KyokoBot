@@ -174,56 +174,45 @@ async def girlranking(ctx):
 
           # Countdown in increments of 5 seconds
         async def rankCountdown():
-            for i in [30, 25, 20, 15, 10, 5, 0]:
+            for i in [30, 25, 20, 15, 10, 5]:
                 await countdown.edit(content=f"You have {i} seconds to decide..!")
-                if i == 0:
-                    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
-                    return True
                 await asyncio.sleep(6)
 
+          # Make the countdown above a task so it can run at the same time as the code below
         countTask = asyncio.create_task(rankCountdown())
 
-        timeout = await rankCountdown()
-        if timeout == True:
-            return
-        else:
+        # Loop for waiting for rank answer
+        while loop == True:
 
-          # Make the countdown above a task so it can run at the same time as the code below
-
-            # Loop for waiting for rank answer
-            while loop == True:
-
-                response = await bot.wait_for('message', check=check)
+            # Wait for 30 total seconds and then timeout if not given an answer.
+            try:
+                response = await bot.wait_for('message', check=check, timeout=36)
                 rank = int(response.content)
-                # Wait for 30 total seconds and then timeout if not given an answer.
-                #try:
-                #    response = await bot.wait_for('message', check=check, timeout=36)
-                #    rank = int(response.content)
-                #except asyncio.TimeoutError:
-                #    countTask.cancel()
-                #    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+            except asyncio.TimeoutError:
+                countTask.cancel()
+                await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
-                # Reset embed list so it doesnt keep adding on
-                embedList.clear_fields()
+            # Reset embed list so it doesnt keep adding on
+            embedList.clear_fields()
 
 
-                # If a valid rank tell user and add to the rank list and exit the loop, otherwise repeat and say its not
-                if 1 <= rank <= 5:
-                    await ctx.send(f"You decided to rank her {rank}! :3")
-                    ranks[rank - 1] = name
-                    await asyncio.sleep(2)
-                    countTask.cancel()
-                    loop = False
-                else:
-                    await ctx.send(f"That's not a correct ranking silly..!")
+            # If a valid rank tell user and add to the rank list and exit the loop, otherwise repeat and say its not
+            if 1 <= rank <= 5:
+                await ctx.send(f"You decided to rank her {rank}! :3")
+                ranks[rank - 1] = name
+                await asyncio.sleep(2)
+                countTask.cancel()
+                loop = False
+            else:
+                await ctx.send(f"That's not a correct ranking silly..!")
 
-            for i, rank in enumerate(ranks):
-                embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
+        for i, rank in enumerate(ranks):
+            embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
 
-            await ctx.send(embed=embedList)
-            await asyncio.sleep(2)
+        await ctx.send(embed=embedList)
+        await asyncio.sleep(2)
 
-            rankCount += 1
+        rankCount += 1
 
 
 
