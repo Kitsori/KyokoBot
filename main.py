@@ -138,6 +138,7 @@ async def girlranking(ctx):
 
     while rankCount < 5:
 
+
         name, path = randomGirlGen()  # Make a tuple of the name of image and its filepath
 
         filename = os.path.basename(path)
@@ -147,11 +148,12 @@ async def girlranking(ctx):
         embed = discord.Embed(title=name, color=discord.Color.blue())
         embed.set_image(url=f"attachment://{filename}")
 
+        await ctx.send(embed=embed, file=file) # Send the embed of name and girl image
+        await asyncio.sleep(2)
 
         # Send a picture of a girl and wait 2 seconds
         #chosenGirl = random.choice(girls)
         #await ctx.send(file=discord.File(f"Girls/{chosenGirl}"))
-        await asyncio.sleep(2)
 
         # Ask player where they'd rank the girl
         await ctx.send("Where would you rank her from 1-5..? :3")
@@ -161,9 +163,11 @@ async def girlranking(ctx):
         # Wait 30 seconds for player to give an answer and then wait 2 seconds after
         response = await bot.wait_for('message', check=check, timeout=30)
         rank = int(response.content)
+
+        embedList.clear_fields()
         if 1 <= rank <= 5:
             await ctx.send(f"You decided to rank her {rank}! :3")
-            ranks[rank - 1] = "Girl"
+            ranks[rank - 1] = name
             await asyncio.sleep(2)
         else:
             await ctx.send(f"That's not a correct ranking silly..!")
