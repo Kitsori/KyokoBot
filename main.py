@@ -135,7 +135,7 @@ async def girlranking(ctx):
 
     # Set up the number of ranks done so far and the embed
     rankCount = 0
-    embedList = discord.Embed(title="Girl Ranking")
+    embedList = discord.Embed(title="Best Girl Ranking")
 
     # Create a band emped rank list
     ranks = ["Empty", "Empty", "Empty", "Empty", "Empty",]
@@ -233,7 +233,7 @@ async def girlranking(ctx):
 
 
         for i, rank in enumerate(ranks):
-            embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
+            embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
         await ctx.send(embed=embedList)
         await asyncio.sleep(2)
