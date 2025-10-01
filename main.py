@@ -152,7 +152,7 @@ async def girlranking(ctx):
         filename = os.path.basename(path)
         file = discord.File(path, filename=filename)  # Prepare the actual image
 
-        embed = discord.Embed(title=name, color=discord.Color.blue()) # Set embed left side color
+        embed = discord.Embed(description=f"**{name}**", color=discord.Color.blue()) # Set embed left side color
         embed.set_image(url=f"attachment://{filename}") # Set the image?
 
         await ctx.send(file=file, embed=embed) # Send the embed of name and girl image
