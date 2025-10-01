@@ -181,13 +181,14 @@ async def girlranking(ctx):
                     return True
                 await asyncio.sleep(6)
 
+        countTask = asyncio.create_task(rankCountdown())
+
         timeout = await rankCountdown()
         if timeout == True:
             return
         else:
 
           # Make the countdown above a task so it can run at the same time as the code below
-            countTask = asyncio.create_task(rankCountdown())
 
             # Loop for waiting for rank answer
             while loop == True:
