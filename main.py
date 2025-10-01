@@ -89,19 +89,15 @@ async def divide(ctx, num1: int, num2: int):
 
 @bot.command()
 async def randomgirl(ctx):
+    name, url = randomGirlGen()  # Make a tuple of the name of image and its filepath
 
-    name, path = randomGirlGen() # Make a tuple of the name of image and its filepath
+    # filename = os.path.basename(path)
+    # file = discord.File(path, filename=filename)  # Prepare the actual image
 
-    filename = os.path.basename(path)
+    embed = discord.Embed(title=name, color=discord.Color.blue())  # Set embed left side color
+    embed.set_image(url=url)  # Set the image?
 
-    file = discord.File(path, filename=filename) # Prepare the actual image
-
-
-    embed = discord.Embed(title=name, color=discord.Color.blue())
-    embed.set_image(url=f"attachment://{filename}")
-
-
-    await ctx.send(embed=embed, file=file)
+    await ctx.send(embed=embed)  # Send the embed of name and girl image
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
 
 
@@ -237,7 +233,7 @@ async def girlranking(ctx):
 
         await ctx.send(rankCount)
         if rankCount >= 4:
-            embed.title = "FINAL Best Girl Ranking"
+            embedList.title = "FINAL Best Girl Ranking"
 
         await ctx.send(embed=embedList)
         await asyncio.sleep(2)
