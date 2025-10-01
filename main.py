@@ -167,7 +167,7 @@ async def girlranking(ctx):
 
         def check(message):
             return message.author == ctx.author # Only accept responses from the command user.
-        await asyncio.sleep(1)
+        await asyncio.sleep(0.5)
 
          # Initial countdown message
         countdown = await ctx.send("You have 30 seconds to decide..!")
@@ -234,6 +234,9 @@ async def girlranking(ctx):
 
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
+
+        if rankCount >= 4:
+            embed.title = "FINAL Best Girl Ranking"
 
         await ctx.send(embed=embedList)
         await asyncio.sleep(2)
