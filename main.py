@@ -7,6 +7,8 @@ from discord.ext import commands
 import random
 import asyncio
 
+from girlimages import randomGirlGen
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
@@ -80,18 +82,37 @@ async def divide(ctx, num1: int, num2: int):
 
 
 
+# RANDOM ANIME GIRL IMAGE GENERATOR
+
+@bot.command()
+async def randomGirl(ctx):
+
+    name, path = randomGirlGen() # Make a tuple of the name of image and its filepath
+
+    filename = os.path.basename(path)
+
+    file = discord.File(path, filename=filename) # Prepare the actual image
+
+
+    embed = discord.Embed(title=name, color=discord.Color.blue())
+    embed.set_image(url=f"attachment://{filename}")
+
+
+    await ctx.send(embed=embed, file=file)
+    #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
+
 
 
 
 # RANDOM ANIME GIRL IMAGE GENERATOR
 
-@bot.command()
-async def randomGirl(ctx):
-    images = [f for f in os.listdir("Girls") if f.endswith((".jpg"))]
-
-    chosen_image = random.choice(images)
-
-    await ctx.send(file=discord.File(f"Girls/{chosen_image}"))
+# @bot.command()
+# async def randomGirl(ctx):
+#    images = [f for f in os.listdir("Girls") if f.endswith((".jpg"))]
+#
+#    chosen_image = random.choice(images)
+#
+#    await ctx.send(file=discord.File(f"Girls/{chosen_image}"))
 
 
 
