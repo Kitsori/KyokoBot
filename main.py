@@ -235,6 +235,7 @@ async def girlranking(ctx):
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
+        await ctx.send(rankCount)
         if rankCount >= 4:
             embed.title = "FINAL Best Girl Ranking"
 
