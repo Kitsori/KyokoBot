@@ -174,10 +174,11 @@ async def girlranking(ctx):
 
           # Countdown in increments of 5 seconds
         async def rankCountdown():
+            nonlocal loop
             for i in [30, 25, 20, 15, 10, 5, 0]:
                 if i == 0:
                     await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
-                    raise asyncio.CancelledError
+                    loop = False
                 else:
                     await countdown.edit(content=f"You have {i} seconds to decide..!")
                     await asyncio.sleep(6)
