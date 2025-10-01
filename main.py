@@ -177,7 +177,7 @@ async def girlranking(ctx):
 
             # Wait 30 seconds for player to give an answer and then wait 2 seconds after
             try:
-                response = await bot.wait_for('message', check=check, timeout=30)
+                response = await bot.wait_for('message', check=check, timeout=36)
                 rank = int(response.content)
                 countTask.cancel()
             except asyncio.TimeoutError:
