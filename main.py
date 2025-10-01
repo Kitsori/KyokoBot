@@ -169,9 +169,9 @@ async def girlranking(ctx):
             countdown = await ctx.send("You have 30 seconds to decide..!")
 
             async def rankCountdown():
-                for i in [25, 20, 15, 10, 5]:
-                    await asyncio.sleep(6)
+                for i in [30, 25, 20, 15, 10, 5]:
                     await countdown.edit(content=f"You have {i} seconds to decide..!")
+                    await asyncio.sleep(6)
 
             countTask = asyncio.create_task(rankCountdown())
 
