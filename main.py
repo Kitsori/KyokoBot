@@ -158,32 +158,29 @@ async def girlranking(ctx):
         await ctx.send(embed=embed, file=file) # Send the embed of name and girl image
         await asyncio.sleep(2)
 
-        async def rankCountdown():
-            for i in [30, 25, 20, 15, 10, 5]:
-                await countdown.edit(content=f"You have {i} seconds to decide..!")
-                await asyncio.sleep(6)
 
-        countTask = asyncio.create_task(rankCountdown())
+
+        # Loop for waiting for rank answer
+
+        # Ask player where they'd rank the girl
+        await ctx.send("Where would you rank her from 1-5..? :3")
+        def check(message):
+            return message.author == ctx.author # Only accept responses from the command user.
+
+         # Initial countdown message
+         countdown = await ctx.send("You have 30 seconds to decide..!")
+
+          # Countdown in increments of 5 seconds
+          async def rankCountdown():
+              for i in [30, 25, 20, 15, 10, 5]:
+                  await countdown.edit(content=f"You have {i} seconds to decide..!")
+                  await asyncio.sleep(6)
+
+          # Make the countdown above a task so it can run at the same time as the code below
+          countTask = asyncio.create_task(rankCountdown())
 
         # Loop for waiting for rank answer
         while loop == True:
-
-            # Ask player where they'd rank the girl
-            await ctx.send("Where would you rank her from 1-5..? :3")
-            def check(message):
-                return message.author == ctx.author # Only accept responses from the command user.
-
-            # Initial countdown message
-            countdown = await ctx.send("You have 30 seconds to decide..!")
-
-            ### Countdown in increments of 5 seconds
-            ###async def rankCountdown():
-            ###    for i in [30, 25, 20, 15, 10, 5]:
-            ###        await countdown.edit(content=f"You have {i} seconds to decide..!")
-            ###        await asyncio.sleep(6)
-
-            ### Make the countdown above a task so it can run at the same time as the code below
-            ###countTask = asyncio.create_task(rankCountdown())
 
             # Wait for 30 total seconds and then timeout if not given an answer.
             try:
