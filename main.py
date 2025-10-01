@@ -164,6 +164,7 @@ async def girlranking(ctx):
 
         # Ask player where they'd rank the girl
         await ctx.send("Where would you rank her from 1-5..? :3")
+
         def check(message):
             return message.author == ctx.author # Only accept responses from the command user.
 
@@ -186,7 +187,6 @@ async def girlranking(ctx):
             try:
                 response = await bot.wait_for('message', check=check, timeout=36)
                 rank = int(response.content)
-                countTask.cancel()
             except asyncio.TimeoutError:
                 countTask.cancel()
                 await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
@@ -200,6 +200,7 @@ async def girlranking(ctx):
                 await ctx.send(f"You decided to rank her {rank}! :3")
                 ranks[rank - 1] = name
                 await asyncio.sleep(2)
+                countTask.cancel()
                 loop = False
             else:
                 await ctx.send(f"That's not a correct ranking silly..!")
