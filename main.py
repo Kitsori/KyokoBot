@@ -40,8 +40,8 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~subtract (x) (y)", value="Subtracts one number from another.. like magic!", inline=False)
     helpEmbed.add_field(name="~multiply (x) (y)", value="Multiplies two numbers together.. woahhhh :O", inline=False)
     helpEmbed.add_field(name="~divide (x) (y)", value="Divides one number from another number.. everyone gets a share..!", inline=False)
-    helpEmbed.add_field(name="~randomGirl", value="Generate a picture of a random anime girl!", inline=False)
-    helpEmbed.add_field(name="~GirlRanking", value="Start a Anime Girl Blind Ranking!!! (WIP)", inline=False)
+    helpEmbed.add_field(name="~randomgirl", value="Generate a picture of a random anime girl!", inline=False)
+    helpEmbed.add_field(name="~girlranking", value="Start a Anime Girl Blind Ranking!!! (WIP)", inline=False)
 
     await ctx.send(embed=helpEmbed)
 
@@ -85,20 +85,13 @@ async def divide(ctx, num1: int, num2: int):
 # RANDOM ANIME GIRL IMAGE GENERATOR
 
 @bot.command()
-async def randomGirl(ctx):
+async def randomgirl(ctx):
 
     name, path = randomGirlGen() # Make a tuple of the name of image and its filepath
 
-    await ctx.send(name)
-    await ctx.send(path)
-
     filename = os.path.basename(path)
 
-    await ctx.send(filename)
-
     file = discord.File(path, filename=filename) # Prepare the actual image
-
-    await ctx.send(file)
 
 
     embed = discord.Embed(title=name, color=discord.Color.blue())
@@ -127,8 +120,8 @@ async def randomGirl(ctx):
 # ANIME GIRL BLIND RANKING GAME (WIP)
 
 @bot.command()
-async def GirlRanking(ctx):
-    girls = [f for f in os.listdir("Girls") if f.endswith((".jpg"))] # Get the list of girls
+async def girlranking(ctx):
+    #girls = [f for f in os.listdir("Girls") if f.endswith((".jpg"))] # Get the list of girls
 
     # Game Intro Message
     await ctx.send("You wanna rank some anime girls huh...? :3")
@@ -145,9 +138,19 @@ async def GirlRanking(ctx):
 
     while rankCount < 5:
 
+        name, path = randomGirlGen()  # Make a tuple of the name of image and its filepath
+
+        filename = os.path.basename(path)
+
+        file = discord.File(path, filename=filename)  # Prepare the actual image
+
+        embed = discord.Embed(title=name, color=discord.Color.blue())
+        embed.set_image(url=f"attachment://{filename}")
+
+
         # Send a picture of a girl and wait 2 seconds
-        chosenGirl = random.choice(girls)
-        await ctx.send(file=discord.File(f"Girls/{chosenGirl}"))
+        #chosenGirl = random.choice(girls)
+        #await ctx.send(file=discord.File(f"Girls/{chosenGirl}"))
         await asyncio.sleep(2)
 
         # Ask player where they'd rank the girl
