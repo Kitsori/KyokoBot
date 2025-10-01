@@ -163,7 +163,7 @@ async def girlranking(ctx):
             # Ask player where they'd rank the girl
             await ctx.send("Where would you rank her from 1-5..? :3")
             def check(message):
-                return message.author == ctx.author # Only accept responses from the command user
+                return message.author == ctx.author # Only accept responses from the command user.
 
 
             countdown = await ctx.send("You have 30 seconds to decide..!")
