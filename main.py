@@ -82,6 +82,8 @@ async def divide(ctx, num1: int, num2: int):
 
 
 
+
+
 # RANDOM ANIME GIRL IMAGE GENERATOR
 
 @bot.command()
@@ -117,6 +119,8 @@ async def randomgirl(ctx):
 
 
 
+
+
 # ANIME GIRL BLIND RANKING GAME (WIP)
 
 @bot.command()
@@ -133,8 +137,6 @@ async def girlranking(ctx):
     embedList = discord.Embed(title="Girl Ranking")
 
     ranks = [" Empty", " Empty", " Empty", " Empty", " Empty",]
-
-    rankList = await ctx.send(embed=embedList)
 
     while rankCount < 5:
 
@@ -163,9 +165,21 @@ async def girlranking(ctx):
             def check(message):
                 return message.author == ctx.author # Only accept responses from the command user
 
+
+            countdown = await ctx.send("You have 30 seconds to decide..!")
+
+            async def countdown():
+                for i in [20, 25]:
+                    await asyncio.sleep(30 - i)
+                    await countdown.edit(content=f"You have {i} seconds to decide..!")
+
             # Wait 30 seconds for player to give an answer and then wait 2 seconds after
-            response = await bot.wait_for('message', check=check, timeout=30)
-            rank = int(response.content)
+            try:
+                response = await bot.wait_for('message', check=check, timeout=30)
+                rank = int(response.content)
+            except asyncio.TimeoutError:
+                await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+
 
             embedList.clear_fields()
 
@@ -184,6 +198,9 @@ async def girlranking(ctx):
         await asyncio.sleep(2)
 
         rankCount += 1
+
+
+
 
 
 
