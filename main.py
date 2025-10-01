@@ -138,7 +138,7 @@ async def girlranking(ctx):
     embedList = discord.Embed(title="Girl Ranking")
 
     # Create a band emped rank list
-    ranks = [" Empty", " Empty", " Empty", " Empty", " Empty",]
+    ranks = ["Empty", "Empty", "Empty", "Empty", "Empty",]
 
 
     # Main game loop while you have ranked less than 5 girls
@@ -210,7 +210,7 @@ async def girlranking(ctx):
                         await ctx.send(f"You decided to rank her {rank}! :3")
                         await asyncio.sleep(2)
                     else:
-                        ctx.send(f"That rank is already full you dummy..!")
+                        await ctx.send(f"That rank is already full you dummy..!")
                 else:
                     await ctx.send(f"That's not a correct ranking silly..!")
 
