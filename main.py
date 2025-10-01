@@ -156,17 +156,19 @@ async def girlranking(ctx):
         #chosenGirl = random.choice(girls)
         #await ctx.send(file=discord.File(f"Girls/{chosenGirl}"))
 
-        # Ask player where they'd rank the girl
-        await ctx.send("Where would you rank her from 1-5..? :3")
-        def check(message):
-            return message.author == ctx.author # Only accept responses from the command user
-
-        # Wait 30 seconds for player to give an answer and then wait 2 seconds after
-        response = await bot.wait_for('message', check=check, timeout=30)
-        rank = int(response.content)
-
-        embedList.clear_fields()
         while loop == True:
+
+            # Ask player where they'd rank the girl
+            await ctx.send("Where would you rank her from 1-5..? :3")
+            def check(message):
+                return message.author == ctx.author # Only accept responses from the command user
+
+            # Wait 30 seconds for player to give an answer and then wait 2 seconds after
+            response = await bot.wait_for('message', check=check, timeout=30)
+            rank = int(response.content)
+
+            embedList.clear_fields()
+
             if 1 <= rank <= 5:
                 await ctx.send(f"You decided to rank her {rank}! :3")
                 ranks[rank - 1] = name
