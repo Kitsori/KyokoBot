@@ -205,7 +205,7 @@ async def girlranking(ctx):
 
             except asyncio.TimeoutError:
                 countTask.cancel()
-                #await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+                ##await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
             # Reset embed list so it doesnt keep adding on
             embedList.clear_fields()
