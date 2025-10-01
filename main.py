@@ -171,7 +171,7 @@ async def girlranking(ctx):
                 await ctx.send(f"You decided to rank her {rank}! :3")
                 ranks[rank - 1] = name
                 await asyncio.sleep(2)
-                loop == False
+                loop = False
             else:
                 await ctx.send(f"That's not a correct ranking silly..!")
 
