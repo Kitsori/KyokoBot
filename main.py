@@ -1,4 +1,5 @@
 import os
+from urllib import response
 
 from dotenv import load_dotenv
 import discord
@@ -173,8 +174,11 @@ async def girlranking(ctx):
 
           # Countdown in increments of 5 seconds
         async def rankCountdown():
-            for i in [30, 25, 20, 15, 10, 5]:
+            for i in [30, 25, 20, 15, 10, 5, 0]:
                 await countdown.edit(content=f"You have {i} seconds to decide..!")
+                if i == 0:
+                    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+                    break
                 await asyncio.sleep(6)
 
           # Make the countdown above a task so it can run at the same time as the code below
@@ -183,13 +187,15 @@ async def girlranking(ctx):
         # Loop for waiting for rank answer
         while loop == True:
 
+            response = await bot.wait_for('message', check=check)
+            rank = int(response.content)
             # Wait for 30 total seconds and then timeout if not given an answer.
-            try:
-                response = await bot.wait_for('message', check=check, timeout=36)
-                rank = int(response.content)
-            except asyncio.TimeoutError:
-                countTask.cancel()
-                await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+            #try:
+            #    response = await bot.wait_for('message', check=check, timeout=36)
+            #    rank = int(response.content)
+            #except asyncio.TimeoutError:
+            #    countTask.cancel()
+            #    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
             # Reset embed list so it doesnt keep adding on
             embedList.clear_fields()
