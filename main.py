@@ -174,7 +174,7 @@ async def girlranking(ctx):
 
           # Countdown in increments of 5 seconds
         async def rankCountdown():
-            for i in [30, 25, 20, 15, 10, 5]:
+            for i in [30, 25, 20, 15, 10, 5, 0]:
                 if i == 0:
                     await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
                     raise asyncio.CancelledError
@@ -190,7 +190,7 @@ async def girlranking(ctx):
 
             # Wait for 30 total seconds and then timeout if not given an answer.
             try:
-                response = await bot.wait_for('message', check=check, timeout=36)
+                response = await bot.wait_for('message', check=check)
                 content = response.content.strip()
 
                 if content.isdigit() and 1 <= int(content) <= 5:
