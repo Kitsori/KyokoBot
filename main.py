@@ -94,7 +94,11 @@ async def randomGirl(ctx):
 
     filename = os.path.basename(path)
 
+    await ctx.send(filename)
+
     file = discord.File(path, filename=filename) # Prepare the actual image
+
+    await ctx.send(file)
 
 
     embed = discord.Embed(title=name, color=discord.Color.blue())
