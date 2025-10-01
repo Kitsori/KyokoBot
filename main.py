@@ -89,6 +89,9 @@ async def randomGirl(ctx):
 
     name, path = randomGirlGen() # Make a tuple of the name of image and its filepath
 
+    await ctx.send(name)
+    await ctx.send(path)
+
     filename = os.path.basename(path)
 
     file = discord.File(path, filename=filename) # Prepare the actual image
@@ -104,7 +107,7 @@ async def randomGirl(ctx):
 
 
 
-# RANDOM ANIME GIRL IMAGE GENERATOR
+# OLD RANDOM ANIME GIRL IMAGE GENERATOR
 
 # @bot.command()
 # async def randomGirl(ctx):
