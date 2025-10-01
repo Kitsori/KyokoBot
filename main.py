@@ -203,11 +203,11 @@ async def girlranking(ctx):
                 elif content.isdigit() and 1 <= int(content) <= 5:
                     rank = int(content)
                     if ranks[rank - 1] is None:
-                        await ctx.send(f"You decided to rank her {rank}! :3")
                         ranks[rank - 1] = name
-                        await asyncio.sleep(2)
                         countTask.cancel()
                         loop = False
+                        await ctx.send(f"You decided to rank her {rank}! :3")
+                        await asyncio.sleep(2)
                     else:
                         ctx.send(f"That rank is already full you dummy..!")
                 else:
