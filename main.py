@@ -200,10 +200,9 @@ async def girlranking(ctx):
                     await ctx.send(content=f"You didn't respond in time silly..! No more ranking for you..")
                     return
                 elif content.isdigit() and 1 <= int(content) <= 5:
-                    await ctx.send("Passed between 1 and 5")
                     rank = int(content)
+
                     if ranks[rank - 1] == "Empty":
-                        await ctx.send("Passed empty check")
                         ranks[rank - 1] = name
                         countTask.cancel()
                         loop = False
@@ -211,6 +210,7 @@ async def girlranking(ctx):
                         await asyncio.sleep(2)
                     else:
                         await ctx.send(f"That rank is already full you dummy..!")
+
                 else:
                     await ctx.send(f"That's not a correct ranking silly..!")
 
@@ -232,14 +232,12 @@ async def girlranking(ctx):
             #else:
             #    await ctx.send(f"That's not a correct ranking silly..!")
 
-        if loop == False:
-            return
-        else:
-            for i, rank in enumerate(ranks):
-                embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
 
-            await ctx.send(embed=embedList)
-            await asyncio.sleep(2)
+        for i, rank in enumerate(ranks):
+            embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
+
+        await ctx.send(embed=embedList)
+        await asyncio.sleep(2)
 
         rankCount += 1
 
