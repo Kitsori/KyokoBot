@@ -190,7 +190,6 @@ async def girlranking(ctx):
         # Loop for waiting for rank answer
         while loop == True:
 
-            await asyncio.sleep(1)
             # Wait for 30 total seconds and then timeout if not given an answer.
             try:
                 response = await bot.wait_for('message', check=check)
@@ -199,20 +198,21 @@ async def girlranking(ctx):
                 if loop == False:
                     await ctx.send(content=f"You didn't respond in time silly..! No more ranking for you..")
                     return
-                elif content.isdigit() and 1 <= int(content) <= 5:
+                elif content.isdigit()
                     rank = int(content)
-
-                    if ranks[rank - 1] == "Empty":
-                        ranks[rank - 1] = name
-                        countTask.cancel()
-                        loop = False
-                        await ctx.send(f"You decided to rank her {rank}! :3")
-                        await asyncio.sleep(2)
+                    if 1 <= rank <= 5:
+                        if ranks[rank - 1] == "Empty":
+                            ranks[rank - 1] = name
+                            countTask.cancel()
+                            loop = False
+                            await ctx.send(f"You decided to rank her {rank}! :3")
+                            await asyncio.sleep(2)
+                        else:
+                            await ctx.send(f"That rank is already full you dummy..!")
                     else:
-                        await ctx.send(f"That rank is already full you dummy..!")
-
+                        await ctx.send(f"That's not a correct ranking silly..!")
                 else:
-                    await ctx.send(f"That's not a correct ranking silly..!")
+                    pass
 
             except asyncio.TimeoutError:
                 countTask.cancel()
