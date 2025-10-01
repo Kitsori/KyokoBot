@@ -132,14 +132,18 @@ async def girlranking(ctx):
     await asyncio.sleep(3)
     await ctx.send("Well here ya go...! Here's your first girl!")
 
-    # Main Game Loop
+    # Set up the number of ranks done so far and the embed
     rankCount = 0
     embedList = discord.Embed(title="Girl Ranking")
 
+    # Create a band emped rank list
     ranks = [" Empty", " Empty", " Empty", " Empty", " Empty",]
 
+
+    # Main game loop while you have ranked less than 5 girls
     while rankCount < 5:
 
+        # Set while loop for waiting for a reply to true
         loop = True
 
         name, path = randomGirlGen()  # Make a tuple of the name of image and its filepath
@@ -148,16 +152,14 @@ async def girlranking(ctx):
 
         file = discord.File(path, filename=filename)  # Prepare the actual image
 
-        embed = discord.Embed(title=name, color=discord.Color.blue())
-        embed.set_image(url=f"attachment://{filename}")
+        embed = discord.Embed(title=name, color=discord.Color.blue()) # Set embed left side color
+        embed.set_image(url=f"attachment://{filename}") # Set the image?
 
         await ctx.send(embed=embed, file=file) # Send the embed of name and girl image
         await asyncio.sleep(2)
 
-        # Send a picture of a girl and wait 2 seconds
-        #chosenGirl = random.choice(girls)
-        #await ctx.send(file=discord.File(f"Girls/{chosenGirl}"))
 
+        # Loop for waiting for rank answer
         while loop == True:
 
             # Ask player where they'd rank the girl
@@ -165,35 +167,49 @@ async def girlranking(ctx):
             def check(message):
                 return message.author == ctx.author # Only accept responses from the command user.
 
-
+            # Initial countdown message
             countdown = await ctx.send("You have 30 seconds to decide..!")
 
+            # Countdown in increments of 5 seconds
             async def rankCountdown():
                 for i in [30, 25, 20, 15, 10, 5]:
                     await countdown.edit(content=f"You have {i} seconds to decide..!")
                     await asyncio.sleep(6)
 
+            # Make the countdown above a task so it can run at the same time as the code below
             countTask = asyncio.create_task(rankCountdown())
 
-            # Wait 30 seconds for player to give an answer and then wait 2 seconds after
+            # Wait for 30 total seconds and then timeout if not given an answer.
             try:
                 response = await bot.wait_for('message', check=check, timeout=36)
                 rank = int(response.content)
+
+                if 1 <= rank <= 5:
+                    await ctx.send(f"You decided to rank her {rank}! :3")
+                    ranks[rank - 1] = name
+                    await asyncio.sleep(2)
+                    loop = False
+                else:
+                    await ctx.send(f"That's not a correct ranking silly..!")
+
                 countTask.cancel()
+
             except asyncio.TimeoutError:
                 countTask.cancel()
                 await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
-
+            # Reset embed list so it doesnt keep adding on
             embedList.clear_fields()
 
-            if 1 <= rank <= 5:
-                await ctx.send(f"You decided to rank her {rank}! :3")
-                ranks[rank - 1] = name
-                await asyncio.sleep(2)
-                loop = False
-            else:
-                await ctx.send(f"That's not a correct ranking silly..!")
+
+            # If a valid rank tell user and add to the rank list and exit the loop, otherwise repeat and say its not
+            #if 1 <= rank <= 5:
+            #    await ctx.send(f"You decided to rank her {rank}! :3")
+            #    ranks[rank - 1] = name
+            #    await asyncio.sleep(2)
+            #    loop = False
+            #else:
+            #    await ctx.send(f"That's not a correct ranking silly..!")
 
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
