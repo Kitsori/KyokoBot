@@ -201,8 +201,8 @@ async def girlranking(ctx):
                     await ctx.send(content=f"You didn't respond in time silly..! No more ranking for you..")
                     return
                 elif content.isdigit() and 1 <= int(content) <= 5:
+                    rank = int(content)
                     if ranks[rank - 1] is None:
-                        rank = int(content)
                         await ctx.send(f"You decided to rank her {rank}! :3")
                         ranks[rank - 1] = name
                         await asyncio.sleep(2)
