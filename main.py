@@ -147,15 +147,15 @@ async def girlranking(ctx):
         # Set while loop for waiting for a reply to true
         loop = True
 
-        name, path = randomGirlGen()  # Make a tuple of the name of image and its filepath
+        name, url = randomGirlGen()  # Make a tuple of the name of image and its filepath
 
-        filename = os.path.basename(path)
-        file = discord.File(path, filename=filename)  # Prepare the actual image
+        #filename = os.path.basename(path)
+        #file = discord.File(path, filename=filename)  # Prepare the actual image
 
-        embed = discord.Embed(description=f"**{name}**", color=discord.Color.blue()) # Set embed left side color
-        embed.set_image(url=f"attachment://{filename}") # Set the image?
+        embed = discord.Embed(title=name, color=discord.Color.blue()) # Set embed left side color
+        embed.set_image(url=url) # Set the image?
 
-        await ctx.send(file=file, embed=embed) # Send the embed of name and girl image
+        await ctx.send(embed=embed) # Send the embed of name and girl image
         await asyncio.sleep(2)
 
 
