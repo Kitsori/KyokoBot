@@ -177,7 +177,7 @@ async def girlranking(ctx):
             nonlocal loop
             for i in [30, 25, 20, 15, 10, 5, 0]:
                 if i == 0:
-                    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+                    await countdown.edit(content=f"Time Expired... :(")
                     loop = False
                 else:
                     await countdown.edit(content=f"You have {i} seconds to decide..!")
@@ -197,7 +197,7 @@ async def girlranking(ctx):
                 content = response.content.strip()
 
                 if loop == False:
-                    await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
+                    await ctx.send(content=f"You didn't respond in time silly..! No more ranking for you..")
                     return
                 elif content.isdigit() and 1 <= int(content) <= 5:
                     rank = int(content)
