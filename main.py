@@ -202,7 +202,7 @@ async def girlranking(ctx):
                     return
                 elif content.isdigit() and 1 <= int(content) <= 5:
                     rank = int(content)
-                    if ranks[rank - 1] is None:
+                    if ranks[rank - 1] == "Empty":
                         ranks[rank - 1] = name
                         countTask.cancel()
                         loop = False
