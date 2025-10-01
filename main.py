@@ -138,6 +138,7 @@ async def girlranking(ctx):
 
     while rankCount < 5:
 
+        loop = True
 
         name, path = randomGirlGen()  # Make a tuple of the name of image and its filepath
 
@@ -165,20 +166,20 @@ async def girlranking(ctx):
         rank = int(response.content)
 
         embedList.clear_fields()
-        if 1 <= rank <= 5:
-            await ctx.send(f"You decided to rank her {rank}! :3")
-            ranks[rank - 1] = name
-            await asyncio.sleep(2)
-        else:
-            await ctx.send(f"That's not a correct ranking silly..!")
+        while loop == True:
+            if 1 <= rank <= 5:
+                await ctx.send(f"You decided to rank her {rank}! :3")
+                ranks[rank - 1] = name
+                await asyncio.sleep(2)
+                loop == False
+            else:
+                await ctx.send(f"That's not a correct ranking silly..!")
 
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"Rank {i+1}", value=rank, inline=False)
 
-        await rankList.edit(embed=embedList)
-
-
-
+        await ctx.send(embed=embedList)
+        await asyncio.sleep(2)
 
         rankCount += 1
 
