@@ -198,7 +198,7 @@ async def girlranking(ctx):
                 if loop == False:
                     await ctx.send(content=f"You didn't respond in time silly..! No more ranking for you..")
                     return
-                elif content.isdigit()
+                elif content.isdigit():
                     rank = int(content)
                     if 1 <= rank <= 5:
                         if ranks[rank - 1] == "Empty":
