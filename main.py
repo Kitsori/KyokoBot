@@ -91,9 +91,6 @@ async def divide(ctx, num1: int, num2: int):
 async def randomgirl(ctx):
     name, url = randomGirlGen()  # Make a tuple of the name of image and its filepath
 
-    # filename = os.path.basename(path)
-    # file = discord.File(path, filename=filename)  # Prepare the actual image
-
     embed = discord.Embed(title=name, color=discord.Color.blue())  # Set embed left side color
     embed.set_image(url=url)  # Set the image?
 
@@ -122,31 +119,76 @@ async def randomgirl(ctx):
 
 @bot.command()
 async def girlranking(ctx):
-    #girls = [f for f in os.listdir("Girls") if f.endswith((".jpg"))] # Get the list of girls
+
+    def check(message):
+        return message.author == ctx.author  # Only accept responses from the command user.
 
     # Game Intro Message
     await ctx.send("You wanna rank some anime girls huh...? :3")
-    await asyncio.sleep(3)
-    await ctx.send("Well here ya go...! Here's your first girl!")
+    await asyncio.sleep(1)
+
+    await ctx.send("How many do you wanna rank..? (1-10)")
+
+    numGirls = None
+    girlNumBool = True
+
+    async def numCountdown():
+        nonlocal numGirls
+        await asyncio.sleep(15)
+        await ctx.send("Hai..? You there..? Whatever.. defaulting to 5 girls..")
+        numGirls = 5
+        numResponseTask.cancel()
+
+
+    async def numResponse():
+        nonlocal numGirls
+        try:
+            while True:
+                numResponse = await bot.wait_for('message', check=check)
+                response = numResponse.content.strip()
+                if response.isdigit():
+                    num = int(response)
+                    if 1 <= num <= 10:
+                        numGirls = num
+                        numTask.cancel()
+                        break
+                    else:
+                        await ctx.send("That's not a valid number! :3")
+        except asyncio.CancelledError:
+            pass
+
+    numTask = asyncio.create_task(numCountdown())
+    numResponseTask = asyncio.create_task(numResponse())
+
+    done, pending = await asyncio.wait([numTask, numResponseTask], return_when=asyncio.FIRST_COMPLETED)
+
+    for task in pending:
+        task.cancel()
+
+
 
     # Set up the number of ranks done so far and the embed
     rankCount = 0
     embedList = discord.Embed(title="Best Girl Ranking")
 
     # Create a band emped rank list
-    ranks = ["Empty", "Empty", "Empty", "Empty", "Empty",]
+    ranks = ["Empty"] * numGirls
+
+    await ctx.send("Well here ya go...! Here's your first girl!")
+
+
+
+    chosenGirls = randomGirlGen(numGirls)  # Make a tuple of the name of image and its filepath
+
 
 
     # Main game loop while you have ranked less than 5 girls
-    while rankCount < 5:
+    while rankCount < numGirls:
 
         # Set while loop for waiting for a reply to true
         loop = True
 
-        name, url = randomGirlGen()  # Make a tuple of the name of image and its filepath
-
-        #filename = os.path.basename(path)
-        #file = discord.File(path, filename=filename)  # Prepare the actual image
+        name, url = chosenGirls[rankCount]
 
         embed = discord.Embed(title=name, color=discord.Color.blue()) # Set embed left side color
         embed.set_image(url=url) # Set the image?
@@ -159,10 +201,8 @@ async def girlranking(ctx):
         # Loop for waiting for rank answer
 
         # Ask player where they'd rank the girl
-        await ctx.send("Where would you rank her from 1-5..? :3")
+        await ctx.send(f"Where would you rank her from 1-{numGirls}..? :3")
 
-        def check(message):
-            return message.author == ctx.author # Only accept responses from the command user.
         await asyncio.sleep(0.5)
 
          # Initial countdown message
@@ -195,7 +235,7 @@ async def girlranking(ctx):
                     return
                 elif content.isdigit():
                     rank = int(content)
-                    if 1 <= rank <= 5:
+                    if 1 <= rank <= numGirls:
                         if ranks[rank - 1] == "Empty":
                             ranks[rank - 1] = name
                             countTask.cancel()
@@ -231,7 +271,6 @@ async def girlranking(ctx):
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
-        await ctx.send(rankCount)
         if rankCount >= 4:
             embedList.title = "FINAL Best Girl Ranking"
 
