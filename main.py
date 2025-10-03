@@ -115,7 +115,7 @@ async def randomgirl(ctx):
 async def girlranking(ctx):
 
     def check(message):
-        return message.author == ctx.author  # Only accept responses from the command user.
+        return message.author == ctx.author and message.channel == ctx.channel  # Only accept responses from the command user.
 
     # Game Intro Message
     await ctx.send("You wanna rank some anime girls huh...? :3")
