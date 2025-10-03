@@ -41,8 +41,8 @@ girls = [
     ("Mizuki Himeji", "https://media.discordapp.net/attachments/1423388983915708558/1423467712717520936/110667.png?"),
     ("Yuuko Kinoshita", "https://media.discordapp.net/attachments/1423388983915708558/1423467753427435521/76945.png?"),
     ("Akira Yoshii", "https://media.discordapp.net/attachments/1423388983915708558/1423467793222996009/85307.png?"),
-    ("Rinrada Ratchamanee", "https://media.discordapp.net/attachments/1423388983915708558/1423468350050275398/598468.png?"), # Baan
-    ("Michiru Kagemori", "https://media.discordapp.net/attachments/1423388983915708558/1423468715365896323/408681.png?"), # BNA
+    ("Rinrada Ratchamanee", "https://media.discordapp.net/attachments/1423388983915708558/1423468350050275398/598468.png?"),         # Baan
+    ("Michiru Kagemori", "https://media.discordapp.net/attachments/1423388983915708558/1423468715365896323/408681.png?"),            # BNA
     ("Nazuna Hiwatashi", "https://media.discordapp.net/attachments/1423388983915708558/1423468943095365694/367f5af87785e65cf6db80132cca0c0c.png?"),
     ("Hitori Gotou", "https://media.discordapp.net/attachments/1423388983915708558/1423469539089453137/491455.png?"),    # Bocchi The Rock!
     ("Ryou Yamada", "https://media.discordapp.net/attachments/1423388983915708558/1423469610660790454/544161.png?"),
@@ -96,16 +96,178 @@ girls = [
     ("Misae Sagara", "https://media.discordapp.net/attachments/1423388983915708558/1423484470576680991/382201.png?"),
     ("Lucy", "https://media.discordapp.net/attachments/1423388983915708558/1423485741962362911/486620.png?"),             # Cyberpunk Edgerunners
     ("Rebecca", "https://media.discordapp.net/attachments/1423388983915708558/1423485801727135924/547499.png?"),
+    ("Momo Ayase", "https://media.discordapp.net/attachments/1423388983915708558/1423495325821440171/562295.png?"),         # Dandadan
+    ("Aira Shiratori", "https://media.discordapp.net/attachments/1423388983915708558/1423495373804011610/569271.png?"),
+    ("Seiko Ayase", "https://media.discordapp.net/attachments/1423388983915708558/1423495423947178024/541026.png?"),
+    ("Turbo Granny", "https://media.discordapp.net/attachments/1423388983915708558/1423495479114731530/510909.png?"),
+    ("Vamola", "https://media.discordapp.net/attachments/1423388983915708558/1423495909177819207/605981.png?"),
+    ("Yoshino Himekawa", "https://media.discordapp.net/attachments/1422438714730217482/1423060152835248341/Yoshino.jpg?"),           # Date a Live
+    ("Mukuro Hoshimiya", "https://media.discordapp.net/attachments/1422999881269645424/1423058083743137905/Mukuro_Hoshimiya.jpg?"),
+    ("Kurumi Tokisaki", "https://media.discordapp.net/attachments/1423388983915708558/1423497322888695888/468511.png?"),
+    ("Tohka Yatogami", "https://media.discordapp.net/attachments/1423388983915708558/1423497462017949706/202193.png?"),
+    ("Origami Tobiichi", "https://media.discordapp.net/attachments/1423388983915708558/1423497542020104273/202609.png?"),
+    ("Kotori Itsuka", "https://media.discordapp.net/attachments/1423388983915708558/1423497606113529898/211505.png?"),
+    ("Miku Izayoi", "https://media.discordapp.net/attachments/1423388983915708558/1423497652351406240/263775.png?"),
+    ("Natsumi Kyouno", "https://media.discordapp.net/attachments/1423388983915708558/1423497740586975275/551485.png?"),
+    ("Yuzuru Yamai", "https://media.discordapp.net/attachments/1423388983915708558/1423497829208428584/249039.png?"),
+    ("Kaguya Yamai", "https://media.discordapp.net/attachments/1423388983915708558/1423497871461978265/249041.png?"),
+    ("Reine Murasame", "https://media.discordapp.net/attachments/1423388983915708558/1423497950482399324/209483.png?"),
+    ("Mio Takamiya", "https://media.discordapp.net/attachments/1423388983915708558/1423498059639164958/491024.png?"),
+    ("Nia Honjou", "https://media.discordapp.net/attachments/1423388983915708558/1423498105252220990/577849.png?"),
+    ("Mana Takamiya", "https://media.discordapp.net/attachments/1423388983915708558/1423498314841722910/209869.png?"),
+    ("Mii Fujibakama", "https://media.discordapp.net/attachments/1423388983915708558/1423498341106585631/211899.png?"),
+    ("Nibelcole", "https://media.discordapp.net/attachments/1423388983915708558/1423498418180980827/476933.png?"),
+    ("Yua Serufu", "https://media.discordapp.net/attachments/1423388983915708558/1423500525932118126/494673.png?"),       # Do It Yourself!
+    ("Jobko", "https://media.discordapp.net/attachments/1423388983915708558/1423500563164827708/493799.png?"),
+    ("Kokoro Kouki", "https://media.discordapp.net/attachments/1423388983915708558/1423500599365992498/493797.png?"),
+    ("Miku Suride", "https://media.discordapp.net/attachments/1423388983915708558/1423500631884169298/493219.png?"),
+    ("Rei Yasaku", "https://media.discordapp.net/attachments/1423388983915708558/1423500660975997009/511856.png?"),
+    ("Takumi Hikage", "https://media.discordapp.net/attachments/1423388983915708558/1423500687622275092/511857.png?"),
+    ("Rui Tachibana", "https://media.discordapp.net/attachments/1423388983915708558/1423501229748785203/382489.png?"),    # Domestic Girlfriend
+    ("Hina Tachibana", "https://media.discordapp.net/attachments/1423388983915708558/1423501271184441489/385149.png?"),
+    ("Marcille Donato", "https://media.discordapp.net/attachments/1423388983915708558/1423501894411616357/512503.png?"),  # Dungeon Meshi
+    ("Izutsumi", "https://media.discordapp.net/attachments/1423388983915708558/1423501936199598150/543860.png?"),
+    ("Falin Touden", "https://media.discordapp.net/attachments/1423388983915708558/1423501995691606037/543864.png?"),
+    ("Namari", "https://media.discordapp.net/attachments/1423388983915708558/1423502057666773093/543865.png?"),
+    ("Inutade", "https://media.discordapp.net/attachments/1423388983915708558/1423502081909723236/543788.png?"),
+    ("Hestia", "https://media.discordapp.net/attachments/1423388983915708558/1423503577623560312/285883.png?"),           # Danmachi
+    ("Ais Wallenstein", "https://media.discordapp.net/attachments/1423388983915708558/1423503672821940325/512524.png?"),
+    ("Ryuu Lion", "https://media.discordapp.net/attachments/1423388983915708558/1423503731491868694/508899.png?"),
+    ("Liliruca Arde", "https://media.discordapp.net/attachments/1423388983915708558/1423503785107525764/285907.png?"),
+    ("Freya", "https://media.discordapp.net/attachments/1423388983915708558/1423503863406788698/568506.png?"),
+    ("Mikoto Yamato", "https://media.discordapp.net/attachments/1423388983915708558/1423503917639270400/508902.png?"),
+    ("Syr Flova", "https://media.discordapp.net/attachments/1423388983915708558/1423504048551891035/382146.png?"),
+    ("Eina Tulle", "https://media.discordapp.net/attachments/1423388983915708558/1423504122639814787/281237.png?"),
+    ("Hephaistos", "https://media.discordapp.net/attachments/1423388983915708558/1423504184849858641/512539.png?"),
+    ("Asufi Al Andromeda", "https://media.discordapp.net/attachments/1423388983915708558/1423504370162733149/390544.png?"),
+    ("Loki", "https://media.discordapp.net/attachments/1423388983915708558/1423504444640858132/512525.png?"),
+    ("Tione Hiryute", "https://media.discordapp.net/attachments/1423388983915708558/1423504514195132506/328384.png?"),
+    ("Tiona Hiryute", "https://media.discordapp.net/attachments/1423388983915708558/1423504569044045835/508897.png?"),
+    ("Haruhime Sanjouno", "https://media.discordapp.net/attachments/1423388983915708558/1423504627437011044/508901.png?"),
+    ("Wiene", "https://media.discordapp.net/attachments/1423388983915708558/1423504681497530430/501677.png?"),
+    ("Aisha Belka", "https://media.discordapp.net/attachments/1423388983915708558/1423504728922525786/508894.png?"),
+    ("Chigusa Hitachi", "https://media.discordapp.net/attachments/1423388983915708558/1423504791354740746/508886.png?"),
+    ("Cassandra Ilion", "https://media.discordapp.net/attachments/1423388983915708558/1423504852222476288/508888.png?"),
+    ("Anya Flomer", "https://media.discordapp.net/attachments/1423388983915708558/1423504909101170840/285143.png?"),
+    ("Chloe Lolo", "https://media.discordapp.net/attachments/1423388983915708558/1423504956756852868/563882.png?"),
+    ("Daphne Rauros", "https://media.discordapp.net/attachments/1423388983915708558/1423505000419688519/508887.png?"),
+    ("Tamaki Kotatsu", "https://media.discordapp.net/attachments/1423388983915708558/1423506733866811412/496649.png?"),   # Fire Force
+    ("Maki Oze", "https://media.discordapp.net/attachments/1423388983915708558/1423506806050783334/568634.png?"),
+    ("Iris", "https://media.discordapp.net/attachments/1423388983915708558/1423506846458839161/587867.png?"),
+    ("Hibana", "https://media.discordapp.net/attachments/1423388983915708558/1423506905669828638/550253.png?"),
+    ("Haumea", "https://media.discordapp.net/attachments/1423388983915708558/1423506938087346237/587876.png?"),
+    ("Lisa Isaribe", "https://media.discordapp.net/attachments/1423388983915708558/1423506978155528213/587869.png?"),
+    ("Inca Kasugatani", "https://media.discordapp.net/attachments/1423388983915708558/1423507005615771830/417617.png?"),
+    ("Kisara", "https://media.discordapp.net/attachments/1423388983915708558/1423507703669592135/495138.png?"),           # Engage Kiss
+    ("Ayano Yuugiri", "https://media.discordapp.net/attachments/1423388983915708558/1423507754429190226/472531.png?"),
+    ("Sharon Holygrail", "https://media.discordapp.net/attachments/1423388983915708558/1423507780303585433/476675.png?"),
+    ("Kanna Ogata", "https://media.discordapp.net/attachments/1423388983915708558/1423507807465902100/487693.png?"),
+    ("Takuhaigyousha", "https://media.discordapp.net/attachments/1423388983915708558/1423507834733199360/481323.png?"),
+    ("Sagiri Izumi", "https://media.discordapp.net/attachments/1423388983915708558/1423508265916039310/327378.png?"),     # Eromanga Sensei
+    ("Elf Yamada", "https://media.discordapp.net/attachments/1423388983915708558/1423508296408760330/330038.png?"),
+    ("Megumi Jinno", "https://media.discordapp.net/attachments/1423388983915708558/1423508323994570822/327003.png?"),
+    ("Muramasa Senju", "https://media.discordapp.net/attachments/1423388983915708558/1423508356571594865/333305.png?"),
+    ("Tomoe Takasago", "https://media.discordapp.net/attachments/1423388983915708558/1423508382823874560/324564.png?"),
+    ("Saber", "https://media.discordapp.net/attachments/1423388983915708558/1423509644483104878/315100.png?"),            # Fate UBW
+    ("Rin Tohsaka", "https://media.discordapp.net/attachments/1423388983915708558/1423509790457462855/270529.png?"),
+    ("Illyasviel von Einzbern", "https://media.discordapp.net/attachments/1423388983915708558/1423509870577188884/345110.png?"),
+    ("Caster", "https://media.discordapp.net/attachments/1423388983915708558/1423509911718989894/128797.png?"),
+    ("Luviagelita Edelfelt", "https://media.discordapp.net/attachments/1423388983915708558/1423509953200652318/503811.png?"),
+    ("Taiga Fujimura", "https://media.discordapp.net/attachments/1423388983915708558/1423509991842648114/275651.png?"),
+    ("Ayako Mitsuzuri", "https://media.discordapp.net/attachments/1423388983915708558/1423510031583674378/296248.png?"),
+    ("Sakura Matou", "https://media.discordapp.net/attachments/1423388983915708558/1423510132603621376/294277.png?"),
+    ("Rider", "https://media.discordapp.net/attachments/1423388983915708558/1423510335800741908/341407.png?"),
+    ("Irisviel von Einzbern", "https://media.discordapp.net/attachments/1423388983915708558/1423510397608136815/112995.png?"),
+    ("Haruko Haruhara", "https://media.discordapp.net/attachments/1423388983915708558/1423511425678311464/523359.png?"),   # FLCL
+    ("Mamimi Samejima", "https://media.discordapp.net/attachments/1423388983915708558/1423511492283727892/218999.png?"),
+    ("Eri Ninamori", "https://media.discordapp.net/attachments/1423388983915708558/1423511517306945576/33201.png?"),
+    ("Papika", "https://media.discordapp.net/attachments/1423388983915708558/1423511818239873096/316263.png?"),            # Flip Flappers
+    ("Cocona Cocomine", "https://media.discordapp.net/attachments/1423388983915708558/1423511849793618030/316264.png?"),
+    ("Yayaka", "https://media.discordapp.net/attachments/1423388983915708558/1423511876368859137/313367.png?"),
+    ("Yuyu", "https://media.discordapp.net/attachments/1423388983915708558/1423511902461624362/525861.png?"),
+    ("Tohru Honda", "https://media.discordapp.net/attachments/1423388983915708558/1423512665191350272/378748.png?"),       # Fruits Basket
+    ("Saki Hanajima", "https://media.discordapp.net/attachments/1423388983915708558/1423512723299369050/401128.png?"),
+    ("Isuzu Souma", "https://media.discordapp.net/attachments/1423388983915708558/1423512772565794887/449502.png?"),
+    ("Akito Souma", "https://media.discordapp.net/attachments/1423388983915708558/1423512801732726835/410560.png?"),
+    ("Kisa Souma", "https://media.discordapp.net/attachments/1423388983915708558/1423512825313230929/410557.png?"),
+    ("Kyouko Honda", "https://media.discordapp.net/attachments/1423388983915708558/1423512851993067561/400004.png?"),
+    ("Arisa Uotani", "https://media.discordapp.net/attachments/1423388983915708558/1423512892917026897/410559.png?"),
+    ("Machi Kuragi", "https://media.discordapp.net/attachments/1423388983915708558/1423512926811066470/419508.png?"),
+    ("Kagura Souma", "https://media.discordapp.net/attachments/1423388983915708558/1423512966673727559/413950.png?"),
+    ("Riza Hawkeye", "https://media.discordapp.net/attachments/1423388983915708558/1423514178403958794/451785.png?"),      # Fullmetal Alchemist Brotherhood
+    ("Winry Rockbell", "https://media.discordapp.net/attachments/1423388983915708558/1423514316342300822/527339.png?"),
+    ("Olivier Armstrong", "https://media.discordapp.net/attachments/1423388983915708558/1423514367294443583/83953.png?"),
+    ("Izumi Curtis", "https://media.discordapp.net/attachments/1423388983915708558/1423514405223796868/85257.png?"),
+    ("Lust", "https://media.discordapp.net/attachments/1423388983915708558/1423514443953999934/76639.png?"),
+    ("Mei Chang", "https://media.discordapp.net/attachments/1423388983915708558/1423514485070499910/572516.png?"),
+    ("Trisha Elric", "https://media.discordapp.net/attachments/1423388983915708558/1423514751564124201/59741.png?"),
+    ("Akari Watanabe", "https://media.discordapp.net/attachments/1423388983915708558/1423515152925458462/499736.png?"),    # Married But Not Lovers
+    ("Shiori Sakurazaka", "https://media.discordapp.net/attachments/1423388983915708558/1423515196676116590/525158.png?"),
+    ("Gabriel Tenma White", "https://media.discordapp.net/attachments/1423388983915708558/1423516522667573318/310289.png?"),   # Gabriel Dropout
+    ("Satanichia Kurumizawa McDowell", "https://media.discordapp.net/attachments/1423388983915708558/1423516568494805012/339560.png?"),
+    ("Vignette Tsukinose April", "https://media.discordapp.net/attachments/1423388983915708558/1423516601650647172/310288.png?"),
+    ("Raphiel Shiraha Ainsworth", "https://media.discordapp.net/attachments/1423388983915708558/1423516634030538822/310287.png?"),
+    ("Tapris Sugarbell Chisaki", "https://media.discordapp.net/attachments/1423388983915708558/1423516656440709130/326345.png?"),
+    ("Kurumi Ebisuzawa", "https://media.discordapp.net/attachments/1423388983915708558/1423517351562711152/292298.png?"),   # Gakkougurashi
+    ("Yuki Takeya", "https://media.discordapp.net/attachments/1423388983915708558/1423517416817692742/314213.png?"),
+    ("Miki Naoki", "https://media.discordapp.net/attachments/1423388983915708558/1423517462229422191/292297.png?"),
+    ("Yuuri Wakasa", "https://media.discordapp.net/attachments/1423388983915708558/1423517512502345729/304875.png?"),
+    ("Megumi Sakura", "https://media.discordapp.net/attachments/1423388983915708558/1423517544131723325/287734.png?"),
+    ("Nina Iseri", "https://media.discordapp.net/attachments/1423388983915708558/1423517967957753996/578487.png?"),         # Girls Band Cry
+    ("Subaru Awa", "https://media.discordapp.net/attachments/1423388983915708558/1423517996013584445/578489.png?"),
+    ("Momoko Kawaragi", "https://media.discordapp.net/attachments/1423388983915708558/1423518026141274164/512880.png?"),
+    ("Rupa", "https://media.discordapp.net/attachments/1423388983915708558/1423518048362434631/512877.png?"),
+    ("Tomo Ebizuka", "https://media.discordapp.net/attachments/1423388983915708558/1423518069330018406/512881.png?"),
+    ("Inori Yuzuriha", "https://media.discordapp.net/attachments/1423388983915708558/1423518512344862795/139621.png?"),     # Guilty Crown
+    ("Ayase Shinomiya", "https://media.discordapp.net/attachments/1423388983915708558/1423518550785654814/136733.png?"),
+    ("Tsugumi", "https://media.discordapp.net/attachments/1423388983915708558/1423518627247689798/137319.png?"),
+    ("Hare Menjou", "https://media.discordapp.net/attachments/1423388983915708558/1423518676421967892/137325.png?"),
+    ("Mana Ouma", "https://media.discordapp.net/attachments/1423388983915708558/1423518718687707196/150755.png?"),
+    ("Satou Matsuzaka", "https://media.discordapp.net/attachments/1423388983915708558/1423519223329853450/363439.png?"),   # Happy Sugar Life
+    ("Shio Koube", "https://media.discordapp.net/attachments/1423388983915708558/1423519265998508172/427428.png?"),
+    ("Shouko Hida", "https://media.discordapp.net/attachments/1423388983915708558/1423519294729224306/363523.png?"),
+    ("Satou's Aunt", "https://media.discordapp.net/attachments/1423388983915708558/1423519334084378718/363441.png?"),
+    ("Tsutsuji Higa", "https://media.discordapp.net/attachments/1423388983915708558/1423519918581616700/585073.png?"),     # Food For The Soul
+    ("Mako Kawai", "https://media.discordapp.net/attachments/1423388983915708558/1423519940291330118/585068.png?"),
+    ("Kurea Furutachi", "https://media.discordapp.net/attachments/1423388983915708558/1423519964190736525/585069.png?"),
+    ("Nana Hoshi", "https://media.discordapp.net/attachments/1423388983915708558/1423519993244422216/585074.png?"),
+    ("Shinon Ogawa", "https://media.discordapp.net/attachments/1423388983915708558/1423520015826681997/585070.png?"),
+    ("Mayumi Oota", "https://media.discordapp.net/attachments/1423388983915708558/1423520039365120100/590025.png?"),
+    ("Sakura Kodama", "https://media.discordapp.net/attachments/1423388983915708558/1423520058159927326/594971.png?"),
+    ("Kumiko Oumae", "https://media.discordapp.net/attachments/1423388983915708558/1423522426628735016/316261.png?"),      # Hibike Euphonium
+    ("Reina Kousaka", "https://media.discordapp.net/attachments/1423388983915708558/1423522514688020612/555742.png?"),
+    ("Hazuki Katou", "https://media.discordapp.net/attachments/1423388983915708558/1423522568274706452/301152.png?"),
+    ("Sapphire Kawashima", "https://media.discordapp.net/attachments/1423388983915708558/1423522857832550450/282019.png?"),
+    ("Asuka Tanaka", "https://media.discordapp.net/attachments/1423388983915708558/1423522930351931432/319400.png?"),
+    ("Mizore Yoroizuka", "https://media.discordapp.net/attachments/1423388983915708558/1423522984693469324/318491.png?"),
+    ("Natsuki Nakagawa", "https://media.discordapp.net/attachments/1423388983915708558/1423523044290465923/295718.png?"),
+    ("Nozomi Kasaki", "https://media.discordapp.net/attachments/1423388983915708558/1423523077291118642/316295.png?"),
+    ("Yuuko Yoshikawa", "https://media.discordapp.net/attachments/1423388983915708558/1423523128122015804/286735.png?"),
+    ("Haruka Ogasawara", "https://media.discordapp.net/attachments/1423388983915708558/1423523169914064996/280131.png?"),
+    ("Kaori Nakaseko", "https://media.discordapp.net/attachments/1423388983915708558/1423523213861715968/284932.png?"),
+    ("Mamiko Oumae", "https://media.discordapp.net/attachments/1423388983915708558/1423523266655686739/285033.png?"),
+    ("Kanade Hisaishi", "https://media.discordapp.net/attachments/1423388983915708558/1423523304425132086/545007.png?"),
+    ("Mayu Kuroe", "https://media.discordapp.net/attachments/1423388983915708558/1423523425040863334/544505.png?"),
+    ("Satsuki Suzuki", "https://media.discordapp.net/attachments/1423388983915708558/1423523453495021578/438564.png?"),
+    ("Mirei Suzuki", "https://media.discordapp.net/attachments/1423388983915708558/1423523481970282588/424974.png?"),
+    ("Yayoi Kamiishi", "https://media.discordapp.net/attachments/1423388983915708558/1423523629534281859/b330332-WQ9sA8zL6F49.png?"),
+    ("Suzume Kamaya", "https://media.discordapp.net/attachments/1423388983915708558/1423523718407389204/b330331-b3TjqW6mZn9T.png?"),
+    ("Sari Yoshii", "https://media.discordapp.net/attachments/1423388983915708558/1423523758248824983/545009.png?"),
+    ("Tsubame Kamaya", "https://media.discordapp.net/attachments/1423388983915708558/1423523783859376129/508226.png?"),
+    ("Azusa Sasaki", "https://media.discordapp.net/attachments/1423388983915708558/1423523811642441738/390747.png?"),
+    ("Sayu Ogiwara", "https://media.discordapp.net/attachments/1423388983915708558/1423525013214072914/444114.png?"),      # Higehiro
+    ("Yuzuha Mishima", "https://media.discordapp.net/attachments/1423388983915708558/1423525051369652324/420042.png?"),
+    ("Airi Gotou", "https://media.discordapp.net/attachments/1423388983915708558/1423525071380549742/420039.png?"),
+    ("Asami Yuuki", "https://media.discordapp.net/attachments/1423388983915708558/1423525092050337894/420041.png?"),
     ("Akane Kurokawa", "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"),  # MISC.
     ("Maomao", "https://media.discordapp.net/attachments/1422438714730217482/1423060210318180542/Maomao.jpg?"),
-    ("Yoshino", "https://media.discordapp.net/attachments/1422438714730217482/1423060152835248341/Yoshino.jpg?"),
     ("Ai Fuyuumi", "https://media.discordapp.net/attachments/1422438714730217482/1423060101169938605/Ai_Fuyuumi.jpg?"),
     ("Fern", "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"),
-    ("Mukuro Hoshimiya", "https://media.discordapp.net/attachments/1422999881269645424/1423058083743137905/Mukuro_Hoshimiya.jpg?"),
     ("Yuuko Yoshida", "https://media.discordapp.net/attachments/1422999881269645424/1423057957246996581/Yuuko_Yoshida.jpg?"),
-    ("Nino Nakano", "https://media.discordapp.net/attachments/1422999881269645424/1423057873512042626/Nino_Nakano.jpg?"),
     ("Karane Inda", "https://media.discordapp.net/attachments/1422999881269645424/1423055211374579742/Karane_Inda.jpg?"),
-    ("Hifumi Takimoto", "https://media.discordapp.net/attachments/1422999881269645424/1423013456369422376/Hifumi_Takimoto.jpg?")
+    ("Hifumi Takimoto", "https://media.discordapp.net/attachments/1422999881269645424/1423013456369422376/Hifumi_Takimoto.jpg?"),
+
+
 ]
 
 
