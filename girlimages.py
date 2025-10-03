@@ -348,15 +348,80 @@ girls = [
     ("Elma", "https://media.discordapp.net/attachments/1423388983915708558/1423569393652338689/456447.png?"),
     ("Ilulu", "https://media.discordapp.net/attachments/1423388983915708558/1423569520617979945/529025.png?"),
     ("Riko Saikawa", "https://media.discordapp.net/attachments/1423388983915708558/1423569557091782716/323304.png?"),
+    ("Shouko Komi", "https://cdn.myanimelist.net/images/characters/10/452353.jpg"),             # Komi Can't Communicate
+    ("Kaede Otori", "https://cdn.myanimelist.net/images/characters/2/455023.jpg"),
+    ("Nene Onemine", "https://cdn.myanimelist.net/images/characters/15/486159.jpg"),
+    ("Omoharu Nakanaka", "https://cdn.myanimelist.net/images/characters/12/451436.jpg"),
+    ("Shuuko Komi", "https://cdn.myanimelist.net/images/characters/2/522134.jpg"),
+    ("Himiko Agari", "https://cdn.myanimelist.net/images/characters/10/451435.jpg"),
+    ("Ren Yamai", "https://cdn.myanimelist.net/images/characters/6/451763.jpg"),
+    ("Hitomi Tadano", "https://cdn.myanimelist.net/images/characters/12/453351.jpg"),
+    ("Megumin", "https://cdn.myanimelist.net/images/characters/2/309075.jpg"),                  # Konosuba
+    ("Aqua", "https://cdn.myanimelist.net/images/characters/13/327741.jpg"),
+    ("Darkness", "https://cdn.myanimelist.net/images/characters/7/301407.jpg"),
+    ("Wiz", "https://cdn.myanimelist.net/images/characters/14/312300.jpg"),
+    ("Yunyun", "https://cdn.myanimelist.net/images/characters/13/583284.jpg"),
+    ("Eris", "https://cdn.myanimelist.net/images/characters/3/397294.jpg"),
+    ("Chris", "https://cdn.myanimelist.net/images/characters/3/303916.jpg"),
+    ("Iris Stylish-Sword Belzerg", "https://cdn.myanimelist.net/images/characters/6/546088.jpg"),
+    ("Luna", "https://cdn.myanimelist.net/images/characters/6/304985.jpg"),
+    ("Sylvia", "https://cdn.myanimelist.net/images/characters/3/577577.jpg"),
+    ("Hana Haruyama", "https://cdn.myanimelist.net/images/characters/6/586012.jpg"),            # Flower and Asura
+    ("Mizuki Usurai", "https://cdn.myanimelist.net/images/characters/4/586013.jpg"),
+    ("An Natsue", "https://cdn.myanimelist.net/images/characters/13/586015.jpg"),
+    ("Ryouko Totonoi", "https://cdn.myanimelist.net/images/characters/16/586010.jpg"),
+    ("Nagisa Kubo", "https://cdn.myanimelist.net/images/characters/13/473602.jpg"),             # Kubo Won't Let Me Be Invisible
+    ("Akina Kubo", "https://cdn.myanimelist.net/images/characters/4/493275.jpg"),
+    ("Saki Kubo", "https://cdn.myanimelist.net/images/characters/13/493276.jpg"),
+    ("Hazuki Kudou", "https://cdn.myanimelist.net/images/characters/10/493277.jpg"),
+    ("Yoshie Shiraishi", "https://cdn.myanimelist.net/images/characters/8/495979.jpg"),
+    ("Tamao Taira", "https://cdn.myanimelist.net/images/characters/5/493278.jpg"),
+    ("Maomao", "https://cdn.myanimelist.net/images/characters/11/516703.jpg"),                  # The Apothecary Diaries
+    ("Loulan", "https://cdn.myanimelist.net/images/characters/8/592718.jpg"),
+    ("Gyokuyou", "https://cdn.myanimelist.net/images/characters/7/525779.jpg"),
+    ("Shisui", "https://cdn.myanimelist.net/images/characters/12/574074.jpg"),
+    ("Xiaolan", "https://cdn.myanimelist.net/images/characters/16/574075.jpg"),
+    ("Lihua", "https://cdn.myanimelist.net/images/characters/9/574071.jpg"),
+    ("Ah-Duo", "https://cdn.myanimelist.net/images/characters/16/530561.jpg"),
+    ("Meimei", "https://cdn.myanimelist.net/images/characters/9/533407.jpg"),
+    ("Pairin", "https://cdn.myanimelist.net/images/characters/13/525778.jpg"),
+    ("Lishu", "https://cdn.myanimelist.net/images/characters/10/574072.jpg"),
+    ("Suirei", "https://cdn.myanimelist.net/images/characters/2/591772.jpg"),
+    ("Rin Natsume", "https://cdn.myanimelist.net/images/characters/3/182839.jpg"),              # Little Busters
+    ("Kudryavka Noumi", "https://cdn.myanimelist.net/images/characters/3/178971.jpg"),
+    ("Yuiko Kurugaya", "https://cdn.myanimelist.net/images/characters/11/229813.jpg"),
+    ("Komari Kamikita", "https://cdn.myanimelist.net/images/characters/13/186201.jpg"),
+    ("Haruka Saigusa", "https://cdn.myanimelist.net/images/characters/10/186205.jpg"),
+    ("Mio Nishizono", "https://cdn.myanimelist.net/images/characters/10/186203.jpg"),
+    ("Kanata Futaki", "https://cdn.myanimelist.net/images/characters/8/212731.jpg"),
+    ("Sasami Sasasegawa", "https://cdn.myanimelist.net/images/characters/6/243597.jpg"),
+    ("Chisato Nishikigi", "https://cdn.myanimelist.net/images/characters/15/497009.jpg"),       # Lycoris Recoil
+    ("Takina Inoue", "https://cdn.myanimelist.net/images/characters/11/484569.jpg"),
+    ("Kurumi", "https://cdn.myanimelist.net/images/characters/12/491295.jpg"),
+    ("Mizuki Nakahara", "https://cdn.myanimelist.net/images/characters/9/491734.jpg"),
+    ("Yuuko Yoshida", "https://cdn.myanimelist.net/images/characters/8/388684.jpg"),            # Machikado Mazoku
+    ("Momo Chiyoda", "https://cdn.myanimelist.net/images/characters/12/388685.jpg"),
+    ("Lico", "https://cdn.myanimelist.net/images/characters/6/403342.jpg"),
+    ("Mikan Hinatsuki", "https://cdn.myanimelist.net/images/characters/5/477006.jpg"),
+    ("Lilith", "https://cdn.myanimelist.net/images/characters/14/477314.jpg"),
+    ("Ryouko Yoshida", "https://cdn.myanimelist.net/images/characters/5/477010.jpg"),
+    ("Seiko Yoshida", "https://cdn.myanimelist.net/images/characters/8/477012.jpg"),
+    ("Riko", "https://cdn.myanimelist.net/images/characters/15/334267.jpg"),                    # Made in Abyss
+    ("Nanachi", "https://cdn.myanimelist.net/images/characters/3/471433.jpg"),
+    ("Ozen", "https://cdn.myanimelist.net/images/characters/14/358235.jpg"),
+    ("Mitty", "https://cdn.myanimelist.net/images/characters/6/340731.jpg"),
+    ("Lyza", "https://cdn.myanimelist.net/images/characters/16/338232.jpg"),
+    ("Prushka", "https://cdn.myanimelist.net/images/characters/13/471437.jpg"),
+    ("Faputa", "https://cdn.myanimelist.net/images/characters/5/471438.jpg"),
+    ("Vueko", "https://cdn.myanimelist.net/images/characters/16/471439.jpg"),
+    ("Irumyuui", "https://cdn.myanimelist.net/images/characters/5/485489.jpg"),
+    ("Maaa", "https://cdn.myanimelist.net/images/characters/15/452976.jpg"),
     ("Akane Kurokawa", "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"),  # MISC.
-    ("Maomao", "https://media.discordapp.net/attachments/1422438714730217482/1423060210318180542/Maomao.jpg?"),
     ("Ai Fuyuumi", "https://media.discordapp.net/attachments/1422438714730217482/1423060101169938605/Ai_Fuyuumi.jpg?"),
     ("Fern", "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"),
-    ("Yuuko Yoshida", "https://media.discordapp.net/attachments/1422999881269645424/1423057957246996581/Yuuko_Yoshida.jpg?"),
     ("Hifumi Takimoto", "https://media.discordapp.net/attachments/1422999881269645424/1423013456369422376/Hifumi_Takimoto.jpg?"),
-
-
 ]
+
 
 
 def randomGirlGen(n = 1):
