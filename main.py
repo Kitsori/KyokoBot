@@ -220,15 +220,17 @@ async def girlranking(ctx):
     await ctx.send("How many do you wanna rank..? (1-10)")
 
     numGirls = None
-    girlNumBool = True
 
+
+
+
+    # Simultaneously start a countdown to answer while also waiting to accept an answer
     async def numCountdown():
         nonlocal numGirls
         await asyncio.sleep(15)
         await ctx.send("Hai..? You there..? Whatever.. defaulting to 5 girls..")
         numGirls = 5
         numResponseTask.cancel()
-
 
     async def numResponse():
         nonlocal numGirls
@@ -250,9 +252,11 @@ async def girlranking(ctx):
         except asyncio.CancelledError:
             pass
 
+    # Create task for each so they can be run simulatenously
     numTask = asyncio.create_task(numCountdown())
     numResponseTask = asyncio.create_task(numResponse())
 
+    # Whichever task finishes first you call that one and then cancel the other one
     done, pending = await asyncio.wait([numTask, numResponseTask], return_when=asyncio.FIRST_COMPLETED)
 
     for task in pending:
@@ -260,60 +264,93 @@ async def girlranking(ctx):
 
 
 
-    # Set up the number of ranks done so far and the embed
+
+    # Set up the number of ranks done so far variable and the embed for the ranking
     rankCount = 0
     embedList = discord.Embed(title="Best Girl Ranking")
 
-    # Create a band emped rank list
+    # Create an empty embed rank list which numGirls slots in it.
     ranks = ["-"] * numGirls
+
+
+
 
     await ctx.send("Well here ya go...! Here's your first girl!")
 
 
 
-    chosenGirls = randomGirlGen(numGirls)  # Make a tuple of the name of image and its filepath
 
-
+    chosenGirls = randomGirlGen(numGirls)  # Make a tuple list of numGirls number of girls from the girlimages list
+                                           # Contains their name, show, image, etc each
 
     # Main game loop while you have ranked less than 5 girls
     while rankCount < numGirls:
 
+
+
+
+
+
         # Set while loop for waiting for a reply to true
         loop = True
 
+        # Pull the different values for each girl into their name, show, etc.
         name, show, url = chosenGirls[rankCount]
 
-        embed = discord.Embed(title=name, description=show, color=discord.Color.blue()) # Set embed left side color
-        embed.set_image(url=url) # Set the image?
+        # Set the girl name as title, show as description, and side color as blue
+        embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
+        embed.set_image(url=url) # Set the image to the url given
 
-        await ctx.send(embed=embed) # Send the embed of name and girl image
+        await ctx.send(embed=embed) # Send the final embed
         await asyncio.sleep(2)
 
 
 
-        # Loop for waiting for rank answer
+        if rankCount == numGirls - 1:
+            loop = False
 
-        # Ask player where they'd rank the girl
-        await ctx.send(f"Where would you rank her from 1-{numGirls}..? :3")
+            await ctx.send("Oh..? It seems you only have one slot left..!")
+            await asyncio.sleep(1)
 
-        await asyncio.sleep(0.5)
+            blank = "-"
+            for index, value in enumerate(ranks):
+                if blank == value:
+                    finalSlotIndex = index
 
-         # Initial countdown message
-        countdown = await ctx.send("You have 30 seconds to decide..!")
+            await ctx.send(f"Let me rank her for you then..! I hope you like her at #{finalSlotIndex + 1}!")
+            await asyncio.sleep(2)
+            embedList.clear_fields() # Clear embed
 
-          # Countdown in increments of 5 seconds
-        async def rankCountdown():
-            nonlocal loop
-            for i in [30, 25, 20, 15, 10, 5, 0]:
-                if i == 0:
-                    await countdown.edit(content=f"Time Expired... :(")
-                    loop = False
-                else:
-                    await countdown.edit(content=f"You have {i} seconds to decide..!")
-                    await asyncio.sleep(6)
+            await ctx.send("Here's your FINAL Best Girl Ranking! Hope you didn't mess up too bad..! Heehee..!")
+            await asyncio.sleep(3)
 
-          # Make the countdown above a task so it can run at the same time as the code below
-        countTask = asyncio.create_task(rankCountdown())
+            ranks[finalSlotIndex] = name
+
+        else:
+            # Ask player where they'd rank the girl
+            await ctx.send(f"Where would you rank her from 1-{numGirls}..? :3")
+
+            await asyncio.sleep(0.5)
+
+             # Initial countdown message
+            countdown = await ctx.send("You have 30 seconds to decide..!")
+
+            # Countdown in increments of 5 seconds
+            async def rankCountdown():
+                nonlocal loop
+                for i in [30, 25, 20, 15, 10, 5, 0]:
+                    if i == 0:  # Once i is 0 it says time expired and ends the loop below
+                        await countdown.edit(content=f"Time Expired... :(")
+                        loop = False
+                    else:   # Else keep counting down
+                        await countdown.edit(content=f"You have {i} seconds to decide..!")
+                        await asyncio.sleep(6)
+
+            # Make the countdown above a task so it can run at the same time as the code below
+            countTask = asyncio.create_task(rankCountdown())
+
+
+
 
         # Loop for waiting for rank answer
         while loop == True:
@@ -323,62 +360,61 @@ async def girlranking(ctx):
                 response = await bot.wait_for('message', check=check)
                 content = response.content.strip()
 
-                if loop == False:
+                if loop == False: # Will set to false if time runs out above, if so end the loop/command
                     await ctx.send(content=f"You didn't respond in time silly..! No more ranking for you..")
                     return
-                elif content.isdigit():
-                    rank = int(content)
-                    if 1 <= rank <= numGirls:
-                        if ranks[rank - 1] == "-":
-                            ranks[rank - 1] = name
-                            countTask.cancel()
-                            loop = False
+
+                elif content.isdigit(): # If the response is a digit
+                    rank = int(content) # Set the rank value to that digit
+
+                    if 1 <= rank <= numGirls: # If the rank is in the valid range
+
+                        if ranks[rank - 1] == "-": # If the rank is empty on the embed
+                            ranks[rank - 1] = name # Then set the current rank to that rank
+                            countTask.cancel() # Cancel the countdown
+                            loop = False # End the loop
                             await ctx.send(f"You decided to rank her #{rank}!")
                             await asyncio.sleep(2)
-                            if rankCount == numGirls - 1:
+
+                            if rankCount == numGirls - 1: # If the rank count and number of girls is the same, send the final message
                                 await ctx.send("Here's your FINAL Best Girl Ranking! Hope you didn't mess up too bad..! Heehee..!")
                                 await asyncio.sleep(3)
-                            else:
+
+                            else: # Else send the updated ranking
                                 await asyncio.sleep(1)
                                 await ctx.send("Here's your updated Best Girl Ranking! :3")
-                        else:
+
+                        else: # Rank is already full
                             await ctx.send(f"That rank is already full you dummy..!")
-                    else:
+
+                    else: # Rank is not in the valid range
                         await ctx.send(f"That's not a correct ranking silly..!")
-                else:
+
+                else: # If not a digit just ignore the message
                     pass
 
             except asyncio.TimeoutError:
                 countTask.cancel()
-                ##await countdown.edit(content=f"You didn't respond in time silly..! No more ranking for you..")
 
             # Reset embed list so it doesnt keep adding on
             embedList.clear_fields()
 
 
-            # If a valid rank tell user and add to the rank list and exit the loop, otherwise repeat and say its not
-            #if 1 <= rank <= 5:
-            #    await ctx.send(f"You decided to rank her {rank}! :3")
-            #    ranks[rank - 1] = name
-            #    await asyncio.sleep(2)
-            #    countTask.cancel()
-            #    loop = False
-            #else:
-            #    await ctx.send(f"That's not a correct ranking silly..!")
 
-
+        # Sets up the rank embed list?? I think??
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
+        # If the rank count and number of girls are the same change the title to FINAL
         if rankCount == numGirls - 1:
             embedList.title = "FINAL Best Girl Ranking"
 
+        # Send the embed after each iteration
         await ctx.send(embed=embedList)
         await asyncio.sleep(3)
 
         rankCount += 1
-
-
+        # As long as rankCount is less than the number of girls repeat the process of the loop.
 
 
 
