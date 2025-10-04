@@ -1027,650 +1027,1171 @@ girls = [
      "Asami Yuuki",
      "Higehiro",
      "https://media.discordapp.net/attachments/1423388983915708558/1423525092050337894/420041.png?"
-    ),(
+    ),(  #257
      "Umika Konohoshi",
      "Stardust Telepath",
      "https://media.discordapp.net/attachments/1423388983915708558/1423550871723180042/519887.png?"
-    ),(
+    ),(  #258
      "Yuu Akeuchi",
      "Stardust Telepath",
      "https://media.discordapp.net/attachments/1423388983915708558/1423550912991068200/519888.png?"
-    ),(
+    ),(  #259
      "Matataki Raimon",
      "Stardust Telepath",
      "https://media.discordapp.net/attachments/1423388983915708558/1423550944225919009/519889.png?"
-    ),(
+    ),(  #260
      "Haruno Takaragi",
      "Stardust Telepath",
      "https://media.discordapp.net/attachments/1423388983915708558/1423550967374286878/519890.png?"
-    ),(
+    ),(  #261
      "Sophie Hatter",
      "Howl's Moving Castle",
      "https://media.discordapp.net/attachments/1423388983915708558/1423551373097570324/102657.png?"
-    ),(
+    ),(  #262
      "Nayuta Kani",
      "A Sister's All You Need.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423551665574907975/338865.png?"
-    ),(
+    ),(  #263
      "Miyako Shirakawa",
      "A Sister's All You Need.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423551702669201469/338866.png?"
-    ),(
+    ),(  #264
      "Ashley Oono",
      "A Sister's All You Need.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423551744910163979/342666.png?"
-    ),(
+    ),(  #265
      "Josee",
      "Josee, The Tiger and the Fish",
      "https://media.discordapp.net/attachments/1423388983915708558/1423552010338304132/441918.png?"
-    ),(
+    ),(  #266
      "Yui Hirasawa",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555071764856903/326131.png?"
-    ),(
+    ),(  #267
      "Mio Akiyama",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555146310357174/48547.png?"
-    ),(
+    ),(  #268
      "Azusa Nakano",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555213452775434/86736.png?"
-    ),(
+    ),(  #269
      "Tsumugi Kotobuki",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555268834496593/48550.png?"
-    ),(
+    ),(  #270
      "Ritsu Tainaka",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555330469531738/51212.png?"
-    ),(
+    ),(  #271
      "Ui Hirasawa",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555396102262864/83872.png?"
-    ),(
+    ),(  #272
      "Sawako Yamanaka",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555493049143376/48577.png?"
-    ),(
+    ),(  #273
      "Nodoka Manabe",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555561844113429/80300.png?"
-    ),(
+    ),(  #274
      "Jun Suzuki",
      "K-ON!",
      "https://media.discordapp.net/attachments/1423388983915708558/1423555602319147019/95854.png?"
-    ),(
+    ),(  #275
      "Kaguya Shinomiya",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423556981393719326/504723.png?"
-    ),(
+    ),(  #276
      "Chika Fujiwara",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423557063409275042/406395.png?"
-    ),(
+    ),(  #277
      "Miko Iino",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423557166798868542/600330.png?"
-    ),(
+    ),(  #278
      "Ai Hayasaka",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423557257995747349/504012.png?"
-    ),(
+    ),(  #279
      "Kei Shirogane",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423557294570078288/395331.png?"
-    ),(
+    ),(  #280
      "Maki Shijou",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423557322503880794/409888.png?"
-    ),(
+    ),(  #281
      "Tsubame Koyasu",
      "Kaguya-sama: Love is War",
      "https://media.discordapp.net/attachments/1423388983915708558/1423557385087225866/568203.png?"
-    ),(
+    ),(  #282
      "Kikoru Shinomiya",
      "Kaiju No. 8",
      "https://media.discordapp.net/attachments/1423388983915708558/1423558061754159146/549659.png?"
-    ),(
+    ),(  #283
      "Mina Ashiro",
      "Kaiju No. 8",
      "https://media.discordapp.net/attachments/1423388983915708558/1423558097980493918/531193.png?"
-    ),(
+    ),(  #284
      "Konomi Okonogi",
      "Kaiju No. 8",
      "https://media.discordapp.net/attachments/1423388983915708558/1423558123486056469/553884.png?"
-    ),(
+    ),(  #285
      "Rin Shinonome",
      "Kaiju No. 8",
      "https://media.discordapp.net/attachments/1423388983915708558/1423558149121638400/599682.png?"
-    ),(
+    ),(  #286
      "Chizuru Ichinose",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423558632183959602/484261.png?"
-    ),(
+    ),(  #287
      "Sumi Sakurasawa",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423558714769670174/484263.png?"
-    ),(
+    ),(  #288
      "Ruka Sarashina",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423559018835873942/484264.png?"
-    ),(
+    ),(  #289
      "Mami Nanami",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423559099404128308/484262.png?"
-    ),(
+    ),(  #290
      "Mini Yaemori",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423559145709109358/560760.png?"
-    ),(
+    ),(  #291
      "Sayuri Ichinose",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423559172032696402/414333.png?"
-    ),(
+    ),(  #292
      "Nagomi Kinoshita",
      "Rent a Girlfriend",
      "https://media.discordapp.net/attachments/1423388983915708558/1423559195810332723/409379.png?"
-    ),(
+    ),(  #293
      "Ayu Tsukimiya",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560301302775869/33327.png?"
-    ),(
+    ),(  #294
      "Mai Kawasumi",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560363240329299/33326.png?"
-    ),(
+    ),(  #295
      "Makoto Sawatari",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560403169968128/79216.png?"
-    ),(
+    ),(  #296
      "Nayuki Minase",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560432911650866/32976.png?"
-    ),(
+    ),(  #297
      "Shiori Misaka",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560488901415024/81057.png?"
-    ),(
+    ),(  #298
      "Sayuri Kurata",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560534866923602/32980.png?"
-    ),(
+    ),(  #299
      "Akiko Minase",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560578420572240/39463.png?"
-    ),(
+    ),(  #300
      "Kaori Misaka",
      "Kanon",
      "https://media.discordapp.net/attachments/1423388983915708558/1423560616911573063/75633.png?"
-    ),(
+    ),(  #301
      "Kaoruko Waguri",
      "The Fragrant Flower Blooms With Dignity",
      "https://media.discordapp.net/attachments/1423388983915708558/1423562725644173343/image.png?"
-    ),(
+    ),(  #302
      "Subaru Hoshina",
      "The Fragrant Flower Blooms With Dignity",
      "https://media.discordapp.net/attachments/1423388983915708558/1423562915574972506/603882.png?"
-    ),(
+    ),(  #303
      "Kyouko Tsumugi",
      "The Fragrant Flower Blooms With Dignity",
      "https://media.discordapp.net/attachments/1423388983915708558/1423562942980558871/599660.png?"
-    ),(
+    ),(  #304
      "Madoka Yuzuhara",
      "The Fragrant Flower Blooms With Dignity",
      "https://media.discordapp.net/attachments/1423388983915708558/1423562990451556412/506588.png?"
-    ),(
+    ),(  #305
      "Nezuko Kamado",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564341222965308/495381.png?"
-    ),(
+    ),(  #306
      "Shinobu Kochou",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564382927061012/386591.png?"
-    ),(
+    ),(  #307
      "Mitsuri Kanroji",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564424618180608/502282.png?"
-    ),(
+    ),(  #308
      "Kanao Tsuyuri",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564457325494282/384712.png?"
-    ),(
+    ),(  #309
      "Tamayo",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564501277610044/384692.png?"
-    ),(
+    ),(  #310
      "Kanae Kochou",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564527546400818/389355.png?"
-    ),(
+    ),(  #311
      "Aoi Kanzaki",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564625521410110/388816.png?"
-    ),(
+    ),(  #312
      "Daki",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564677623058563/526179.png?"
-    ),(
+    ),(  #313
      "Suma",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564735399460894/464879.png?"
-    ),(
+    ),(  #314
      "Makio",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564773471027260/459853.png?"
-    ),(
+    ),(  #315
      "Hinatsuru",
      "Demon Slayer",
      "https://media.discordapp.net/attachments/1423388983915708558/1423564806530797679/459860.png?"
-    ),(
+    ),(  #316
      "Karane Inda",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1422999881269645424/1423055211374579742/Karane_Inda.jpg?"
-    ),(
+    ),(  #317
      "Shizuka Yoshimoto",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423565996786192435/525015.png?"
-    ),(
+    ),(  #318
      "Nano Eiai",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566024636104814/525017.png?"
-    ),(
+    ),(  #319
      "Hakari Hanazono",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566065056747540/525016.png?"
-    ),(
+    ),(  #320
      "Kusuri Yakuzen",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566095411052555/525018.png?"
-    ),(
+    ),(  #321
      "Hahari Hanazono",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566129497899078/534187.png?"
-    ),(
+    ),(  #322
      "Kurumi Haraga",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566173970235452/578045.png?"
-    ),(
+    ),(  #323
      "Mei Meido",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566205641560095/578043.png?"
-    ),(
+    ),(  #324
      "Iku Sutou",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566233936203858/574207.png?"
-    ),(
+    ),(  #325
      "Meme Kakure",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566265494016101/552156.png?"
-    ),(
+    ),(  #326
      "Mimimi Utsukushisugi",
      "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566346343546980/571775.png?"
-    ),(
+    ),(  #327
      "Mitsuha Miyamizu",
      "Your Name",
      "https://media.discordapp.net/attachments/1423388983915708558/1423566852784918619/336342.png?"
-    ),(
+    ),(  #328
      "Isaki Magari",
      "Insomniacs After School",
      "https://media.discordapp.net/attachments/1423388983915708558/1423567402351857764/499097.png?"
-    ),(
+    ),(  #329
      "Yui Shiromaru",
      "Insomniacs After School",
      "https://media.discordapp.net/attachments/1423388983915708558/1423567443967742072/499066.png?"
-    ),(
+    ),(  #330
      "Motoko Kanikawa",
      "Insomniacs After School",
      "https://media.discordapp.net/attachments/1423388983915708558/1423567480852447333/499069.png?"
-    ),(
+    ),(  #331
      "Kanami Anamizu",
      "Insomniacs After School",
      "https://media.discordapp.net/attachments/1423388983915708558/1423567512351539311/499068.png?"
-    ),(
+    ),(  #332
      "Haya Magari",
      "Insomniacs After School",
      "https://media.discordapp.net/attachments/1423388983915708558/1423567541959397446/512982.png?"
-    ),(
+    ),(  #333
      "Mina Nono",
      "Insomniacs After School",
      "https://media.discordapp.net/attachments/1423388983915708558/1423567576533041153/499070.png?"
-    ),(
+    ),(  #334
      "Kobato Hanato",
      "Kobato.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423568373484224563/49333.png?"
-    ),(
+    ),(  #335
      "Kohaku",
      "Kobato.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423568424180912251/64545.png?"
-    ),(
+    ),(  #336
      "Chiho Mihara",
      "Kobato.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423568454514114560/81352.png?"
-    ),(
+    ),(  #337
      "Chise Mihara",
      "Kobato.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423568483354017873/81356.png?"
-    ),(
+    ),(  #338
      "Sayaka Okiura",
      "Kobato.",
      "https://media.discordapp.net/attachments/1423388983915708558/1423568533031223357/81372.png?"
-    ),(
+    ),(  #339
      "Kanna Kamui",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569112894017618/584701.png?"
-    ),(
+    ),(  #340
      "Tohru",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569160767672330/456435.png?"
-    ),(
+    ),(  #341
      "Kobayashi",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569214920462416/456442.png?"
-    ),(
+    ),(  #342
      "Lucoa",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569302396600444/322912.png?"
-    ),(
+    ),(  #343
      "Elma",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569393652338689/456447.png?"
-    ),(
+    ),(  #344
      "Ilulu",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569520617979945/529025.png?"
-    ),(
+    ),(  #345
      "Riko Saikawa",
      "Miss Kobayashi's Dragon Maid",
      "https://media.discordapp.net/attachments/1423388983915708558/1423569557091782716/323304.png?"
-    ),(
-     "Shouko Komi",
+    ),(  #346
+     "Shouko Komi",                                                                         # Komi Can't Communicate
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/10/452353.jpg"
-    ),(
+    ),(  #347
      "Kaede Otori",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/2/455023.jpg"
-    ),(
+    ),(  #348
      "Nene Onemine",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/15/486159.jpg"
-    ),(
+    ),(  #349
      "Omoharu Nakanaka",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/12/451436.jpg"
-    ),(
+    ),(  #350
      "Shuuko Komi",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/2/522134.jpg"
-    ),(
+    ),(  #351
      "Himiko Agari",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/10/451435.jpg"
-    ),(
+    ),(  #352
      "Ren Yamai",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/6/451763.jpg"
-    ),(
+    ),(  #353
      "Hitomi Tadano",
      "Komi Can't Communicate",
      "https://cdn.myanimelist.net/images/characters/12/453351.jpg"
-    ),(
-     "Megumin",
+    ),(  #354
+     "Megumin",                                                                               # Konosuba
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/2/309075.jpg"
-    ),(
+    ),(  #355
      "Aqua",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/13/327741.jpg"
-    ),(
+    ),(  #356
      "Darkness",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/7/301407.jpg"
-    ),(
+    ),(  #357
      "Wiz",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/14/312300.jpg"
-    ),(
+    ),(  #358
      "Yunyun",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/13/583284.jpg"
-    ),(
+    ),(  #359
      "Eris",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/3/397294.jpg"
-    ),(
+    ),(  #360
      "Chris",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/3/303916.jpg"
-    ),(
+    ),(  #361
      "Iris Stylish-Sword Belzerg",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/6/546088.jpg"
-    ),(
+    ),(  #362
      "Luna",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/6/304985.jpg"
-    ),(
+    ),(  #363
      "Sylvia",
      "Konosuba",
      "https://cdn.myanimelist.net/images/characters/3/577577.jpg"
-    ),(
-     "Hana Haruyama",
+    ),(  #364
+     "Hana Haruyama",                                                                       # Flower and Asura
      "Flower and Asura",
      "https://cdn.myanimelist.net/images/characters/6/586012.jpg"
-    ),(
+    ),(  #365
      "Mizuki Usurai",
      "Flower and Asura",
      "https://cdn.myanimelist.net/images/characters/4/586013.jpg"
-    ),(
+    ),(  #366
      "An Natsue",
      "Flower and Asura",
      "https://cdn.myanimelist.net/images/characters/13/586015.jpg"
-    ),(
+    ),(  #367
      "Ryouko Totonoi",
      "Flower and Asura",
      "https://cdn.myanimelist.net/images/characters/16/586010.jpg"
-    ),(
-     "Nagisa Kubo",
+    ),(  #368
+     "Nagisa Kubo",                                                                         # Kubo Won't Let Me Be Invisible
      "Kubo Won't Let Me Be Invisible",
      "https://cdn.myanimelist.net/images/characters/13/473602.jpg"
-    ),(
+    ),(  #369
      "Akina Kubo",
      "Kubo Won't Let Me Be Invisible",
      "https://cdn.myanimelist.net/images/characters/4/493275.jpg"
-    ),(
+    ),(  #370
      "Saki Kubo",
      "Kubo Won't Let Me Be Invisible",
      "https://cdn.myanimelist.net/images/characters/13/493276.jpg"
-    ),(
+    ),(  #371
      "Hazuki Kudou",
      "Kubo Won't Let Me Be Invisible",
      "https://cdn.myanimelist.net/images/characters/10/493277.jpg"
-    ),(
+    ),(  #372
      "Yoshie Shiraishi",
      "Kubo Won't Let Me Be Invisible",
      "https://cdn.myanimelist.net/images/characters/8/495979.jpg"
-    ),(
+    ),(  #373
      "Tamao Taira",
      "Kubo Won't Let Me Be Invisible",
      "https://cdn.myanimelist.net/images/characters/5/493278.jpg"
-    ),(
-     "Maomao",
+    ),(  #374
+     "Maomao",                                                                              # The Apothecary Diaries
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/11/516703.jpg"
-    ),(
+    ),(  #375
      "Loulan",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/8/592718.jpg"
-    ),(
+    ),(  #376
      "Gyokuyou",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/7/525779.jpg"
-    ),(
+    ),(  #377
      "Shisui",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/12/574074.jpg"
-    ),(
+    ),(  #378
      "Xiaolan",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/16/574075.jpg"
-    ),(
+    ),(  #379
      "Lihua",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/9/574071.jpg"
-    ),(
+    ),(  #380
      "Ah-Duo",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/16/530561.jpg"
-    ),(
+    ),(  #381
      "Meimei",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/9/533407.jpg"
-    ),(
+    ),(  #382
      "Pairin",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/13/525778.jpg"
-    ),(
+    ),(  #383
      "Lishu",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/10/574072.jpg"
-    ),(
+    ),(  #384
      "Suirei",
      "The Apothecary Diaries",
      "https://cdn.myanimelist.net/images/characters/2/591772.jpg"
-    ),(
-     "Rin Natsume",
+    ),(  #385
+     "Rin Natsume",                                                                         # Little Busters!
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/3/182839.jpg"
-    ),(
+    ),(  #386
      "Kudryavka Noumi",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/3/178971.jpg"
-    ),(
+    ),(  #387
      "Yuiko Kurugaya",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/11/229813.jpg"
-    ),(
+    ),(  #388
      "Komari Kamikita",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/13/186201.jpg"
-    ),(
+    ),(  #389
      "Haruka Saigusa",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/10/186205.jpg"
-    ),(
+    ),(  #390
      "Mio Nishizono",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/10/186203.jpg"
-    ),(
+    ),(  #391
      "Kanata Futaki",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/8/212731.jpg"
-    ),(
+    ),(  #392
      "Sasami Sasasegawa",
      "Little Busters!",
      "https://cdn.myanimelist.net/images/characters/6/243597.jpg"
-    ),(
-     "Chisato Nishikigi",
+    ),(  #393
+     "Chisato Nishikigi",                                                               # Lycoris Recoil
      "Lycoris Recoil",
      "https://cdn.myanimelist.net/images/characters/15/497009.jpg"
-    ),(
+    ),(  #394
      "Takina Inoue",
      "Lycoris Recoil",
      "https://cdn.myanimelist.net/images/characters/11/484569.jpg"
-    ),(
+    ),(  #395
      "Kurumi",
      "Lycoris Recoil",
      "https://cdn.myanimelist.net/images/characters/12/491295.jpg"
-    ),(
+    ),(  #396
      "Mizuki Nakahara",
      "Lycoris Recoil",
      "https://cdn.myanimelist.net/images/characters/9/491734.jpg"
-    ),(
-     "Yuuko Yoshida",
+    ),(  #397
+     "Yuuko Yoshida",                                                                   # Machikado Mazoku
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/8/388684.jpg"
-    ),(
+    ),(  #398
      "Momo Chiyoda",
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/12/388685.jpg"
-    ),(
+    ),(  #399
      "Lico",
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/6/403342.jpg"
-    ),(
+    ),(  #400
      "Mikan Hinatsuki",
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/5/477006.jpg"
-    ),(
+    ),(  #401
      "Lilith",
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/14/477314.jpg"
-    ),(
+    ),(  #402
      "Ryouko Yoshida",
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/5/477010.jpg"
-    ),(
+    ),(  #403
      "Seiko Yoshida",
      "The Demon Girl Next Door",
      "https://cdn.myanimelist.net/images/characters/8/477012.jpg"
-    ),(
-     "Riko",
+    ),(  #404
+     "Riko",                                                                            # Made in Abyss
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/15/334267.jpg"
-    ),(
+    ),(  #405
      "Nanachi",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/3/471433.jpg"
-    ),(
+    ),(  #406
      "Ozen",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/14/358235.jpg"
-    ),(
+    ),(  #407
      "Mitty",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/6/340731.jpg"
-    ),(
+    ),(  #408
      "Lyza",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/16/338232.jpg"
-    ),(
+    ),(  #409
      "Prushka",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/13/471437.jpg"
-    ),(
+    ),(  #410
      "Faputa",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/5/471438.jpg"
-    ),(
+    ),(  #411
      "Vueko",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/16/471439.jpg"
-    ),(
+    ),(  #412
      "Irumyuui",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/5/485489.jpg"
-    ),(
+    ),(  #413
      "Maaa",
      "Made in Abyss",
      "https://cdn.myanimelist.net/images/characters/15/452976.jpg"
-    ),(
+    ),(  #414
+     "Anna Yanami",                                                                     # Makeine: Too Many Losing Heroines
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/7/568413.jpg",
+    ),(  #415
+     "Chika Komari",
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/5/542557.jpg",
+    ),(  #416
+     "Lemon Yakishio",
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/13/542559.jpg",
+    ),(  #417
+     "Kaju Nukumizu",
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/4/552228.jpg",
+    ),(  #418
+     "Tiara Basori",
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/12/562122.jpg",
+    ),(  #419
+     "Yumeko Shikiya",
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/16/563587.jpg",
+    ),(  #420
+     "Karen Himemiya",
+     "Makeine: Too Many Losing Heroines!",
+     "https://cdn.myanimelist.net/images/characters/16/556131.jpg",
+    ),(  #421
+     "Aki Adagaki",                                                                         # Masamune-kun's Revenge
+     "Masamune-kun's Revenge",
+     "https://cdn.myanimelist.net/images/characters/14/324644.jpg",
+    ),(  #422
+     "Yoshino Koiwai",
+     "Masamune-kun's Revenge",
+     "https://cdn.myanimelist.net/images/characters/16/315038.jpg",
+    ),(  #423
+     "Neko Fujinomiya",
+     "Masamune-kun's Revenge",
+     "https://cdn.myanimelist.net/images/characters/13/323683.jpg",
+    ),(  #424
+     "Kinue Hayase",
+     "Masamune-kun's Revenge",
+     "https://cdn.myanimelist.net/images/characters/2/370904.jpg",
+    ),(  #425
+     "Tae Futaba",
+     "Masamune-kun's Revenge",
+     "https://cdn.myanimelist.net/images/characters/14/315040.jpg",
+    ),(  #426
+     "Muriel Besson",
+     "Masamune-kun's Revenge",
+     "https://cdn.myanimelist.net/images/characters/5/494739.jpg",
+    ),(  #427
+     "Miko Yotsuya",                                                                        # Mieruko-chan
+     "Mieruko-chan",
+     "https://cdn.myanimelist.net/images/characters/4/456320.jpg",
+    ),(  #428
+     "Hana Yurikawa",
+     "Mieruko-chan",
+     "https://cdn.myanimelist.net/images/characters/14/448308.jpg",
+    ),(  #429
+     "Yuria Niguredou",
+     "Mieruko-chan",
+     "https://cdn.myanimelist.net/images/characters/13/448306.jpg",
+    ),(  #430
+     "Tome Kurata",                                                                         # Mob Psycho 100
+     "Mob Psycho 100",
+     "https://cdn.myanimelist.net/images/characters/8/306667.jpg",
+    ),(  #431
+     "Ichi Mezato",
+     "Mob Psycho 100",
+     "https://cdn.myanimelist.net/images/characters/2/306668.jpg",
+    ),(  #432
+     "Tsubomi Takane",
+     "Mob Psycho 100",
+     "https://cdn.myanimelist.net/images/characters/4/306666.jpg",
+    ),(  #433
+     "Sakurako Shikishima",                                                                 # mono
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/7/590481.jpg",
+    ),(  #434
+     "Haruno Akiyama",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/2/591871.jpg",
+    ),(  #435
+     "An Kiriyama",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/2/565036.jpg",
+    ),(  #436
+     "Satsuki Amamiya",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/7/589021.jpg",
+    ),(  #437
+     "Kako Komada",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/15/595759.jpg",
+    ),(  #438
+     "Torayo Kurokuma",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/2/592771.jpg",
+    ),(  #439
+     "Makinohara",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/3/589019.jpg",
+    ),(  #440
+     "Fuuka Inomata",
+     "mono",
+     "https://cdn.myanimelist.net/images/characters/5/597715.jpg",
+    ),(  #441
+     "Shinobu Oshino",                                                                      # Monogatari
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/16/234167.jpg",
+    ),(  #442
+     "Nadeko Sengoku",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/15/405321.jpg",
+    ),(  #443
+     "Yotsugi Ononoki",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/4/301226.jpg",
+    ),(  #444
+     "Deathtopia Virtuoso Suicide-Master",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/13/560109.jpg",
+    ),(  #445
+     "Hitagi Senjougahara",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/8/299586.jpg",
+    ),(  #446
+     "Mayoi Hachikuji",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/5/222381.jpg",
+    ),(  #447
+     "Suruga Kanbaru",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/11/222449.jpg",
+    ),(  #448
+     "Ougi Oshino",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/3/301358.jpg",
+    ),(  #449
+     "Karen Araragi",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/15/295366.jpg",
+    ),(  #450
+     "Tsukihi Araragi",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/9/149433.jpg",
+    ),(  #451
+     "Sodachi Oikura",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/7/300557.jpg",
+    ),(  #452
+     "Izuko Gaen",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/6/214903.jpg",
+    ),(  #453
+     "Yozuru Kagenui",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/15/195363.jpg",
+    ),(  #454
+     "Tsubasa Hanekawa",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/3/288080.jpg",
+    ),(  #455
+     "Black Hanekawa",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/6/413492.jpg",
+    ),(  #456
+     "Rouka Numachi",
+     "Monogatari",
+     "https://cdn.myanimelist.net/images/characters/14/434431.jpg",
+    ),(  #457
+     "Eris Boreas Greyrat",                                                                   # Mushoku Tensei
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/9/591592.jpg",
+    ),(  #458
+     "Roxy Migurdia",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/16/552605.jpg",
+    ),(  #459
+     "Sylphiette",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/10/423669.jpg",
+    ),(  #460
+     "Ghislaine Dedoldia",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/14/591401.jpg",
+    ),(  #461
+     "Zenith Greyrat",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/13/591596.jpg",
+    ),(  #462
+     "Aisha Greyrat",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/16/274691.jpg",
+    ),(  #463
+     "Norn Greyrat",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/16/593840.jpg",
+    ),(  #464
+     "Shizuka Nanahoshi",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/6/545654.jpg",
+    ),(  #465
+     "Elinalise Dragonroad",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/3/460705.jpg",
+    ),(  #466
+     "Kishirika Kishirisu",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/13/302260.jpg",
+    ),(  #467
+     "Lilia Greyrat",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/14/593841.jpg",
+    ),(  #468
+     "Ariel Anemoi Asura",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/15/516104.jpg",
+    ),(  #469
+     "Rokari Migurdia",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/7/457319.jpg",
+    ),(  #470
+     "Linia Dedoldia",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/11/518421.jpg",
+    ),(  #471
+     "Pursena Adoldia",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/15/518422.jpg",
+    ),(  #472
+     "Juliette",
+     "Mushoku Tensei",
+     "https://cdn.myanimelist.net/images/characters/2/591589.jpg",
+    ),(  #473
+     "Hifumi Takimoto",                                                                      # New Game!
+     "New Game!",
+     "https://media.discordapp.net/attachments/1422999881269645424/1423013456369422376/Hifumi_Takimoto.jpg?"
+    ),(  #474
+     "Aoba Suzukaze",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/3/311604.jpg",
+    ),(  #475
+     "Kou Yagami",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/3/311600.jpg",
+    ),(  #476
+     "Umiko Ahagon",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/9/315670.jpg",
+    ),(  #477
+     "Nene Sakura",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/11/315674.jpg",
+    ),(  #478
+     "Yun Iijima",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/12/315672.jpg",
+    ),(  #479
+     "Hajime Shinoda",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/7/313535.jpg",
+    ),(  #480
+     "Rin Tooyoma",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/4/313534.jpg",
+    ),(  #481
+     "Momiji Mochizuki",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/10/339165.jpg",
+    ),(  #482
+     "Shizuku Hazuki",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/12/315671.jpg",
+    ),(  #483
+     "Tsubame Narumi",
+     "New Game!",
+     "https://cdn.myanimelist.net/images/characters/3/330245.jpg",
+    ),(  #484
+     "Yuuko Aioi",                                                                              # Nichijou
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/15/114020.jpg",
+    ),(  #485
+     "Hakase Shinonome",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/5/113407.jpg",
+    ),(  #486
+     "Nano Shinonome",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/11/112682.jpg",
+    ),(  #487
+     "Mio Naganohara",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/3/116963.jpg",
+    ),(  #488
+     "Mai Minakami",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/3/114022.jpg",
+    ),(  #489
+     "Izumi Sakurai",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/10/159693.jpg",
+    ),(  #490
+     "Misato Tachibana",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/11/159669.jpg",
+    ),(  #491
+     "Haruna Annaka",
+     "Nichijou",
+     "https://cdn.myanimelist.net/images/characters/16/114003.jpg",
+    ),(  #492
+     "Chitoge Kirisaki",                                                                        # Nisekoi
+     "Nisekoi",
+     "https://cdn.myanimelist.net/images/characters/7/241651.jpg",
+    ),(  #493
+     "Kosaki Onodera",
+     "Nisekoi",
+     "https://cdn.myanimelist.net/images/characters/9/241653.jpg",
+    ),(  #494
+     "Seishirou Tsugumi",
+     "Nisekoi",
+     "https://cdn.myanimelist.net/images/characters/8/241659.jpg",
+    ),(  #495
+     "Marika Tachibana",
+     "Nisekoi",
+     "https://cdn.myanimelist.net/images/characters/15/242521.jpg",
+    ),(  #496
+     "Haru Onodera",
+     "Nisekoi",
+     "https://cdn.myanimelist.net/images/characters/11/279030.jpg",
+    ),(  #497
+     "Ruri Miyamoto",
+     "Nisekoi",
+     "https://cdn.myanimelist.net/images/characters/9/235033.jpg",
+    ),(  #498
+     "Shiro",                                                                                 # No Game No Life
+     "No Game No Life",
+     "https://cdn.myanimelist.net/images/characters/16/246723.jpg",
+    ),(  #499
+     "Schwi Dola",
+     "No Game No Life",
+     "https://cdn.myanimelist.net/images/characters/8/336580.jpg",
+    ),(  #500
+     "Stephanie Dola",
+     "No Game No Life",
+     "https://cdn.myanimelist.net/images/characters/12/274341.jpg",
+    ),(  #501
+     "Jibril",
+     "No Game No Life",
+     "https://cdn.myanimelist.net/images/characters/12/248121.jpg",
+    ),(  #502
+     "Izuna Hatsuse",
+     "No Game No Life",
+     "https://cdn.myanimelist.net/images/characters/11/252987.jpg",
+    ),(  #503
+     "Couronne Dola",
+     "No Game No Life",
+     "https://cdn.myanimelist.net/images/characters/7/434616.jpg",
+    ),(  #504
+     "Renge Miyauchi",                                                                      # Non Non Biyori
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/15/288781.jpg",
+    ),(  #505
+     "Komari Koshigaya",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/3/225067.jpg",
+    ),(  #506
+     "Hotaru Ichijou",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/15/222839.jpg",
+    ),(  #507
+     "Natsumi Koshigaya",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/14/222841.jpg",
+    ),(  #508
+     "Kaede Kagayama",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/7/225829.jpg",
+    ),(  #509
+     "Hikage Miyauchi",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/2/254703.jpg",
+    ),(  #510
+     "Kazuho Miyauchi",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/9/254903.jpg",
+    ),(  #511
+     "Konomi Fujimiya",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/15/230215.jpg",
+    ),(  #512
+     "Aoi Niizato",
+     "Non Non Biyori",
+     "https://cdn.myanimelist.net/images/characters/13/428549.jpg",
+    ),(  #513
+     "Mahiro Oyama",                                                                    # Onimai
+     "Onimai",
+     "https://cdn.myanimelist.net/images/characters/4/495692.jpg",
+    ),(  #514
+     "Mihari Oyama",
+     "Onimai",
+     "https://cdn.myanimelist.net/images/characters/5/495693.jpg",
+    ),(  #515
+     "Kaede Hozuki",
+     "Onimai",
+     "https://cdn.myanimelist.net/images/characters/14/495695.jpg",
+    ),(  #516
+     "Asahi Ouka",
+     "Onimai",
+     "https://cdn.myanimelist.net/images/characters/4/495697.jpg",
+    ),(  #517
+     "Momiji Hozuki",
+     "Onimai",
+     "https://cdn.myanimelist.net/images/characters/10/495696.jpg",
+    ),(  #518
+     "Miyo Murosaki",
+     "Onimai",
+     "https://cdn.myanimelist.net/images/characters/5/495694.jpg",
+    ),(  #519
+     "Holo",                                                                            # Spice and Wolf
+     "Spice and Wolf",
+     "https://cdn.myanimelist.net/images/characters/12/540685.jpg",
+    ),(  #520
+     "Nora Arendt",
+     "Spice and Wolf",
+     "https://cdn.myanimelist.net/images/characters/3/549872.jpg",
+    ),(  #521
+     "Elsa Schtingheim",
+     "Spice and Wolf",
+     "https://cdn.myanimelist.net/images/characters/3/562994.jpg",
+    ),(  #522
+     "Dian Rubens",
+     "Spice and Wolf",
+     "https://cdn.myanimelist.net/images/characters/10/555751.jpg",
+    ),(  #523
+     "Ruri Gokou",                                                                      # Oreimo
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/16/343455.jpg",
+    ),(  #524
+     "Kirino Kousaka",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/8/101419.jpg",
+    ),(  #525
+     "Ayase Aragaki",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/7/105913.jpg",
+    ),(  #526
+     "Manami Tamura",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/15/103692.jpg",
+    ),(  #527
+     "Saori Makishima",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/12/102464.jpg",
+    ),(  #528
+     "Kanako Kurusu",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/2/103830.jpg",
+    ),(  #529
+     "Sena Akagi",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/4/208025.jpg",
+    ),(  #530
+     "Bridget Evans",
+     "Oreimo",
+     "https://cdn.myanimelist.net/images/characters/6/106194.jpg",
+    ),(  #531
+     "Ai Fuyuumi",                                                                          # Oreshura
+     "Oreshura",
+     "https://cdn.myanimelist.net/images/characters/10/191830.jpg"
+    ),(  #532
+     "Masuzu Natsukawa",
+     "Oreshura",
+     "https://cdn.myanimelist.net/images/characters/12/191838.jpg",
+    ),(  #533
+     "Chiwa Harusaki",
+     "Oreshura",
+     "https://cdn.myanimelist.net/images/characters/5/211941.jpg",
+    ),(  #534
+     "Himeka Akishino",
+     "Oreshura",
+     "https://cdn.myanimelist.net/images/characters/6/191832.jpg",
+    ),(  #535
+     "Mahiru Shiina",                                                            # The Angel Next Door Spoils Me Rotten
+     "The Angel Next Door Spoils Me Rotten",
+     "https://cdn.myanimelist.net/images/characters/9/468196.jpg",
+    ),(  #536
+     "Chitose Shirakawa",
+     "The Angel Next Door Spoils Me Rotten",
+     "https://cdn.myanimelist.net/images/characters/14/468198.jpg",
+    ),(  #537
+     "Shinoa Hiiragi",                                                                  # Seraph of the End
+     "Seraph of the End",
+     "https://cdn.myanimelist.net/images/characters/6/285968.jpg",
+    ),(  #538
+     "Mitsuba Sanguu",
+     "Seraph of the End",
+     "https://cdn.myanimelist.net/images/characters/6/282911.jpg",
+    ),(  #539
+     "Krul Tepes",
+     "Seraph of the End",
+     "https://cdn.myanimelist.net/images/characters/6/460629.jpg",
+    ),(  #540
+     "Mahiru Hiiragi",
+     "Seraph of the End",
+     "https://cdn.myanimelist.net/images/characters/2/555408.jpg",
+    ),(  #541
+     "Chess Belle",
+     "Seraph of the End",
+     "https://cdn.myanimelist.net/images/characters/14/555410.jpg",
+    ),(  #542
+     "Isla",                                                                            # Plastic Memories
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/3/517401.jpg",
+    ),(  #543
+     "Michiru Kinushima",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/5/280701.jpg",
+    ),(  #544
+     "Eru Miru",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/8/280702.jpg",
+    ),(  #545
+     "Kazuki Kuwanomi",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/12/280704.jpg",
+    ),(  #546
      "Akane Kurokawa",
      "Oshi no Ko",
      "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"
-    ),(
-     "Ai Fuyuumi",
-     "Oreshura",
-     "https://media.discordapp.net/attachments/1422438714730217482/1423060101169938605/Ai_Fuyuumi.jpg?"
-    ),(
+    ),(  #547
      "Fern",
      "Frieren: Beyond Journey's End",
      "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"
-    ),(
-     "Hifumi Takimoto",
-     "New Game!",
-     "https://media.discordapp.net/attachments/1422999881269645424/1423013456369422376/Hifumi_Takimoto.jpg?"),
+    ),
 ]
 
 

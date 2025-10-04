@@ -305,17 +305,18 @@ async def girlranking(ctx):
         await asyncio.sleep(2)
 
 
-
+        # If only one girl left, the bot ranks her herself.
         if rankCount == numGirls - 1:
             loop = False
 
             await ctx.send("Oh..? It seems you only have one slot left..!")
             await asyncio.sleep(1)
 
+            # Find where the blank slot is
             blank = "-"
             for index, value in enumerate(ranks):
                 if blank == value:
-                    finalSlotIndex = index
+                    finalSlotIndex = index # Set the finalSlotIndex to the blank slot index
 
             await ctx.send(f"Let me rank her for you then..! I hope you like her at #{finalSlotIndex + 1}!")
             await asyncio.sleep(2)
@@ -324,7 +325,7 @@ async def girlranking(ctx):
             await ctx.send("Here's your FINAL Best Girl Ranking! Hope you didn't mess up too bad..! Heehee..!")
             await asyncio.sleep(3)
 
-            ranks[finalSlotIndex] = name
+            ranks[finalSlotIndex] = name # set the final slot to the name of the last girl
 
         else:
             # Ask player where they'd rank the girl
@@ -375,14 +376,7 @@ async def girlranking(ctx):
                             loop = False # End the loop
                             await ctx.send(f"You decided to rank her #{rank}!")
                             await asyncio.sleep(2)
-
-                            if rankCount == numGirls - 1: # If the rank count and number of girls is the same, send the final message
-                                await ctx.send("Here's your FINAL Best Girl Ranking! Hope you didn't mess up too bad..! Heehee..!")
-                                await asyncio.sleep(3)
-
-                            else: # Else send the updated ranking
-                                await asyncio.sleep(1)
-                                await ctx.send("Here's your updated Best Girl Ranking! :3")
+                            await ctx.send("Here's your updated Best Girl Ranking! :3")
 
                         else: # Rank is already full
                             await ctx.send(f"That rank is already full you dummy..!")
