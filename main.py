@@ -190,9 +190,9 @@ async def randomgirl(ctx):
 
     chosenGirls = randomGirlGen(1)
 
-    name, url = chosenGirls[0] # Make a tuple of the name of image and its filepath
+    name, show, url = chosenGirls[0] # Make a tuple of the name of image and its filepath
 
-    embed = discord.Embed(title=name, color=discord.Color.blue())  # Set embed left side color
+    embed = discord.Embed(title=name, description=show, color=discord.Color.blue())  # Set embed left side color
     embed.set_image(url=url)  # Set the image?
 
     await ctx.send(embed=embed)  # Send the embed of name and girl image
