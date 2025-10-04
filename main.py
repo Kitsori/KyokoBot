@@ -1,9 +1,11 @@
 import os
 from urllib import response
 
-from dotenv import load_dotenv
 import discord
 from discord.ext import commands
+
+import logging
+from dotenv import load_dotenv
 
 import random
 import asyncio
@@ -13,16 +15,60 @@ from girlimages import randomGirlGen
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+
+
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 
 
 bot = commands.Bot(command_prefix='~', intents=intents)
+
+
+# Variables
+
+selfrole = "Member"
+
+
+
+
+
+# BOT EVENTS
 
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     await bot.change_presence(activity=discord.Game(name="with Kitsori"))
+
+
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return # Don't reply to own message
+
+    # RESPOND TO NAME
+    if "kyoko" in message.content.lower():
+        await message.channel.send(f"Hai hai {message.author.mention}..! :3") # Send a message to current channel and mention author of message
+        # await message.delete() - Can be used for filtering words
+
+    await bot.process_commands(message) # Allows us to continue handling all other messages in the server by anyone
+
+@bot.event
+async def on_member_join(member):
+    # await member.send(f"Hai hai {member.name}..! :3")   # Sends a dm to the member
+
+    role = discord.utils.get(member.guild.roles, name=selfrole)
+
+    if role:
+        await member.add_roles(role)
+    else:
+        pass
+
+
+
+
 
 
 
@@ -51,8 +97,8 @@ async def helpme(ctx):
 # PING PONG PING PONG
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send("Pong! :3")
+async def ping(ctx): # Get context of message
+    await ctx.send("Pong! :3") # Send back in the current channel wherever it was mentioned
 
 
 
@@ -80,6 +126,56 @@ async def multiply(ctx, num1: int, num2: int):
 async def divide(ctx, num1: int, num2: int):
     result = num1 / num2
     await ctx.send(f"Hai!! The quotient of {num1} and {num2} is.... {result}! You're welcome!! :3")
+
+
+#@bot.command()
+#async def assign(ctx):
+#    role = discord.utils.get(ctx.guild.roles, name=selfrole)
+
+#    if role:
+#        await ctx.author.add_roles(role)
+#        await ctx.send(f"{ctx.author.mention} is now assigned to {selfrole}")
+#    else:
+#        await ctx.send("Role not found.")
+
+
+#@bot.command()
+#async def remove(ctx):
+#    role = discord.utils.get(ctx.guild.roles, name=selfrole)
+#
+#    if role:
+#        await ctx.author.remove_roles(role)
+#        await ctx.send(f"{ctx.author.mention} is no longer assigned to {selfrole}")
+#    else:
+#        await ctx.send("Role not found.")
+
+#@bot.command()
+#@commands.has_role(selfrole) # Has to have the role to be able to use command
+#async def secret(ctx):
+#    await ctx.send("dlwafa")
+
+#@secret.error
+#sync def secret_error(ctx, error): # Define context and the type of error
+#    if isinstance(error, commands.MissingRole):  # If error is a missing role error
+#        await ctx.send("You have no permission to do that.")
+
+
+#@bot.command()
+#async def dm(ctx, *, msg): # If you want to get what is sent after the command you do this
+#    await ctx.author.send(f"You said {msg}")
+
+#@bot.command()
+#async def reply(ctx):
+#    await ctx.reply("Reply reply reply")
+
+#@bot.command()
+#async def poll(ctx, *, poll):
+#    embed = discord.Embed(title="New Poll", description=poll)
+#    poll_message = await ctx.send(embed=embed)
+#    await poll_message.add_reaction("👍")
+#    await poll_message.add_reaction("👎")
+
+
 
 
 
@@ -185,9 +281,9 @@ async def girlranking(ctx):
         # Set while loop for waiting for a reply to true
         loop = True
 
-        name, url = chosenGirls[rankCount]
+        name, show, url = chosenGirls[rankCount]
 
-        embed = discord.Embed(title=name, color=discord.Color.blue()) # Set embed left side color
+        embed = discord.Embed(title=name, description=show, color=discord.Color.blue()) # Set embed left side color
         embed.set_image(url=url) # Set the image?
 
         await ctx.send(embed=embed) # Send the embed of name and girl image
@@ -288,18 +384,7 @@ async def girlranking(ctx):
 
 
 
-# BOT EVENTS
-
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    # RESPOND TO NAME
-    if "kyoko" in message.content.lower():
-        await message.channel.send(f"Hai hai {message.author.mention}..! :3")
-
-    await bot.process_commands(message)
+bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
 
 
@@ -309,4 +394,7 @@ async def on_message(message):
 
 
 
-bot.run(TOKEN)
+
+
+
+
