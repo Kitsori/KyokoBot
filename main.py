@@ -449,8 +449,30 @@ async def gr(ctx):
 
 
 @bot.command()
-async def grl(ctx, name):
-    await ctx.send(name)
+async def grl(ctx, input):
+
+    girlList = randomGirlGen(547)
+
+
+    notFound = True
+    for i in girlList:
+        name, show, url = girlList[i]
+        if name == input:
+            embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
+            embed.set_image(url=url)
+
+            found = False
+            await ctx.send("I found this girl based off your search!!!")
+            await asyncio.sleep(1)
+            ctx.send(embed=embed)
+        else:
+            pass
+
+    if notFound == True:
+        await ctx.send("I found no girls matching your search.. :(")
+
+
+    await ctx.send(input)
 
 
 
