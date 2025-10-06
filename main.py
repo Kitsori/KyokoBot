@@ -125,6 +125,7 @@ async def grhelp(ctx):
     )
 
     grHelpEmbed.add_field(name="~gr", value="Starts a girl blind ranking game..! Good luck!", inline=False)
+    grHelpEmbed.add_field(name="~grl", value="Lookup a girl's name in my database..! :3", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -449,30 +450,41 @@ async def gr(ctx):
 
 
 @bot.command()
-async def grl(ctx, input):
+async def grl(ctx, *, input):
 
-    girlList = randomGirlGen(547)
-
+    girlList = testGirlGen(5)
+    await ctx.send("Made girl list")
 
     notFound = True
+    number = 0
+
     for i in girlList:
-        name, show, url = girlList[i]
-        if name == input:
+        await ctx.send("Debug: Entered loop")
+        name, show, url = girlList[number]
+
+        nameLower = name.lower()
+        inputLower = input.lower()
+        await ctx.send(f"Debug: {number}")
+        await ctx.send(f"Debug Name: {nameLower}")
+        await ctx.send(f"Debug Input: {inputLower}")
+        if nameLower == inputLower:
+            await ctx.send("Debug: Entered if equal loop")
             embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
             embed.set_image(url=url)
 
-            found = False
+
+            notFound = False
             await ctx.send("I found this girl based off your search!!!")
-            await asyncio.sleep(1)
-            ctx.send(embed=embed)
+            await ctx.send(embed=embed)
+            break
         else:
+            number += 1
+            ctx.send("Debug: Passing/Add Num")
             pass
 
+    await ctx.send(f"Debug notFound: {notFound}")
     if notFound == True:
         await ctx.send("I found no girls matching your search.. :(")
-
-
-    await ctx.send(input)
 
 
 

@@ -2196,8 +2196,38 @@ girls = [
 
 
 
+testGirls = [
+    (  #543
+     "Michiru Kinushima",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/5/280701.jpg",
+    ),(  #544
+     "Eru Miru",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/8/280702.jpg",
+    ),(  #545
+     "Kazuki Kuwanomi",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/12/280704.jpg",
+    ),(  #546
+     "Akane Kurokawa",
+     "Oshi no Ko",
+     "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"
+    ),(  #547
+     "Fern",
+     "Frieren: Beyond Journey's End",
+     "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"
+    ),
+
+]
+
+
 
 
 def randomGirlGen(n = 1):
+    #images = get_girl_image_list()
+    return random.sample(girls, n)
+
+def testGirlGen(n = 1):
     #images = get_girl_image_list()
     return random.sample(girls, n)
