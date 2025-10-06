@@ -480,6 +480,7 @@ async def gl(ctx, *, input):
                 show = girlInfo["show"]
 
                 await ctx.send(f"{name} - {show}")
+                found = True
 
 
     if found == False:
