@@ -71,7 +71,7 @@ async def on_member_join(member):
 
 
 
-
+# HELP COMMANDS
 
 @bot.command()
 async def helpme(ctx):
@@ -87,6 +87,45 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr", inline=False)
     await ctx.send(embed=helpEmbed)
+
+
+@bot.command()
+async def mathhelp(ctx):
+    mathHelpEmbed = discord.Embed(
+        title="Kyoko's Math Commands",
+        description="Numbers are so fun..! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    mathHelpEmbed.add_field(name="~add (x) (y)", value="Adds two different numbers together.. like magic!", inline=False)
+    mathHelpEmbed.add_field(name="~sub (x) (y)", value="Subtracts one number, y from x..!", inline=False)
+    mathHelpEmbed.add_field(name="~mult (x) (y)", value="Multiples two numbers together.. it's growing so fast..!", inline=False)
+    mathHelpEmbed.add_field(name="~div (x) (y)", value="Divides x into y equal parts... where is my share..? :(", inline=False)
+    await ctx.send(embed=mathHelpEmbed)
+
+
+@bot.command()
+async def rghelp(ctx):
+    rgHelpEmbed = discord.Embed(
+        title="Kyoko's Random Girl Commands",
+        description="What's better than random anime girls...! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    rgHelpEmbed.add_field(name="~rg", value="Generates a random girl.. what else could you need..!", inline=False)
+    await ctx.send(embed=rgHelpEmbed)
+
+
+@bot.command()
+async def grhelp(ctx):
+    grHelpEmbed = discord.Embed(
+        title="Kyoko's Girl Blind Ranking Commands",
+        description="What's better than random girls... objectively ranking them of course..! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    grHelpEmbed.add_field(name="~gr", value="Starts a girl blind ranking game..! Good luck!", inline=False)
+    await ctx.send(embed=grHelpEmbed)
 
 
 
