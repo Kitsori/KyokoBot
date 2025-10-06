@@ -2221,7 +2221,7 @@ testGirls = [
 
 ]
 
-girlDictionary = {name.lower(): {"show": show, "url": url} for name, show, url in girls}
+girlDictionary = {name.lower(): {"name": name, "show": show, "url": url} for name, show, url in girls}
 
 
 

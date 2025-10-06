@@ -125,7 +125,7 @@ async def grhelp(ctx):
     )
 
     grHelpEmbed.add_field(name="~gr", value="Starts a girl blind ranking game..! Good luck!", inline=False)
-    grHelpEmbed.add_field(name="~grl", value="Lookup a girl's name in my database..! :3", inline=False)
+    grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my database..! :3", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -450,11 +450,12 @@ async def gr(ctx):
 
 
 @bot.command()
-async def grl(ctx, *, input):
+async def gl(ctx, *, input):
 
-    name = input.lower()
-    if name in girlDictionary:
-        girlInfo = girlDictionary[name]
+    nameInput = input.lower()
+    if nameInput in girlDictionary:
+        girlInfo = girlDictionary[nameInput]
+        name = girlInfo["name"]
         show = girlInfo["show"]
         url = girlInfo["url"]
 
