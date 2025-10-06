@@ -448,6 +448,13 @@ async def gr(ctx):
 
 
 
+@bot.command()
+async def grl(ctx, name):
+    await ctx.send(name)
+
+
+
+
 
 bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
 
