@@ -2230,4 +2230,4 @@ def randomGirlGen(n = 1):
 
 def testGirlGen(n = 1):
     #images = get_girl_image_list()
-    return random.sample(girls, n)
+    return random.sample(testGirls, n)

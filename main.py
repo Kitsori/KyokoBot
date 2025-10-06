@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import random
 import asyncio
 
-from girlimages import randomGirlGen
+from girlimages import randomGirlGen, testGirlGen
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
