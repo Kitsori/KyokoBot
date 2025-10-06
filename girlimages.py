@@ -600,7 +600,7 @@ girls = [
      "Fire Force",
      "https://media.discordapp.net/attachments/1423388983915708558/1423506733866811412/496649.png?"
     ),(  #150
-     "Maki Oze"
+     "Maki Oze",
      "Fire Force",
      "https://media.discordapp.net/attachments/1423388983915708558/1423506806050783334/568634.png?"
     ),(  #151
@@ -2221,13 +2221,12 @@ testGirls = [
 
 ]
 
+girlDictionary = {name.lower(): {"show": show, "url": url} for name, show, url in girls}
 
 
 
 def randomGirlGen(n = 1):
-    #images = get_girl_image_list()
     return random.sample(girls, n)
 
 def testGirlGen(n = 1):
-    #images = get_girl_image_list()
     return random.sample(testGirls, n)

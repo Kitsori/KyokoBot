@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import random
 import asyncio
 
-from girlimages import randomGirlGen, testGirlGen
+from girlimages import randomGirlGen, girlDictionary
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -452,39 +452,55 @@ async def gr(ctx):
 @bot.command()
 async def grl(ctx, *, input):
 
-    girlList = testGirlGen(5)
-    await ctx.send("Made girl list")
+    name = input.lower()
+    if name in girlDictionary:
+        girlInfo = girlDictionary[name]
+        show = girlInfo["show"]
+        url = girlInfo["url"]
 
-    notFound = True
-    number = 0
+        embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
+        embed.set_image(url=url)
 
-    for i in girlList:
-        await ctx.send("Debug: Entered loop")
-        name, show, url = girlList[number]
-
-        nameLower = name.lower()
-        inputLower = input.lower()
-        await ctx.send(f"Debug: {number}")
-        await ctx.send(f"Debug Name: {nameLower}")
-        await ctx.send(f"Debug Input: {inputLower}")
-        if nameLower == inputLower:
-            await ctx.send("Debug: Entered if equal loop")
-            embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
-            embed.set_image(url=url)
+        await ctx.send("I found this girl based off your search!!!")
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send("I couldn't find any girl with that name... :(")
 
 
-            notFound = False
-            await ctx.send("I found this girl based off your search!!!")
-            await ctx.send(embed=embed)
-            break
-        else:
-            number += 1
-            ctx.send("Debug: Passing/Add Num")
-            pass
 
-    await ctx.send(f"Debug notFound: {notFound}")
-    if notFound == True:
-        await ctx.send("I found no girls matching your search.. :(")
+
+    #girlList = testGirlGen(5)
+    #await ctx.send("Made girl list")
+
+    #notFound = True
+    #number = 0
+
+    #for i in girlList:
+        #await ctx.send("Debug: Entered loop")
+        #name, show, url = girlList[number]
+
+        #nameLower = name.lower()
+        #inputLower = input.lower()
+        #await ctx.send(f"Debug: {number}")
+        #await ctx.send(f"Debug Name: {nameLower}")
+        #await ctx.send(f"Debug Input: {inputLower}")
+        #if nameLower == inputLower:
+            #await ctx.send("Debug: Entered if equal loop")
+            #embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
+            #embed.set_image(url=url)
+
+
+            #await ctx.send("I found this girl based off your search!!!")
+            #await ctx.send(embed=embed)
+            #break
+        #else:
+            #number += 1
+            #ctx.send("Debug: Passing/Add Num")
+            #pass
+
+    #await ctx.send(f"Debug notFound: {notFound}")
+    #if notFound == True:
+        #await ctx.send("I found no girls matching your search.. :(")
 
 
 
