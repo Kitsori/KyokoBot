@@ -82,14 +82,10 @@ async def helpme(ctx):
     )
 
     helpEmbed.add_field(name="~helpme", value="Wow.. it's this menu!", inline=False)
-    helpEmbed.add_field(name="~ping", value="Pong...!! :3", inline=False)
-    helpEmbed.add_field(name="~add (x) (y)", value="Adds 2 numbers together... I'm so smart! :D", inline=False)
-    helpEmbed.add_field(name="~subtract (x) (y)", value="Subtracts one number from another.. like magic!", inline=False)
-    helpEmbed.add_field(name="~multiply (x) (y)", value="Multiplies two numbers together.. woahhhh :O", inline=False)
-    helpEmbed.add_field(name="~divide (x) (y)", value="Divides one number from another number.. everyone gets a share..!", inline=False)
-    helpEmbed.add_field(name="~randomgirl", value="Generate a picture of a random anime girl!", inline=False)
-    helpEmbed.add_field(name="~girlranking", value="Start a Anime Girl Blind Ranking!!! (WIP)", inline=False)
-
+    helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
+    helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
+    helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -111,19 +107,19 @@ async def add(ctx, num1: int, num2: int):
 
 
 @bot.command()
-async def subtract(ctx, num1: int, num2: int):
+async def sub(ctx, num1: int, num2: int):
     result = num1 - num2
     await ctx.send(f"Hai!! The difference of {num1} and {num2} is.... {result}! You're welcome!! :3")
 
 
 @bot.command()
-async def multiply(ctx, num1: int, num2: int):
+async def mult(ctx, num1: int, num2: int):
     result = num1 * num2
     await ctx.send(f"Hai!! The product of {num1} and {num2} is.... {result}! You're welcome!! :3")
 
 
 @bot.command()
-async def divide(ctx, num1: int, num2: int):
+async def div(ctx, num1: int, num2: int):
     result = num1 / num2
     await ctx.send(f"Hai!! The quotient of {num1} and {num2} is.... {result}! You're welcome!! :3")
 
@@ -184,7 +180,7 @@ async def divide(ctx, num1: int, num2: int):
 # RANDOM ANIME GIRL IMAGE GENERATOR
 
 @bot.command()
-async def randomgirl(ctx):
+async def rg(ctx):
     await ctx.send("Hiya!! Here's your random girl...! :3")
     await asyncio.sleep(1)
 
@@ -208,7 +204,7 @@ async def randomgirl(ctx):
 # ANIME GIRL BLIND RANKING GAME (WIP)
 
 @bot.command()
-async def girlranking(ctx):
+async def gr(ctx):
 
     def check(message):
         return message.author == ctx.author and message.channel == ctx.channel  # Only accept responses from the command user.
