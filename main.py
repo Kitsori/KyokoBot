@@ -85,7 +85,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
-    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -125,7 +125,7 @@ async def grhelp(ctx):
     )
 
     grHelpEmbed.add_field(name="~gr", value="Starts a girl blind ranking game..! Good luck!", inline=False)
-    grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my database..! :3", inline=False)
+    grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my list..! :3", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -453,7 +453,11 @@ async def gr(ctx):
 async def gl(ctx, *, input):
 
     nameInput = input.lower()
+    list = []
+    found = False
+
     if nameInput in girlDictionary:
+        list.append(girlDictionary[nameInput])
         girlInfo = girlDictionary[nameInput]
         name = girlInfo["name"]
         show = girlInfo["show"]
@@ -464,7 +468,21 @@ async def gl(ctx, *, input):
 
         await ctx.send("I found this girl based off your search!!!")
         await ctx.send(embed=embed)
+        found = True
+
     else:
+        for key in girlDictionary:
+            names = key.split()
+            if nameInput in names:
+                girlInfo = girlDictionary[key]
+
+                name = girlInfo["name"]
+                show = girlInfo["show"]
+
+                await ctx.send(f"{name} - {show}")
+
+
+    if found == False:
         await ctx.send("I couldn't find any girl with that name... :(")
 
 
