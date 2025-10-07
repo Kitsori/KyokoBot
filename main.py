@@ -34,6 +34,7 @@ db = client["KyokoBot"]
 
 collection = db["GirlsStats"]
 grStats = db["GRStats"]
+grInitialRank = db["GRInitialRank"]
 
 
 
@@ -46,10 +47,13 @@ def commandCount(user_id, command):
                              upsert=True
     )
 
+async def initialRank(user_id, rank):
+    await asyncio.to_thread(grInitialRank.insert_one,{"user_id": user_id, "rank": rank})
 
-
-
-
+async def initialRank(user_id, rank):
+    await asyncio.to_thread(grInitialRank.update_one,{"user_id": user_id}, {"$push": {"first_ranks": rank}},
+        upsert=True
+    )
 
 
 
@@ -366,13 +370,11 @@ async def gr(ctx):
     chosenGirls = randomGirlGen(numGirls)  # Make a tuple list of numGirls number of girls from the girlimages list
                                            # Contains their name, show, image, etc each
 
+
+
+
     # Main game loop while you have ranked less than 5 girls
     while rankCount < numGirls:
-
-
-
-
-
 
         # Set while loop for waiting for a reply to true
         loop = True
@@ -452,6 +454,9 @@ async def gr(ctx):
                     rank = int(content) # Set the rank value to that digit
 
                     if 1 <= rank <= numGirls: # If the rank is in the valid range
+
+                        if numGirls == 5 and rankCount == 0:
+                            asyncio.create_task(initialRank(ctx.author.id, rank))
 
                         if ranks[rank - 1] == "-": # If the rank is empty on the embed
                             ranks[rank - 1] = name # Then set the current rank to that rank
@@ -551,6 +556,10 @@ async def grs(ctx):
     command = "gr"
 
     file = grStats.find_one({"user_id": userid, "command": command})
+    rankFile = grInitialRank.find_one({"user_id": userid,})
+
+
+    rankAvg = sum(rankFile["first_ranks"]) / len(rankFile["first_ranks"])
 
     if file:
         count = file["count"]
@@ -559,7 +568,8 @@ async def grs(ctx):
                                  description="Only counts for rounds of 5+ girls! \n\u200b",
                                  color=discord.Color.blue())
 
-        grsembed.add_field(name="Times Played", value=f"{count}")
+        grsembed.add_field(name="Times Played", value=f"{count}", inline=False)
+        grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{rankAvg:.2f}", inline=False)
 
         await ctx.send(embed=grsembed)
 
