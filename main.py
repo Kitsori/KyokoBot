@@ -131,7 +131,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
-    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~grs", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -170,8 +170,9 @@ async def grhelp(ctx):
         color=discord.Color.blue()
     )
 
-    grHelpEmbed.add_field(name="~gr", value="Starts a girl blind ranking game..! Good luck!", inline=False)
+    grHelpEmbed.add_field(name="~gr", value="Starts a Girl Blind Ranking game..! Good luck!", inline=False)
     grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my list..! :3", inline=False)
+    grHelpEmbed.add_field(name="~grs", value="View your Girl Blind Ranking stats!!", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -483,7 +484,7 @@ async def gr(ctx):
 
         if rankCount >= 4:
             commandCount(ctx.author.id, "gr")
-            
+
 
         # If the rank count and number of girls are the same change the title to FINAL
         if rankCount == numGirls - 1:
@@ -541,6 +542,27 @@ async def gl(ctx, *, input):
 
     if found == False:
         await ctx.send("I couldn't find any girl with that name... :(")
+
+
+
+@bot.command()
+async def grs(ctx):
+    userid = ctx.author.id
+    command = "gr"
+
+    file = grStats.find_one({"user_id": userid, "command": command})
+
+    if file:
+        count = file["count"]
+
+        grsembed = discord.Embed(title=f"{ctx.author.display_name}'s Girl Ranking Stats",
+                                 description="Only counts for rounds of 5+ girls! \n\u200b",
+                                 color=discord.Color.blue())
+
+        grsembed.add_field(name="Times Played", value=f"{count}")
+
+        await ctx.send(embed=grsembed)
+
 
 
 
