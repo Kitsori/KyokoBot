@@ -1,5 +1,5 @@
 import os
-from urllib import response
+from pymongo import MongoClient
 
 import discord
 from discord.ext import commands
@@ -14,6 +14,7 @@ from girlimages import randomGirlGen, girlDictionary
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+MONGO = os.getenv('MONGO_URI')
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
@@ -26,10 +27,35 @@ intents.members = True
 bot = commands.Bot(command_prefix='~', intents=intents)
 
 
+
+client = MongoClient(MONGO)
+
+db = client["KyokoBot"]
+
+collection = db["GirlsStats"]
+grStats = db["GRStats"]
+
+
+
+
+# Database Methods
+
+def commandCount(user_id, command):
+    grStats.update_one({"user_id": user_id, "command": command},
+                     {"$inc": {"count": 1}},
+                             upsert=True
+    )
+
+
+
+
+
+
+
+
 # Variables
 
 selfrole = "Member"
-
 
 
 
@@ -40,6 +66,26 @@ selfrole = "Member"
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     await bot.change_presence(activity=discord.Game(name="with Kitsori"))
+
+    try:
+        # Print all databases your account can access
+        print("Databases:", client.list_database_names())
+
+        # Optional: insert a test document if the collection is empty
+        if collection.count_documents({}) == 0:
+            collection.insert_one({
+                "name": "Miku Nakano",
+                "show": "Quintessential Quintuplets",
+                "url": "https://cdn.myanimelist.net/images/characters/14/457434.jpg"
+            })
+            print("Inserted test document into GirlsStats")
+
+        # Fetch a document to test
+        girl = collection.find_one({})
+        print("Fetched document:", girl)
+
+    except Exception as e:
+        print("MongoDB test failed:", e)
 
 
 
@@ -435,6 +481,10 @@ async def gr(ctx):
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
+        if rankCount >= 4:
+            commandCount(ctx.author.id, "gr")
+            
+
         # If the rank count and number of girls are the same change the title to FINAL
         if rankCount == numGirls - 1:
             embedList.title = "FINAL Best Girl Ranking"
@@ -471,6 +521,7 @@ async def gl(ctx, *, input):
         found = True
 
     else:
+        foundOne = False
         for key in girlDictionary:
             names = key.split()
             if nameInput in names:
@@ -481,6 +532,11 @@ async def gl(ctx, *, input):
 
                 await ctx.send(f"{name} - {show}")
                 found = True
+                foundOne = True
+
+        if foundOne == True:
+            await ctx.send("I found these girls based off your search!!!")
+
 
 
     if found == False:
@@ -524,6 +580,11 @@ async def gl(ctx, *, input):
 
 
 
+
+
+#python -m pip install "pymongo[srv]"
+
+#mongodb+srv://Kitsori:Yl9mdb1hp!@kyokobot.9wzvrtx.mongodb.net/?retryWrites=true&w=majority&appName=KyokoBot
 
 
 bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
