@@ -2184,14 +2184,1499 @@ girls = [
      "Plastic Memories",
      "https://cdn.myanimelist.net/images/characters/12/280704.jpg",
     ),(  #546
-     "Akane Kurokawa",
-     "Oshi no Ko",
-     "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"
+     "Emilia",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/12/524543.jpg",
     ),(  #547
+     "Rem",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/10/311627.jpg",
+    ),(  #548
+     "Ram",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/15/306390.jpg",
+    ),(  #549
+     "Beatrice",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/2/591066.jpg",
+    ),(  #550
+     "",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/5/563863.jpg",
+    ),(  #551
+     "Crusch Karsten",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/5/563863.jpg",
+    ),(  #552
+     "Satella",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/13/422866.jpg",
+    ),(  #553
+     "Elsa Granhiert",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/6/302431.jpg",
+    ),(  #554
+     "Priscilla Barielle",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/14/307861.jpg",
+    ),(  #555
+     "Felt",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/6/312726.jpg",
+    ),(  #556
+     "Frederica Baumann",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/3/563873.jpg",
+    ),(  #557
+     "Theresia van Astrea",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/4/310442.jpg",
+    ),(  #558
+     "Petra Leyte",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/2/311498.jpg",
+    ),(  #559
+     "Mimi Pearlbaton",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/9/312730.jpg",
+    ),(  #560
+     "Anastasia Hoshin",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/4/563866.jpg",
+    ),(  #561
+     "Echidna",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/4/424981.jpg",
+    ),(  #562
+     "Ryuuzu Meyer",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/3/411339.jpg",
+    ),(  #563
+     "Daphne",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/7/419509.jpg",
+    ),(  #564
+     "Carmilla",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/4/324235.jpg",
+    ),(  #565
+     "Minerva",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/11/319759.jpg",
+    ),(  #566
+     "Pandora",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/15/468595.jpg",
+    ),(  #567
+     "Capella Emerada Lugunica",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/12/560844.jpg",
+    ),(  #568
+     "Sirius Romanee-Conti",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/13/560846.jpg",
+    ),(  #569
+     "Rui Arneb",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/7/462992.jpg",
+    ),(  #570
+     "Liliana Masquerade",
+     "Re:Zero",
+     "https://cdn.myanimelist.net/images/characters/12/543236.jpg",
+    ),(  #571
+     "Megumi Katou",
+     "Saekano",
+     "https://cdn.myanimelist.net/images/characters/15/391806.jpg",
+    ),(  #572
+     "Utaha Kasumigaoka",
+     "Saekano",
+     "https://cdn.myanimelist.net/images/characters/10/568217.jpg",
+    ),(  #573
+     "Eriri Spencer Sawamura",
+     "Saekano",
+     "https://cdn.myanimelist.net/images/characters/4/325308.jpg",
+    ),(  #574
+     "Michiru Hyoudou",
+     "Saekano",
+     "https://cdn.myanimelist.net/images/characters/11/325311.jpg",
+    ),(  #575
+     "Izumi Hashima",
+     "Saekano",
+     "https://cdn.myanimelist.net/images/characters/8/325310.jpg",
+    ),(  #576
+     "Akane Kosaka",
+     "Saekano",
+     "https://cdn.myanimelist.net/images/characters/12/326876.jpg",
+    ),(  #577
+     "Mashiro Shiina",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/13/274637.jpg",
+    ),(  #578
+     "Nanami Aoyama",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/3/198775.jpg",
+    ),(  #579
+     "Misaki Kamiigusa",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/15/216559.jpg",
+    ),(  #580
+     "Rita Ainsworth",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/16/324805.jpg",
+    ),(  #581
+     "Chihiro Sengoku",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/4/188622.jpg",
+    ),(  #582
+     "Yuuko Kanda",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/5/258027.jpg",
+    ),(  #583
+     "Maid-chan",
+     "The Pet Girl of Sakurasou",
+     "https://cdn.myanimelist.net/images/characters/7/324809.jpg",
+    ),(  #584
+     "Celia Claire",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/6/449418.jpg",
+    ),(  #585
+     "Aishia",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/5/449422.jpg",
+    ),(  #586
+     "Miharu Ayase",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/3/449410.jpg",
+    ),(  #587
+     "Latifa",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/4/553318.jpg",
+    ),(  #588
+     "Liselotte Cretia",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/2/568002.jpg",
+    ),(  #589
+     "Flora Beltrum",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/14/424549.jpg",
+    ),(  #590
+     "Christina Beltrum",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/4/424480.jpg",
+    ),(  #591
+     "Sara",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/14/566406.jpg",
+    ),(  #592
+     "Orphia",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/13/424486.jpg",
+    ),(  #593
+     "Alma",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/9/424477.jpg",
+    ),(  #594
+     "Dryas",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/10/566408.jpg",
+    ),(  #595
+     "Ruri",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/5/479224.jpg",
+    ),(  #596
+     "Sayo",
+     "Spirit Chronicles",
+     "https://cdn.myanimelist.net/images/characters/8/451103.jpg",
+    ),(  #597
+     "Mai Sakurajima",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/5/444083.jpg",
+    ),(  #598
+     "Miniskirt Santa",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/6/599592.jpg",
+    ),(  #599
+     "Rio Futaba",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/12/567488.jpg",
+    ),(  #600
+     "Kaede Azusagawa",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/7/366710.jpg",
+    ),(  #601
+     "Tomoe Koga",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/4/366709.jpg",
+    ),(  #602
+     "Shouko Makinohara",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/8/366712.jpg",
+    ),(  #603
+     "Nodoka Toyohama",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/4/598438.jpg",
+    ),(  #604
+     "Saki Kamisato",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/8/373172.jpg",
+    ),(  #605
+     "Uzuki Hirokawa",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/4/373171.jpg",
+    ),(  #606
+     "Miori Mitou",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/9/586422.jpg",
+    ),(  #607
+     "Ikumi Akagi",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/6/603423.jpg",
+    ),(  #608
+     "Sara Himeji",
+     "Rascal Does Not Dream of Bunny Girl Senpai",
+     "https://cdn.myanimelist.net/images/characters/9/586421.jpg",
+    ),(  #609
+     "Nanako Yukishiro",
+     "Senryuu Girl",
+     "https://cdn.myanimelist.net/images/characters/14/431332.jpg",
+    ),(  #610
+     "Kino Yakobe",
+     "Senryuu Girl",
+     "https://cdn.myanimelist.net/images/characters/2/453268.jpg",
+    ),(  #611
+     "Amane Katagiri",
+     "Senryuu Girl",
+     "https://cdn.myanimelist.net/images/characters/11/372259.jpg",
+    ),(  #612
+     "Tao Hanakai",
+     "Senryuu Girl",
+     "https://cdn.myanimelist.net/images/characters/10/372258.jpg",
+    ),(  #613
+     "Koto Ootsuki",
+     "Senryuu Girl",
+     "https://cdn.myanimelist.net/images/characters/2/372260.jpg",
+    ),(  #614
+     "Senko",
+     "The Helpful Fox Senko-san",
+     "https://cdn.myanimelist.net/images/characters/8/417734.jpg",
+    ),(  #615
+     "Shiro",
+     "The Helpful Fox Senko-san",
+     "https://cdn.myanimelist.net/images/characters/9/380382.jpg",
+    ),(  #616
+     "Sora",
+     "The Helpful Fox Senko-san",
+     "https://cdn.myanimelist.net/images/characters/12/382587.jpg",
+    ),(  #617
+     "Yasuko Kouenji",
+     "The Helpful Fox Senko-san",
+     "https://cdn.myanimelist.net/images/characters/4/380384.jpg",
+    ),(  #618
+     "Kate",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/4/435915.jpg",
+    ),(  #619
+     "Emilico",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/12/435914.jpg",
+    ),(  #620
+     "Barbie",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/15/402482.jpg",
+    ),(  #621
+     "Lou",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/5/435923.jpg",
+    ),(  #622
+     "Maryrose",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/8/478547.jpg",
+    ),(  #623
+     "Rosemary",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/4/439865.jpg",
+    ),(  #624
+     "Louise",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/10/435920.jpg",
+    ),(  #625
+     "Mia",
+     "Shadows House",
+     "https://cdn.myanimelist.net/images/characters/2/402487.jpg",
+    ),(  #626
+     "Shana",
+     "Shakugan no Shana",
+     "https://cdn.myanimelist.net/images/characters/16/66027.jpg",
+    ),(  #627
+     "Wilhelmina Carmel",
+     "Shakugan no Shana",
+     "https://cdn.myanimelist.net/images/characters/9/50367.jpg",
+    ),(  #628
+     "Kazumi Yoshida",
+     "Shakugan no Shana",
+     "https://cdn.myanimelist.net/images/characters/10/25397.jpg",
+    ),(  #629
+     "Hecate",
+     "Shakugan no Shana",
+     "https://cdn.myanimelist.net/images/characters/12/70681.jpg",
+    ),(  #630
+     "Margery Daw",
+     "Shakugan no Shana",
+     "https://cdn.myanimelist.net/images/characters/8/72829.jpg",
+    ),(  #631
+     "Kaori Miyazono",
+     "Your Lie In April",
+     "https://cdn.myanimelist.net/images/characters/14/302318.jpg",
+    ),(  #632
+     "Tsubaki Sawabe",
+     "Your Lie In April",
+     "https://cdn.myanimelist.net/images/characters/6/353335.jpg",
+    ),(  #633
+     "Emi Igawa",
+     "Your Lie In April",
+     "https://cdn.myanimelist.net/images/characters/6/278935.jpg",
+    ),(  #634
+     "Nagi Aiza",
+     "Your Lie In April",
+     "https://cdn.myanimelist.net/images/characters/7/276133.jpg",
+    ),(  #635
+     "Noko Shikanoko",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/4/595489.jpg",
+    ),(  #636
+     "Meme Bashame",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/13/542122.jpg",
+    ),(  #637
+     "Torako Koshi",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/6/542120.jpg",
+    ),(  #638
+     "Anko Koshi",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/16/542121.jpg",
+    ),(  #639
+     "Neko Nekoyamada",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/8/550601.jpg",
+    ),(  #640
+     "Kinu Tanukikouji",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/2/550600.jpg",
+    ),(  #641
+     "Chiharu Tsubameya",
+     "My Deer Friend Nokotan",
+     "https://cdn.myanimelist.net/images/characters/9/550599.jpg",
+    ),(  #642
+     "Mikasa Ackerman",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/9/215563.jpg",
+    ),(  #643
+     "Hange Zoe",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/15/208637.jpg",
+    ),(  #644
+     "Sasha Blouse",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/6/251937.jpg",
+    ),(  #645
+     "Annie Leonhart",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/9/206357.jpg",
+    ),(  #646
+     "Krista Lenz",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/16/216967.jpg",
+    ),(  #647
+     "Ymir",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/9/226171.jpg",
+    ),(  #648
+     "Petra Ral",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/8/217555.jpg",
+    ),(  #649
+     "Hitch Dreyse",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/10/220845.jpg",
+    ),(  #650
+     "Pieck Finger",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/4/425880.jpg",
+    ),(  #651
+     "Gabi Braun",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/4/431018.jpg",
+    ),(  #652
+     "Yelena",
+     "Attack on Titan",
+     "https://cdn.myanimelist.net/images/characters/13/433243.jpg",
+    ),(  #653
+     "Saki Watanabe",
+     "Shinsekai Yori",
+     "https://cdn.myanimelist.net/images/characters/11/183115.jpg",
+    ),(  #654
+     "Maria Akizuki",
+     "Shinsekai Yori",
+     "https://cdn.myanimelist.net/images/characters/4/183067.jpg",
+    ),(  #655
+     "Tomiko Asahina",
+     "Shinsekai Yori",
+     "https://cdn.myanimelist.net/images/characters/13/190212.jpg",
+    ),(  #656
+     "Akki",
+     "Shinsekai Yori",
+     "https://cdn.myanimelist.net/images/characters/13/279762.jpg",
+    ),(  #657
+     "Kukuru Misakino",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/2/443039.jpg",
+    ),(  #658
+     "Fuuka Miyazawa",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/11/443046.jpg",
+    ),(  #659
+     "Karin Kudaka",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/7/443048.jpg",
+    ),(  #660
+     "Kaoru Shimabukuro",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/16/454865.jpg",
+    ),(  #661
+     "Chiyu Haebaru",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/13/472578.jpg",
+    ),(  #662
+     "Tsukimi Teruya",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/16/443049.jpg",
+    ),(  #663
+     "Akari Maeda",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/11/454864.jpg",
+    ),(  #664
+     "Marina Yonekura",
+     "The Aquatope on White Sand",
+     "https://cdn.myanimelist.net/images/characters/6/472789.jpg",
+    ),(  #665
+     "Ouka Shiunji",
+     "The Shiunji Family Children",
+     "https://cdn.myanimelist.net/images/characters/6/558436.jpg",
+    ),(  #666
+     "Seiha Shiunji",
+     "The Shiunji Family Children",
+     "https://cdn.myanimelist.net/images/characters/9/567630.jpg",
+    ),(  #667
+     "Banri Shiunji",
+     "The Shiunji Family Children",
+     "https://cdn.myanimelist.net/images/characters/5/567556.jpg",
+    ),(  #668
+     "Kotono Shiunji",
+     "The Shiunji Family Children",
+     "https://cdn.myanimelist.net/images/characters/2/568350.jpg",
+    ),(  #669
+     "Minami Shiunji",
+     "The Shiunji Family Children",
+     "https://cdn.myanimelist.net/images/characters/5/568083.jpg",
+    ),(  #670
+     "Chito",
+     "Girls' Last Tour",
+     "https://cdn.myanimelist.net/images/characters/5/341027.jpg",
+    ),(  #671
+     "Yuuri",
+     "Girls' Last Tour",
+     "https://cdn.myanimelist.net/images/characters/7/341028.jpg",
+    ),(  #672
+     "Ishii",
+     "Girls' Last Tour",
+     "https://cdn.myanimelist.net/images/characters/11/344063.jpg",
+    ),(  #673
+     "Chtholly Nota Seniorious",
+     "WorldEnd",
+     "https://cdn.myanimelist.net/images/characters/12/327424.jpg",
+    ),(  #674
+     "Nephren Ruq Insania",
+     "WorldEnd",
+     "https://cdn.myanimelist.net/images/characters/13/332794.jpg",
+    ),(  #675
+     "Ithea Myse Valgulious",
+     "WorldEnd",
+     "https://cdn.myanimelist.net/images/characters/14/327408.jpg",
+    ),(  #676
+     "Rhantolk Ytri Historia",
+     "WorldEnd",
+     "https://cdn.myanimelist.net/images/characters/13/327410.jpg",
+    ),(  #677
+     "Elq Hrqstn",
+     "WorldEnd",
+     "https://cdn.myanimelist.net/images/characters/7/329825.jpg",
+    ),(  #678
+     "Nygglatho",
+     "WorldEnd",
+     "https://cdn.myanimelist.net/images/characters/2/327417.jpg",
+    ),(  #679
+     "Akira Shinonome",
+     "Train to the End of the World",
+     "https://cdn.myanimelist.net/images/characters/6/518133.jpg",
+    ),(  #680
+     "Reimi Kuga",
+     "Train to the End of the World",
+     "https://cdn.myanimelist.net/images/characters/13/518134.jpg",
+    ),(  #681
+     "Shizuru Chikura",
+     "Train to the End of the World",
+     "https://cdn.myanimelist.net/images/characters/16/516825.jpg",
+    ),(  #682
+     "Nadeshiko Hoshi",
+     "Train to the End of the World",
+     "https://cdn.myanimelist.net/images/characters/9/518135.jpg",
+    ),(  #683
+     "Mito Kuroki",
+     "Train to the End of the World",
+     "https://cdn.myanimelist.net/images/characters/9/548435.jpg",
+    ),(  #684
+     "Youka Nakatomi",
+     "Train to the End of the World",
+     "https://cdn.myanimelist.net/images/characters/5/543768.jpg",
+    ),(  #685
+     "Mitsumi Iwakura",
+     "Skip and Loafer",
+     "https://cdn.myanimelist.net/images/characters/16/509649.jpg",
+    ),(  #686
+     "Yuzuki Murashige",
+     "Skip and Loafer",
+     "https://cdn.myanimelist.net/images/characters/6/509651.jpg",
+    ),(  #687
+     "Mika Egashira",
+     "Skip and Loafer",
+     "https://cdn.myanimelist.net/images/characters/3/573523.jpg",
+    ),(  #688
+     "Makoto Kurume",
+     "Skip and Loafer",
+     "https://cdn.myanimelist.net/images/characters/11/509650.jpg",
+    ),(  #689
+     "Azusa",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/10/440267.jpg",
+    ),(  #690
+     "Laika",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/6/440268.jpg",
+    ),(  #691
+     "Falfa",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/13/440271.jpg",
+    ),(  #692
+     "Halkara",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/15/440269.jpg",
+    ),(  #693
+     "Shalsha",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/16/440270.jpg",
+    ),(  #694
+     "Beelzebub",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/3/440272.jpg",
+    ),(  #695
+     "Flatorte",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/13/440273.jpg",
+    ),(  #696
+     "Pecora",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/4/440275.jpg",
+    ),(  #697
+     "Rosalie",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/9/440274.jpg",
+    ),(  #698
+     "Vania",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/3/588954.jpg",
+    ),(  #699
+     "Fatla",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/6/588953.jpg",
+    ),(  #700
+     "Kuku",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/16/597017.jpg",
+    ),(  #701
+     "Sandra",
+     "I've Been Killing Slimes for 300 Years and Maxed Out My Level",
+     "https://cdn.myanimelist.net/images/characters/13/574768.jpg",
+    ),(  #702
+     "Hiyori Minagi",
+     "Slow Loop",
+     "https://cdn.myanimelist.net/images/characters/16/459274.jpg",
+    ),(  #703
+     "Koharu Minagi",
+     "Slow Loop",
+     "https://cdn.myanimelist.net/images/characters/6/459273.jpg",
+    ),(  #704
+     "Koi Yoshinaga",
+     "Slow Loop",
+     "https://cdn.myanimelist.net/images/characters/6/459278.jpg",
+    ),(  #705
+     "Ichika Fukumoto",
+     "Slow Loop",
+     "https://cdn.myanimelist.net/images/characters/4/459276.jpg",
+    ),(  #706
+     "Aiko Ninomiya",
+     "Slow Loop",
+     "https://cdn.myanimelist.net/images/characters/15/459277.jpg",
+    ),(  #707
+     "Futaba Fukumoto",
+     "Slow Loop",
+     "https://cdn.myanimelist.net/images/characters/11/459275.jpg",
+    ),(  #708
+     "Tamate Momochi",
+     "Slow Start",
+     "https://cdn.myanimelist.net/images/characters/3/352730.jpg",
+    ),(  #709
+     "Kamuri Sengoku",
+     "Slow Start",
+     "https://cdn.myanimelist.net/images/characters/12/336052.jpg",
+    ),(  #710
+     "Hana Ichinose",
+     "Slow Start",
+     "https://cdn.myanimelist.net/images/characters/3/336049.jpg",
+    ),(  #711
+     "Eiko Tokura",
+     "Slow Start",
+     "https://cdn.myanimelist.net/images/characters/16/336051.jpg",
+    ),(  #712
+     "Hiroe Hannen",
+     "Slow Start",
+     "https://cdn.myanimelist.net/images/characters/6/344320.jpg",
+    ),(  #713
+     "Shion Kyouzuka",
+     "Slow Start",
+     "https://cdn.myanimelist.net/images/characters/10/344319.jpg",
+    ),(  #714
+     "Marin Kitagawa",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/16/599495.jpg",
+    ),(  #715
+     "Sajuna Inui",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/2/598040.jpg",
+    ),(  #716
+     "Shinju Inui",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/6/598042.jpg",
+    ),(  #717
+     "Nowa Sugaya",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/11/464449.jpg",
+    ),(  #718
+     "Akira Ogata",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/11/603196.jpg",
+    ),(  #719
+     "Seira Kasai",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/12/601778.jpg",
+    ),(  #720
+     "Rune Yamauchi",
+     "My Dress-Up Darling",
+     "https://cdn.myanimelist.net/images/characters/7/468457.jpg",
+    ),(  #721
+     "Shirase Kobuchizawa",
+     "A Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/14/363064.jpg",
+    ),(  #722
+     "Hinata Miyake",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/12/365996.jpg",
+    ),(  #723
+     "Mari Tamaki",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/14/358826.jpg",
+    ),(  #724
+     "Yuzuki Shiraishi",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/11/366095.jpg",
+    ),(  #725
+     "Gin Toudou",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/4/345983.jpg",
+    ),(  #726
+     "Yumiko Samejima",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/16/345981.jpg",
+    ),(  #727
+     "Megumi Takahashi",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/4/345980.jpg",
+    ),(  #728
+     "Kanae Maekawa",
+     "Place Further Than The Universe",
+     "https://cdn.myanimelist.net/images/characters/13/345982.jpg",
+    ),(  #729
+     "Frieren",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/7/525105.jpg",
+    ),(  #730
      "Fern",
      "Frieren: Beyond Journey's End",
-     "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"
-    ),
+     "https://cdn.myanimelist.net/images/characters/4/561357.jpg"
+    ),(  #731
+     "Ubel",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/6/541934.jpg",
+    ),(  #732
+     "Flamme",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/10/528177.jpg",
+    ),(  #733
+     "Serie",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/14/537346.jpg",
+    ),(  #734
+     "Methode",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/14/538692.jpg",
+    ),(  #735
+     "Sense",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/14/538685.jpg",
+    ),(  #736
+     "Aura",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/8/566310.jpg",
+    ),(  #737
+     "Linie",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/13/524721.jpg",
+    ),(  #738
+     "Laufen",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/2/538687.jpg",
+    ),(  #739
+     "Lawine",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/10/537013.jpg",
+    ),(  #740
+     "Kanne",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/13/543071.jpg",
+    ),(  #741
+     "Ehre",
+     "Frieren: Beyond Journey's End",
+     "https://cdn.myanimelist.net/images/characters/12/531661.jpg",
+    ),(  #742
+     "Anya Forger",
+     "Spy x Family",
+     "https://cdn.myanimelist.net/images/characters/4/469910.jpg",
+    ),(  #743
+     "Yor Forger",
+     "Spy x Family",
+     "https://cdn.myanimelist.net/images/characters/13/473283.jpg",
+    ),(  #744
+     "Becky Blackbell",
+     "Spy x Family",
+     "https://cdn.myanimelist.net/images/characters/3/528426.jpg",
+    ),(  #745
+     "Sylvia Sherwood",
+     "Spy x Family",
+     "https://cdn.myanimelist.net/images/characters/3/467192.jpg",
+    ),(  #746
+     "Fiona Frost",
+     "Spy x Family",
+     "https://cdn.myanimelist.net/images/characters/4/494104.jpg",
+    ),(  #747
+     "Kurisu Makise",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/12/492885.jpg",
+    ),(  #748
+     "Mayuri Shiina",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/10/113698.jpg",
+    ),(  #749
+     "Suzuha Amane",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/3/148223.jpg",
+    ),(  #750
+     "Rumiho Akiha",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/2/142621.jpg",
+    ),(  #751
+     "Nae Tennouji",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/16/353319.jpg",
+    ),(  #752
+     "Moeka Kiryuu",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/12/275310.jpg",
+    ),(  #753
+     "Maho Hiyajou",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/14/345914.jpg",
+    ),(  #754
+     "Kagari Shiina",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/16/353317.jpg",
+    ),(  #755
+     "Yuki Amane",
+     "Steins;Gate",
+     "https://cdn.myanimelist.net/images/characters/16/362836.jpg",
+    ),(  #756
+     "Ai Mie",
+     "The Girl I Like Forgot Her Glasses",
+     "https://cdn.myanimelist.net/images/characters/9/519539.jpg",
+    ),(  #757
+     "Haruhi Suzumiya",
+     "The Melancholy of Haruhi Suzumiya",
+     "https://cdn.myanimelist.net/images/characters/4/318548.jpg",
+    ),(  #758
+     "Yuki Nagato",
+     "The Melancholy of Haruhi Suzumiya",
+     "https://cdn.myanimelist.net/images/characters/11/319309.jpg",
+    ),(  #759
+     "Mikuru Asahina",
+     "The Melancholy of Haruhi Suzumiya",
+     "https://cdn.myanimelist.net/images/characters/10/75526.jpg",
+    ),(  #760
+     "Tsuruya",
+     "The Melancholy of Haruhi Suzumiya",
+     "https://cdn.myanimelist.net/images/characters/16/73654.jpg",
+    ),(  #761
+     "Ryouko Asakura",
+     "The Melancholy of Haruhi Suzumiya",
+     "https://cdn.myanimelist.net/images/characters/7/89053.jpg",
+    ),(  #762
+     "Kyon's Sister",
+     "The Melancholy of Haruhi Suzumiya",
+     "https://cdn.myanimelist.net/images/characters/4/89052.jpg",
+    ),(  #763
+     "Shizuka Kuze",
+     "Takopi's Orignal Sin",
+     "https://cdn.myanimelist.net/images/characters/12/573206.jpg",
+    ),(  #764
+     "Marina Kirarazaka",
+     "Takopi's Original Sin",
+     "https://cdn.myanimelist.net/images/characters/10/584540.jpg",
+    ),(  #765
+     "Hina Amano",
+     "Weathering With You",
+     "https://cdn.myanimelist.net/images/characters/9/408525.jpg",
+    ),(  #766
+     "Natsumi Suga",
+     "Weathering With You",
+     "https://cdn.myanimelist.net/images/characters/12/484549.jpg",
+    ),(  #767
+     "Alya Kujou",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/5/536830.jpg",
+    ),(  #768
+     "Yuki Suou",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/12/559107.jpg",
+    ),(  #769
+     "Masha Kujou",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/13/536833.jpg",
+    ),(  #770
+     "Ayano Kimishima",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/6/536829.jpg",
+    ),(  #771
+     "Nonoa Miyamae",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/10/561182.jpg",
+    ),(  #772
+     "Chisaki Sarashina",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/12/558852.jpg",
+    ),(  #773
+     "Sayaka Taniyama",
+     "Alya Sometimes Hides Her Feelings in Russian",
+     "https://cdn.myanimelist.net/images/characters/9/561184.jpg",
+    ),(  #774
+     "Sophie Twilight",
+     "Ms. Vampire who lives in my neighborhood.",
+     "https://cdn.myanimelist.net/images/characters/14/363481.jpg",
+    ),(  #775
+     "Elly",
+     "Ms. Vampire who lives in my neighborhood.",
+     "https://cdn.myanimelist.net/images/characters/15/363478.jpg",
+    ),(  #776
+     "Akari Amano",
+     "Ms. Vampire who lives in my neighborhood.",
+     "https://cdn.myanimelist.net/images/characters/11/363476.jpg",
+    ),(  #777
+     "Hinata Natsuki",
+     "Ms. Vampire who lives in my neighborhood.",
+     "https://cdn.myanimelist.net/images/characters/5/363477.jpg",
+    ),(  #778
+     "Yuu Aoki",
+     "Ms. Vampire who lives in my neighborhood.",
+     "https://cdn.myanimelist.net/images/characters/13/363480.jpg",
+    ),(  #779
+     "Sakuya Kurai",
+     "Ms. Vampire who lives in my neighborhood.",
+     "https://cdn.myanimelist.net/images/characters/3/363479.jpg",
+    ),(  #780
+     "Tsukasa Yuzaki",
+     "Tonikawa",
+     "https://cdn.myanimelist.net/images/characters/3/445451.jpg",
+    ),(  #781
+     "Kaname Arisugawa",
+     "Tonikawa",
+     "https://cdn.myanimelist.net/images/characters/10/418286.jpg",
+    ),(  #782
+     "Aya Arisugawa",
+     "Tonikawa",
+     "https://cdn.myanimelist.net/images/characters/7/418284.jpg",
+    ),(  #783
+     "Charlotte",
+     "Tonikawa",
+     "https://cdn.myanimelist.net/images/characters/7/453511.jpg",
+    ),(  #784
+     "Chitose Kaginoji",
+     "Tonikawa",
+     "https://cdn.myanimelist.net/images/characters/6/418287.jpg",
+    ),(  #785
+     "Aurora",
+     "Tonikawa",
+     "https://cdn.myanimelist.net/images/characters/5/428785.jpg",
+    ),(  #786
+     "Taiga Aisaka",
+     "Toradora!",
+     "https://cdn.myanimelist.net/images/characters/11/514086.jpg",
+    ),(  #787
+     "Minori Kushieda",
+     "Toradora!",
+     "https://cdn.myanimelist.net/images/characters/11/514090.jpg",
+    ),(  #788
+     "Ami Kawashima",
+     "Toradora!",
+     "https://cdn.myanimelist.net/images/characters/7/46814.jpg",
+    ),(  #789
+     "Yasuko Takasu",
+     "Toradora!",
+     "https://cdn.myanimelist.net/images/characters/15/105456.jpg",
+    ),(  #790
+     "Elfaria Albis Serfort",
+     "Wistoria: Wand and Sword",
+     "https://cdn.myanimelist.net/images/characters/2/563704.jpg",
+    ),(  #791
+     "Colette Loire",
+     "Wistoria: Wand and Sword",
+     "https://cdn.myanimelist.net/images/characters/11/539536.jpg",
+    ),(  #792
+     "Lihanna Owenzaus",
+     "Wistoria: Wand and Sword",
+     "https://cdn.myanimelist.net/images/characters/9/543246.jpg",
+    ),(  #793
+     "Vivy",
+     "Vivy: Flourite Eye's Song",
+     "https://cdn.myanimelist.net/images/characters/5/437608.jpg",
+    ),(  #794
+     "Estella",
+     "Vivy: Flourite Eye's Song",
+     "https://cdn.myanimelist.net/images/characters/10/437606.jpg",
+    ),(  #795
+     "Ophelia",
+     "Vivy: Flourite Eye's Song",
+     "https://cdn.myanimelist.net/images/characters/6/437607.jpg",
+    ),(  #796
+     "Tomoko Kuroki",
+     "WataMote",
+     "https://cdn.myanimelist.net/images/characters/15/212635.jpg",
+    ),(  #797
+     "Yuu Naruse",
+     "WataMote",
+     "https://cdn.myanimelist.net/images/characters/12/220875.jpg",
+    ),(  #798
+     "Ai Ohto",
+     "Wonder Egg Priority",
+     "https://cdn.myanimelist.net/images/characters/10/431621.jpg",
+    ),(  #799
+     "Rika Kawai",
+     "Wonder Egg Priority",
+     "https://cdn.myanimelist.net/images/characters/5/441004.jpg",
+    ),(  #800
+     "Momoe Sawaki",
+     "Wonder Egg Priority",
+     "https://cdn.myanimelist.net/images/characters/16/443975.jpg",
+    ),(  #801
+     "Neiru Aonuma",
+     "Wonder Egg Priority",
+     "https://cdn.myanimelist.net/images/characters/15/443976.jpg",
+    ),(  #802
+     "Frill",
+     "Wonder Egg Priority",
+     "https://cdn.myanimelist.net/images/characters/10/437383.jpg",
+    ),(  #803
+     "Koito Nagase",
+     "Wonder Egg Priority",
+     "https://cdn.myanimelist.net/images/characters/12/430337.jpg",
+    ),(  #804
+     "Yukino Yukinoshita",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/16/309714.jpg",
+    ),(  #805
+     "Yui Yuigahama",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/2/332632.jpg",
+    ),(  #806
+     "Iroha Isshiki",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/8/320273.jpg",
+    ),(  #807
+     "Shizuka Hiratsuka",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/2/568221.jpg",
+    ),(  #808
+     "Komachi Hikigaya",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/16/280870.jpg",
+    ),(  #809
+     "Saki Kawasaki",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/11/309088.jpg",
+    ),(  #810
+     "Haruno Yukinoshita",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/5/309077.jpg",
+    ),(  #811
+     "Mother Yuigahama",
+     "My Teen Romantic Comedu SNAFU",
+     "https://cdn.myanimelist.net/images/characters/2/285624.jpg",
+    ),(  #812
+     "Emma",
+     "The Promised Neverland",
+     "https://cdn.myanimelist.net/images/characters/13/373577.jpg",
+    ),(  #813
+     "Isabella",
+     "The Promised Neverland",
+     "https://cdn.myanimelist.net/images/characters/5/462007.jpg",
+    ),(  #814
+     "Sister Krone",
+     "The Promised Neverland",
+     "https://cdn.myanimelist.net/images/characters/14/379977.jpg",
+    ),(  #815
+     "Gilda",
+     "The Promised Neverland",
+     "https://cdn.myanimelist.net/images/characters/8/360047.jpg",
+    ),(  #816
+     "Aoi Yukimura",
+     "Yama no Susume",
+     "https://cdn.myanimelist.net/images/characters/16/514087.jpg",
+    ),(  #817
+     "Kokona Aoba",
+     "Yama no Susume",
+     "https://cdn.myanimelist.net/images/characters/4/514344.jpg",
+    ),(  #818
+     "Hinata Kuraue",
+     "Yama no Susume",
+     "https://cdn.myanimelist.net/images/characters/10/514340.jpg",
+    ),(  #819
+     "Kaede Saitou",
+     "Yama no Susume",
+     "https://cdn.myanimelist.net/images/characters/7/514342.jpg",
+    ),(  #820
+     "Honoka Kurosaki",
+     "Yama no Susume",
+     "https://cdn.myanimelist.net/images/characters/3/514346.jpg",
+    ),(  #821
+     "Hikari Onozuka",
+     "Yama no Susume",
+     "https://cdn.myanimelist.net/images/characters/15/331848.jpg",
+    ),(  #822
+     "Akane Kinoshita",
+     "My Love Story With Yamada-kun at Lv999",
+     "https://cdn.myanimelist.net/images/characters/2/511460.jpg",
+    ),(  #823
+     "Runa Sasaki",
+     "My Love Story With Yamada-kun at Lv999",
+     "https://cdn.myanimelist.net/images/characters/2/510117.jpg",
+    ),(  #824
+     "Yukari Tsubaki",
+     "My Love Story With Yamada-kun at Lv999",
+     "https://cdn.myanimelist.net/images/characters/4/569532.jpg",
+    ),(  #825
+     "Momoko Maeda",
+     "My Love Story With Yamada-kun at Lv999",
+     "https://cdn.myanimelist.net/images/characters/9/505809.jpg",
+    ),(  #826
+     "Kano Yamanouchi",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/13/537588.jpg",
+    ),(  #827
+     "Kiui Watase",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/13/537587.jpg",
+    ),(  #828
+     "Mahiru Kouzuki",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/8/537585.jpg",
+    ),(  #829
+     "Kim Anouk Mei Takanashi",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/8/537586.jpg",
+    ),(  #830
+     "Shizue Baba",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/11/537593.jpg",
+    ),(  #831
+     "Koharu",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/2/544514.jpg",
+    ),(  #832
+     "Mero Setou",
+     "Jellyfish Can't Swim in the Night",
+     "https://cdn.myanimelist.net/images/characters/14/537591.jpg",
+    ),(  #833
+     "Rin Shima",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/14/353089.jpg",
+    ),(  #834
+     "Nadeshiko Kagamihara",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/2/366169.jpg",
+    ),(  #835
+     "Aoi Inuyama",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/11/366111.jpg",
+    ),(  #836
+     "Chiaki Oogaki",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/13/366112.jpg",
+    ),(  #837
+     "Ena Saitou",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/12/337015.jpg",
+    ),(  #838
+     "Ayano Toki",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/14/458550.jpg",
+    ),(  #839
+     "Sakura Kagamihara",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/3/350652.jpg",
+    ),(  #840
+     "Minami Toba",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/13/543900.jpg",
+    ),(  #841
+     "Akari Inuyama",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/15/543899.jpg",
+    ),(  #842
+     "Saki Shima",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/15/350651.jpg",
+    ),(  #843
+     "Ema Mizunami",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/7/543839.jpg",
+    ),(  #844
+     "Mei Nakatsugawa",
+     "Yuru Camp",
+     "https://cdn.myanimelist.net/images/characters/16/543790.jpg",
+    ),(  #845
+     "Kanade",
+     "Beast Tamer",
+     "https://cdn.myanimelist.net/images/characters/15/476772.jpg",
+    ),(  #846
+     "Tania",
+     "Beast Tamer",
+     "https://cdn.myanimelist.net/images/characters/8/476767.jpg",
+    ),(  #847
+     "Nina",
+     "Beast Tamer",
+     "https://cdn.myanimelist.net/images/characters/6/487341.jpg",
+    ),(  #848
+     "Sora",
+     "Beast Tamer",
+     "https://cdn.myanimelist.net/images/characters/4/492821.jpg",
+    ),(  #849
+     "Runa",
+     "Beast Tamer",
+     "https://cdn.myanimelist.net/images/characters/11/492822.jpg",
+    ),(  #850
+     "Tina Holly",
+     "Beast Tamer",
+     "https://cdn.myanimelist.net/images/characters/7/497559.jpg",
+    ),(  #851
+     "Saki Nikaidou",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/3/590629.jpg",
+    ),(  #852
+     "Tae Yamada",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/11/590630.jpg",
+    ),(  #853
+     "Junko Konno",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/14/590631.jpg",
+    ),(  #854
+     "Sakura Minamoto",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/4/563295.jpg",
+    ),(  #855
+     "Ai Mizuno",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/15/590633.jpg",
+    ),(  #856
+     "Lily Hoshikawa",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/7/590634.jpg",
+    ),(  #857
+     "Yuugiri",
+     "Zombie Land Saga",
+     "https://cdn.myanimelist.net/images/characters/5/590635.jpg",
+    ),(  #858
+     "Kana Arima",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/15/511687.jpg",
+    ),(  #859
+     "Akane Kurokawa",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/15/557228.jpg",
+    ),(  #860
+     "Ai Hoshino",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/15/502486.jpg",
+    ),(  #861
+     "Ruby Hoshino",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/5/496454.jpg",
+    ),(  #862
+     "Mem-Cho",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/8/507015.jpg",
+    ),(  #863
+     "Miyako Saitou",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/11/511321.jpg",
+    ),(  #864
+     "Abiko Samejima",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/12/555875.jpg",
+    ),(  #865
+     "Minami Kotobuki",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/15/510752.jpg",
+    ),(  #866
+     "Frill Shiranui",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/6/510750.jpg",
+    ),(  #867
+     "Tsukuyomi",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/7/558252.jpg",
+    ),(  #868
+     "Yuki Sumi",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/4/512399.jpg",
+    ),(  #869
+     "Yoriko Kichijouji",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/7/510753.jpg",
+    ),(  #870
+     "Mei Adashino",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/9/555135.jpg",
+    ),(  #871
+     "Shizuku Murasaki",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/6/373727.jpg",
+    ),(  #872
+     "Biscuit Krueger",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/5/194667.jpg",
+    ),(  #873
+     "Machi Komachine",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/10/175943.jpg",
+    ),(  #874
+     "Pakunoda",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/11/193011.jpg",
+    ),(  #875
+     "Canary",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/15/160577.jpg",
+    ),(  #876
+     "Ponzu",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/13/155619.jpg",
+    ),(  #877
+     "Menchi",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/10/140833.jpg",
+    ),(  #878
+     "Neon Nostrade",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/16/185665.jpg",
+    ),(  #879
+     "Delta",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/15/563720.jpg",
+    ),(  #880
+     "Alpha",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/16/491824.jpg",
+    ),(  #881
+     "Beta",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/12/483022.jpg",
+    ),(  #882
+     "Alexia Midgar",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/4/571548.jpg",
+    ),(  #883
+     "Claire Kagenou",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/9/486844.jpg",
+    ),(  #884
+     "Epsilon",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/15/483024.jpg",
+    ),(  #885
+     "Gamma",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/5/483023.jpg",
+    ),(  #886
+     "Aurora",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/14/563764.jpg",
+    ),(  #887
+     "Zeta",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/10/483019.jpg",
+    ),(  #888
+     "Eta",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/15/483018.jpg",
+    ),(  #889
+     "Rose Oriana",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/14/486846.jpg",
+    ),(  #890
+     "Beatrix",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/10/563776.jpg",
+    ),(  #891
+     "Nu",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/7/563762.jpg",
+    ),(  #892
+     "Sherry Barnett",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/10/563800.jpg",
+    ),(  #893
+     "Victoria",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/3/521546.jpg",
+    ),(  #894
+     "Iris Midgar",
+     "The Eminence in Shadow",
+     "https://cdn.myanimelist.net/images/characters/6/461067.jpg",
+    ),(  #895
+     "Aries Spring",
+     "Astra Lost in Space",
+     "https://cdn.myanimelist.net/images/characters/6/377934.jpg",
+    ),(  #896
+     "Quitterie Raffaeli",
+     "Astra Lost in Space",
+     "https://cdn.myanimelist.net/images/characters/4/390696.jpg",
+    ),(  #897
+     "Yunhua Lu",
+     "Astra Lost in Space",
+     "https://cdn.myanimelist.net/images/characters/8/384726.jpg",
+    ),(  #898
+     "Funicia Raffaeli",
+     "Astra Lost in Space",
+     "https://cdn.myanimelist.net/images/characters/7/390693.jpg",
+    ),(  #899
+     "Seira",
+     "Astra Lost in Space",
+     "https://cdn.myanimelist.net/images/characters/4/389532.jpg",
+    ),(  #900
+     "Polina Livinskaya",
+     "Astra Lost in Space",
+     "https://cdn.myanimelist.net/images/characters/3/386621.jpg",
+    ),(  #901
+     "Suletta Mercury",
+     "Mobile Suit Gundam: The Witch From Mercury",
+     "https://cdn.myanimelist.net/images/characters/13/495848.jpg",
+    ),(  #902
+     "Miorine Rembran",
+     "Mobile Suit Gundam: The Witch From Mercury",
+     "https://cdn.myanimelist.net/images/characters/9/495846.jpg",
+    ),(  #903
+     "Chuatury Panlunch",
+     "Mobile Suit Gundam: The Witch From Mercury",
+     "https://cdn.myanimelist.net/images/characters/11/487017.jpg",
+    ),(  #904
+     "Prospera Mercury",
+     "Mobile Suit Gundam: The Witch From Mercury",
+     "https://cdn.myanimelist.net/images/characters/8/490082.jpg",
+    ),(  #905
+     "Victorique de Blois",
+     "Gosick",
+     "https://cdn.myanimelist.net/images/characters/5/108860.jpg",
+    ),(  #906
+     "Cecile Lafitte",
+     "Gosick",
+     "https://cdn.myanimelist.net/images/characters/6/109028.jpg",
+    ),(  #907
+     "Avril Bradley",
+     "Gosick",
+     "https://cdn.myanimelist.net/images/characters/2/122813.jpg",
+    ),(  #908
+     "Chika Suzugamori",
+     "Zatsu Tabi: That's Journey",
+     "https://cdn.myanimelist.net/images/characters/6/563018.jpg",
+    ),(  #909
+     "Koyomi Hasunuma",
+     "Zatsu Tabi: That's Journey",
+     "https://cdn.myanimelist.net/images/characters/8/589438.jpg",
+    ),(  #910
+     "Yui Unoki",
+     "Zatsu Tabi: That's Journey",
+     "https://cdn.myanimelist.net/images/characters/4/563000.jpg",
+    ),(  #911
+     "Fuyune Koujiya",
+     "Zatsu Tabi: That's Journey",
+     "https://cdn.myanimelist.net/images/characters/11/573362.jpg",
+    ),(  #912
+     "Riri Tenkuubashi",
+     "Zatsu Tabi: That's Journey",
+     "https://cdn.myanimelist.net/images/characters/15/573361.jpg",
+    ),(  #913
+     "Asuna Yuuki",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/15/262053.jpg",
+    ),(  #914
+     "Leafa",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/5/254605.jpg",
+    ),(  #915
+     "Yui",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/15/264165.jpg",
+    ),(  #916
+     "Keiko Ayano",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/10/185423.jpg",
+    ),(  #917
+     "Rika Shinozaki",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/8/177115.jpg",
+    ),(  #918
+     "Sachi",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/7/264145.jpg",
+    )
+
 ]
 
 

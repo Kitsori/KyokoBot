@@ -40,6 +40,8 @@ grTotalPlays = db["grTotalPlays"]
 FiveInitialRank = db["5InitialRank"]
 TenInitialRank = db["10InitialRank"]
 
+girlAvgRanks = db["GirlAverageRanks"]
+
 
 
 
