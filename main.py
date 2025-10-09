@@ -558,7 +558,7 @@ async def grs(ctx):
     fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
     tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
 
-    if gr5file:
+    if gr5file and gr10file:
         fiveCount = gr5file["count"]
         tenCount = gr10file["count"]
 
@@ -569,10 +569,12 @@ async def grs(ctx):
         grsembed.add_field(name="Times Played (5 Girls)", value=f"{fiveCount}", inline=False)
         grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
 
-        grsembed.add_field(name="Times Played (10 Girls)", value=f"{fiveCount}", inline=False)
-        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
+        grsembed.add_field(name="Times Played (10 Girls)", value=f"{tenCount}", inline=False)
+        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRanking:.2f}", inline=False)
 
         await ctx.send(embed=grsembed)
+    else:
+        await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
 
 
 
