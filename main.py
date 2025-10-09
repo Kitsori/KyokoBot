@@ -34,6 +34,9 @@ db = client["KyokoBot"]
 
 gr5Stats = db["gr_5_stats"]
 gr10Stats = db["gr_10_stats"]
+
+grTotalPlays = db["grTotalPlays"]
+
 FiveInitialRank = db["5InitialRank"]
 TenInitialRank = db["10InitialRank"]
 
@@ -53,6 +56,14 @@ def roundTenCount(user_id, command):
                      {"$inc": {"count": 1}},
                              upsert=True
     )
+
+
+def grTotalPlay(user_id, command):
+    grTotalPlays.update_one({"user_id": user_id, "command": command},
+                     {"$inc": {"count": 1}},
+                             upsert=True
+    )
+
 
 async def roundFiveInitialRank(user_id, rank):
     await asyncio.to_thread(FiveInitialRank.update_one, {"user_id": user_id}, {"$push": {"first_ranks": rank}},
@@ -490,6 +501,9 @@ async def gr(ctx):
             elif rankCount == 9:
                 roundTenCount(ctx.author.id, "gr")
 
+            if rankCount >= 4:
+                grTotalPlay(ctx.author.id, "gr")
+
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
         await asyncio.sleep(3)
@@ -554,11 +568,12 @@ async def grs(ctx):
     def fetch_data():
         gr5file = gr5Stats.find_one({"user_id": userid, "command": command})
         gr10file = gr10Stats.find_one({"user_id": userid, "command": command})
+        grTotalFile = grTotalPlays.find_one({"user_id": userid, "command": command})
         FiveRankFile = FiveInitialRank.find_one({"user_id": userid})
         TenRankFile = TenInitialRank.find_one({"user_id": userid})
-        return gr5file, gr10file, FiveRankFile, TenRankFile
+        return gr5file, gr10file, grTotalFile, FiveRankFile, TenRankFile
 
-    gr5file, gr10file, FiveRankFile, TenRankFile = await asyncio.to_thread(fetch_data)
+    gr5file, gr10file, grTotalFile, FiveRankFile, TenRankFile = await asyncio.to_thread(fetch_data)
 
     fiveRankAvg = 0
     tenRankAvg = 0
@@ -572,17 +587,19 @@ async def grs(ctx):
     if gr5file and gr10file:
         fiveCount = gr5file.get("count", 0)
         tenCount = gr10file.get("count", 0)
+        totalCount = grTotalFile.get("count", 0)
 
         grsembed = discord.Embed(
             title=f"{ctx.author.display_name}'s Girl Ranking Stats",
-            description="Only counts for rounds of 5+ girls! \n\u200b",
+            description=" \n\u200b",
             color=discord.Color.blue()
         )
 
-        grsembed.add_field(name="Times Played (5 Girls)", value=f"{fiveCount}", inline=False)
-        grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
-        grsembed.add_field(name="Times Played (10 Girls)", value=f"{tenCount}", inline=False)
-        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRankAvg:.2f}", inline=False)
+        grsembed.add_field(name="__Total Times Played (5+ Girls)__", value=f"{totalCount}\n\u200b", inline=False)
+        grsembed.add_field(name="__Times Played (5 Girls)__", value=f"{fiveCount}", inline=False)
+        grsembed.add_field(name="__Average First Rank (5 Girls)__", value=f"{fiveRankAvg:.2f}\n\u200b", inline=False)
+        grsembed.add_field(name="__Times Played (10 Girls)__", value=f"{tenCount}", inline=False)
+        grsembed.add_field(name="__Average First Rank (10 Girls)__", value=f"{tenRankAvg:.2f}", inline=False)
 
         await ctx.send(embed=grsembed)
     else:
