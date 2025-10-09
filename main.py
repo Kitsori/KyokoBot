@@ -550,32 +550,77 @@ async def grs(ctx):
     userid = ctx.author.id
     command = "gr"
 
-    gr5file = gr5Stats.find_one({"user_id": userid, "command": command})
-    gr10file = gr10Stats.find_one({"user_id": userid, "command": command})
-    FiveRankFile = FiveInitialRank.find_one({"user_id": userid, })
-    TenRankFile = TenInitialRank.find_one({"user_id": userid, })
+    # Run MongoDB lookups in a separate thread to avoid blocking the event loop
+    def fetch_data():
+        gr5file = gr5Stats.find_one({"user_id": userid, "command": command})
+        gr10file = gr10Stats.find_one({"user_id": userid, "command": command})
+        FiveRankFile = FiveInitialRank.find_one({"user_id": userid})
+        TenRankFile = TenInitialRank.find_one({"user_id": userid})
+        return gr5file, gr10file, FiveRankFile, TenRankFile
 
+    gr5file, gr10file, FiveRankFile, TenRankFile = await asyncio.to_thread(fetch_data)
 
-    fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
-    tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
+    fiveRankAvg = 0
+    tenRankAvg = 0
+
+    if FiveRankFile and "first_ranks" in FiveRankFile and FiveRankFile["first_ranks"]:
+        fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
+
+    if TenRankFile and "first_ranks" in TenRankFile and TenRankFile["first_ranks"]:
+        tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
 
     if gr5file and gr10file:
-        fiveCount = gr5file["count"]
-        tenCount = gr10file["count"]
+        fiveCount = gr5file.get("count", 0)
+        tenCount = gr10file.get("count", 0)
 
-        grsembed = discord.Embed(title=f"{ctx.author.display_name}'s Girl Ranking Stats",
-                                 description="Only counts for rounds of 5+ girls! \n\u200b",
-                                 color=discord.Color.blue())
+        grsembed = discord.Embed(
+            title=f"{ctx.author.display_name}'s Girl Ranking Stats",
+            description="Only counts for rounds of 5+ girls! \n\u200b",
+            color=discord.Color.blue()
+        )
 
         grsembed.add_field(name="Times Played (5 Girls)", value=f"{fiveCount}", inline=False)
         grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
-
         grsembed.add_field(name="Times Played (10 Girls)", value=f"{tenCount}", inline=False)
         grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRankAvg:.2f}", inline=False)
 
         await ctx.send(embed=grsembed)
     else:
         await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
+
+
+
+#@bot.command()
+#async def grs(ctx):
+#    userid = ctx.author.id
+#    command = "gr"
+
+#    gr5file = gr5Stats.find_one({"user_id": userid, "command": command})
+#    gr10file = gr10Stats.find_one({"user_id": userid, "command": command})
+#    FiveRankFile = FiveInitialRank.find_one({"user_id": userid, })
+#    TenRankFile = TenInitialRank.find_one({"user_id": userid, })
+
+
+#   fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
+#    tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
+
+#    if gr5file and gr10file:
+#        fiveCount = gr5file["count"]
+#        tenCount = gr10file["count"]
+
+#        grsembed = discord.Embed(title=f"{ctx.author.display_name}'s Girl Ranking Stats",
+#                                 description="Only counts for rounds of 5+ girls! \n\u200b",
+#                                 color=discord.Color.blue())
+
+#        grsembed.add_field(name="Times Played (5 Girls)", value=f"{fiveCount}", inline=False)
+#        grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
+
+#        grsembed.add_field(name="Times Played (10 Girls)", value=f"{tenCount}", inline=False)
+#        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRankAvg:.2f}", inline=False)
+
+#        await ctx.send(embed=grsembed)
+#    else:
+#        await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
 
 
 
