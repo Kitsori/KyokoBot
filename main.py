@@ -49,7 +49,7 @@ def roundFiveCount(user_id, command):
     )
 
 def roundTenCount(user_id, command):
-    gr5Stats.update_one({"user_id": user_id, "command": command},
+    gr10Stats.update_one({"user_id": user_id, "command": command},
                      {"$inc": {"count": 1}},
                              upsert=True
     )
@@ -60,7 +60,7 @@ async def roundFiveInitialRank(user_id, rank):
                             )
 
 async def roundTenInitialRank(user_id, rank):
-    await asyncio.to_thread(FiveInitialRank.update_one, {"user_id": user_id}, {"$push": {"first_ranks": rank}},
+    await asyncio.to_thread(TenInitialRank.update_one, {"user_id": user_id}, {"$push": {"first_ranks": rank}},
                             upsert=True
                             )
 
@@ -487,6 +487,7 @@ async def gr(ctx):
 
             if rankCount == 4:
                 roundFiveCount(ctx.author.id, "gr")
+            elif rankCount == 9:
                 roundTenCount(ctx.author.id, "gr")
 
         # Send the embed after each iteration
@@ -570,7 +571,7 @@ async def grs(ctx):
         grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
 
         grsembed.add_field(name="Times Played (10 Girls)", value=f"{tenCount}", inline=False)
-        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRanking:.2f}", inline=False)
+        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRankAvg:.2f}", inline=False)
 
         await ctx.send(embed=grsembed)
     else:
