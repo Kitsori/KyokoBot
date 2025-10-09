@@ -32,28 +32,37 @@ client = MongoClient(MONGO)
 
 db = client["KyokoBot"]
 
-collection = db["GirlsStats"]
-grStats = db["GRStats"]
-grInitialRank = db["GRInitialRank"]
+gr5Stats = db["gr_5_stats"]
+gr10Stats = db["gr_10_stats"]
+FiveInitialRank = db["5InitialRank"]
+TenInitialRank = db["10InitialRank"]
 
 
 
 
 # Database Methods
 
-def commandCount(user_id, command):
-    grStats.update_one({"user_id": user_id, "command": command},
+def roundFiveCount(user_id, command):
+    gr5Stats.update_one({"user_id": user_id, "command": command},
                      {"$inc": {"count": 1}},
                              upsert=True
     )
 
-async def initialRank(user_id, rank):
-    await asyncio.to_thread(grInitialRank.insert_one,{"user_id": user_id, "rank": rank})
-
-async def initialRank(user_id, rank):
-    await asyncio.to_thread(grInitialRank.update_one,{"user_id": user_id}, {"$push": {"first_ranks": rank}},
-        upsert=True
+def roundTenCount(user_id, command):
+    gr5Stats.update_one({"user_id": user_id, "command": command},
+                     {"$inc": {"count": 1}},
+                             upsert=True
     )
+
+async def roundFiveInitialRank(user_id, rank):
+    await asyncio.to_thread(FiveInitialRank.update_one, {"user_id": user_id}, {"$push": {"first_ranks": rank}},
+                            upsert=True
+                            )
+
+async def roundTenInitialRank(user_id, rank):
+    await asyncio.to_thread(FiveInitialRank.update_one, {"user_id": user_id}, {"$push": {"first_ranks": rank}},
+                            upsert=True
+                            )
 
 
 
@@ -70,26 +79,6 @@ selfrole = "Member"
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     await bot.change_presence(activity=discord.Game(name="with Kitsori"))
-
-    try:
-        # Print all databases your account can access
-        print("Databases:", client.list_database_names())
-
-        # Optional: insert a test document if the collection is empty
-        if collection.count_documents({}) == 0:
-            collection.insert_one({
-                "name": "Miku Nakano",
-                "show": "Quintessential Quintuplets",
-                "url": "https://cdn.myanimelist.net/images/characters/14/457434.jpg"
-            })
-            print("Inserted test document into GirlsStats")
-
-        # Fetch a document to test
-        girl = collection.find_one({})
-        print("Fetched document:", girl)
-
-    except Exception as e:
-        print("MongoDB test failed:", e)
 
 
 
@@ -456,7 +445,10 @@ async def gr(ctx):
                     if 1 <= rank <= numGirls: # If the rank is in the valid range
 
                         if numGirls == 5 and rankCount == 0:
-                            asyncio.create_task(initialRank(ctx.author.id, rank))
+                            asyncio.create_task(roundFiveInitialRank(ctx.author.id, rank))
+
+                        if numGirls == 10 and rankCount == 0:
+                            asyncio.create_task(roundTenInitialRank(ctx.author.id, rank))
 
                         if ranks[rank - 1] == "-": # If the rank is empty on the embed
                             ranks[rank - 1] = name # Then set the current rank to that rank
@@ -487,13 +479,15 @@ async def gr(ctx):
         for i, rank in enumerate(ranks):
             embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
-        if rankCount >= 4:
-            commandCount(ctx.author.id, "gr")
 
 
         # If the rank count and number of girls are the same change the title to FINAL
         if rankCount == numGirls - 1:
             embedList.title = "FINAL Best Girl Ranking"
+
+            if rankCount == 4:
+                roundFiveCount(ctx.author.id, "gr")
+                roundTenCount(ctx.author.id, "gr")
 
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
@@ -555,21 +549,28 @@ async def grs(ctx):
     userid = ctx.author.id
     command = "gr"
 
-    file = grStats.find_one({"user_id": userid, "command": command})
-    rankFile = grInitialRank.find_one({"user_id": userid,})
+    gr5file = gr5Stats.find_one({"user_id": userid, "command": command})
+    gr10file = gr10Stats.find_one({"user_id": userid, "command": command})
+    FiveRankFile = FiveInitialRank.find_one({"user_id": userid, })
+    TenRankFile = TenInitialRank.find_one({"user_id": userid, })
 
 
-    rankAvg = sum(rankFile["first_ranks"]) / len(rankFile["first_ranks"])
+    fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
+    tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
 
-    if file:
-        count = file["count"]
+    if gr5file:
+        fiveCount = gr5file["count"]
+        tenCount = gr10file["count"]
 
         grsembed = discord.Embed(title=f"{ctx.author.display_name}'s Girl Ranking Stats",
                                  description="Only counts for rounds of 5+ girls! \n\u200b",
                                  color=discord.Color.blue())
 
-        grsembed.add_field(name="Times Played", value=f"{count}", inline=False)
-        grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{rankAvg:.2f}", inline=False)
+        grsembed.add_field(name="Times Played (5 Girls)", value=f"{fiveCount}", inline=False)
+        grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
+
+        grsembed.add_field(name="Times Played (10 Girls)", value=f"{fiveCount}", inline=False)
+        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
 
         await ctx.send(embed=grsembed)
 
@@ -620,16 +621,3 @@ async def grs(ctx):
 
 
 bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
-
-
-
-
-
-
-
-
-
-
-
-
-
