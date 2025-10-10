@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import random
 import asyncio
 
-from girlimages import randomGirlGen, girlDictionary
+from girlimages import randomGirlGen, girlDictionary, showDictionary
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -137,7 +137,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
-    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~grs", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -178,6 +178,7 @@ async def grhelp(ctx):
 
     grHelpEmbed.add_field(name="~gr", value="Starts a Girl Blind Ranking game..! Good luck!", inline=False)
     grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my list..! :3", inline=False)
+    grHelpEmbed.add_field(name="~gsl (show)", value="Lookup all available girls from a specific series!!", inline=False)
     grHelpEmbed.add_field(name="~grs", value="View your Girl Blind Ranking stats!!", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
@@ -558,6 +559,45 @@ async def gl(ctx, *, input):
 
     if found == False:
         await ctx.send("I couldn't find any girl with that name... :(")
+
+
+
+@bot.command()
+async def gsl(ctx, *, input):
+
+    showInput = input.lower()
+    showFound = False
+
+
+    if showInput in showDictionary:
+        entry = showDictionary[showInput]
+        showName = entry[0]["show"]
+        await ctx.send(f"I found these girls from {showName}!! :3")
+
+        nameList = []
+        for girl in showDictionary[showInput]:
+            name = girl["name"]
+            nameList.append(f" - {name}")
+
+
+            showFound = True
+
+        names = "\n".join(nameList)
+        await ctx.send(names)
+
+    if showFound == False:
+        await ctx.send("I couldn't find any shows with that title... :(")
+
+
+    #if showInput in showDictionary:
+    #    showList.append(girlDictionary[showInput])
+    #    showInfo = girlDictionary[showInput]
+
+
+    #    await ctx.send("Debug: Found show")
+
+    #    await ctx.send(f"Found {showInput}.")
+
 
 
 

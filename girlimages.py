@@ -1,5 +1,5 @@
 import random
-
+from collections import defaultdict
 
 # The Huge List of Anime Girls - Grouped by shows listed on the right
 girls = [
@@ -2199,11 +2199,7 @@ girls = [
      "Beatrice",
      "Re:Zero",
      "https://cdn.myanimelist.net/images/characters/2/591066.jpg",
-    ),(  #550
-     "",
-     "Re:Zero",
-     "https://cdn.myanimelist.net/images/characters/5/563863.jpg",
-    ),(  #551
+    ),(  #550 (551)
      "Crusch Karsten",
      "Re:Zero",
      "https://cdn.myanimelist.net/images/characters/5/563863.jpg",
@@ -3707,6 +3703,10 @@ testGirls = [
 ]
 
 girlDictionary = {name.lower(): {"name": name, "show": show, "url": url} for name, show, url in girls}
+showDictionary = defaultdict(list)
+
+for name, show, url in girls:
+    showDictionary[show.lower()].append({"name": name, "show": show, "url": url})
 
 
 
