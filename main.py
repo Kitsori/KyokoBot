@@ -651,8 +651,22 @@ async def gsl(ctx, *, input):
 
 
 @bot.command()
-async def grs(ctx, user_id: int = None):
-    userid = user_id or ctx.author.id
+async def grs(ctx, user_id: str = None):
+
+    if ctx.message.mentions:
+        user = ctx.message.mentions[0]
+        userid = user.id
+    elif user_id:
+        try:
+            userid = int(user_id)
+            user = await bot.fetch_user(userid)
+        except:
+            user = None
+            userid = int(user_id)
+    else:
+        user = ctx.author
+        userid = ctx.author.id
+
     command = "gr"
 
     # Run MongoDB lookups in a separate thread to avoid blocking the event loop
@@ -675,13 +689,21 @@ async def grs(ctx, user_id: int = None):
     if TenRankFile and "first_ranks" in TenRankFile and TenRankFile["first_ranks"]:
         tenRankAvg = round(sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"]), 2) if TenRankFile else "-"
 
-    if gr5file or gr10file:
-        fiveCount = gr5file.get("count", 0) if gr5file else 0
-        tenCount = gr10file.get("count", 0) if gr10file else 0
-        totalCount = grTotalFile.get("count", 0) if grTotalFile else 0
+    fiveCount = gr5file.get("count", 0) if gr5file else 0
+    tenCount = gr10file.get("count", 0) if gr10file else 0
+    totalCount = grTotalFile.get("count", 0) if grTotalFile else 0
+
+
+    if fiveCount + tenCount > 0:
+        if user and user.id == ctx.author.id:
+            title = f"{ctx.author.display_name}'s Girl Ranking Stats"
+        elif user:
+            title = f"{user.display_name}'s Girl Ranking Stats"
+        else:
+            return
 
         grsembed = discord.Embed(
-            title=f"{ctx.author.display_name}'s Girl Ranking Stats",
+            title=title,
             description=" \n\u200b",
             color=discord.Color.blue()
         )
@@ -703,9 +725,29 @@ async def grs(ctx, user_id: int = None):
 
 
 @bot.command()
-async def gs(ctx, *, girlName, user_id: int = None):
+async def gs(ctx, *, input):
 
-    userID = str(user_id) or str(ctx.author.id)
+    parts = input.split()
+
+    lastPart = parts[-1]
+
+    if ctx.message.mentions:
+        user = ctx.message.mentions[0]
+        userID = str(user.id)
+        girlName = " ".join(parts[:-1])
+    elif lastPart.isdigit():
+        userID = lastPart
+        girlName = " ".join(parts[:-1])
+        try:
+            user = await bot.fetch_user(int(userID))
+        except:
+            user = None
+    else:
+        user = ctx.author
+        userID = str(ctx.author.id)
+        girlName = input
+
+
 
     girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
     girlTen = await asyncio.to_thread(girlAvgRanksTen.find_one, {"girl_name": girlName.title()})
@@ -714,12 +756,16 @@ async def gs(ctx, *, girlName, user_id: int = None):
         await ctx.send(f"No rankings found for {girlName.title()}!")
         return None
 
-
     userRanks = girl["player_ranks"].get(userID) if girl else []
     userRanksTen = girlTen["player_ranks"].get(userID) if girlTen else []
 
     if not userRanks and not userRanksTen:
-        await ctx.send(f"You haven't ranked {girlName.title()}!! Get to ranking more you silly..! :3")
+        if user and user.id == ctx.author.id:
+            await ctx.send(f"You haven't ranked {girlName.title()}!! Get to ranking more you silly..! :3")
+        elif user:
+            await ctx.send(f"{user.display_name} hasn't ranked this girl yet..!")
+        else:
+            await ctx.send("No rankings found.")
         return
 
     avg = round(sum(userRanks) / len(userRanks), 2) if userRanks else "-"
@@ -753,8 +799,20 @@ async def gs(ctx, *, girlName, user_id: int = None):
 
 
 @bot.command()
-async def gt(ctx, user_id: int = None):
-    userID = str(user_id) or str(ctx.author.id)
+async def gt(ctx, user_id):
+
+    if ctx.message.mentions:
+        user = ctx.message.mentions[0]
+        userID = str(user.id)
+    elif user_id and user_id.isdigit():
+        try:
+            user = await bot.fetch_user(user_id)
+        except:
+            user = None
+        userID = user_id
+    else:
+        user = ctx.author
+        userID = str(ctx.author.id)
 
     girls = await asyncio.to_thread(list, girlAvgRanks.find())
 
@@ -771,14 +829,25 @@ async def gt(ctx, user_id: int = None):
         userAverages.append((girl["girl_name"], round(avg, 2)))
 
     if not userAverages:
-        await ctx.send("You haven't ranked any girls 3 times yet silly!!")
+        if user and user.id == ctx.author.id:
+            await ctx.send("You haven't ranked any girls 3 times yet silly!!")
+        elif user:
+            await ctx.send(f"{user.display_name} hasn't ranked any girls 3 times yet..!")
+        else:
+            await ctx.send("No rankings found.")
         return
 
     userAverages.sort(key=lambda x: x[1], reverse=False)
-
     topRanks = userAverages[:15]
 
-    embed = discord.Embed(title=f"{ctx.author.display_name}'s Highest Ranked Girls", description="**Rounds of 5** - Top 15 \n\u200b", color=discord.Color.blue())
+    if user and user.id == ctx.author.id:
+        title = f"{ctx.author.display_name}'s Highest Ranked Girls"
+    else:
+        userName = user.display_name if user else f"User {user_id}"
+        title = f"{userName}'s Highest Ranked Girls"
+
+
+    embed = discord.Embed(title=title, description="**Rounds of 5** - Top 15 \n\u200b", color=discord.Color.blue())
 
     count = 1
     for name, avg in topRanks:
@@ -793,8 +862,20 @@ async def gt(ctx, user_id: int = None):
 
 
 @bot.command()
-async def gtt(ctx, user_id: int = None):
-    userID = str(user_id) or str(ctx.author.id)
+async def gtt(ctx, user_id):
+
+    if ctx.message.mentions:
+        user = ctx.message.mentions[0]
+        userID = str(user.id)
+    elif user_id and user_id.isdigit():
+        try:
+            user = await bot.fetch_user(user_id)
+        except:
+            user = None
+        userID = user_id
+    else:
+        user = ctx.author
+        userID = str(ctx.author.id)
 
     girls = await asyncio.to_thread(list, girlAvgRanksTen.find())
 
@@ -811,14 +892,24 @@ async def gtt(ctx, user_id: int = None):
         userAverages.append((girl["girl_name"], round(avg, 2)))
 
     if not userAverages:
-        await ctx.send("You haven't ranked any girls 3 times yet silly!!")
+        if user and user.id == ctx.author.id:
+            await ctx.send("You haven't ranked any girls 3 times yet silly!!")
+        elif user:
+            await ctx.send(f"{user.display_name} hasn't ranked any girls 3 times yet..!")
+        else:
+            await ctx.send("No rankings found.")
         return
 
     userAverages.sort(key=lambda x: x[1], reverse=False)
-
     topRanks = userAverages[:15]
 
-    embed = discord.Embed(title=f"{ctx.author.display_name}'s Highest Ranked Girls", description="**Rounds of 10**   -   Top 15 \n\u200b", color=discord.Color.blue())
+    if user and user.id == ctx.author.id:
+        title = f"{ctx.author.display_name}'s Highest Ranked Girls"
+    else:
+        userName = user.display_name if user else f"User {user_id}"
+        title = f"{userName}'s Highest Ranked Girls"
+
+    embed = discord.Embed(title=title, description="**Rounds of 10**   -   Top 15 \n\u200b", color=discord.Color.blue())
 
     count = 1
     for name, avg in topRanks:
