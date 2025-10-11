@@ -651,8 +651,8 @@ async def gsl(ctx, *, input):
 
 
 @bot.command()
-async def grs(ctx):
-    userid = ctx.author.id
+async def grs(ctx, user_id: int = None):
+    userid = user_id or ctx.author.id
     command = "gr"
 
     # Run MongoDB lookups in a separate thread to avoid blocking the event loop
@@ -703,9 +703,9 @@ async def grs(ctx):
 
 
 @bot.command()
-async def gs(ctx, *, girlName):
+async def gs(ctx, *, girlName, user_id: int = None):
 
-    userID = str(ctx.author.id)
+    userID = str(user_id) or str(ctx.author.id)
 
     girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
     girlTen = await asyncio.to_thread(girlAvgRanksTen.find_one, {"girl_name": girlName.title()})
@@ -753,8 +753,8 @@ async def gs(ctx, *, girlName):
 
 
 @bot.command()
-async def gt(ctx):
-    userID = str(ctx.author.id)
+async def gt(ctx, user_id: int = None):
+    userID = str(user_id) or str(ctx.author.id)
 
     girls = await asyncio.to_thread(list, girlAvgRanks.find())
 
@@ -793,8 +793,8 @@ async def gt(ctx):
 
 
 @bot.command()
-async def gtt(ctx):
-    userID = str(ctx.author.id)
+async def gtt(ctx, user_id: int = None):
+    userID = str(user_id) or str(ctx.author.id)
 
     girls = await asyncio.to_thread(list, girlAvgRanksTen.find())
 
