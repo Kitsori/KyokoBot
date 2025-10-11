@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import random
 import asyncio
 
-from girlimages import randomGirlGen, girlDictionary, showDictionary
+from girlimages import randomGirlGen, testGirlGen, girlDictionary, showDictionary
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -40,7 +40,8 @@ grTotalPlays = db["grTotalPlays"]
 FiveInitialRank = db["5InitialRank"]
 TenInitialRank = db["10InitialRank"]
 
-girlAvgRanks = db["GirlAverageRanks"]
+girlAvgRanks = db["GirlAverageRanks5"]
+girlAvgRanksTen = db["GirlAverageRanks10"]
 
 
 
@@ -81,12 +82,17 @@ async def roundTenInitialRank(user_id, rank):
 async def avgGirlRank(girlName, user_id, rank):
     fieldName = f"player_ranks.{user_id}"
 
-    await asyncio.to_thread(
-        girlAvgRanks.update_one,
-        {"girl_name": girlName},
-        {"$push": {fieldName: rank}},
+    await asyncio.to_thread(girlAvgRanks.update_one,{"girl_name": girlName},{"$push": {fieldName: rank}},
         upsert=True
     )
+
+async def avgGirlRankTen(girlName, user_id, rank):
+    fieldName = f"player_ranks.{user_id}"
+
+    await asyncio.to_thread(girlAvgRanksTen.update_one,{"girl_name": girlName},{"$push": {fieldName: rank}},
+        upsert=True
+    )
+
 
 
 
@@ -148,7 +154,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
-    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -187,11 +193,17 @@ async def grhelp(ctx):
         color=discord.Color.blue()
     )
 
-    grHelpEmbed.add_field(name="~gr", value="Starts a Girl Blind Ranking game..! Good luck!", inline=False)
-    grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my list..! :3", inline=False)
-    grHelpEmbed.add_field(name="~gsl (show)", value="Lookup all available girls from a specific series!!", inline=False)
+    grHelpEmbed.add_field(name="~gr", value="Starts a Girl Blind Ranking game..! Good luck!\n\u200b", inline=False)
+    grHelpEmbed.add_field(name="__Lookup Commands__", value="", inline=False)
+    grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my list..!", inline=False)
+    grHelpEmbed.add_field(name="~gsl (show)", value="Lookup all available girls from a specific series!!\n\u200b", inline=False)
+    grHelpEmbed.add_field(name="__Stats Commands__", value="", inline=False)
     grHelpEmbed.add_field(name="~grs", value="View your general Girl Blind Ranking stats!!", inline=False)
     grHelpEmbed.add_field(name="~gs", value="View your stats for a specific girl..!!", inline=False)
+    grHelpEmbed.add_field(name="~gt", value="View your top ranked girls for rounds of 5..!", inline=False)
+    grHelpEmbed.add_field(name="~gtg", value="View the top ranked girls globally for rounds of 5..!", inline=False)
+    grHelpEmbed.add_field(name="~gtt", value="View your top ranked girls for rounds of 10..!", inline=False)
+    grHelpEmbed.add_field(name="~gttg", value="View the top ranked girls globally for rounds of 10..!", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -426,6 +438,9 @@ async def gr(ctx):
             if numGirls == 5:
                 asyncio.create_task(avgGirlRank(name, user_id, finalSlotIndex + 1))
 
+            if numGirls == 10:
+                asyncio.create_task(avgGirlRankTen(name, user_id, finalSlotIndex + 1))
+
             await ctx.send("Here's your FINAL Best Girl Ranking! Hope you didn't mess up too bad..! Heehee..!")
             await asyncio.sleep(3)
 
@@ -490,6 +505,9 @@ async def gr(ctx):
 
                             if numGirls == 5:
                                 asyncio.create_task(avgGirlRank(name, user_id, rank))
+
+                            if numGirls == 10:
+                                asyncio.create_task(avgGirlRankTen(name, user_id, rank))
 
                         else: # Rank is already full
                             await ctx.send(f"That rank is already full you dummy..!")
@@ -648,19 +666,19 @@ async def grs(ctx):
 
     gr5file, gr10file, grTotalFile, FiveRankFile, TenRankFile = await asyncio.to_thread(fetch_data)
 
-    fiveRankAvg = 0
-    tenRankAvg = 0
+    fiveRankAvg = "-"
+    tenRankAvg = "-"
 
     if FiveRankFile and "first_ranks" in FiveRankFile and FiveRankFile["first_ranks"]:
-        fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
+        fiveRankAvg = round(sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"]), 2) if FiveRankFile else "-"
 
     if TenRankFile and "first_ranks" in TenRankFile and TenRankFile["first_ranks"]:
-        tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
+        tenRankAvg = round(sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"]), 2) if TenRankFile else "-"
 
-    if gr5file and gr10file:
-        fiveCount = gr5file.get("count", 0)
-        tenCount = gr10file.get("count", 0)
-        totalCount = grTotalFile.get("count", 0)
+    if gr5file or gr10file:
+        fiveCount = gr5file.get("count", 0) if gr5file else 0
+        tenCount = gr10file.get("count", 0) if gr10file else 0
+        totalCount = grTotalFile.get("count", 0) if grTotalFile else 0
 
         grsembed = discord.Embed(
             title=f"{ctx.author.display_name}'s Girl Ranking Stats",
@@ -670,13 +688,15 @@ async def grs(ctx):
 
         grsembed.add_field(name="__Total Times Played (5+ Girls)__", value=f"{totalCount}\n\u200b", inline=False)
         grsembed.add_field(name="__Times Played (5 Girls)__", value=f"{fiveCount}", inline=False)
-        grsembed.add_field(name="__Average First Rank (5 Girls)__", value=f"{fiveRankAvg:.2f}\n\u200b", inline=False)
+        grsembed.add_field(name="__Average First Rank (5 Girls)__", value=f"{fiveRankAvg}\n\u200b", inline=False)
         grsembed.add_field(name="__Times Played (10 Girls)__", value=f"{tenCount}", inline=False)
-        grsembed.add_field(name="__Average First Rank (10 Girls)__", value=f"{tenRankAvg:.2f}", inline=False)
+        grsembed.add_field(name="__Average First Rank (10 Girls)__", value=f"{tenRankAvg}", inline=False)
 
         await ctx.send(embed=grsembed)
     else:
         await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
+
+
 
 
 
@@ -688,20 +708,22 @@ async def gs(ctx, *, girlName):
     userID = str(ctx.author.id)
 
     girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
+    girlTen = await asyncio.to_thread(girlAvgRanksTen.find_one, {"girl_name": girlName.title()})
 
-    if not girl or "player_ranks" not in girl:
+    if (not girl or "player_ranks" not in girl) and (not girlTen or "player_ranks" not in girlTen):
         await ctx.send(f"No rankings found for {girlName.title()}!")
         return None
 
-    total = 0
-    count = 0
 
-    userRanks = girl["player_ranks"].get(userID)
-    if not userRanks:
+    userRanks = girl["player_ranks"].get(userID) if girl else []
+    userRanksTen = girlTen["player_ranks"].get(userID) if girlTen else []
+
+    if not userRanks and not userRanksTen:
         await ctx.send(f"You haven't ranked {girlName.title()}!! Get to ranking more you silly..! :3")
         return
 
-    avg = round(sum(userRanks) / len(userRanks), 2)
+    avg = round(sum(userRanks) / len(userRanks), 2) if userRanks else "-"
+    avgTen = round(sum(userRanksTen) / len(userRanksTen), 2) if userRanksTen else "-"
 
 
 
@@ -715,10 +737,189 @@ async def gs(ctx, *, girlName):
         embed = discord.Embed(title=f"{ctx.author.display_name}'s {girlName.title()} Stats \n\u200b", color=discord.Color.blue())
         embed.set_image(url=url)
 
+        embed.add_field(name="__Total Times Rolled (5+ Girls)__", value=f"{len(userRanks + userRanksTen)}\n\u200b", inline=False)
         embed.add_field(name="__Times Rolled (5 Girls)__", value=len(userRanks), inline=False)
-        embed.add_field(name="__Average Rank (5 Girls)__", value=avg, inline=False)
+        embed.add_field(name="__Average Rank (5 Girls)__", value=f"{avg}\n\u200b", inline=False)
+        embed.add_field(name="__Times Rolled (10 Girls)__", value=len(userRanksTen), inline=False)
+        embed.add_field(name="__Average Rank (10 Girls)__", value=avgTen, inline=False)
 
         await ctx.send(embed=embed)
+
+
+
+
+
+
+@bot.command()
+async def gt(ctx):
+    userID = str(ctx.author.id)
+
+    girls = await asyncio.to_thread(list, girlAvgRanks.find())
+
+    userAverages = []
+
+    for girl in girls:
+        ranks = girl.get("player_ranks", {}).get(userID)
+
+        if not ranks or len(ranks) < 3:
+            continue
+
+
+        avg = sum(ranks) / len(ranks)
+        userAverages.append((girl["girl_name"], round(avg, 2)))
+
+    if not userAverages:
+        await ctx.send("You haven't ranked any girls 3 times yet silly!!")
+        return
+
+    userAverages.sort(key=lambda x: x[1], reverse=False)
+
+    topRanks = userAverages[:15]
+
+    embed = discord.Embed(title=f"{ctx.author.display_name}'s Highest Ranked Girls", description="**Rounds of 5** - Top 15 \n\u200b", color=discord.Color.blue())
+
+    count = 1
+    for name, avg in topRanks:
+        embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
+        count += 1
+
+    embed.set_footer(text="Minimum of at least 3 rankings..!")
+
+    await ctx.send(embed=embed)
+
+
+
+
+@bot.command()
+async def gtt(ctx):
+    userID = str(ctx.author.id)
+
+    girls = await asyncio.to_thread(list, girlAvgRanksTen.find())
+
+    userAverages = []
+
+    for girl in girls:
+        ranks = girl.get("player_ranks", {}).get(userID)
+
+        if not ranks or len(ranks) < 3:
+            continue
+
+
+        avg = sum(ranks) / len(ranks)
+        userAverages.append((girl["girl_name"], round(avg, 2)))
+
+    if not userAverages:
+        await ctx.send("You haven't ranked any girls 3 times yet silly!!")
+        return
+
+    userAverages.sort(key=lambda x: x[1], reverse=False)
+
+    topRanks = userAverages[:15]
+
+    embed = discord.Embed(title=f"{ctx.author.display_name}'s Highest Ranked Girls", description="**Rounds of 10**   -   Top 15 \n\u200b", color=discord.Color.blue())
+
+    count = 1
+    for name, avg in topRanks:
+        embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
+        count += 1
+
+    embed.set_footer(text="Minimum of at least 3 rankings..!")
+
+    await ctx.send(embed=embed)
+
+
+
+
+
+
+
+@bot.command()
+async def gtg(ctx):
+    girls = await asyncio.to_thread(list, girlAvgRanks.find())
+
+
+    globalAverages = []
+
+    for girl in girls:
+        playerList = girl.get("player_ranks", [])
+
+        userAverages = []
+
+        for rankList in playerList.values():
+            if rankList:
+                userAverages.append(sum(rankList) / len(rankList))
+
+        if len(userAverages) < 3:
+            continue
+
+        avg = round(sum(userAverages) / len(userAverages), 2)
+        globalAverages.append((girl["girl_name"], avg))
+
+    if not globalAverages:
+        await ctx.send("There hasn't been enough ranking done yet..! :(")
+        return
+
+    globalAverages.sort(key=lambda x: x[1], reverse=False)
+    topGlobalRanks = globalAverages[:15]
+
+    embed = discord.Embed(title="Globally Highest Ranked Girls", description="Top 15 \n\u200b", color=discord.Color.blue())
+
+    count = 1
+    for name, avg in topGlobalRanks:
+        embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
+        count += 1
+
+    embed.set_footer(text="Minimum of at least 3 unique user rankings..!")
+
+    await ctx.send(embed=embed)
+
+
+
+
+@bot.command()
+async def gttg(ctx):
+    girls = await asyncio.to_thread(list, girlAvgRanksTen.find())
+
+
+    globalAverages = []
+
+    for girl in girls:
+        playerList = girl.get("player_ranks", [])
+
+        userAverages = []
+
+        for rankList in playerList.values():
+            if rankList:
+                userAverages.append(sum(rankList) / len(rankList))
+
+        #if len(userAverages) < 3:
+        #    continue
+
+        avg = round(sum(userAverages) / len(userAverages), 2)
+        globalAverages.append((girl["girl_name"], avg))
+
+    if not globalAverages:
+        await ctx.send("There hasn't been enough ranking done yet..! :(")
+        return
+
+    globalAverages.sort(key=lambda x: x[1], reverse=False)
+    topGlobalRanks = globalAverages[:15]
+
+    embed = discord.Embed(title="Globally Highest Ranked Girls", description="Top 15 \n\u200b", color=discord.Color.blue())
+
+    count = 1
+    for name, avg in topGlobalRanks:
+        embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
+        count += 1
+
+    embed.set_footer(text="Minimum of at least 3 unique user rankings..!")
+
+    await ctx.send(embed=embed)
+
+
+
+
+
 
 
 

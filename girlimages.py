@@ -2198,8 +2198,8 @@ girls = [
     ),(  #549
      "Beatrice",
      "Re:Zero",
-     "https://cdn.myanimelist.net/images/characters/2/591066.jpg",
-    ),(  #550 (551)
+     "https://cdn.myanimelist.net/images/characters/2/591066.jpg", #550
+    ),(  #551
      "Crusch Karsten",
      "Re:Zero",
      "https://cdn.myanimelist.net/images/characters/5/563863.jpg",
@@ -3698,7 +3698,27 @@ testGirls = [
      "Fern",
      "Frieren: Beyond Journey's End",
      "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"
-    ),
+    ),(  #914
+     "Leafa",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/5/254605.jpg",
+    ),(  #915
+     "Yui",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/15/264165.jpg",
+    ),(  #916
+     "Keiko Ayano",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/10/185423.jpg",
+    ),(  #917
+     "Rika Shinozaki",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/8/177115.jpg",
+    ),(  #918
+     "Sachi",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/7/264145.jpg",
+    )
 
 ]
 
@@ -3707,6 +3727,7 @@ showDictionary = defaultdict(list)
 
 for name, show, url in girls:
     showDictionary[show.lower()].append({"name": name, "show": show, "url": url})
+
 
 
 
