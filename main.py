@@ -78,6 +78,17 @@ async def roundTenInitialRank(user_id, rank):
                             )
 
 
+async def avgGirlRank(girlName, user_id, rank):
+    fieldName = f"player_ranks.{user_id}"
+
+    await asyncio.to_thread(
+        girlAvgRanks.update_one,
+        {"girl_name": girlName},
+        {"$push": {fieldName: rank}},
+        upsert=True
+    )
+
+
 
 # Variables
 
@@ -137,7 +148,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
-    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -179,7 +190,8 @@ async def grhelp(ctx):
     grHelpEmbed.add_field(name="~gr", value="Starts a Girl Blind Ranking game..! Good luck!", inline=False)
     grHelpEmbed.add_field(name="~gl (name)", value="Lookup a girl's name in my list..! :3", inline=False)
     grHelpEmbed.add_field(name="~gsl (show)", value="Lookup all available girls from a specific series!!", inline=False)
-    grHelpEmbed.add_field(name="~grs", value="View your Girl Blind Ranking stats!!", inline=False)
+    grHelpEmbed.add_field(name="~grs", value="View your general Girl Blind Ranking stats!!", inline=False)
+    grHelpEmbed.add_field(name="~gs", value="View your stats for a specific girl..!!", inline=False)
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -310,6 +322,7 @@ async def gr(ctx):
     await ctx.send("How many do you wanna rank..? (1-10)")
 
     numGirls = None
+    user_id = ctx.author.id
 
 
 
@@ -410,6 +423,9 @@ async def gr(ctx):
             await asyncio.sleep(2)
             embedList.clear_fields() # Clear embed
 
+            if numGirls == 5:
+                asyncio.create_task(avgGirlRank(name, user_id, finalSlotIndex + 1))
+
             await ctx.send("Here's your FINAL Best Girl Ranking! Hope you didn't mess up too bad..! Heehee..!")
             await asyncio.sleep(3)
 
@@ -472,6 +488,9 @@ async def gr(ctx):
                             await asyncio.sleep(2)
                             await ctx.send("Here's your updated Best Girl Ranking! :3")
 
+                            if numGirls == 5:
+                                asyncio.create_task(avgGirlRank(name, user_id, rank))
+
                         else: # Rank is already full
                             await ctx.send(f"That rank is already full you dummy..!")
 
@@ -507,12 +526,17 @@ async def gr(ctx):
             if rankCount >= 4:
                 grTotalPlay(ctx.author.id, "gr")
 
+
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
         await asyncio.sleep(3)
 
         rankCount += 1
         # As long as rankCount is less than the number of girls repeat the process of the loop.
+
+
+
+
 
 
 
@@ -562,6 +586,10 @@ async def gl(ctx, *, input):
 
 
 
+
+
+
+
 @bot.command()
 async def gsl(ctx, *, input):
 
@@ -597,6 +625,9 @@ async def gsl(ctx, *, input):
     #    await ctx.send("Debug: Found show")
 
     #    await ctx.send(f"Found {showInput}.")
+
+
+
 
 
 
@@ -649,82 +680,46 @@ async def grs(ctx):
 
 
 
-#@bot.command()
-#async def grs(ctx):
-#    userid = ctx.author.id
-#    command = "gr"
-
-#    gr5file = gr5Stats.find_one({"user_id": userid, "command": command})
-#    gr10file = gr10Stats.find_one({"user_id": userid, "command": command})
-#    FiveRankFile = FiveInitialRank.find_one({"user_id": userid, })
-#    TenRankFile = TenInitialRank.find_one({"user_id": userid, })
 
 
-#   fiveRankAvg = sum(FiveRankFile["first_ranks"]) / len(FiveRankFile["first_ranks"])
-#    tenRankAvg = sum(TenRankFile["first_ranks"]) / len(TenRankFile["first_ranks"])
+@bot.command()
+async def gs(ctx, *, girlName):
 
-#    if gr5file and gr10file:
-#        fiveCount = gr5file["count"]
-#        tenCount = gr10file["count"]
+    userID = str(ctx.author.id)
 
-#        grsembed = discord.Embed(title=f"{ctx.author.display_name}'s Girl Ranking Stats",
-#                                 description="Only counts for rounds of 5+ girls! \n\u200b",
-#                                 color=discord.Color.blue())
+    girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
 
-#        grsembed.add_field(name="Times Played (5 Girls)", value=f"{fiveCount}", inline=False)
-#        grsembed.add_field(name="Average First Rank (5 Girls)", value=f"{fiveRankAvg:.2f}", inline=False)
+    if not girl or "player_ranks" not in girl:
+        await ctx.send(f"No rankings found for {girlName.title()}!")
+        return None
 
-#        grsembed.add_field(name="Times Played (10 Girls)", value=f"{tenCount}", inline=False)
-#        grsembed.add_field(name="Average First Rank (10 Girls)", value=f"{tenRankAvg:.2f}", inline=False)
+    total = 0
+    count = 0
 
-#        await ctx.send(embed=grsembed)
-#    else:
-#        await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
+    userRanks = girl["player_ranks"].get(userID)
+    if not userRanks:
+        await ctx.send(f"You haven't ranked {girlName.title()}!! Get to ranking more you silly..! :3")
+        return
+
+    avg = round(sum(userRanks) / len(userRanks), 2)
 
 
 
+    nameInput = girlName.lower()
 
+    if nameInput in girlDictionary:
+        girlInfo = girlDictionary[nameInput]
+        name = girlInfo["name"]
+        url = girlInfo["url"]
 
-    #girlList = testGirlGen(5)
-    #await ctx.send("Made girl list")
+        embed = discord.Embed(title=f"{ctx.author.display_name}'s {girlName.title()} Stats \n\u200b", color=discord.Color.blue())
+        embed.set_image(url=url)
 
-    #notFound = True
-    #number = 0
+        embed.add_field(name="__Times Rolled (5 Girls)__", value=len(userRanks), inline=False)
+        embed.add_field(name="__Average Rank (5 Girls)__", value=avg, inline=False)
 
-    #for i in girlList:
-        #await ctx.send("Debug: Entered loop")
-        #name, show, url = girlList[number]
+        await ctx.send(embed=embed)
 
-        #nameLower = name.lower()
-        #inputLower = input.lower()
-        #await ctx.send(f"Debug: {number}")
-        #await ctx.send(f"Debug Name: {nameLower}")
-        #await ctx.send(f"Debug Input: {inputLower}")
-        #if nameLower == inputLower:
-            #await ctx.send("Debug: Entered if equal loop")
-            #embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
-            #embed.set_image(url=url)
-
-
-            #await ctx.send("I found this girl based off your search!!!")
-            #await ctx.send(embed=embed)
-            #break
-        #else:
-            #number += 1
-            #ctx.send("Debug: Passing/Add Num")
-            #pass
-
-    #await ctx.send(f"Debug notFound: {notFound}")
-    #if notFound == True:
-        #await ctx.send("I found no girls matching your search.. :(")
-
-
-
-
-
-#python -m pip install "pymongo[srv]"
-
-#mongodb+srv://Kitsori:Yl9mdb1hp!@kyokobot.9wzvrtx.mongodb.net/?retryWrites=true&w=majority&appName=KyokoBot
 
 
 bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
