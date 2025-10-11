@@ -734,7 +734,9 @@ async def gs(ctx, *, girlName):
         name = girlInfo["name"]
         url = girlInfo["url"]
 
-        embed = discord.Embed(title=f"{ctx.author.display_name}'s {girlName.title()} Stats \n\u200b", color=discord.Color.blue())
+        embed = discord.Embed(title=f"{girlName.title()} Stats", description=f"for {ctx.author.display_name}\n\u200b",
+                              color=discord.Color.blue())
+
         embed.set_image(url=url)
 
         embed.add_field(name="__Total Times Rolled (5+ Girls)__", value=f"{len(userRanks + userRanksTen)}\n\u200b", inline=False)
