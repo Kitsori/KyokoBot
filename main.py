@@ -819,7 +819,7 @@ async def gt(ctx, user_id: str = None):
     userAverages = []
 
     for girl in girls:
-        ranks = girl.get("player_ranks", {}).get(userID)
+        ranks = girl.get("player_ranks", {}).get(str(userID))
 
         if not ranks or len(ranks) < 3:
             continue
@@ -863,7 +863,7 @@ async def gt(ctx, user_id: str = None):
 
 @bot.command()
 async def gtt(ctx, user_id: str = None):
-    
+
     if ctx.message.mentions:
         user = ctx.message.mentions[0]
         userID = int(user.id)
