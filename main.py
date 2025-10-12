@@ -618,15 +618,18 @@ async def gsl(ctx, *, input):
     if showInput in showDictionary:
         entry = showDictionary[showInput]
         showName = entry[0]["show"]
-        await ctx.send(f"I found these girls from {showName}!! :3")
+        count = 0
 
         nameList = []
         for girl in showDictionary[showInput]:
             name = girl["name"]
             nameList.append(f" - {name}")
+            count += 1
 
 
             showFound = True
+
+        await ctx.send(f"I found {count} girls from {showName}!! :3")
 
         names = "\n".join(nameList)
         await ctx.send(names)
