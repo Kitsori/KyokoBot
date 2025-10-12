@@ -799,20 +799,20 @@ async def gs(ctx, *, input):
 
 
 @bot.command()
-async def gt(ctx, user_id):
+async def gt(ctx, user_id: str = None):
 
     if ctx.message.mentions:
         user = ctx.message.mentions[0]
-        userID = str(user.id)
-    elif user_id and user_id.isdigit():
+        userID = int(user.id)
+    elif user_id:
         try:
-            user = await bot.fetch_user(user_id)
+            userID = int(user_id)
+            user = await bot.fetch_user(userID)
         except:
             user = None
-        userID = user_id
     else:
         user = ctx.author
-        userID = str(ctx.author.id)
+        userID = ctx.author.id
 
     girls = await asyncio.to_thread(list, girlAvgRanks.find())
 
@@ -862,20 +862,20 @@ async def gt(ctx, user_id):
 
 
 @bot.command()
-async def gtt(ctx, user_id):
-
+async def gtt(ctx, user_id: str = None):
+    
     if ctx.message.mentions:
         user = ctx.message.mentions[0]
-        userID = str(user.id)
-    elif user_id and user_id.isdigit():
+        userID = int(user.id)
+    elif user_id:
         try:
-            user = await bot.fetch_user(user_id)
+            userID = int(user_id)
+            user = await bot.fetch_user(userID)
         except:
             user = None
-        userID = user_id
     else:
         user = ctx.author
-        userID = str(ctx.author.id)
+        userID = ctx.author.id
 
     girls = await asyncio.to_thread(list, girlAvgRanksTen.find())
 
