@@ -631,7 +631,10 @@ async def gsl(ctx, *, input):
 
         await ctx.send(f"I found {count} girls from {showName}!! :3")
 
+        nameList.sort()
+
         names = "\n".join(nameList)
+
         await ctx.send(names)
 
     if showFound == False:
