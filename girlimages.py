@@ -232,7 +232,7 @@ girls = [
      "My Hero Academia",
      "https://media.discordapp.net/attachments/1423388983915708558/1423471797382418452/301045.png?"
     ),(  #58
-     "Yuu Takeyama",
+     "Mt. Lady",
      "My Hero Academia",
      "https://media.discordapp.net/attachments/1423388983915708558/1423471852713545838/301651.png?"
     ),(  #59
@@ -3887,8 +3887,99 @@ girls = [
      "Mejiro Ardan",
      "Uma Musume",
      "https://cdn.myanimelist.net/images/characters/6/577276.jpg",
+    ),(
+     "Nejire Hadou",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/2/549468.jpg",
+    ),(
+     "Camie Utsushimi",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/5/360253.jpg",
+    ),(
+     "Mitsuki Bakugou",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/3/359201.jpg",
+    ),(
+     "Itsuka Kendou",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/5/366577.jpg",
+    ),(
+     "Inko Midoriya",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/4/510381.jpg",
+    ),(
+     "Nana Shimura",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/4/361251.jpg",
+    ),(
+     "Mirko",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/11/602198.jpg",
+    ),(
+     "Eri",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/8/437981.jpg",
+    ),(
+     "Kaina Tsutsumi",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/16/501763.jpg",
+    ),(
+     "Star and Stripe",
+     "My Hero Academia",
+     "https://cdn.myanimelist.net/images/characters/11/507077.jpg",
+    ),(
+     "Neptune",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/16/299873.jpg",
+    ),(
+     "Noire",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/8/222923.jpg",
+    ),(
+     "Pupurut",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/3/222937.jpg",
+    ),(
+     "Nepgear",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/10/222929.jpg",
+    ),(
+     "Blanc",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/7/222925.jpg",
+    ),(
+     "Uni",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/14/222931.jpg",
+    ),(
+     "Vert",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/12/222927.jpg",
+    ),(
+     "IF",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/10/206095.jpg",
+    ),(
+     "Compa",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/7/594279.jpg",
+    ),(
+     "Ram (HN)",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/11/222933.jpg",
+    ),(
+     "Pish",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/7/222941.jpg",
+    ),(
+     "Histoire",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/5/206097.jpg",
+    ),(
+     "5pb.",
+     "Hyperdimension Neptunia",
+     "https://cdn.myanimelist.net/images/characters/13/215143.jpg",
     )
-
 ]
 
 
