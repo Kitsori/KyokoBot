@@ -3671,53 +3671,6 @@ girls = [
      "Sachi",
      "Sword Art Online",
      "https://cdn.myanimelist.net/images/characters/7/264145.jpg",
-    )
-
-]
-
-
-
-testGirls = [
-    (  #543
-     "Michiru Kinushima",
-     "Plastic Memories",
-     "https://cdn.myanimelist.net/images/characters/5/280701.jpg",
-    ),(  #544
-     "Eru Miru",
-     "Plastic Memories",
-     "https://cdn.myanimelist.net/images/characters/8/280702.jpg",
-    ),(  #545
-     "Kazuki Kuwanomi",
-     "Plastic Memories",
-     "https://cdn.myanimelist.net/images/characters/12/280704.jpg",
-    ),(  #546
-     "Akane Kurokawa",
-     "Oshi no Ko",
-     "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"
-    ),(  #547
-     "Fern",
-     "Frieren: Beyond Journey's End",
-     "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"
-    ),(  #914
-     "Leafa",
-     "Sword Art Online",
-     "https://cdn.myanimelist.net/images/characters/5/254605.jpg",
-    ),(  #915
-     "Yui",
-     "Sword Art Online",
-     "https://cdn.myanimelist.net/images/characters/15/264165.jpg",
-    ),(  #916
-     "Keiko Ayano",
-     "Sword Art Online",
-     "https://cdn.myanimelist.net/images/characters/10/185423.jpg",
-    ),(  #917
-     "Rika Shinozaki",
-     "Sword Art Online",
-     "https://cdn.myanimelist.net/images/characters/8/177115.jpg",
-    ),(  #918
-     "Sachi",
-     "Sword Art Online",
-     "https://cdn.myanimelist.net/images/characters/7/264145.jpg",
     ),(
      "Toukai Teiou",
      "Uma Musume",
@@ -3934,6 +3887,53 @@ testGirls = [
      "Mejiro Ardan",
      "Uma Musume",
      "https://cdn.myanimelist.net/images/characters/6/577276.jpg",
+    )
+
+]
+
+
+
+testGirls = [
+    (  #543
+     "Michiru Kinushima",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/5/280701.jpg",
+    ),(  #544
+     "Eru Miru",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/8/280702.jpg",
+    ),(  #545
+     "Kazuki Kuwanomi",
+     "Plastic Memories",
+     "https://cdn.myanimelist.net/images/characters/12/280704.jpg",
+    ),(  #546
+     "Akane Kurokawa",
+     "Oshi no Ko",
+     "https://media.discordapp.net/attachments/1422438714730217482/1423061165101158472/Akane_Kurokawa.jpg"
+    ),(  #547
+     "Fern",
+     "Frieren: Beyond Journey's End",
+     "https://media.discordapp.net/attachments/1422438714730217482/1423054988330008708/Fern.jpg?"
+    ),(  #914
+     "Leafa",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/5/254605.jpg",
+    ),(  #915
+     "Yui",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/15/264165.jpg",
+    ),(  #916
+     "Keiko Ayano",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/10/185423.jpg",
+    ),(  #917
+     "Rika Shinozaki",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/8/177115.jpg",
+    ),(  #918
+     "Sachi",
+     "Sword Art Online",
+     "https://cdn.myanimelist.net/images/characters/7/264145.jpg",
     )#,(
      #"",
      #"",
