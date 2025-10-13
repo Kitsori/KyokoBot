@@ -3979,6 +3979,258 @@ girls = [
      "5pb.",
      "Hyperdimension Neptunia",
      "https://cdn.myanimelist.net/images/characters/13/215143.jpg",
+    ),(
+     "Mikoto Misaka",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/16/345046.jpg",
+    ),(
+     "Kuroko Shirai",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/13/69380.jpg",
+    ),(
+     "Last Order",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/5/112393.jpg",
+    ),(
+     "Index Librorum Prohibitorum",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/3/109007.jpg",
+    ),(
+     "MISAKA 10032",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/2/73911.jpg",
+    ),(
+     "Kaori Kanzaki",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/16/37716.jpg",
+    ),(
+     "Komoe Tsukuyomi",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/11/101005.jpg",
+    ),(
+     "Aisa Himegami",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/7/37948.jpg",
+    ),(
+     "Kazari Uiharu",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/3/65711.jpg",
+    ),(
+     "Mitsuko Kongou",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/7/396740.jpg",
+    ),(
+     "Itsuwa",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/10/109407.jpg",
+    ),(
+     "Seiri Fukiyose",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/2/109979.jpg",
+    ),(
+     "Shizuri Mugino",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/5/210225.jpg",
+    ),(
+     "Saiai Kinuhata",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/8/210223.jpg",
+    ),(
+     "Ruiko Saten",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/13/405744.jpg",
+    ),(
+     "Misaki Shokuhou",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/14/396278.jpg",
+    ),(
+     "Frenda Seivelun",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/11/208751.jpg",
+    ),(
+     "Shinobu Nunotaba",
+     "Toaru",
+     "https://cdn.myanimelist.net/images/characters/3/203015.jpg",
+    ),(
+     "Asuka Langley Souryuu",
+     "Neon Genesis Evangelion",
+     "https://cdn.myanimelist.net/images/characters/7/64541.jpg",
+    ),(
+     "Rei Ayanami",
+     "Neon Genesis Evangelion",
+     "https://cdn.myanimelist.net/images/characters/11/314932.jpg",
+    ),(
+     "Misato Katsuragi",
+     "Neon Genesis Evangelion",
+     "https://cdn.myanimelist.net/images/characters/14/80156.jpg",
+    ),(
+     "Ritsuko Akagi",
+     "Neon Genesis Evangelion",
+     "https://cdn.myanimelist.net/images/characters/13/108139.jpg",
+    ),(
+     "Yui Ikari",
+     "Neon Genesis Evangelion",
+     "https://cdn.myanimelist.net/images/characters/2/88927.jpg",
+    ),(
+     "Maya Ibuki",
+     "Neon Genesis Evangelion",
+     "https://cdn.myanimelist.net/images/characters/7/78694.jpg",
+    ),(
+     "Miho Azuki",
+     "Bakuman",
+     "https://cdn.myanimelist.net/images/characters/7/101585.jpg",
+    ),(
+     "Kaya Miyoshi",
+     "Bakuman",
+     "https://cdn.myanimelist.net/images/characters/15/106801.jpg",
+    ),(
+     "Yuriko Aoki",
+     "Bakuman",
+     "https://cdn.myanimelist.net/images/characters/6/193583.jpg",
+    ),(
+     "Misa Amane",
+     "Death Note",
+     "https://cdn.myanimelist.net/images/characters/15/96320.jpg",
+    ),(
+     "Naomi Misora",
+     "Death Note",
+     "https://cdn.myanimelist.net/images/characters/4/146595.jpg",
+    ),(
+     "Tatsumaki",
+     "One Punch Man",
+     "https://cdn.myanimelist.net/images/characters/5/379084.jpg",
+    ),(
+     "Fubuki",
+     "One Punch Man",
+     "https://cdn.myanimelist.net/images/characters/5/294843.jpg",
+    ),(
+     "Rize Kamishiro",
+     "Tokyo Ghoul",
+     "https://cdn.myanimelist.net/images/characters/15/251965.jpg",
+    ),(
+     "Hinami Fueguchi",
+     "Tokyo Ghoul",
+     "https://cdn.myanimelist.net/images/characters/8/258241.jpg",
+    ),(
+     "Touka Kirishima",
+     "Tokyo Ghoul",
+     "https://cdn.myanimelist.net/images/characters/15/269993.jpg",
+    ),(
+     "Saiko Yonebayashi",
+     "Tokyo Ghoul",
+     "https://cdn.myanimelist.net/images/characters/13/362131.jpg",
+    ),(
+     "Sen Takatsuki",
+     "Tokyo Ghoul",
+     "https://cdn.myanimelist.net/images/characters/2/285247.jpg",
+    ),(
+     "Nobara Kugisaki",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/2/521632.jpg",
+    ),(
+     "Maki Zenin",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/11/531387.jpg",
+    ),(
+     "Kasumi Miwa",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/5/431905.jpg",
+    ),(
+     "Mei Mei",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/8/435405.jpg",
+    ),(
+     "Shouko Ieiri",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/4/541948.jpg",
+    ),(
+     "Utahime Iori",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/3/435404.jpg",
+    ),(
+     "Yuki Tsukumo",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/5/531741.jpg",
+    ),(
+     "Mai Zenin",
+     "Jujutsu Kaisen",
+     "https://cdn.myanimelist.net/images/characters/11/444564.jpg",
+    ),(
+     "Nico Robin",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/16/363700.jpg",
+    ),(
+     "Nami",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/2/263249.jpg",
+    ),(
+     "Boa Hancock",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/14/146013.jpg",
+    ),(
+     "Yamato",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/9/486931.jpg",
+    ),(
+     "Carrot",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/11/353512.jpg",
+    ),(
+     "Perona",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/12/93698.jpg",
+    ),(
+     "Uta",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/11/506689.jpg",
+    ),(
+     "Vivi Nefertari",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/6/543874.jpg",
+    ),(
+     "Bonney Jewelry",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/14/146045.jpg",
+    ),(
+     "Reiju Vinsmoke",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/6/343184.jpg",
+    ),(
+     "Ulti",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/8/453421.jpg",
+    ),(
+     "Tashigi",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/2/266983.jpg",
+    ),(
+     "Monet",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/8/235837.jpg",
+    ),(
+     "Linlin Charlotte",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/14/337166.jpg",
+    ),(
+     "Shirahoshi",
+     "One Piece",
+     "https://cdn.myanimelist.net/images/characters/9/172487.jpg",
+    ),(
+     "Shouko Nishimiya",
+     "A Silent Voice",
+     "https://cdn.myanimelist.net/images/characters/2/344790.jpg",
+    ),(
+     "Naoka Ueno",
+     "A Silent Voice",
+     "https://cdn.myanimelist.net/images/characters/2/316403.jpg",
+    ),(
+     "Yuzuru Nishimiya",
+     "A Silent Voice",
+     "https://cdn.myanimelist.net/images/characters/10/330472.jpg",
+    ),(
+     "Miyako Ishida",
+     "A Silent Voice",
+     "https://cdn.myanimelist.net/images/characters/6/330353.jpg",
     )
 ]
 
