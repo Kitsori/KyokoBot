@@ -786,7 +786,7 @@ async def gs(ctx, *, input):
         name = girlInfo["name"]
         url = girlInfo["url"]
 
-        embed = discord.Embed(title=f"{girlName.title()} Stats", description=f"for {ctx.author.display_name}\n\u200b",
+        embed = discord.Embed(title=f"{girlName.title()} Stats", description=f"for {user.display_name}\n\u200b",
                               color=discord.Color.blue())
 
         embed.set_image(url=url)
@@ -798,6 +798,16 @@ async def gs(ctx, *, input):
         embed.add_field(name="__Average Rank (10 Girls)__", value=avgTen, inline=False)
 
         await ctx.send(embed=embed)
+
+
+
+
+@bot.command()
+async def ggs(ctx, *, input):
+    girlName = input
+
+    girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
+    girlTen = await asyncio.to_thread(girlAvgRanksTen.find_one, {"girl_name": girlName.title()})
 
 
 
@@ -991,8 +1001,8 @@ async def gttg(ctx):
             if rankList:
                 userAverages.append(sum(rankList) / len(rankList))
 
-        #if len(userAverages) < 3:
-        #    continue
+        if len(userAverages) < 3:
+            continue
 
         avg = round(sum(userAverages) / len(userAverages), 2)
         globalAverages.append((girl["girl_name"], avg))
