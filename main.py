@@ -154,7 +154,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
-    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
+    helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -200,6 +200,7 @@ async def grhelp(ctx):
     grHelpEmbed.add_field(name="__Stats Commands__", value="", inline=False)
     grHelpEmbed.add_field(name="~grs", value="View your general Girl Blind Ranking stats!!", inline=False)
     grHelpEmbed.add_field(name="~gs", value="View your stats for a specific girl..!!", inline=False)
+    grHelpEmbed.add_field(name="~gs", value="View global stats for a specific girl!!", inline=False)
     grHelpEmbed.add_field(name="~gt", value="View your top ranked girls for rounds of 5..!", inline=False)
     grHelpEmbed.add_field(name="~gtg", value="View the top ranked girls globally for rounds of 5..!", inline=False)
     grHelpEmbed.add_field(name="~gtt", value="View your top ranked girls for rounds of 10..!", inline=False)
@@ -806,9 +807,70 @@ async def gs(ctx, *, input):
 async def ggs(ctx, *, input):
     girlName = input
 
+
     girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
     girlTen = await asyncio.to_thread(girlAvgRanksTen.find_one, {"girl_name": girlName.title()})
 
+    await ctx.send(f"Debug: girl={girl is not None}, girlTen={girlTen is not None}")
+
+
+    if (not girl or "player_ranks" not in girl) and (not girlTen or "player_ranks" not in girlTen):
+        await ctx.send(f"No one has ranked {girlName.title()} yet..!! :(")
+        return None
+
+    userAverages = []
+    userAveragesTen = []
+    totalCount = 0
+    totalCountTen = 0
+
+    if girl:
+        playerList = girl.get("player_ranks", [])
+
+        for rankList in playerList.values():
+            if rankList:
+                userAverages.append(sum(rankList) / len(rankList))
+                totalCount += len(rankList)
+
+        avgFive = round(sum(userAverages) / len(userAverages), 2)
+    else:
+        totalCount = 0
+        avgFive = 0
+
+    if girlTen:
+        playerListTen = girlTen.get("player_ranks", [])
+
+        for rankList in playerListTen.values():
+            if rankList:
+                userAveragesTen.append(sum(rankList) / len(rankList))
+                totalCountTen += len(rankList)
+
+        avgTen = round(sum(userAveragesTen) / len(userAveragesTen), 2)
+    else:
+        totalCountTen = 0
+        avgTen = 0
+
+
+
+    nameInput = girlName.lower()
+
+
+    if nameInput in girlDictionary:
+        girlInfo = girlDictionary[nameInput]
+        name = girlInfo["name"]
+        url = girlInfo["url"]
+
+
+        embed = discord.Embed(title=f"{girlName.title()}'s Stats", description=f"Globally\n\u200b",
+                              color=discord.Color.blue())
+
+        embed.set_image(url=url)
+
+        embed.add_field(name="__Times Rolled (5 Girls)__", value=(totalCount), inline=False)
+        embed.add_field(name="__Average Rank (5 Girls)__", value=f"{avgFive}\n\u200b", inline=False)
+        embed.add_field(name="__Times Rolled (10 Girls)__", value=(totalCountTen), inline=False)
+        embed.add_field(name="__Average Rank (10 Girls)__", value=avgTen, inline=False)
+
+        await ctx.send(embed=embed)
 
 
 
