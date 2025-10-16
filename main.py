@@ -1039,7 +1039,7 @@ async def gtg(ctx):
     globalAverages.sort(key=lambda x: x[1], reverse=False)
     topGlobalRanks = globalAverages[:15]
 
-    embed = discord.Embed(title="Globally Highest Ranked Girls", description="Top 15 \n\u200b", color=discord.Color.blue())
+    embed = discord.Embed(title="Globally Highest Ranked Girls", description="**Rounds of 5**   -   Top 15 \n\u200b", color=discord.Color.blue())
 
     count = 1
     for name, avg in topGlobalRanks:
@@ -1083,7 +1083,7 @@ async def gttg(ctx):
     globalAverages.sort(key=lambda x: x[1], reverse=False)
     topGlobalRanks = globalAverages[:15]
 
-    embed = discord.Embed(title="Globally Highest Ranked Girls", description="Top 15 \n\u200b", color=discord.Color.blue())
+    embed = discord.Embed(title="Globally Highest Ranked Girls", description="**Rounds of 10**   -   Top 15 \n\u200b", color=discord.Color.blue())
 
     count = 1
     for name, avg in topGlobalRanks:
