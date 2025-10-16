@@ -811,8 +811,6 @@ async def ggs(ctx, *, input):
     girl = await asyncio.to_thread(girlAvgRanks.find_one, {"girl_name": girlName.title()})
     girlTen = await asyncio.to_thread(girlAvgRanksTen.find_one, {"girl_name": girlName.title()})
 
-    await ctx.send(f"Debug: girl={girl is not None}, girlTen={girlTen is not None}")
-
 
     if (not girl or "player_ranks" not in girl) and (not girlTen or "player_ranks" not in girlTen):
         await ctx.send(f"No one has ranked {girlName.title()} yet..!! :(")
