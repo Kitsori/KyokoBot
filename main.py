@@ -24,7 +24,7 @@ intents.message_content = True
 intents.members = True
 
 
-bot = commands.Bot(command_prefix='~', intents=intents)
+bot = commands.Bot(command_prefix='~', intents=intents, help_command=None)
 
 
 
@@ -112,6 +112,7 @@ async def on_ready():
 
 
 
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -137,12 +138,9 @@ async def on_member_join(member):
 
 
 
-
-
-
 # HELP COMMANDS
 
-@bot.command()
+@bot.command(name="help")
 async def helpme(ctx):
     helpEmbed = discord.Embed(
         title="Kyoko's Help Menu",
@@ -295,8 +293,9 @@ async def div(ctx, num1: int, num2: int):
 
 
 
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 # RANDOM ANIME GIRL IMAGE GENERATOR
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 
 @bot.command()
 async def rg(ctx):
@@ -320,8 +319,9 @@ async def rg(ctx):
 
 
 
-# ANIME GIRL BLIND RANKING GAME (WIP)
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# ANIME GIRL BLIND RANKING GAME
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gr(ctx):
 
@@ -558,8 +558,9 @@ async def gr(ctx):
 
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Girl Lookup Command
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gl(ctx, *, input):
 
@@ -607,8 +608,9 @@ async def gl(ctx, *, input):
 
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Girl Show Lookup Command
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gsl(ctx, *, input):
 
@@ -655,8 +657,9 @@ async def gsl(ctx, *, input):
 
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# General Girl Ranking Stats
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def grs(ctx, user_id: str = None):
 
@@ -729,8 +732,9 @@ async def grs(ctx, user_id: str = None):
 
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Self Stats for a Specific Girl
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gs(ctx, *, input):
 
@@ -801,8 +805,9 @@ async def gs(ctx, *, input):
         await ctx.send(embed=embed)
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Global Stats for a Specific Girl
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def ggs(ctx, *, input):
     girlName = input
@@ -872,8 +877,9 @@ async def ggs(ctx, *, input):
 
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Self Top Girls for Rounds of 5
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gt(ctx, user_id: str = None):
 
@@ -935,8 +941,9 @@ async def gt(ctx, user_id: str = None):
     await ctx.send(embed=embed)
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Self Top Girls for Rounds of 10
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gtt(ctx, user_id: str = None):
 
@@ -1000,8 +1007,9 @@ async def gtt(ctx, user_id: str = None):
 
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Global Top Girl for Rounds of 5
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gtg(ctx):
     girls = await asyncio.to_thread(list, girlAvgRanks.find())
@@ -1043,8 +1051,9 @@ async def gtg(ctx):
     await ctx.send(embed=embed)
 
 
-
-
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# Global Top Girls for Rounds of 10
+# ────────────────────────────────────────────────────────────────────────────────────────────────
 @bot.command()
 async def gttg(ctx):
     girls = await asyncio.to_thread(list, girlAvgRanksTen.find())
@@ -1090,6 +1099,26 @@ async def gttg(ctx):
 
 
 
+# ─── Cog Loader ────────────────────────────────────────
+async def load_cogs():
+    await bot.load_extension("cogs.animerpg")  # Example cog
+    # Add more cogs here if needed
+
+# ─── Main Runner ───────────────────────────────────────
+async def main():
+    async with bot:
+        await load_cogs()
+        await bot.start(TOKEN)
+
+# ─── Start ─────────────────────────────────────────────
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nBot stopped manually.")
 
 
-bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+
+
+
+#bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
