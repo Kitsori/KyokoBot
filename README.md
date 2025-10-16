@@ -1,8 +1,9 @@
 # KyokoBot
 A bot for discord modeled after my character Kyoko!
 
-Can perform some basic tasks currently:
-
+BASIC FEATURES:
 - Basic math operations
 - RandomGirl image generator
-- A Blind Ranking for Anime Girls (WIP - Bigger Project)
+
+MAIN FEATURES:
+- A Blind Ranking for Anime Girls with many stats as well!
