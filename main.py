@@ -148,7 +148,7 @@ async def helpme(ctx):
         color=discord.Color.blue()
     )
 
-    helpEmbed.add_field(name="~helpme", value="Wow.. it's this menu!", inline=False)
+    helpEmbed.add_field(name="~help", value="Wow.. it's this menu!", inline=False)
     helpEmbed.add_field(name="~ping", value="Pong...!! :3 \n\u200b", inline=False)
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
@@ -1099,26 +1099,10 @@ async def gttg(ctx):
 
 
 
-# ─── Cog Loader ────────────────────────────────────────
-async def load_cogs():
-    await bot.load_extension("cogs.animerpg")  # Example cog
-    # Add more cogs here if needed
-
-# ─── Main Runner ───────────────────────────────────────
-async def main():
-    async with bot:
-        await load_cogs()
-        await bot.start(TOKEN)
-
-# ─── Start ─────────────────────────────────────────────
-if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print("\nBot stopped manually.")
 
 
 
 
 
-#bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+
+bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
