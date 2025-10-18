@@ -2,7 +2,7 @@ import os
 from pymongo import MongoClient
 
 import discord
-from discord.ext import commands
+from discord.ext import commands, pages
 
 import logging
 from dotenv import load_dotenv
@@ -92,6 +92,33 @@ async def avgGirlRankTen(girlName, user_id, rank):
     await asyncio.to_thread(girlAvgRanksTen.update_one,{"girl_name": girlName},{"$push": {fieldName: rank}},
         upsert=True
     )
+
+
+
+
+class PageView(discord.ui.View):
+    def __init__(self, embeds, timeout=180):
+        super().__init__(timeout=timeout)
+        self.embeds = embeds
+        self.current_page = 0
+
+    @discord.ui.button(label="< < <", style=discord.ButtonStyle.blurple)
+    async def previous(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if self.current_page > 0:
+            self.current_page -= 1
+            await interaction.response.edit_message(embed=self.embeds[self.current_page], view=self)
+
+    @discord.ui.button(label="> > >", style=discord.ButtonStyle.blurple)
+    async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if self.current_page < len(self.embeds) - 1:
+            self.current_page += 1
+            await interaction.response.edit_message(embed=self.embeds[self.current_page], view=self)
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+
+
 
 
 
@@ -1037,18 +1064,30 @@ async def gtg(ctx):
         return
 
     globalAverages.sort(key=lambda x: x[1], reverse=False)
-    topGlobalRanks = globalAverages[:15]
 
-    embed = discord.Embed(title="Globally Highest Ranked Girls", description="**Rounds of 5**   -   Top 15 \n\u200b", color=discord.Color.blue())
+    per_page = 15
+    pages_list = []
 
-    count = 1
-    for name, avg in topGlobalRanks:
-        embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
-        count += 1
+    for i in range(0, len(globalAverages), per_page):
+        start_rank = i + 1  # First rank on this page
+        end_rank = min(i + per_page, len(globalAverages))  # Last rank on this page
 
-    embed.set_footer(text="Minimum of at least 3 unique user rankings..!")
+        embed = discord.Embed(
+            title=f"Globally Highest Ranked Girls",
+            description=f"**Rounds of 5** - Top {start_rank}-{end_rank}\n\u200b",
+            color=discord.Color.blue()
+        )
 
-    await ctx.send(embed=embed)
+        for count, (name, avg) in enumerate(globalAverages[i:i + per_page], start=start_rank):
+            embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
+
+        embed.set_footer(text="Minimum of at least 3 unique user rankings..!")
+        pages_list.append(embed)
+
+    view = PageView(pages_list)
+    await ctx.send(embed=pages_list[0], view=view)
+
+
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1083,7 +1122,7 @@ async def gttg(ctx):
     globalAverages.sort(key=lambda x: x[1], reverse=False)
     topGlobalRanks = globalAverages[:15]
 
-    embed = discord.Embed(title="Globally Highest Ranked Girls", description="**Rounds of 10**   -   Top 15 \n\u200b", color=discord.Color.blue())
+    embed = discord.Embed(title="Globally Highest Ranked Girls", description="**Rounds of 10** - Top 15 \n\u200b", color=discord.Color.blue())
 
     count = 1
     for name, avg in topGlobalRanks:
@@ -1100,9 +1139,23 @@ async def gttg(ctx):
 
 
 
+# ─── Cog Loader ────────────────────────────────────────
+async def load_cogs():
+    await bot.load_extension("cogs.animerpg")  # Example cog
+    # Add more cogs here if needed
+
+# ─── Main Runner ───────────────────────────────────────
+async def main():
+    async with bot:
+        await load_cogs()
+        await bot.start(TOKEN)
+
+# ─── Start ─────────────────────────────────────────────
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nBot stopped manually.")
 
 
-
-
-
-bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+#bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
