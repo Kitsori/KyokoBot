@@ -1174,4 +1174,4 @@ async def gttg(ctx):
 #        print("\nBot stopped manually.")
 
 
-bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+bot.run(TOKEN)
