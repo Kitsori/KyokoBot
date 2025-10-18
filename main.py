@@ -2,7 +2,20 @@ import os
 from pymongo import MongoClient
 
 import sys
-sys.modules['audioop'] = None
+import types
+
+# Create a dummy 'audioop' module with stub functions
+fake_audioop = types.ModuleType("audioop")
+
+def _noop(*args, **kwargs):
+    return None
+
+# Discord uses these functions internally for volume/mixing math
+fake_audioop.add = fake_audioop.mul = fake_audioop.avg = fake_audioop.getsample = _noop
+fake_audioop.byteswap = fake_audioop.lin2lin = fake_audioop.lin2adpcm = _noop
+fake_audioop.adpcm2lin = fake_audioop.lin2ulaw = fake_audioop.ulaw2lin = _noop
+
+sys.modules["audioop"] = fake_audioop
 
 import discord
 from discord.ext import commands, pages
