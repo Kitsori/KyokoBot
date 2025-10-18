@@ -2,7 +2,7 @@ import os
 from pymongo import MongoClient
 
 import discord
-from discord.ext import commands, pages
+from discord.ext import commands
 
 import logging
 from dotenv import load_dotenv
