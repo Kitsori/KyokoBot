@@ -112,6 +112,7 @@ class PageView(discord.ui.View):
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
         if self.current_page < len(self.embeds) - 1:
             self.current_page += 1
+            # Respond immediately
             await interaction.response.edit_message(embed=self.embeds[self.current_page], view=self)
 
     async def on_timeout(self):
