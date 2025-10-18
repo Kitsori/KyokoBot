@@ -1,5 +1,5 @@
 py-cord>=2.6.0
-discord-ext-pages>=2.6.0
+discord-ext-pages>=0.0.1
 discord-ext-bridge>=2.6.0
 pymongo
 python-dotenv

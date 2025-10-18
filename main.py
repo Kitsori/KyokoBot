@@ -1140,16 +1140,7 @@ async def gttg(ctx):
 
 
 
-# ─── Cog Loader ────────────────────────────────────────
-async def load_cogs():
-    await bot.load_extension("cogs.animerpg")  # Example cog
-    # Add more cogs here if needed
 
-# ─── Main Runner ───────────────────────────────────────
-async def main():
-    async with bot:
-        await load_cogs()
-        await bot.start(TOKEN)
 
 # ─── Start ─────────────────────────────────────────────
 if __name__ == "__main__":
