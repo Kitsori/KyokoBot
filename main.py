@@ -1139,6 +1139,13 @@ async def gttg(ctx):
 
 
 
+# ─── Main Runner ───────────────────────────────────────
+async def main():
+    async with bot:
+        # Load your cogs here
+        await bot.load_extension("cogs.animerpg")  # example
+        await bot.start(TOKEN)
+
 
 
 
