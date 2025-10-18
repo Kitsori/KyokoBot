@@ -1,25 +1,8 @@
 import os
 from pymongo import MongoClient
 
-import sys
-import types
-
-# Create a dummy 'audioop' module with stub functions
-fake_audioop = types.ModuleType("audioop")
-
-def _noop(*args, **kwargs):
-    return None
-
-# Discord uses these functions internally for volume/mixing math
-fake_audioop.add = fake_audioop.mul = fake_audioop.avg = fake_audioop.getsample = _noop
-fake_audioop.byteswap = fake_audioop.lin2lin = fake_audioop.lin2adpcm = _noop
-fake_audioop.adpcm2lin = fake_audioop.lin2ulaw = fake_audioop.ulaw2lin = _noop
-
-sys.modules["audioop"] = fake_audioop
-
 import discord
 from discord.ext import commands, pages
-
 
 import logging
 from dotenv import load_dotenv
@@ -118,35 +101,23 @@ class PageView(discord.ui.View):
         super().__init__(timeout=timeout)
         self.embeds = embeds
         self.current_page = 0
-        self.message = None  # we'll set this when sending
 
     @discord.ui.button(label="< < <", style=discord.ButtonStyle.blurple)
     async def previous(self, interaction: discord.Interaction, button: discord.ui.Button):
         if self.current_page > 0:
             self.current_page -= 1
-            await interaction.response.edit_message(
-                embed=self.embeds[self.current_page],
-                view=self
-            )
-        else:
-            await interaction.response.defer()  # prevent "interaction failed"
+            await interaction.response.edit_message(embed=self.embeds[self.current_page], view=self)
 
     @discord.ui.button(label="> > >", style=discord.ButtonStyle.blurple)
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
         if self.current_page < len(self.embeds) - 1:
             self.current_page += 1
-            await interaction.response.edit_message(
-                embed=self.embeds[self.current_page],
-                view=self
-            )
-        else:
-            await interaction.response.defer()
+            # Respond immediately
+            await interaction.response.edit_message(embed=self.embeds[self.current_page], view=self)
 
     async def on_timeout(self):
         for child in self.children:
             child.disabled = True
-        if self.message:
-            await self.message.edit(view=self)
 
 
 
@@ -1169,21 +1140,21 @@ async def gttg(ctx):
 
 
 # ─── Main Runner ───────────────────────────────────────
-#async def main():
-#    async with bot:
-#        # Load your cogs here
-#        await bot.load_extension("cogs.animerpg")  # example
-#        await bot.start(TOKEN)
+async def main():
+    async with bot:
+        # Load your cogs here
+        await bot.load_extension("cogs.animerpg")  # example
+        await bot.start(TOKEN)
 
 
 
 
 # ─── Start ─────────────────────────────────────────────
-#if __name__ == "__main__":
-#    try:
-#        asyncio.run(main())
-#    except KeyboardInterrupt:
-#        print("\nBot stopped manually.")
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nBot stopped manually.")
 
 
-bot.run(TOKEN)
+#bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
