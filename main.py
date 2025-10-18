@@ -2,10 +2,11 @@ import os
 from pymongo import MongoClient
 
 import sys
+sys.modules['audioop'] = None
+
 import discord
 from discord.ext import commands, pages
 
-sys.modules['audioop'] = None
 
 import logging
 from dotenv import load_dotenv
