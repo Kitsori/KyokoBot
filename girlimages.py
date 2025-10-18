@@ -3049,7 +3049,7 @@ girls = [
      "https://cdn.myanimelist.net/images/characters/4/89052.jpg",
     ),(  #763
      "Shizuka Kuze",
-     "Takopi's Orignal Sin",
+     "Takopi's Original Sin",
      "https://cdn.myanimelist.net/images/characters/12/573206.jpg",
     ),(  #764
      "Marina Kirarazaka",
@@ -4231,66 +4231,6 @@ girls = [
      "Miyako Ishida",
      "A Silent Voice",
      "https://cdn.myanimelist.net/images/characters/6/330353.jpg",
-    ),(
-     "C.C.",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/13/33815.jpg",
-    ),(
-     "Kallen Stadtfeld",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/8/31533.jpg",
-    ),(
-     "Shirley Fenette",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/7/33794.jpg",
-    ),(
-     "Euphemia Li Britannia",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/13/83313.jpg",
-    ),(
-     "Cornelia Li Britannia",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/9/474071.jpg",
-    ),(
-     "Nunnally Lamperouge",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/12/61334.jpg",
-    ),(
-     "Villetta Nu",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/15/83310.jpg",
-    ),(
-     "Anya Alstreim",
-     "Code Geass",
-     "https://cdn.myanimelist.net/images/characters/6/83435.jpg",
-    ),(
-     "Hiyori Iki",
-     "Noragami",
-     "https://cdn.myanimelist.net/images/characters/16/573518.jpg",
-    ),(
-     "Bishamon",
-     "Noragami",
-     "https://cdn.myanimelist.net/images/characters/13/237153.jpg",
-    ),(
-     "Kofuku",
-     "Noragami",
-     "https://cdn.myanimelist.net/images/characters/15/234245.jpg",
-    ),(
-     "Nora",
-     "Noragami",
-     "https://cdn.myanimelist.net/images/characters/6/234239.jpg",
-    ),(
-     "Kayo Hinazuki",
-     "Erased",
-     "https://cdn.myanimelist.net/images/characters/9/300610.jpg",
-    ),(
-     "Sachiko Fujinuma",
-     "Erased",
-     "https://cdn.myanimelist.net/images/characters/5/300491.jpg",
-    ),(
-     "Airi Katagiri",
-     "Erased",
-     "https://cdn.myanimelist.net/images/characters/14/299245.jpg",
     )
 ]
 
@@ -4342,9 +4282,8 @@ testGirls = [
      #"",
      #"",
     #)
+
 ]
-
-
 
 girlDictionary = {name.lower(): {"name": name, "show": show, "url": url} for name, show, url in girls}
 showDictionary = defaultdict(list)

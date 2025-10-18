@@ -948,25 +948,36 @@ async def gt(ctx, user_id: str = None):
         return
 
     userAverages.sort(key=lambda x: x[1], reverse=False)
-    topRanks = userAverages[:15]
 
-    if user and user.id == ctx.author.id:
-        title = f"{ctx.author.display_name}'s Highest Ranked Girls"
-    else:
-        userName = user.display_name if user else f"User {user_id}"
-        title = f"{userName}'s Highest Ranked Girls"
+    per_page = 15
+    pages_list = []
+
+    for i in range(0, len(userAverages), per_page):
+        start_rank = i + 1
+        end_rank = min(i + per_page, len(userAverages))
+
+        if user and user.id == ctx.author.id:
+            title = f"{ctx.author.display_name}'s Highest Ranked Girls"
+        else:
+            userName = user.display_name if user else f"User {user_id}"
+            title = f"{userName}'s Highest Ranked Girls"
 
 
-    embed = discord.Embed(title=title, description="**Rounds of 5** - Top 15 \n\u200b", color=discord.Color.blue())
+        embed = discord.Embed(
+            title=title,
+            description=f"**Rounds of 5** - Top {start_rank}-{end_rank}\n\u200b",
+            color=discord.Color.blue())
 
-    count = 1
-    for name, avg in topRanks:
-        embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
-        count += 1
 
-    embed.set_footer(text="Minimum of at least 3 rankings..!")
+        for count, (name, avg) in enumerate(userAverages[i:i + per_page], start=start_rank):
+            embed.add_field(name=f"#{count}: {name} - {avg}", value="", inline=False)
 
-    await ctx.send(embed=embed)
+
+        embed.set_footer(text="Minimum of at least 3 rankings..!")
+        pages_list.append(embed)
+
+    view = PageView(pages_list)
+    await ctx.send(embed=pages_list[0], view=view)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
