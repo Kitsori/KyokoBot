@@ -118,6 +118,7 @@ class PageView(discord.ui.View):
         super().__init__(timeout=timeout)
         self.embeds = embeds
         self.current_page = 0
+        self.message = None  # we'll set this when sending
 
     @discord.ui.button(label="< < <", style=discord.ButtonStyle.blurple)
     async def previous(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -128,7 +129,7 @@ class PageView(discord.ui.View):
                 view=self
             )
         else:
-            await interaction.response.defer()  # prevent "interaction failed" if already on first page
+            await interaction.response.defer()  # prevent "interaction failed"
 
     @discord.ui.button(label="> > >", style=discord.ButtonStyle.blurple)
     async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -139,18 +140,13 @@ class PageView(discord.ui.View):
                 view=self
             )
         else:
-            await interaction.response.defer()  # prevent "interaction failed" if already on last page
+            await interaction.response.defer()
 
     async def on_timeout(self):
-        # Disable all buttons
         for child in self.children:
             child.disabled = True
-
-        # Edit the message to show disabled buttons (prevents further interaction errors)
-        # Note: You must store the original message reference when sending
-        if hasattr(self, "message"):
+        if self.message:
             await self.message.edit(view=self)
-
 
 
 
