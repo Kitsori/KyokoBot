@@ -1157,21 +1157,21 @@ async def gttg(ctx):
 
 
 # ─── Main Runner ───────────────────────────────────────
-async def main():
-    async with bot:
-        # Load your cogs here
-        await bot.load_extension("cogs.animerpg")  # example
-        await bot.start(TOKEN)
+#async def main():
+#    async with bot:
+#        # Load your cogs here
+#        await bot.load_extension("cogs.animerpg")  # example
+#        await bot.start(TOKEN)
 
 
 
 
 # ─── Start ─────────────────────────────────────────────
-if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print("\nBot stopped manually.")
+#if __name__ == "__main__":
+#    try:
+#        asyncio.run(main())
+#    except KeyboardInterrupt:
+#        print("\nBot stopped manually.")
 
 
-#bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
