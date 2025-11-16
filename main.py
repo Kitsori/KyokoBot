@@ -136,7 +136,7 @@ selfrole = "Member"
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
-    await bot.change_presence(activity=discord.Game(name="with Kitsori"))
+    await bot.change_presence(activity=discord.Game(name="Playing with Kitsori"))
 
 
 
