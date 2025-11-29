@@ -10,6 +10,9 @@ from dotenv import load_dotenv
 import random
 import asyncio
 
+from cogs.animerpg import AnimeRPG
+from cogs.jltg import jltg
+
 from girlimages import randomGirlGen, testGirlGen, girlDictionary, showDictionary
 
 load_dotenv()
@@ -31,6 +34,8 @@ bot = commands.Bot(command_prefix='~', intents=intents, help_command=None)
 client = MongoClient(MONGO)
 
 db = client["KyokoBot"]
+rpgdb = client["KyokoRPG"]
+xpdb = client["KyokoXP"]
 
 gr5Stats = db["gr_5_stats"]
 gr10Stats = db["gr_10_stats"]
@@ -42,6 +47,9 @@ TenInitialRank = db["10InitialRank"]
 
 girlAvgRanks = db["GirlAverageRanks5"]
 girlAvgRanksTen = db["GirlAverageRanks10"]
+
+
+xpCol = db["XP"]
 
 
 
@@ -93,6 +101,11 @@ async def avgGirlRankTen(girlName, user_id, rank):
         upsert=True
     )
 
+async def userXP(user_id, userxp):
+    await asyncio.to_thread(xpCol.update_one,{"user_id": user_id},{"$inc": {"xp": userxp}},
+        upsert=True
+    )
+
 
 
 
@@ -127,16 +140,22 @@ class PageView(discord.ui.View):
 # Variables
 
 selfrole = "Member"
-
+#TEST_GUILD_ID = 734685955063152650
 
 
 
 # BOT EVENTS
+#@bot.check
+#async def testServer(ctx):
+#    return ctx.guild and ctx.guild.id == TEST_GUILD_ID
+
+
+
 
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
-    await bot.change_presence(activity=discord.Game(name="Playing with Kitsori"))
+    await bot.change_presence(activity=discord.Game(name="with Kitsori"))
 
 
 
@@ -315,6 +334,69 @@ async def div(ctx, num1: int, num2: int):
 #    poll_message = await ctx.send(embed=embed)
 #    await poll_message.add_reaction("👍")
 #    await poll_message.add_reaction("👎")
+
+
+
+
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# KYOKO XP / LEVELING
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+
+@bot.command()
+async def xp(ctx, user_id: str = None):
+
+    if ctx.message.mentions:
+        user = ctx.message.mentions[0]
+        userID = int(user.id)
+    elif user_id:
+        try:
+            userID = int(user_id)
+            user = await bot.fetch_user(userID)
+        except:
+            user = None
+    else:
+        user = ctx.author
+        userID = ctx.author.id
+
+
+    try:
+        xpFile = xpCol.find_one({"user_id": userID})
+
+        if xpFile:
+            userXP = xpFile.get("xp")
+
+            if userXP < 10: # 10XP
+                userLevel = 1
+                levelXP = 10
+            elif userXP < 25: # 15XP
+                userLevel = 2
+                levelXP = 25
+            elif userXP < 50: # 25 XP
+                userLevel = 3
+                levelXP = 50
+            elif userXP < 90: # 40 XP
+                userLevel = 4
+                levelXP = 90
+            elif userXP < 150: # 60 XP
+                userLevel = 5
+                levelXP = 150
+
+
+
+            embed = discord.Embed(
+                title="XP Stats",
+                description=f"for {user.display_name}\n\u200b",
+                color=discord.Color.blue())
+
+            embed.add_field(name="__Current Level__", value=f"{userLevel} - ")
+
+
+            await ctx.send(f"You have {userXP}XP!")
+        else:
+            await ctx.send("You have no xp")
+    except Exception as e:
+        print(e)
+
 
 
 
@@ -572,10 +654,16 @@ async def gr(ctx):
 
             if rankCount >= 4:
                 grTotalPlay(ctx.author.id, "gr")
+                await userXP(ctx.author.id, 1)
 
 
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
+
+        if rankCount == numGirls - 1:
+            xpembed = discord.Embed(description="You gained +1 XP!!", color=discord.Color.green())
+            await ctx.send(embed=xpembed)
+
         await asyncio.sleep(3)
 
         rankCount += 1
@@ -1151,21 +1239,22 @@ async def gttg(ctx):
 
 
 # ─── Main Runner ───────────────────────────────────────
-#async def main():
-#    async with bot:
-#        # Load your cogs here
-#        await bot.load_extension("cogs.animerpg")  # example
-#        await bot.start(TOKEN)
+async def main():
+    async with bot:
+        # Load your cogs here
+        await bot.add_cog(AnimeRPG(bot, rpgdb))  # example
+        await bot.add_cog(jltg(bot))
+        await bot.start(TOKEN)
 
 
 
 
 # ─── Start ─────────────────────────────────────────────
-#if __name__ == "__main__":
-#    try:
-#        asyncio.run(main())
-#    except KeyboardInterrupt:
-#        print("\nBot stopped manually.")
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nBot stopped manually.")
 
 
-bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
+#bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
