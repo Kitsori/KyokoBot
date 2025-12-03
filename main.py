@@ -102,11 +102,19 @@ async def avgGirlRankTen(girlName, user_id, rank):
         upsert=True
     )
 
-async def userXP(user_id, userxp, level):
+async def userXP(user_id, userxp, level=None):
 
     update = {"$inc": {"xp": userxp}}
+
+
+    exists = await asyncio.to_thread(xpCol.find_one, {"user_id": user_id})
+
+    if not exists:
+        update["$set"] = {"level": 1}
+
     if level is not None:
-        update["$set"] = {"level": level}
+        update.setdefault("$set", {})["level"] = level
+
 
     await asyncio.to_thread(xpCol.update_one,{"user_id": user_id}, update, upsert=True)
 
@@ -379,7 +387,7 @@ async def xp(ctx, user_id: str = None):
 
         if leveledup == True:
 
-
+            await ctx.send("You leveled up!")
 
             await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
         else:
@@ -430,6 +438,7 @@ async def rg(ctx):
     await ctx.send(embed=embed)  # Send the embed of name and girl image
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
 
+    await userXP(ctx.author.id, 1)
 
 
 
