@@ -14,6 +14,7 @@ from cogs.animerpg import AnimeRPG
 from cogs.jltg import jltg
 
 from girlimages import randomGirlGen, testGirlGen, girlDictionary, showDictionary
+from levels import XP_LEVELS, xp_to_level, level_up
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -101,10 +102,13 @@ async def avgGirlRankTen(girlName, user_id, rank):
         upsert=True
     )
 
-async def userXP(user_id, userxp):
-    await asyncio.to_thread(xpCol.update_one,{"user_id": user_id},{"$inc": {"xp": userxp}},
-        upsert=True
-    )
+async def userXP(user_id, userxp, level):
+
+    update = {"$inc": {"xp": userxp}}
+    if level is not None:
+        update["$set"] = {"level": level}
+
+    await asyncio.to_thread(xpCol.update_one,{"user_id": user_id}, update, upsert=True)
 
 
 
@@ -359,41 +363,49 @@ async def xp(ctx, user_id: str = None):
         userID = ctx.author.id
 
 
+
     try:
         xpFile = xpCol.find_one({"user_id": userID})
 
-        if xpFile:
-            userXP = xpFile.get("xp")
-
-            if userXP < 10: # 10XP
-                userLevel = 1
-                levelXP = 10
-            elif userXP < 25: # 15XP
-                userLevel = 2
-                levelXP = 25
-            elif userXP < 50: # 25 XP
-                userLevel = 3
-                levelXP = 50
-            elif userXP < 90: # 40 XP
-                userLevel = 4
-                levelXP = 90
-            elif userXP < 150: # 60 XP
-                userLevel = 5
-                levelXP = 150
+        startingXP = xpFile['xp']
+        await ctx.send(f"You have {xpFile["xp"]}XP!")
+        await ctx.send(f"Current Level: {xpFile["level"]}")
 
 
 
-            embed = discord.Embed(
-                title="XP Stats",
-                description=f"for {user.display_name}\n\u200b",
-                color=discord.Color.blue())
+        levelxp = xp_to_level(xpFile["level"])
+        await ctx.send(f"Total Level XP: {levelxp}")
 
-            embed.add_field(name="__Current Level__", value=f"{userLevel} - ")
+        leveledup, xpFileNew = level_up(xpFile)
 
 
-            await ctx.send(f"You have {userXP}XP!")
+        await ctx.send(f"New Level: {xpFileNew['level']}")
+
+        if leveledup == True:
+
+
+
+            await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
         else:
-            await ctx.send("You have no xp")
+            await userXP(ctx.author.id, 0, xpFileNew['level'])
+
+        newlevelxp = xp_to_level(xpFileNew['level'])
+
+        await ctx.send(f"{xpFileNew["xp"]}/{newlevelxp}")
+
+
+
+
+
+        embed = discord.Embed(
+            title="XP Stats",
+            description=f"for {user.display_name}\n\u200b",
+            color=discord.Color.blue())
+
+        embed.add_field(name="__Current Level__", value=f"{userLevel} - ")
+
+
+        await ctx.send("You have no xp")
     except Exception as e:
         print(e)
 
