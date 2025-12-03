@@ -368,18 +368,14 @@ async def xp(ctx, user_id: str = None):
         xpFile = xpCol.find_one({"user_id": userID})
 
         startingXP = xpFile['xp']
-        await ctx.send(f"You have {xpFile["xp"]}XP!")
         await ctx.send(f"Current Level: {xpFile["level"]}")
 
 
 
         levelxp = xp_to_level(xpFile["level"])
-        await ctx.send(f"Total Level XP: {levelxp}")
 
         leveledup, xpFileNew = level_up(xpFile)
 
-
-        await ctx.send(f"New Level: {xpFileNew['level']}")
 
         if leveledup == True:
 
@@ -391,7 +387,7 @@ async def xp(ctx, user_id: str = None):
 
         newlevelxp = xp_to_level(xpFileNew['level'])
 
-        await ctx.send(f"{xpFileNew["xp"]}/{newlevelxp}")
+        await ctx.send(f"Current XP: {xpFileNew["xp"]}/{newlevelxp}")
 
 
 
