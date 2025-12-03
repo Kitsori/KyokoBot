@@ -438,8 +438,6 @@ async def rg(ctx):
     await ctx.send(embed=embed)  # Send the embed of name and girl image
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
 
-    await userXP(ctx.author.id, 1)
-
 
 
 
