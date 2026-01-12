@@ -212,6 +212,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
+    helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
