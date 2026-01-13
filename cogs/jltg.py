@@ -54,11 +54,24 @@ class jltg(commands.Cog):
             coins = 100
 
             userDistance = 0
-            taggerDistance = 0
-            targetDistance = random.randint(500,1000)
+            targetDistance = random.randint(500, 1000)
+
+
+
+
+            #async def taggers():
+            #    nonlocal taggerDistance, userDistance
+            #    await asyncio.sleep(50)
+
+
+
 
 
             while gameEnd == False:
+
+
+                if targetDistance <= 0:
+                    gameEnd = True
 
                 if start == True:
                     clockTask = asyncio.create_task(clock())
@@ -67,6 +80,7 @@ class jltg(commands.Cog):
 
                 if gameEnd == True:
                     clockTask.cancel()
+                    await ctx.send("You made it to your end location in time without being caught!!! CONGRATS!!! :3")
 
 
 
@@ -75,9 +89,9 @@ class jltg(commands.Cog):
                 trains = []
 
                 for i in range(numTrains):
-                    time = random.randint(1, 120)
+                    time = random.randint(5, 120)
                     length = random.randint(10, 180)
-                    distance = random.randint(10, 100)
+                    distance = random.randint(10, 200)
                     arrival = time + length
 
                     trainTime = (self.currentTime + timedelta(minutes=time))
@@ -117,6 +131,8 @@ class jltg(commands.Cog):
                                f"1-{trainNumber}: Take Train \n"
                                "6: Pull a Card \n"
                                "7: Check Time\n"
+                               "8: Train List\n"
+                               "9: Stats & Menu\n"
                                "0: Give Up"
                                )
 
@@ -267,6 +283,7 @@ class jltg(commands.Cog):
                                         if takeTrain.content == "y":
                                             await ctx.send("Welcome aboard!! :3")
                                             await ctx.send(f"Your time will be fast forwarded to {train['Arrival'].strftime('%I:%M %p')}.")
+                                            await asyncio.sleep(2)
 
                                             userDistance += lineLength
                                             targetDistance = targetDistance - lineLength
@@ -418,12 +435,53 @@ class jltg(commands.Cog):
                         elif trainResponse.content == "7":
                             await ctx.send(f"Current Time: {self.currentTime.strftime('%I:%M %p')}")
 
+
+
+
+                        elif trainResponse.content == "8":
+                            for index, t in enumerate(trains, start=1):
+                                await ctx.send(f"## Train {index}:\n"
+                                               f"**Departure:** {t['Departure'].strftime('%I:%M %p')}\n"
+                                               f"**Arrival:** {t['Arrival'].strftime('%I:%M %p')}\n"
+                                               "~ ~ ~\n"
+                                               f"**Duration:** {t['Duration']} minutes\n"
+                                               f"**Distance:** {t['Distance']} miles\n"
+                                               "======================="
+                                               )
+
+
+
+
+                        elif trainResponse.content == "9":
+                            await ctx.send(f"**Balance**: {coins} coins \n"
+                                           f"**Distance Remaining**: {targetDistance} miles\n"
+                                           f"**Distance Traveled**: {userDistance} miles\n"
+                                           "===============\n")
+                            await ctx.send("What do you want to do..? :3 \n"
+                                           f"1-{trainNumber}: Take Train \n"
+                                           "6: Pull a Card \n"
+                                           "7: Check Time\n"
+                                           "8: Train List\n"
+                                           "9: Stats & Menu\n"
+                                           "0: Give Up"
+                                           )
+
+
+
                         elif trainResponse.content == "0":
                             await ctx.send("Couldn't handle the pressure huh?? Oh well...")
                             return
 
+
+
+
+
+
                         else:
                             await ctx.send("Not a valid option.")
+
+
+
 
 
 
