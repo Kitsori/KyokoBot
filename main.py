@@ -166,6 +166,11 @@ selfrole = "Member"
 
 @bot.event
 async def on_ready():
+    channel = bot.get_channel(1461414479911718986)
+    await channel.send("## Test Update\n"
+                       "- Added Test 1\n"
+                       "- Added Test 2\n")
+
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     await bot.change_presence(activity=discord.Game(name="with Kitsori"))
 
