@@ -61,7 +61,7 @@ class jltg(commands.Cog):
 
             #async def taggers():
             #    nonlocal taggerDistance, userDistance
-            #    await asyncio.sleep(50)
+            #.    await asyncio.sleep(50)
 
 
 
