@@ -14,6 +14,7 @@ from cogs.animerpg import AnimeRPG
 from cogs.jltg import jltg
 
 from girlimages import randomGirlGen, testGirlGen, girlDictionary, showDictionary
+from levels import XP_LEVELS, xp_to_level, level_up
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -35,6 +36,7 @@ client = MongoClient(MONGO)
 
 db = client["KyokoBot"]
 rpgdb = client["KyokoRPG"]
+xpdb = client["KyokoXP"]
 
 gr5Stats = db["gr_5_stats"]
 gr10Stats = db["gr_10_stats"]
@@ -46,6 +48,9 @@ TenInitialRank = db["10InitialRank"]
 
 girlAvgRanks = db["GirlAverageRanks5"]
 girlAvgRanksTen = db["GirlAverageRanks10"]
+
+
+xpCol = db["XP"]
 
 
 
@@ -97,6 +102,22 @@ async def avgGirlRankTen(girlName, user_id, rank):
         upsert=True
     )
 
+async def userXP(user_id, userxp, level=None):
+
+    update = {"$inc": {"xp": userxp}}
+
+
+    exists = await asyncio.to_thread(xpCol.find_one, {"user_id": user_id})
+
+    if not exists:
+        update["$set"] = {"level": 1}
+
+    if level is not None:
+        update.setdefault("$set", {})["level"] = level
+
+
+    await asyncio.to_thread(xpCol.update_one,{"user_id": user_id}, update, upsert=True)
+
 
 
 
@@ -131,14 +152,14 @@ class PageView(discord.ui.View):
 # Variables
 
 selfrole = "Member"
-TEST_GUILD_ID = 734685955063152650
+#TEST_GUILD_ID = 734685955063152650
 
 
 
 # BOT EVENTS
-@bot.check
-async def testServer(ctx):
-    return ctx.guild and ctx.guild.id == TEST_GUILD_ID
+#@bot.check
+#async def testServer(ctx):
+#    return ctx.guild and ctx.guild.id == TEST_GUILD_ID
 
 
 
@@ -191,6 +212,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
+    helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -329,6 +351,73 @@ async def div(ctx, num1: int, num2: int):
 
 
 
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# KYOKO XP / LEVELING
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+
+@bot.command()
+async def xp(ctx, user_id: str = None):
+
+    if ctx.message.mentions:
+        user = ctx.message.mentions[0]
+        userID = int(user.id)
+    elif user_id:
+        try:
+            userID = int(user_id)
+            user = await bot.fetch_user(userID)
+        except:
+            user = None
+    else:
+        user = ctx.author
+        userID = ctx.author.id
+
+
+
+    try:
+        xpFile = xpCol.find_one({"user_id": userID})
+
+        startingXP = xpFile['xp']
+        await ctx.send(f"Current Level: {xpFile["level"]}")
+
+
+
+        levelxp = xp_to_level(xpFile["level"])
+
+        leveledup, xpFileNew = level_up(xpFile)
+
+
+        if leveledup == True:
+
+            await ctx.send("You leveled up!")
+
+            await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
+        else:
+            await userXP(ctx.author.id, 0, xpFileNew['level'])
+
+        newlevelxp = xp_to_level(xpFileNew['level'])
+
+        await ctx.send(f"Current XP: {xpFileNew["xp"]}/{newlevelxp}")
+
+
+
+
+
+        embed = discord.Embed(
+            title="XP Stats",
+            description=f"for {user.display_name}\n\u200b",
+            color=discord.Color.blue())
+
+        embed.add_field(name="__Current Level__", value=f"{userLevel} - ")
+
+
+        await ctx.send("You have no xp")
+    except Exception as e:
+        print(e)
+
+
+
+
+
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -349,7 +438,6 @@ async def rg(ctx):
 
     await ctx.send(embed=embed)  # Send the embed of name and girl image
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
-
 
 
 
@@ -582,10 +670,16 @@ async def gr(ctx):
 
             if rankCount >= 4:
                 grTotalPlay(ctx.author.id, "gr")
+                await userXP(ctx.author.id, 1)
 
 
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
+
+        if rankCount == numGirls - 1:
+            xpembed = discord.Embed(description="You gained +1 XP!!", color=discord.Color.green())
+            await ctx.send(embed=xpembed)
+
         await asyncio.sleep(3)
 
         rankCount += 1
@@ -1164,8 +1258,8 @@ async def gttg(ctx):
 async def main():
     async with bot:
         # Load your cogs here
-        await bot.add_cog(AnimeRPG(bot, rpgdb))
-        await bot.add_cog(jltg(bot))# example
+        await bot.add_cog(AnimeRPG(bot, rpgdb))  # example
+        await bot.add_cog(jltg(bot))
         await bot.start(TOKEN)
 
 
