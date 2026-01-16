@@ -25,6 +25,10 @@ class jltg(commands.Cog):
 
 
 
+            gameOver = asyncio.Event()
+
+
+
             async def clock():
                 self.currentTime = datetime.strptime("8:00", "%I:%M")
                 time = await ctx.send(f"Current Time: {self.currentTime.strftime('%I:%M %p')}")
@@ -54,18 +58,32 @@ class jltg(commands.Cog):
             coins = 100
 
             userDistance = 0
+            taggerDistance = 0
             targetDistance = random.randint(500, 1000)
 
 
 
 
-            #async def taggers():
-            #    nonlocal taggerDistance, userDistance
-            #.    await asyncio.sleep(50)
+            async def taggers():
+                nonlocal taggerDistance, userDistance, gameEnd
+                await asyncio.sleep(50)
+                taggerLoop = True
+
+                while taggerLoop:
+                    distanceInc = random.randint(3, 8)
+                    taggerDistance += distanceInc
+
+
+                    if taggerDistance >= userDistance:
+                        await ctx.send(f"You got caught!! Gotta be faster next time silly...")
+                        gameOver.set()
+                        return
+
+                    await asyncio.sleep(10)
 
 
 
-
+            asyncio.create_task(taggers())
 
             while gameEnd == False:
 
@@ -81,6 +99,13 @@ class jltg(commands.Cog):
                 if gameEnd == True:
                     clockTask.cancel()
                     await ctx.send("You made it to your end location in time without being caught!!! CONGRATS!!! :3")
+                    await asyncio.sleep(2)
+                    xpembed = discord.Embed(description="You gained +20 XP!!", color=discord.Color.green())
+                    await ctx.send(embed=xpembed)
+                    self.bot.dispatch(
+                        "jltg_win", ctx.author
+                    )
+                    return
 
 
 
@@ -143,8 +168,24 @@ class jltg(commands.Cog):
 
                 while picking:
 
-                    trainResponse = await self.bot.wait_for('message', check=check)
+                    messageTask = asyncio.create_task(self.bot.wait_for('message', check=check))
+                    gameOverTask = asyncio.create_task(gameOver.wait())
+
+                    done, pending = await asyncio.wait(
+                        {messageTask, gameOverTask},
+                        return_when=asyncio.FIRST_COMPLETED
+                    )
+
+
+                    if gameOverTask in done:
+                        messageTask.cancel()
+                        return
+
+                    gameOverTask.cancel()
+                    trainResponse = messageTask.result()
                     content = trainResponse.content.strip()
+
+
 
                     if content.isdigit():
                         if trainResponse.content == "1":
@@ -167,11 +208,12 @@ class jltg(commands.Cog):
                                     await ctx.send(f"Your remaining coin balance would be {coins - lineTime} coins.")
                                     await asyncio.sleep(1)
 
-                                    await ctx.send("Do you want to take this train? (y/n)")
-                                    takeTrain = await self.bot.wait_for('message', check=check)
                                     takeTrainBool = True
 
                                     while takeTrainBool:
+
+                                        await ctx.send("Do you want to take this train? (y/n)")
+                                        takeTrain = await self.bot.wait_for('message', check=check)
 
                                         if takeTrain.content == "y":
                                             await ctx.send("Welcome aboard!! :3")
@@ -221,11 +263,13 @@ class jltg(commands.Cog):
                                     await ctx.send(f"Your remaining coin balance would be {coins - lineTime} coins.")
                                     await asyncio.sleep(1)
 
-                                    await ctx.send("Do you want to take this train? (y/n)")
-                                    takeTrain = await self.bot.wait_for('message', check=check)
+
                                     takeTrainBool = True
 
                                     while takeTrainBool:
+
+                                        await ctx.send("Do you want to take this train? (y/n)")
+                                        takeTrain = await self.bot.wait_for('message', check=check)
 
                                         if takeTrain.content == "y":
                                             await ctx.send("Welcome aboard!! :3")
@@ -275,10 +319,13 @@ class jltg(commands.Cog):
                                     await asyncio.sleep(1)
 
                                     await ctx.send("Do you want to take this train? (y/n)")
-                                    takeTrain = await self.bot.wait_for('message', check=check)
+
                                     takeTrainBool = True
 
                                     while takeTrainBool:
+
+                                        await ctx.send("Do you want to take this train? (y/n)")
+                                        takeTrain = await self.bot.wait_for('message', check=check)
 
                                         if takeTrain.content == "y":
                                             await ctx.send("Welcome aboard!! :3")
@@ -328,11 +375,12 @@ class jltg(commands.Cog):
                                 await ctx.send(f"Your remaining coin balance would be {coins - lineTime} coins.")
                                 await asyncio.sleep(1)
 
-                                await ctx.send("Do you want to take this train? (y/n)")
-                                takeTrain = await self.bot.wait_for('message', check=check)
                                 takeTrainBool = True
 
                                 while takeTrainBool:
+
+                                    await ctx.send("Do you want to take this train? (y/n)")
+                                    takeTrain = await self.bot.wait_for('message', check=check)
 
                                     if takeTrain.content == "y":
                                         await ctx.send("Welcome aboard!! :3")
@@ -376,10 +424,13 @@ class jltg(commands.Cog):
                                 await asyncio.sleep(1)
 
                                 await ctx.send("Do you want to take this train? (y/n)")
-                                takeTrain = await self.bot.wait_for('message', check=check)
+
                                 takeTrainBool = True
 
                                 while takeTrainBool:
+
+                                    await ctx.send("Do you want to take this train? (y/n)")
+                                    takeTrain = await self.bot.wait_for('message', check=check)
 
                                     if takeTrain.content == "y":
                                         await ctx.send("Welcome aboard!! :3")
