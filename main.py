@@ -22,6 +22,10 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 MONGO = os.getenv('MONGO_URI')
 
+
+
+
+
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
 
@@ -53,6 +57,8 @@ girlAvgRanksTen = db["GirlAverageRanks10"]
 
 
 xpCol = db["XP"]
+
+updateChannelsList = db["update_channels"]
 
 
 
@@ -121,6 +127,15 @@ async def userXP(user_id, userxp, level=None):
     await asyncio.to_thread(xpCol.update_one,{"user_id": user_id}, update, upsert=True)
 
 
+def add_server(guild_id: int, channel_id: int):
+    updateChannelsList.update_one(
+        {"guild_id": str(guild_id)},
+        {"$set": {"channel_id": str(channel_id)}},
+        upsert=True
+    )
+
+
+
 
 
 class PageView(discord.ui.View):
@@ -157,13 +172,6 @@ async def on_jltg_win(user):
 
 
 
-def load_channels():
-    with open("update_channels.json", "r") as f:
-        return json.load(f)
-
-def save_channels(data):
-    with open("update_channels.json", "w") as f:
-        json.dump(data, f, indent=2)
 
 
 
@@ -227,34 +235,41 @@ async def on_member_join(member):
 
 @bot.command()
 async def updates(ctx, channel: discord.TextChannel):
-    data = load_channels()
-    data[str(ctx.guild.id)] = channel.id
-    save_channels(data)
-
-
-    await ctx.send("Updates channel set to this channel.")
+    try:
+        add_server(ctx.guild.id, channel.id)
+        await ctx.send("Updates channel set to this channel.")
+    except Exception as e:
+        print(e)
 
 
 
 @bot.command()
 async def sendupdates(ctx):
-    if (ctx.author.id == 333414505750986753):
-        data = load_channels()
-
-        for guild_id, channel_id in data.items():
-            try:
-                channel = await bot.fetch_channel(channel_id)
-                await channel.send("# Update 1/15/2026\n"
-                                    "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
-                                    "  - These updates will post across all channels anytime updates are made.\n"
-                                    "- The Beta version of Train Tag is now live, play using ~tag\n"
-                                    "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
-                                    "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
-                                    "- Added some new commands to the help menu for these corresponding updates.")
-            except Exception as e:
-                print(e)
-    else:
+    """Send an update message to all registered update channels in MongoDB."""
+    if ctx.author.id != 333414505750986753:
         await ctx.send("Only Kyoko's favorite is allowed to run this command...!")
+        return
+
+    servers = updateChannelsList.find({})  # MongoDB query for all guild → channel entries
+
+    for server in servers:
+        guild_id = int(server["guild_id"])
+        channel_id = int(server["channel_id"])
+
+        try:
+            channel = bot.get_channel(channel_id)
+            if not channel:
+                channel = await bot.fetch_channel(channel_id)
+
+            await channel.send(
+                "# .."
+            )
+
+        except Exception as e:
+            print(f"Failed to send update to guild {guild_id}: {e}")
+
+    await ctx.send("Updates sent to all registered channels!")
+
 
 
 
