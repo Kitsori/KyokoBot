@@ -261,9 +261,13 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send(
-                "# .."
-            )
+            await channel.send("# Update 1/15/2026\n"
+                                    "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
+                                    "  - These updates will post across all channels anytime updates are made.\n"
+                                    "- The Beta version of Train Tag is now live, play using ~tag\n"
+                                    "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
+                                    "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
+                                    "- Added some new commands to the help menu for these corresponding updates.")
 
         except Exception as e:
             print(f"Failed to send update to guild {guild_id}: {e}")
