@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 import random
 import asyncio
 
+import json
+
 from cogs.animerpg import AnimeRPG
 from cogs.jltg import jltg
 
@@ -149,6 +151,28 @@ class PageView(discord.ui.View):
 
 
 
+@bot.listen("on_jltg_win")
+async def on_jltg_win(user):
+    await userXP(user.id, 20)
+
+
+
+def load_channels():
+    with open("update_channels.json", "r") as f:
+        return json.load(f)
+
+def save_channels(data):
+    with open("update_channels.json", "w") as f:
+        json.dump(data, f, indent=2)
+
+
+
+
+
+
+
+
+
 # Variables
 
 selfrole = "Member"
@@ -166,13 +190,11 @@ selfrole = "Member"
 
 @bot.event
 async def on_ready():
-    channel = bot.get_channel(1461414479911718986)
-    await channel.send("## Test Update\n"
-                       "- Added Test 1\n"
-                       "- Added Test 2\n")
+
+
 
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
-    await bot.change_presence(activity=discord.Game(name="with Kitsori"))
+    await bot.change_presence(activity=discord.Game(name="Playing with Kitsori"))
 
 
 
@@ -202,6 +224,62 @@ async def on_member_join(member):
 
 
 
+
+@bot.command()
+async def updates(ctx, channel: discord.TextChannel):
+    data = load_channels()
+    data[str(ctx.guild.id)] = channel.id
+    save_channels(data)
+
+
+    await ctx.send("Updates channel set to this channel.")
+
+
+
+@bot.command()
+async def sendupdates(ctx):
+    if (ctx.author.id == 333414505750986753):
+        data = load_channels()
+
+        for guild_id, channel_id in data.items():
+            try:
+                channel = await bot.fetch_channel(channel_id)
+                await channel.send("# Update 1/15/2026\n"
+                                    "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
+                                    "  - These updates will post across all channels anytime updates are made.\n"
+                                    "- The Beta version of Train Tag is now live, play using ~tag\n"
+                                    "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
+                                    "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
+                                    "- Added some new commands to the help menu for these corresponding updates.")
+            except Exception as e:
+                print(e)
+    else:
+        await ctx.send("Only Kyoko's favorite is allowed to run this command...!")
+
+
+
+
+@bot.command()
+async def sut(ctx):
+    if (ctx.author.id == 333414505750986753):
+        try:
+            channel = await bot.fetch_channel(1461414479911718986)
+            await channel.send("# Update 1/15/2026\n"
+                                    "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
+                                    "  - These updates will post across all channels anytime updates are made.\n"
+                                    "- The Beta version of Train Tag is now live, play using ~tag\n"
+                                    "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
+                                    "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
+                                    "- Added some new commands to the help menu for these corresponding updates.")
+        except Exception as e:
+            print(e)
+    else:
+        await ctx.send("Only Kyoko's favorite is allowed to run this command...!")
+
+
+
+
+
 # HELP COMMANDS
 
 @bot.command(name="help")
@@ -217,7 +295,8 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Math__ (~mathhelp)", value="~add, ~sub, ~mult, ~div", inline=False)
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
-    helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag", inline=False)
+    helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag, ~taginfo", inline=False)
+    helpEmbed.add_field(name="__Admin Commands__ (~adminhelp)", value="~updates", inline=False)
     await ctx.send(embed=helpEmbed)
 
 
@@ -269,6 +348,62 @@ async def grhelp(ctx):
     grHelpEmbed.add_field(name="~gtt", value="View your top ranked girls for rounds of 10..!", inline=False)
     grHelpEmbed.add_field(name="~gttg", value="View the top ranked girls globally for rounds of 10..!", inline=False)
     await ctx.send(embed=grHelpEmbed)
+
+
+@bot.command()
+async def taghelp(ctx):
+    taghelpEmbed = discord.Embed(
+        title="Kyoko's Train Tag Commands",
+        description="They'll never catch me on this train..! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    taghelpEmbed.add_field(name="~tag", value="Starts a round of Train Tag!", inline=False)
+    taghelpEmbed.add_field(name="~taginfo", value="An in-depth breakdown of how Train Tag works.", inline=False)
+    await ctx.send(embed=taghelpEmbed)
+
+
+@bot.command()
+async def taginfo(ctx):
+    taginfoEmbed = discord.Embed(
+        title="Train Tag Guide",
+        description="Train Tag is a silly little minigame inspired by Tag from Jet Lag The Game! \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    taginfoEmbed.add_field(name="Overview", value="This game involves taking various trains to try to reach "
+                                                 "an end location before the end of the day OR before the taggers "
+                                                 "catch up with you.\n"
+                                                 "\n"
+                                                 "You travel on trains with coins, a game-specific currency, for a "
+                                                 "cost of 1 coin = 1 minute on trains. In order to earn more coins, you "
+                                                 "must pull cards, which could consist of challenges, curses, or blessings.\n"
+                                                 "\n"
+                                                 "Each 'station' has a list of trains, varying in distance and travel time, try "
+                                                 "to take the trains that are most optimal! The game will update you on your "
+                                                 "total distance traveled and remaining distance so you can see how far you "
+                                                 "have yet to go.\n"
+                                                 "\n"
+                                                 "In addition, there are taggers chasing you! (You do not know their dsitance, "
+                                                 "so if you stall in an area for too long trying to farm coins, you might get "
+                                                 "tagged and lose before you even get the chance to get to your end location!", inline=False)
+    taginfoEmbed.add_field(name="Good Luck!", value="This game is still a WIP, so expect bugs or some 'unfinished' content!", inline=False)
+    await ctx.send(embed=taginfoEmbed)
+
+
+
+@bot.command()
+async def adminhelp(ctx):
+    adminEmbed = discord.Embed(
+        title="Kyoko's Admin Commands",
+        description="Don't be too much of a Discord mod.... :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    adminEmbed.add_field(name="~updates (channel ID)", value="Sets the designated channel as a Kyoko Live Updates Feed", inline=False)
+    await ctx.send(embed=adminEmbed)
+
+
 
 
 
@@ -382,7 +517,7 @@ async def xp(ctx, user_id: str = None):
         xpFile = xpCol.find_one({"user_id": userID})
 
         startingXP = xpFile['xp']
-        await ctx.send(f"Current Level: {xpFile["level"]}")
+        await ctx.send(f"Current Level: {xpFile['level']}")
 
 
 
@@ -401,18 +536,11 @@ async def xp(ctx, user_id: str = None):
 
         newlevelxp = xp_to_level(xpFileNew['level'])
 
-        await ctx.send(f"Current XP: {xpFileNew["xp"]}/{newlevelxp}")
+        await ctx.send(f"Current XP: {xpFileNew['xp']}/{newlevelxp}")
 
 
 
 
-
-        embed = discord.Embed(
-            title="XP Stats",
-            description=f"for {user.display_name}\n\u200b",
-            color=discord.Color.blue())
-
-        embed.add_field(name="__Current Level__", value=f"{userLevel} - ")
 
 
         await ctx.send("You have no xp")
