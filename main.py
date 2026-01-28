@@ -261,13 +261,20 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send("# Update 1/15/2026\n"
-                                    "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
-                                    "  - These updates will post across all channels anytime updates are made.\n"
-                                    "- The Beta version of Train Tag is now live, play using ~tag\n"
-                                    "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
-                                    "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
-                                    "- Added some new commands to the help menu for these corresponding updates.")
+            await channel.send("# Update 1/28/2026 - Small Character Update\n"
+                               "- Added **Secrets of the Silent Witch** with **8** new characters\n"
+                               "- Added **Sentenced to be a Hero** with **2** new characters\n"
+                               "- Added **9** new characters from Hunter x Hunter\n"
+                               "- Added **1** new character from Oshi no Ko")
+
+
+            # # Update 1/15/2026\n"
+            #                                     "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
+            #                                     "  - These updates will post across all channels anytime updates are made.\n"
+            #                                     "- The Beta version of Train Tag is now live, play using ~tag\n"
+            #                                     "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
+            #                                     "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
+            #                                     "- Added some new commands to the help menu for these corresponding updates."
 
         except Exception as e:
             print(f"Failed to send update to guild {guild_id}: {e}")
@@ -283,13 +290,11 @@ async def sut(ctx):
     if (ctx.author.id == 333414505750986753):
         try:
             channel = await bot.fetch_channel(1461414479911718986)
-            await channel.send("# Update 1/15/2026\n"
-                                    "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
-                                    "  - These updates will post across all channels anytime updates are made.\n"
-                                    "- The Beta version of Train Tag is now live, play using ~tag\n"
-                                    "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
-                                    "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
-                                    "- Added some new commands to the help menu for these corresponding updates.")
+            await channel.send("# Update 1/28/2026 - Small Character Update\n"
+                               "- Added **Secrets of the Silent Witch** with **8** new characters\n"
+                               "- Added **Sentenced to be a Hero** with **2** new characters\n"
+                               "- Added **9** new characters from Hunter x Hunter\n"
+                               "- Added **1** new character from Oshi no Ko")
         except Exception as e:
             print(e)
     else:
