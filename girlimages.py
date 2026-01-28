@@ -3049,7 +3049,7 @@ girls = [
      "https://cdn.myanimelist.net/images/characters/4/89052.jpg",
     ),(  #763
      "Shizuka Kuze",
-     "Takopi's Original Sin",
+     "Takopi's Orignal Sin",
      "https://cdn.myanimelist.net/images/characters/12/573206.jpg",
     ),(  #764
      "Marina Kirarazaka",
@@ -3480,6 +3480,10 @@ girls = [
      "Oshi no Ko",
      "https://cdn.myanimelist.net/images/characters/9/555135.jpg",
     ),(  #871
+     "Mimi Yoshizumi",
+     "Oshi no Ko",
+     "https://cdn.myanimelist.net/images/characters/2/619938.jpg",
+    ),(
      "Shizuku Murasaki",
      "Hunter x Hunter",
      "https://cdn.myanimelist.net/images/characters/6/373727.jpg",
@@ -3511,6 +3515,42 @@ girls = [
      "Neon Nostrade",
      "Hunter x Hunter",
      "https://cdn.myanimelist.net/images/characters/16/185665.jpg",
+    ),(
+     "Neferpitou",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/12/253673.jpg",
+    ),(
+     "Alluka Zoldyck",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/4/294552.jpg",
+    ),(
+     "Komugi",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/14/243865.jpg",
+    ),(
+     "Palm Siberia",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/10/211775.jpg",
+    ),(
+     "Mito Freecss",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/16/168231.jpg",
+    ),(
+     "Cheadle Yorkshire",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/6/260119.jpg",
+    ),(
+     "Pyon",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/2/252379.jpg",
+    ),(
+     "Hina",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/11/210415.jpg",
+    ),(
+     "Spinner Clow",
+     "Hunter x Hunter",
+     "https://cdn.myanimelist.net/images/characters/16/204715.jpg",
     ),(  #879
      "Delta",
      "The Eminence in Shadow",
@@ -4231,6 +4271,114 @@ girls = [
      "Miyako Ishida",
      "A Silent Voice",
      "https://cdn.myanimelist.net/images/characters/6/330353.jpg",
+    ),(
+     "C.C.",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/13/33815.jpg",
+    ),(
+     "Kallen Stadtfeld",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/8/31533.jpg",
+    ),(
+     "Shirley Fenette",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/7/33794.jpg",
+    ),(
+     "Euphemia Li Britannia",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/13/83313.jpg",
+    ),(
+     "Cornelia Li Britannia",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/9/474071.jpg",
+    ),(
+     "Nunnally Lamperouge",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/12/61334.jpg",
+    ),(
+     "Villetta Nu",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/15/83310.jpg",
+    ),(
+     "Anya Alstreim",
+     "Code Geass",
+     "https://cdn.myanimelist.net/images/characters/6/83435.jpg",
+    ),(
+     "Hiyori Iki",
+     "Noragami",
+     "https://cdn.myanimelist.net/images/characters/16/573518.jpg",
+    ),(
+     "Bishamon",
+     "Noragami",
+     "https://cdn.myanimelist.net/images/characters/13/237153.jpg",
+    ),(
+     "Kofuku",
+     "Noragami",
+     "https://cdn.myanimelist.net/images/characters/15/234245.jpg",
+    ),(
+     "Nora",
+     "Noragami",
+     "https://cdn.myanimelist.net/images/characters/6/234239.jpg",
+    ),(
+     "Kayo Hinazuki",
+     "Erased",
+     "https://cdn.myanimelist.net/images/characters/9/300610.jpg",
+    ),(
+     "Sachiko Fujinuma",
+     "Erased",
+     "https://cdn.myanimelist.net/images/characters/5/300491.jpg",
+    ),(
+     "Airi Katagiri",
+     "Erased",
+     "https://cdn.myanimelist.net/images/characters/14/299245.jpg",
+    ),(                                                                             # SECRETS OF THE SILENT WITCH
+     "Monica Everett",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/10/601433.jpg",
+    ),(
+     "Isabelle Norton",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/14/591848.jpg",
+    ),(
+     "Lana Colette",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/16/598910.jpg",
+    ),(
+     "Rynzbelfeid",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/2/603442.jpg",
+    ),(
+     "Claudia Ashley",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/7/601428.jpg",
+    ),(
+     "Casey Grove",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/8/603896.jpg",
+    ),(
+     "Mary Harvey",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/13/606746.jpg",
+    ),(
+     "Bridget Greyham",
+     "Secrets of the Silent Witch",
+     "https://cdn.myanimelist.net/images/characters/12/590833.jpg",
+    ),(
+     "Teoritta",
+     "Sentenced to be a Hero",
+     "https://cdn.myanimelist.net/images/characters/5/576374.jpg",
+    ),(
+     "Patausche Kivia",
+     "Sentenced to be a Hero",
+     "https://cdn.myanimelist.net/images/characters/14/581615.jpg",
+    ),(
+     "",
+     "",
+     "",
+    ),(
+     "",
+     "",
+     "",
     )
 ]
 
@@ -4282,8 +4430,9 @@ testGirls = [
      #"",
      #"",
     #)
-
 ]
+
+
 
 girlDictionary = {name.lower(): {"name": name, "show": show, "url": url} for name, show, url in girls}
 showDictionary = defaultdict(list)
