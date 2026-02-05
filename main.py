@@ -939,36 +939,33 @@ async def gr(ctx):
         if rankCount == numGirls - 1:
             embedList.title = "FINAL Best Girl Ranking"
 
+
             if rankCount == 4:
                 roundFiveCount(ctx.author.id, "gr")
+
             elif rankCount == 9:
                 roundTenCount(ctx.author.id, "gr")
 
-            if rankCount >= 4:
+
+
+            if rankCount >= 9:
+                await userXP(ctx.author.id, 2)
+                xpembed = discord.Embed(description="You gained +2 XP!!", color=discord.Color.green())
+                await ctx.send(embed=xpembed)
+
+            elif rankCount >= 4:
                 grTotalPlay(ctx.author.id, "gr")
 
-
                 await userXP(ctx.author.id, 1)
+                xpembed = discord.Embed(description="You gained +1 XP!!", color=discord.Color.green())
+                await ctx.send(embed=xpembed)
 
-
-                #xpFile = xpCol.find_one({"user_id": ctx.author.id})
-                #leveledup, xpFileNew = level_up(xpFile)
-                #
-                #user_doc = await asyncio.to_thread(xpCol.find_one, {"user_id": ctx.author.id})
-                #print(user_doc)
-
-                #if leveledup == True:
-                #    await ctx.send(f"Congrats!! You have leveled up to Level {xpFileNew['level']}!! :O")
 
 
 
 
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
-
-        if rankCount == numGirls - 1:
-            xpembed = discord.Embed(description="You gained +1 XP!!", color=discord.Color.green())
-            await ctx.send(embed=xpembed)
 
         await asyncio.sleep(3)
 
