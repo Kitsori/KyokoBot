@@ -662,7 +662,7 @@ async def xptg(ctx):
 
             globalRanks.append((username, level, xp))
 
-            globalRanks.sort(key=lambda x: x[1], reverse=False)
+            globalRanks.sort(key=lambda x: (x[1], x[2]), reverse=True)
 
             per_page = 15
             pages_list = []
@@ -677,14 +677,14 @@ async def xptg(ctx):
                     color=discord.Color.blue()
                 )
 
-                for count, (name, avg, xp) in enumerate(globalRanks[i:i + per_page], start=start_rank):
-                    embed.add_field(name=f"#{count}: {name} - Level {avg} - ({xp} XP)", value="", inline=False)
+                for count, (name, lvl, xp) in enumerate(globalRanks[i:i + per_page], start=start_rank):
+                    embed.add_field(name=f"#{count}: {name} - Level {lvl} - ({xp} XP)", value="", inline=False)
 
                 embed.set_footer(text="Play games to earn more XP! :3")
                 pages_list.append(embed)
 
-            view = PageView(pages_list)
-            await ctx.send(embed=pages_list[0], view=view)
+        view = PageView(pages_list)
+        await ctx.send(embed=pages_list[0], view=view)
 
     except Exception as e:
         print(e)
