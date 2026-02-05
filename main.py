@@ -111,20 +111,29 @@ async def avgGirlRankTen(girlName, user_id, rank):
     )
 
 async def userXP(user_id, userxp, level=None):
+    """
+    Add XP to a user. Creates a new user document if none exists.
+    """
 
-    update = {"$inc": {"xp": userxp}}
+    try:
+        # Always increment XP
+        update = {"$inc": {"xp": userxp}}
 
+        # Fields to create if the user doesn't exist
+        set_on_insert = {"level": 1} if level is None else {"level": level}
 
-    exists = await asyncio.to_thread(xpCol.find_one, {"user_id": user_id})
+        update["$setOnInsert"] = set_on_insert  # <-- ensures new users get level
 
-    if not exists:
-        update["$set"] = {"level": 1}
+        # Upsert guarantees creation
+        await asyncio.to_thread(
+            xpCol.update_one,
+            {"user_id": user_id},
+            update,
+            upsert=True
+        )
+    except Exception as error:
+        print(error)
 
-    if level is not None:
-        update.setdefault("$set", {})["level"] = level
-
-
-    await asyncio.to_thread(xpCol.update_one,{"user_id": user_id}, update, upsert=True)
 
 
 def add_server(guild_id: int, channel_id: int):
@@ -261,11 +270,23 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send("# Update 1/28/2026 - Small Character Update\n"
-                               "- Added **Secrets of the Silent Witch** with **8** new characters\n"
-                               "- Added **Sentenced to be a Hero** with **2** new characters\n"
-                               "- Added **9** new characters from Hunter x Hunter\n"
-                               "- Added **1** new character from Oshi no Ko")
+            await channel.send("# Update 2/5/2026 - XP System Update\n"
+                               "- ~xp command revamped!\n"
+                               "  - Now shows an xp bar, your level, and current xp in a nicer embed format!\n"
+                               "- ~xptg command added!\n"
+                               "  - View the top global users in xp earned!\n"
+                               "- Added 15 new levels, current max level is 25.\n"
+                               "- Added appropriate new pages to the ~help command for these updated xp commands.\n"
+                               "\n"
+                               "-# - The main source of XP currently is playing rankings of 5+ characters, "
+                               "but hopefully more methods to gain XP coming soon! Also want to add "
+                               "more uses for XP in the hopefully near future as well!")
+
+            # Update 1/28/2026 - Small Character Update\n"
+            #"- Added **Secrets of the Silent Witch** with **8** new characters\n"
+            #"- Added **Sentenced to be a Hero** with **2** new characters\n"
+            #"- Added **9** new characters from Hunter x Hunter\n"
+            #"- Added **1** new character from Oshi no Ko
 
 
             # # Update 1/15/2026\n"
@@ -290,11 +311,17 @@ async def sut(ctx):
     if (ctx.author.id == 333414505750986753):
         try:
             channel = await bot.fetch_channel(1461414479911718986)
-            await channel.send("# Update 1/28/2026 - Small Character Update\n"
-                               "- Added **Secrets of the Silent Witch** with **8** new characters\n"
-                               "- Added **Sentenced to be a Hero** with **2** new characters\n"
-                               "- Added **9** new characters from Hunter x Hunter\n"
-                               "- Added **1** new character from Oshi no Ko")
+            await channel.send("# Update 2/5/2026 - XP System Update\n"
+                               "- ~xp command revamped!\n"
+                               "  - Now shows an xp bar, your level, and current xp in a nicer embed format!\n"
+                               "- ~xptg command added!\n"
+                               "  - View the top global users in xp earned!\n"
+                               "- Added 15 new levels, current max level is 25.\n"
+                               "- Added appropriate new pages to the ~help command for these updated xp commands.\n"
+                               "\n"
+                               "-# - The main source of XP currently is playing rankings of 5+ characters, "
+                               "but hopefully more methods to gain XP coming soon! Also want to add "
+                               "more uses for XP in the hopefully near future as well!")
         except Exception as e:
             print(e)
     else:
@@ -320,6 +347,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
     helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag, ~taginfo", inline=False)
+    helpEmbed.add_field(name="__XP__ (~xphelp)", value="~xp, ~xpts", inline=False)
     helpEmbed.add_field(name="__Admin Commands__ (~adminhelp)", value="~updates", inline=False)
     await ctx.send(embed=helpEmbed)
 
@@ -413,6 +441,20 @@ async def taginfo(ctx):
                                                  "tagged and lose before you even get the chance to get to your end location!", inline=False)
     taginfoEmbed.add_field(name="Good Luck!", value="This game is still a WIP, so expect bugs or some 'unfinished' content!", inline=False)
     await ctx.send(embed=taginfoEmbed)
+
+
+
+@bot.command()
+async def xphelp(ctx):
+    xphelpEmbed = discord.Embed(
+        title="Kyoko's XP Commands",
+        description="The XP grind never stops..! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    xphelpEmbed.add_field(name="~xp", value="View your/another users current XP and level!", inline=False)
+    xphelpEmbed.add_field(name="~xptg", value="View the top global users in XP earned!", inline=False)
+    await ctx.send(embed=xphelpEmbed)
 
 
 
@@ -538,38 +580,115 @@ async def xp(ctx, user_id: str = None):
 
 
     try:
-        xpFile = xpCol.find_one({"user_id": userID})
+        xpFile = xpCol.find_one({"user_id": userID}) # Find the xp file for the user
 
-        startingXP = xpFile['xp']
-        await ctx.send(f"Current Level: {xpFile['level']}")
+        if xpFile:
 
+            levelxp = xp_to_level(xpFile["level"]) # The amount of xp to level up of the users current level
 
-
-        levelxp = xp_to_level(xpFile["level"])
-
-        leveledup, xpFileNew = level_up(xpFile)
+            leveledup, xpFileNew = level_up(xpFile)
 
 
-        if leveledup == True:
 
-            await ctx.send("You leveled up!")
+            if leveledup == True:
 
-            await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
+                await ctx.send("You leveled up!")
+
+                await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
+            else:
+                await userXP(ctx.author.id, 0, xpFileNew['level'])
+
+
+
+            newlevelxp = xp_to_level(xpFileNew['level'])
+
+
+
+
+            levelXP = xpFileNew['xp']
+            barValue = newlevelxp / 15
+
+            barCountDouble = levelXP / barValue
+            barCount = round(barCountDouble)
+
+
+            bars = ""
+            remainingBars = 15 - barCount
+
+            for i in range(barCount):
+                bars += "█"
+
+            for i in range(remainingBars):
+                bars += "░"
+
+
+
+            xpBarEmbed = discord.Embed(
+                title = f'{user.display_name}\'s XP PROGRESS',
+                description = f"Level {xpFileNew['level']}:\n ║{bars}║\n ({xpFileNew['xp']}/{newlevelxp})\n",
+                color = discord.Color.blue()
+            )
+
+            xpBarEmbed.set_footer(text="Play some games to earn more XP! :3")
+
+            await ctx.send(embed=xpBarEmbed)
+
         else:
-            await userXP(ctx.author.id, 0, xpFileNew['level'])
-
-        newlevelxp = xp_to_level(xpFileNew['level'])
-
-        await ctx.send(f"Current XP: {xpFileNew['xp']}/{newlevelxp}")
+            await ctx.send("You have no xp silly!! Go play some games! :3")
 
 
-
-
-
-
-        await ctx.send("You have no xp")
     except Exception as e:
         print(e)
+
+
+
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# XP LEADERBOARDS
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+@bot.command()
+async def xptg(ctx):
+    try:
+        userList = await asyncio.to_thread(list, xpCol.find())
+
+        globalRanks = []
+
+        for userID in userList:
+            user = userID.get("user_id")
+            level = userID.get("level")
+            xp = userID.get("xp")
+
+            name = bot.get_user(user)
+            username = str(name)
+
+            globalRanks.append((username, level, xp))
+
+            globalRanks.sort(key=lambda x: x[1], reverse=False)
+
+            per_page = 15
+            pages_list = []
+
+            for i in range(0, len(globalRanks), per_page):
+                start_rank = i + 1  # First rank on this page
+                end_rank = min(i + per_page, len(globalRanks))  # Last rank on this page
+
+                embed = discord.Embed(
+                    title=f"Global Top XP Leaderboard",
+                    description=f"Top {start_rank}-{end_rank} Users\n\u200b",
+                    color=discord.Color.blue()
+                )
+
+                for count, (name, avg, xp) in enumerate(globalRanks[i:i + per_page], start=start_rank):
+                    embed.add_field(name=f"#{count}: {name} - Level {avg} - ({xp} XP)", value="", inline=False)
+
+                embed.set_footer(text="Play games to earn more XP! :3")
+                pages_list.append(embed)
+
+            view = PageView(pages_list)
+            await ctx.send(embed=pages_list[0], view=view)
+
+    except Exception as e:
+        print(e)
+
 
 
 
@@ -827,7 +946,21 @@ async def gr(ctx):
 
             if rankCount >= 4:
                 grTotalPlay(ctx.author.id, "gr")
+
+
                 await userXP(ctx.author.id, 1)
+
+
+                #xpFile = xpCol.find_one({"user_id": ctx.author.id})
+                #leveledup, xpFileNew = level_up(xpFile)
+                #
+                #user_doc = await asyncio.to_thread(xpCol.find_one, {"user_id": ctx.author.id})
+                #print(user_doc)
+
+                #if leveledup == True:
+                #    await ctx.send(f"Congrats!! You have leveled up to Level {xpFileNew['level']}!! :O")
+
+
 
 
         # Send the embed after each iteration
