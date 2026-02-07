@@ -172,6 +172,60 @@ class PageView(discord.ui.View):
 
 
 
+class DropButton(discord.ui.View):
+    def __init__ (self, user_id, timeout=10):
+        super().__init__(timeout=timeout)
+        self.userID = user_id
+        self.claimed = False
+
+    @discord.ui.button(label="OPEN", style=discord.ButtonStyle.blurple)
+    async def open(self, interaction: discord.Interaction, button: discord.ui.Button):
+
+        if interaction.user.id != self.userID:
+            await interaction.response.send_message("This drop isn't for you silly..! :P", ephemeral=True)
+            return
+
+        if self.claimed:
+            await interaction.response.send_message("You can't claim this drop twice dummy..!", ephemeral=True)
+            return
+
+        self.claimed = True
+        button.disabled = True
+
+        dropType = random.randint(1, 100)
+
+        if 1 < dropType < 30:
+            dropMsg = "You found +1 XP!"
+        elif 30 < dropType < 50:
+            dropMsg = "You found +2 XP!"
+        elif 50 < dropType < 60:
+            dropMsg = "You found +3 XP!"
+        elif 60 < dropType < 64:
+            dropMsg = "You found +5 XP!"
+        elif 64 < dropType < 66:
+            dropMsg = "You found +10 XP!"
+        elif 65 < dropType < 80:
+            dropMsg = "You found +1 Kyokoins!"
+        elif 80 < dropType < 90:
+            dropMsg = "You found +2 Kyokoins!"
+        elif 90 < dropType < 95:
+            dropMsg = "You found +3 Kyokoins!"
+        elif 95 < dropType < 99:
+            dropMsg = "You found +5 Kyokoins!"
+        elif 99 < dropType < 101:
+            dropMsg = "You found +10 Kyokoins!"
+
+        embed = interaction.message.embeds[0]
+        embed.title = "DROP CLAIMED!"
+        embed.description = dropMsg
+        embed.color = discord.Color.purple()
+
+        await interaction.response.edit_message(embed=embed,view=self)
+
+
+        await interaction.response.edit_message("DROP CLAIMED!", view=self)
+
+
 
 
 
@@ -964,6 +1018,7 @@ async def gr(ctx):
 
 
 
+
         # Send the embed after each iteration
         await ctx.send(embed=embedList)
 
@@ -975,6 +1030,32 @@ async def gr(ctx):
 
 
 
+
+async def drop(ctx):
+    try:
+        dropChance = random.randint(1, 100)
+
+        if dropChance <= 100:
+            dropEmbed = discord.Embed(
+                title="YOU FOUND A HIDDEN DROP!",
+                color=discord.Color.pink()
+            )
+
+        button = DropButton(ctx.author.id)
+        await ctx.send(embed=dropEmbed, view=button)
+
+
+
+    except Exception as e:
+        print(e)
+
+
+@bot.command()
+async def droptest(ctx):
+    try:
+        await drop(ctx)
+    except Exception as e:
+        print(e)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
