@@ -55,8 +55,8 @@ TenInitialRank = db["10InitialRank"]
 girlAvgRanks = db["GirlAverageRanks5"]
 girlAvgRanksTen = db["GirlAverageRanks10"]
 
-
 xpCol = db["XP"]
+inv = db["Inventory"]
 
 updateChannelsList = db["update_channels"]
 
@@ -194,26 +194,22 @@ class DropButton(discord.ui.View):
 
         dropType = random.randint(1, 100)
 
-        if 1 < dropType < 30:
+        if 1 <= dropType <= 40:
             dropMsg = "You found +1 XP!"
-        elif 30 < dropType < 50:
+            await userXP(self.userID, 1)
+        elif 41 <= dropType <= 70:
             dropMsg = "You found +2 XP!"
-        elif 50 < dropType < 60:
+            await userXP(self.userID, 2)
+        elif 71 <= dropType <= 85:
             dropMsg = "You found +3 XP!"
-        elif 60 < dropType < 64:
+            await userXP(self.userID, 3)
+        elif 86 <= dropType <= 95:
             dropMsg = "You found +5 XP!"
-        elif 64 < dropType < 66:
+            await userXP(self.userID, 5)
+        elif 96 <= dropType <= 100:
             dropMsg = "You found +10 XP!"
-        elif 65 < dropType < 80:
-            dropMsg = "You found +1 Kyokoins!"
-        elif 80 < dropType < 90:
-            dropMsg = "You found +2 Kyokoins!"
-        elif 90 < dropType < 95:
-            dropMsg = "You found +3 Kyokoins!"
-        elif 95 < dropType < 99:
-            dropMsg = "You found +5 Kyokoins!"
-        elif 99 < dropType < 101:
-            dropMsg = "You found +10 Kyokoins!"
+            await userXP(self.userID, 10)
+
 
         embed = interaction.message.embeds[0]
         embed.title = "DROP CLAIMED!"
@@ -324,32 +320,17 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send("# Update 2/5/2026 - XP System Update\n"
-                               "- ~xp command revamped!\n"
-                               "  - Now shows an xp bar, your level, and current xp in a nicer embed format!\n"
-                               "- ~xptg command added!\n"
-                               "  - View the top global users in xp earned!\n"
-                               "- Added 15 new levels, current max level is 25.\n"
-                               "- Added appropriate new pages to the ~help command for these updated xp commands.\n"
+            await channel.send("# Mini Update 2/7/2026 - Drops Introduction\n"
+                               "- Drops added!\n"
+                               "  - Drops have a chance to randomly appear after using commands "
+                               "and give random amounts of extra XP!\n"
+                               "  - Drops appear most frequently on ~gr commands as of now, but have low "
+                               "chances to appear on many other commands as well!\n"
                                "\n"
-                               "-# - The main source of XP currently is playing rankings of 5+ characters, "
-                               "but hopefully more methods to gain XP coming soon! Also want to add "
-                               "more uses for XP in the hopefully near future as well!")
-
-            # Update 1/28/2026 - Small Character Update\n"
-            #"- Added **Secrets of the Silent Witch** with **8** new characters\n"
-            #"- Added **Sentenced to be a Hero** with **2** new characters\n"
-            #"- Added **9** new characters from Hunter x Hunter\n"
-            #"- Added **1** new character from Oshi no Ko
+                               "-#  - As more features are added more possibilites will be added to drops!")
 
 
-            # # Update 1/15/2026\n"
-            #                                     "- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
-            #                                     "  - These updates will post across all channels anytime updates are made.\n"
-            #                                     "- The Beta version of Train Tag is now live, play using ~tag\n"
-            #                                     "  - A mini-game inspired by Tag from Jet Lag the Game!\n"
-            #                                     "  - Take trains, collect coins, and try to reach the end before being tagged!\n"
-            #                                     "- Added some new commands to the help menu for these corresponding updates."
+
 
         except Exception as e:
             print(f"Failed to send update to guild {guild_id}: {e}")
@@ -365,22 +346,49 @@ async def sut(ctx):
     if (ctx.author.id == 333414505750986753):
         try:
             channel = await bot.fetch_channel(1461414479911718986)
-            await channel.send("# Update 2/5/2026 - XP System Update\n"
-                               "- ~xp command revamped!\n"
-                               "  - Now shows an xp bar, your level, and current xp in a nicer embed format!\n"
-                               "- ~xptg command added!\n"
-                               "  - View the top global users in xp earned!\n"
-                               "- Added 15 new levels, current max level is 25.\n"
-                               "- Added appropriate new pages to the ~help command for these updated xp commands.\n"
+            await channel.send("# Mini Update 2/7/2026 - Drops Introduction\n"
+                               "- Drops added!\n"
+                               "  - Drops have a chance to randomly appear after using commands "
+                               "and give random amounts of extra XP!\n"
+                               "  - Drops appear most frequently on ~gr commands as of now, but have low "
+                               "chances to appear on many other commands as well!\n"
                                "\n"
-                               "-# - The main source of XP currently is playing rankings of 5+ characters, "
-                               "but hopefully more methods to gain XP coming soon! Also want to add "
-                               "more uses for XP in the hopefully near future as well!")
+                               "-#  - As more features are added more possibilites will be added to drops!")
         except Exception as e:
             print(e)
     else:
         await ctx.send("Only Kyoko's favorite is allowed to run this command...!")
 
+
+            # UPDATE HISTORY
+
+            #"# Update 2/5/2026 - XP System Update\n"
+            #"- ~xp command revamped!\n"
+            #"  - Now shows an xp bar, your level, and current xp in a nicer embed format!\n"
+            #"- ~xptg command added!\n"
+            #"  - View the top global users in xp earned!\n"
+            #"- Added 15 new levels, current max level is 25.\n"
+            #"- Added appropriate new pages to the ~help command for these updated xp commands.\n"
+            #"\n"
+            #"-# - The main source of XP currently is playing rankings of 5+ characters, "
+            #"but hopefully more methods to gain XP coming soon! Also want to add "
+            #"more uses for XP in the hopefully near future as well!"
+
+
+            # Update 1/28/2026 - Small Character Update\n"
+            #"- Added **Secrets of the Silent Witch** with **8** new characters\n"
+            #"- Added **Sentenced to be a Hero** with **2** new characters\n"
+            #"- Added **9** new characters from Hunter x Hunter\n"
+            #"- Added **1** new character from Oshi no Ko
+
+
+            # Update 1/15/2026\n"
+            #"- Added ~update, a command that allows users to set a specific channel to receive these updates!\n"
+            #"  - These updates will post across all channels anytime updates are made.\n"
+            #"- The Beta version of Train Tag is now live, play using ~tag\n"
+            #"  - A mini-game inspired by Tag from Jet Lag the Game!\n"
+            #"  - Take trains, collect coins, and try to reach the end before being tagged!\n"
+            #"- Added some new commands to the help menu for these corresponding updates."
 
 
 
@@ -532,6 +540,7 @@ async def adminhelp(ctx):
 @bot.command()
 async def ping(ctx): # Get context of message
     await ctx.send("Pong! :3") # Send back in the current channel wherever it was mentioned
+    await drop(ctx, 1)
 
 
 
@@ -541,24 +550,28 @@ async def ping(ctx): # Get context of message
 async def add(ctx, num1: int, num2: int):
     result = num1 + num2
     await ctx.send(f"Hai!! The sum of {num1} and {num2} is.... {result}! You're welcome!! :3")
+    await drop(ctx, 2)
 
 
 @bot.command()
 async def sub(ctx, num1: int, num2: int):
     result = num1 - num2
     await ctx.send(f"Hai!! The difference of {num1} and {num2} is.... {result}! You're welcome!! :3")
+    await drop(ctx, 2)
 
 
 @bot.command()
 async def mult(ctx, num1: int, num2: int):
     result = num1 * num2
     await ctx.send(f"Hai!! The product of {num1} and {num2} is.... {result}! You're welcome!! :3")
+    await drop(ctx, 2)
 
 
 @bot.command()
 async def div(ctx, num1: int, num2: int):
     result = num1 / num2
     await ctx.send(f"Hai!! The quotient of {num1} and {num2} is.... {result}! You're welcome!! :3")
+    await drop(ctx, 2)
 
 
 #@bot.command()
@@ -660,14 +673,14 @@ async def xp(ctx, user_id: str = None):
 
 
             levelXP = xpFileNew['xp']
-            barValue = newlevelxp / 15
+            barValue = newlevelxp / 20
 
             barCountDouble = levelXP / barValue
             barCount = round(barCountDouble)
 
 
             bars = ""
-            remainingBars = 15 - barCount
+            remainingBars = 20 - barCount
 
             for i in range(barCount):
                 bars += "█"
@@ -676,6 +689,13 @@ async def xp(ctx, user_id: str = None):
                 bars += "░"
 
 
+            xpCol.update_one(
+                {"user_id": userID},
+                {"$set": {
+                    "xp": xpFileNew["xp"],
+                    "level": xpFileNew["level"]
+                }}
+            )
 
             xpBarEmbed = discord.Embed(
                 title = f'{user.display_name}\'s XP PROGRESS',
@@ -749,6 +769,39 @@ async def xptg(ctx):
 
 
 
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# DROPS
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+async def drop(ctx, rate):
+    try:
+        dropChance = random.randint(1, 100)
+
+        if dropChance <= rate:
+            dropEmbed = discord.Embed(
+                title="YOU FOUND A HIDDEN DROP!",
+                color=discord.Color.pink()
+            )
+
+        button = DropButton(ctx.author.id)
+        await ctx.send(embed=dropEmbed, view=button)
+
+
+
+    except Exception as e:
+        print(e)
+
+
+@bot.command()
+async def droptest(ctx):
+    try:
+        await drop(ctx)
+    except Exception as e:
+        print(e)
+
+
+
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
 # RANDOM ANIME GIRL IMAGE GENERATOR
@@ -768,6 +821,8 @@ async def rg(ctx):
 
     await ctx.send(embed=embed)  # Send the embed of name and girl image
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
+
+    await drop(ctx, 3)
 
 
 
@@ -1007,12 +1062,17 @@ async def gr(ctx):
                 xpembed = discord.Embed(description="You gained +2 XP!!", color=discord.Color.green())
                 await ctx.send(embed=xpembed)
 
+                await drop(ctx, 20)
+
+
             elif rankCount >= 4:
                 grTotalPlay(ctx.author.id, "gr")
 
                 await userXP(ctx.author.id, 1)
                 xpembed = discord.Embed(description="You gained +1 XP!!", color=discord.Color.green())
                 await ctx.send(embed=xpembed)
+
+                await drop(ctx, 25)
 
 
 
@@ -1030,32 +1090,6 @@ async def gr(ctx):
 
 
 
-
-async def drop(ctx):
-    try:
-        dropChance = random.randint(1, 100)
-
-        if dropChance <= 100:
-            dropEmbed = discord.Embed(
-                title="YOU FOUND A HIDDEN DROP!",
-                color=discord.Color.pink()
-            )
-
-        button = DropButton(ctx.author.id)
-        await ctx.send(embed=dropEmbed, view=button)
-
-
-
-    except Exception as e:
-        print(e)
-
-
-@bot.command()
-async def droptest(ctx):
-    try:
-        await drop(ctx)
-    except Exception as e:
-        print(e)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1105,7 +1139,7 @@ async def gl(ctx, *, input):
         await ctx.send("I couldn't find any girl with that name... :(")
 
 
-
+    await drop(ctx, 3)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1143,6 +1177,8 @@ async def gsl(ctx, *, input):
     if showFound == False:
         await ctx.send("I couldn't find any shows with that title... :(")
 
+
+    await drop(ctx, 3)
 
     #if showInput in showDictionary:
     #    showList.append(girlDictionary[showInput])
@@ -1225,6 +1261,9 @@ async def grs(ctx, user_id: str = None):
         grsembed.add_field(name="__Average First Rank (10 Girls)__", value=f"{tenRankAvg}", inline=False)
 
         await ctx.send(embed=grsembed)
+
+        await drop(ctx, 3)
+
     else:
         await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
 
@@ -1304,6 +1343,8 @@ async def gs(ctx, *, input):
 
         await ctx.send(embed=embed)
 
+    await drop(ctx, 3)
+
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
 # Global Stats for a Specific Girl
@@ -1374,6 +1415,8 @@ async def ggs(ctx, *, input):
         embed.add_field(name="__Average Rank (10 Girls)__", value=avgTen, inline=False)
 
         await ctx.send(embed=embed)
+
+    await drop(ctx, 3)
 
 
 
@@ -1451,6 +1494,8 @@ async def gt(ctx, user_id: str = None):
     view = PageView(pages_list)
     await ctx.send(embed=pages_list[0], view=view)
 
+    await drop(ctx, 3)
+
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
 # Self Top Girls for Rounds of 10
@@ -1514,7 +1559,7 @@ async def gtt(ctx, user_id: str = None):
 
     await ctx.send(embed=embed)
 
-
+    await drop(ctx, 3)
 
 
 
@@ -1571,7 +1616,7 @@ async def gtg(ctx):
     view = PageView(pages_list)
     await ctx.send(embed=pages_list[0], view=view)
 
-
+    await drop(ctx, 3)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1617,7 +1662,7 @@ async def gttg(ctx):
 
     await ctx.send(embed=embed)
 
-
+    await drop(ctx, 3)
 
 
 
