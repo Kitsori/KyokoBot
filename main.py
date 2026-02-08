@@ -197,18 +197,23 @@ class DropButton(discord.ui.View):
         if 1 <= dropType <= 40:
             dropMsg = "You found +1 XP!"
             await userXP(self.userID, 1)
+            await levelUp(ctx, ctx.author.id)
         elif 41 <= dropType <= 70:
             dropMsg = "You found +2 XP!"
             await userXP(self.userID, 2)
+            await levelUp(self.ctx, self.ctx.author.id)
         elif 71 <= dropType <= 85:
             dropMsg = "You found +3 XP!"
             await userXP(self.userID, 3)
+            await levelUp(self.ctx, self.ctx.author.id)
         elif 86 <= dropType <= 95:
             dropMsg = "You found +5 XP!"
             await userXP(self.userID, 5)
+            await levelUp(self.ctx, self.ctx.author.id)
         elif 96 <= dropType <= 100:
             dropMsg = "You found +10 XP!"
             await userXP(self.userID, 10)
+            await levelUp(self.ctx, self.ctx.author.id)
 
 
         embed = interaction.message.embeds[0]
@@ -621,6 +626,35 @@ async def div(ctx, num1: int, num2: int):
 #    await poll_message.add_reaction("👍")
 #    await poll_message.add_reaction("👎")
 
+async def levelUp(ctx, userID):
+
+    try:
+        xpFile = xpCol.find_one({"user_id": userID})  # Find the xp file for the user
+
+        if xpFile:
+
+            levelxp = xp_to_level(xpFile["level"])  # The amount of xp to level up of the users current level
+
+            leveledup, xpFileNew = level_up(xpFile)
+
+            if leveledup == True:
+
+                await ctx.send(f"You leveled up to {xpFileNew['level']}!")
+
+                await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
+            else:
+                await userXP(ctx.author.id, 0, xpFileNew['level'])
+
+            xpCol.update_one(
+                {"user_id": userID},
+                {"$set": {
+                    "xp": xpFileNew["xp"],
+                    "level": xpFileNew["level"]
+                }}
+            )
+
+    except Exception as e:
+        print(e)
 
 
 
@@ -656,10 +690,9 @@ async def xp(ctx, user_id: str = None):
             leveledup, xpFileNew = level_up(xpFile)
 
 
-
             if leveledup == True:
 
-                await ctx.send("You leveled up!")
+                await ctx.send(f"You leveled up to {xpFileNew['level']}!")
 
                 await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
             else:
@@ -667,17 +700,17 @@ async def xp(ctx, user_id: str = None):
 
 
 
+
             newlevelxp = xp_to_level(xpFileNew['level'])
 
 
 
-
+            # Create the XP Bar
             levelXP = xpFileNew['xp']
             barValue = newlevelxp / 20
 
             barCountDouble = levelXP / barValue
             barCount = round(barCountDouble)
-
 
             bars = ""
             remainingBars = 20 - barCount
@@ -687,6 +720,7 @@ async def xp(ctx, user_id: str = None):
 
             for i in range(remainingBars):
                 bars += "░"
+
 
 
             xpCol.update_one(
@@ -822,6 +856,7 @@ async def rg(ctx):
     await ctx.send(embed=embed)  # Send the embed of name and girl image
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
 
+    await levelUp(ctx, ctx.author.id)
     await drop(ctx, 3)
 
 
@@ -1061,6 +1096,9 @@ async def gr(ctx):
                 await userXP(ctx.author.id, 2)
                 xpembed = discord.Embed(description="You gained +2 XP!!", color=discord.Color.green())
                 await ctx.send(embed=xpembed)
+                await asyncio.sleep(1)
+                await levelUp(ctx, ctx.author.id)
+                await asyncio.sleep(1)
 
                 await drop(ctx, 20)
 
@@ -1071,6 +1109,9 @@ async def gr(ctx):
                 await userXP(ctx.author.id, 1)
                 xpembed = discord.Embed(description="You gained +1 XP!!", color=discord.Color.green())
                 await ctx.send(embed=xpembed)
+                await asyncio.sleep(1)
+                await levelUp(ctx, ctx.author.id)
+                await asyncio.sleep(1)
 
                 await drop(ctx, 25)
 
