@@ -47,9 +47,11 @@ def xp_to_level(level):
 
 def level_up(player_data):
     leveledUp = False
+    reward = 0
 
     while True:
         required = xp_to_level(player_data['level'])
+        currentLevel = player_data['level']
 
         if required is None:
             break
@@ -57,7 +59,31 @@ def level_up(player_data):
         if player_data["xp"] >= required:
             player_data["xp"] -= required
             player_data["level"] += 1
+
+            if currentLevel == 1:
+                reward = 5
+            elif currentLevel == 2:
+                reward = 8
+            elif currentLevel == 3:
+                reward = 10
+            elif currentLevel == 4:
+                reward = 15
+            elif currentLevel == 5:
+                reward = 20
+            elif currentLevel == 6:
+                reward = 30
+            elif currentLevel == 7:
+                reward = 40
+            elif currentLevel == 8:
+                reward = 50
+            elif currentLevel == 9:
+                reward = 65
+            elif currentLevel == 10:
+                reward = 80
+
+
+
             leveledUp = True
         else:
             break
-    return leveledUp, player_data
+    return leveledUp, player_data, reward
