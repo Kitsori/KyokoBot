@@ -56,7 +56,8 @@ girlAvgRanks = db["GirlAverageRanks5"]
 girlAvgRanksTen = db["GirlAverageRanks10"]
 
 xpCol = db["XP"]
-inv = db["Inventory"]
+inventory = db["Inventory"]
+kyokoins = db["Kyokoins"]
 
 updateChannelsList = db["update_channels"]
 
@@ -144,6 +145,17 @@ def add_server(guild_id: int, channel_id: int):
     )
 
 
+async def userInv(userID, rerolls):
+    inventory.update_one({"user_id": userID},
+                   {"$inc": {"rerolls": rerolls}},
+                   upsert=True)
+
+async def userKoins(userID, koins):
+    kyokoins.update_one({"user_id": userID},
+                   {"$inc": {"kyokoins": koins}},
+                   upsert=True)
+
+
 
 
 
@@ -192,28 +204,58 @@ class DropButton(discord.ui.View):
         self.claimed = True
         button.disabled = True
 
-        dropType = random.randint(1, 100)
+        dropType = random.randint(1, 200)
 
-        if 1 <= dropType <= 40:
+        if 1 <= dropType <= 20:
             dropMsg = "You found +1 XP!"
             await userXP(self.userID, 1)
-            await levelUp(ctx, ctx.author.id)
-        elif 41 <= dropType <= 70:
+            await levelUp(interaction, interaction.user.id)
+        elif 21 <= dropType <= 40:
             dropMsg = "You found +2 XP!"
             await userXP(self.userID, 2)
-            await levelUp(self.ctx, self.ctx.author.id)
-        elif 71 <= dropType <= 85:
+            await levelUp(interaction, interaction.user.id)
+        elif 41 <= dropType <= 55:
             dropMsg = "You found +3 XP!"
             await userXP(self.userID, 3)
-            await levelUp(self.ctx, self.ctx.author.id)
-        elif 86 <= dropType <= 95:
+            await levelUp(interaction, interaction.user.id)
+        elif 55 <= dropType <= 65:
             dropMsg = "You found +5 XP!"
             await userXP(self.userID, 5)
-            await levelUp(self.ctx, self.ctx.author.id)
-        elif 96 <= dropType <= 100:
+            await levelUp(interaction, interaction.user.id)
+        elif 66 <= dropType <= 70:
             dropMsg = "You found +10 XP!"
             await userXP(self.userID, 10)
-            await levelUp(self.ctx, self.ctx.author.id)
+            await levelUp(interaction, interaction.user.id)
+        elif 71 <= dropType <= 85:
+            dropMsg = "You found a reroll!"
+            await userInv(interaction.user.id, 1)
+        elif 86 <= dropType <= 100:
+            dropMsg = "You found 2 rerolls!"
+            await userInv(interaction.user.id, 2)
+        elif 101 <= dropType <= 115:
+            dropMsg = "You found 3 rerolls!"
+            await userInv(interaction.user.id, 3)
+        elif 116 <= dropType <= 124:
+            dropMsg = "You found 5 rerolls!"
+            await userInv(interaction.user.id, 5)
+        elif 125 <= dropType <= 130:
+            dropMsg = "You found 10 rerolls!"
+            await userInv(interaction.user.id, 10)
+        elif 131 <= dropType <= 150:
+            dropMsg = "You found 1 Kyokoin!"
+            await userKoins(interaction.user.id, 1)
+        elif 151 <= dropType <= 170:
+            dropMsg = "You found 2 Kyokoins!"
+            await userKoins(interaction.user.id, 2)
+        elif 171 <= dropType <= 185:
+            dropMsg = "You found 3 Kyokoins!"
+            await userKoins(interaction.user.id, 3)
+        elif 186 <= dropType <= 195:
+            dropMsg = "You found 5 Kyokoins!"
+            await userKoins(interaction.user.id, 5)
+        elif 196 <= dropType <= 200:
+            dropMsg = "You found 10 Kyokoins!"
+            await userKoins(interaction.user.id, 10)
 
 
         embed = interaction.message.embeds[0]
@@ -325,14 +367,22 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send("# Mini Update 2/7/2026 - Drops Introduction\n"
-                               "- Drops added!\n"
-                               "  - Drops have a chance to randomly appear after using commands "
-                               "and give random amounts of extra XP!\n"
-                               "  - Drops appear most frequently on ~gr commands as of now, but have low "
-                               "chances to appear on many other commands as well!\n"
+            await channel.send("# Update 2/9/2026 - Rerolls and Economy Introduction!\n"
+                               "- Rerolls added!\n"
+                               "  - Rerolls allow you to reroll a character that appears in ~gr commands, giving you another chance "
+                               "to roll that character you desire... or not desire...\n"
+                               "  - To limit spamming a max of 3 rerolls can be used per round of ranking!\n"
+                               "  - Rerolls currently have a chance to appear in drops and will be accessible by other means soon!\n"
+                               "- ~inv (Inventory) command added!\n"
+                               "  - View your current inventory of items! Currently shows reroll count, and as time goes on more items "
+                               "will (hopefully) be added here too!\n"
+                               "- Kyokoins partialy added!\n"
+                               "  - Kyokoins will become the main currency for Kyoko!\n"
+                               "  - Currently can be earned from leveling up in XP and from drops!\n"
+                               "  - Will have actual functionality soon but can start being earned NOW!\n"
                                "\n"
-                               "-#  - As more features are added more possibilites will be added to drops!")
+                               "-# Expect some minor bugs but most of this content should be functioning properly!\n"
+                               "-# More functionality and features related to Kyokoins and economy coming soon!")
 
 
 
@@ -351,14 +401,22 @@ async def sut(ctx):
     if (ctx.author.id == 333414505750986753):
         try:
             channel = await bot.fetch_channel(1461414479911718986)
-            await channel.send("# Mini Update 2/7/2026 - Drops Introduction\n"
-                               "- Drops added!\n"
-                               "  - Drops have a chance to randomly appear after using commands "
-                               "and give random amounts of extra XP!\n"
-                               "  - Drops appear most frequently on ~gr commands as of now, but have low "
-                               "chances to appear on many other commands as well!\n"
+            await channel.send("# Update 2/9/2026 - Rerolls and Economy Introduction!\n"
+                               "- Rerolls added!\n"
+                               "  - Rerolls allow you to reroll a character that appears in ~gr commands, giving you another chance "
+                               "to roll that character you desire... or not desire...\n"
+                               "  - To limit spamming a max of 3 rerolls can be used per round of ranking!\n"
+                               "  - Rerolls currently have a chance to appear in drops and will be accessible by other means soon!\n"
+                               "- ~inv (Inventory) command added!\n"
+                               "  - View your current inventory of items! Currently shows reroll count, and as time goes on more items "
+                               "will (hopefully) be added here too!\n"
+                               "- Kyokoins partialy added!\n"
+                               "  - Kyokoins will become the main currency for Kyoko!\n"
+                               "  - Currently can be earned from leveling up in XP and from drops!\n"
+                               "  - Will have actual functionality soon but can start being earned NOW!\n"
                                "\n"
-                               "-#  - As more features are added more possibilites will be added to drops!")
+                               "-# Expect some minor bugs but most of this content should be functioning properly!\n"
+                               "-# More functionality and features related to Kyokoins and economy coming soon!")
         except Exception as e:
             print(e)
     else:
@@ -366,6 +424,15 @@ async def sut(ctx):
 
 
             # UPDATE HISTORY
+
+            #"# Update 2/9/2026 - Economy Introduction!\n"
+            #"- Drops added!\n"
+            #"  - Drops have a chance to randomly appear after using commands "
+            #"and give random amounts of extra XP!\n"
+            #"  - Drops appear most frequently on ~gr commands as of now, but have low "
+            #"chances to appear on many other commands as well!\n"
+            #"\n"
+            #"-#  - As more features are added more possibilites will be added to drops!"
 
             #"# Update 2/5/2026 - XP System Update\n"
             #"- ~xp command revamped!\n"
@@ -540,6 +607,25 @@ async def adminhelp(ctx):
 
 
 
+
+
+@bot.command()
+async def inctest(ctx):
+    await userInv(ctx.author.id, 1)
+    testfile = inventory.find_one({"user_id": ctx.author.id})
+    await ctx.send(testfile["rerolls"])
+
+@bot.command()
+async def dectest(ctx):
+    await userInv(ctx.author.id, -1)
+    testfile = inventory.find_one({"user_id": ctx.author.id})
+    await ctx.send(testfile["rerolls"])
+
+
+
+
+
+
 # PING PONG PING PONG
 
 @bot.command()
@@ -635,7 +721,7 @@ async def levelUp(ctx, userID):
 
             levelxp = xp_to_level(xpFile["level"])  # The amount of xp to level up of the users current level
 
-            leveledup, xpFileNew = level_up(xpFile)
+            leveledup, xpFileNew, coins = level_up(xpFile)
 
             if leveledup == True:
 
@@ -687,12 +773,18 @@ async def xp(ctx, user_id: str = None):
 
             levelxp = xp_to_level(xpFile["level"]) # The amount of xp to level up of the users current level
 
-            leveledup, xpFileNew = level_up(xpFile)
+            leveledup, xpFileNew, coins = level_up(xpFile)
 
 
             if leveledup == True:
 
-                await ctx.send(f"You leveled up to {xpFileNew['level']}!")
+                await userKoins(ctx.author.id, coins)
+
+                lvlembed = discord.Embed(title=f"You leveled up to level {xpFileNew['level']}!",
+                                        description=f"You earned {coins} Kyokoins!",
+                                        color=discord.Color.green())
+                await ctx.send(embed=lvlembed)
+
 
                 await userXP(ctx.author.id, -levelxp, xpFileNew['level'])
             else:
@@ -803,6 +895,30 @@ async def xptg(ctx):
 
 
 
+@bot.command()
+async def inv(ctx):
+    try:
+        userID = ctx.author.id
+        user = ctx.author
+
+        invFile = inventory.find_one({"user_id": userID})
+
+        rerolls = (invFile["rerolls"])
+
+
+        invEmbed = discord.Embed(
+            title = f'{user.display_name}\'s Inventory',
+            description = f"**__Rerolls:__** {rerolls}",
+            color = discord.Color.blue()
+        )
+
+        await ctx.send(embed=invEmbed)
+    except Exception as e:
+        print(e)
+
+
+
+
 # ────────────────────────────────────────────────────────────────────────────────────────────────
 # DROPS
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -830,7 +946,7 @@ async def drop(ctx, rate):
 @bot.command()
 async def droptest(ctx):
     try:
-        await drop(ctx)
+        await drop(ctx, 100)
     except Exception as e:
         print(e)
 
@@ -857,7 +973,7 @@ async def rg(ctx):
     #await ctx.send(content=f"**{name}**", file=file) # Send the name and image file
 
     await levelUp(ctx, ctx.author.id)
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 
@@ -926,7 +1042,6 @@ async def gr(ctx):
 
 
 
-
     # Set up the number of ranks done so far variable and the embed for the ranking
     rankCount = 0
     embedList = discord.Embed(title="Best Girl Ranking")
@@ -935,6 +1050,10 @@ async def gr(ctx):
     ranks = ["-"] * numGirls
 
 
+    rerolled = False
+    rerollCount = 0
+
+    currentGirl = 0
 
 
     await ctx.send("Well here ya go...! Here's your first girl!")
@@ -942,8 +1061,9 @@ async def gr(ctx):
 
 
 
-    chosenGirls = randomGirlGen(numGirls)  # Make a tuple list of numGirls number of girls from the girlimages list
+    chosenGirls = randomGirlGen(numGirls + 3)  # Make a tuple list of numGirls number of girls from the girlimages list
                                            # Contains their name, show, image, etc each
+
 
 
 
@@ -955,7 +1075,7 @@ async def gr(ctx):
         loop = True
 
         # Pull the different values for each girl into their name, show, etc.
-        name, show, url = chosenGirls[rankCount]
+        name, show, url = chosenGirls[currentGirl]
 
         # Set the girl name as title, show as description, and side color as blue
         embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
@@ -999,8 +1119,17 @@ async def gr(ctx):
 
             await asyncio.sleep(0.5)
 
+
+            invFile = inventory.find_one({"user_id": ctx.author.id})
+            rerollsAvail = (invFile["rerolls"])
+
+            if rerollsAvail > 0:
+                await ctx.send("I see you have rerolls available too!! Type 'rr' to use one! :3")
+                await asyncio.sleep(0.5)
+
              # Initial countdown message
             countdown = await ctx.send("You have 30 seconds to decide..!")
+
 
             # Countdown in increments of 5 seconds
             async def rankCountdown():
@@ -1062,6 +1191,27 @@ async def gr(ctx):
                     else: # Rank is not in the valid range
                         await ctx.send(f"That's not a correct ranking silly..!")
 
+                elif content.lower() == "rr":
+                    invFilee = inventory.find_one({"user_id": ctx.author.id})
+                    rerollsAvailable = (invFilee["rerolls"])
+
+                    if rerollsAvailable > 0:
+                        if rerollCount <= 2:
+                            await ctx.send("Reroll commencing!")
+                            rerolled = True
+                            rerollCount += 1
+
+
+                            await userInv(ctx.author.id, -1)
+
+                            break
+
+                        await ctx.send("You can only use 3 rerolls per ranking silly!!")
+
+                    else:
+                        await ctx.send("You have no rerolls available!!")
+
+
                 else: # If not a digit just ignore the message
                     pass
 
@@ -1074,8 +1224,9 @@ async def gr(ctx):
 
 
         # Sets up the rank embed list?? I think??
-        for i, rank in enumerate(ranks):
-            embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
+        if rerolled == False:
+            for i, rank in enumerate(ranks):
+                embedList.add_field(name=f"#{i+1}", value=rank, inline=False)
 
 
 
@@ -1100,7 +1251,7 @@ async def gr(ctx):
                 await levelUp(ctx, ctx.author.id)
                 await asyncio.sleep(1)
 
-                await drop(ctx, 20)
+                await drop(ctx, 34)
 
 
             elif rankCount >= 4:
@@ -1113,7 +1264,7 @@ async def gr(ctx):
                 await levelUp(ctx, ctx.author.id)
                 await asyncio.sleep(1)
 
-                await drop(ctx, 25)
+                await drop(ctx, 50)
 
 
 
@@ -1125,7 +1276,14 @@ async def gr(ctx):
 
         await asyncio.sleep(3)
 
-        rankCount += 1
+        if rerolled == True:
+            rerolled = False
+            pass
+
+        else:
+            rankCount += 1
+
+        currentGirl += 1
         # As long as rankCount is less than the number of girls repeat the process of the loop.
 
 
@@ -1180,7 +1338,7 @@ async def gl(ctx, *, input):
         await ctx.send("I couldn't find any girl with that name... :(")
 
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1219,7 +1377,7 @@ async def gsl(ctx, *, input):
         await ctx.send("I couldn't find any shows with that title... :(")
 
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
     #if showInput in showDictionary:
     #    showList.append(girlDictionary[showInput])
@@ -1303,7 +1461,7 @@ async def grs(ctx, user_id: str = None):
 
         await ctx.send(embed=grsembed)
 
-        await drop(ctx, 3)
+        await drop(ctx, 10)
 
     else:
         await ctx.send("Play a full round of 5 girls and 10 girls to view stats!! :3")
@@ -1384,7 +1542,7 @@ async def gs(ctx, *, input):
 
         await ctx.send(embed=embed)
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1457,7 +1615,7 @@ async def ggs(ctx, *, input):
 
         await ctx.send(embed=embed)
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 
@@ -1535,7 +1693,7 @@ async def gt(ctx, user_id: str = None):
     view = PageView(pages_list)
     await ctx.send(embed=pages_list[0], view=view)
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1600,7 +1758,7 @@ async def gtt(ctx, user_id: str = None):
 
     await ctx.send(embed=embed)
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 
@@ -1657,7 +1815,7 @@ async def gtg(ctx):
     view = PageView(pages_list)
     await ctx.send(embed=pages_list[0], view=view)
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 # ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1703,7 +1861,7 @@ async def gttg(ctx):
 
     await ctx.send(embed=embed)
 
-    await drop(ctx, 3)
+    await drop(ctx, 10)
 
 
 
