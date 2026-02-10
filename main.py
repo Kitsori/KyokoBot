@@ -482,7 +482,9 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
     helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag, ~taginfo", inline=False)
     helpEmbed.add_field(name="__XP__ (~xphelp)", value="~xp, ~xpts", inline=False)
+    helpEmbed.add_field(name="__Inventory__ (~invhelp)", value="~inv", inline=False)
     helpEmbed.add_field(name="__Admin Commands__ (~adminhelp)", value="~updates", inline=False)
+    helpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=helpEmbed)
 
 
@@ -498,6 +500,7 @@ async def mathhelp(ctx):
     mathHelpEmbed.add_field(name="~sub (x) (y)", value="Subtracts one number, y from x..!", inline=False)
     mathHelpEmbed.add_field(name="~mult (x) (y)", value="Multiples two numbers together.. it's growing so fast..!", inline=False)
     mathHelpEmbed.add_field(name="~div (x) (y)", value="Divides x into y equal parts... where is my share..? :(", inline=False)
+    mathHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=mathHelpEmbed)
 
 
@@ -510,6 +513,7 @@ async def rghelp(ctx):
     )
 
     rgHelpEmbed.add_field(name="~rg", value="Generates a random girl.. what else could you need..!", inline=False)
+    rgHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=rgHelpEmbed)
 
 
@@ -533,6 +537,7 @@ async def grhelp(ctx):
     grHelpEmbed.add_field(name="~gtg", value="View the top ranked girls globally for rounds of 5..!", inline=False)
     grHelpEmbed.add_field(name="~gtt", value="View your top ranked girls for rounds of 10..!", inline=False)
     grHelpEmbed.add_field(name="~gttg", value="View the top ranked girls globally for rounds of 10..!", inline=False)
+    grHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=grHelpEmbed)
 
 
@@ -546,6 +551,7 @@ async def taghelp(ctx):
 
     taghelpEmbed.add_field(name="~tag", value="Starts a round of Train Tag!", inline=False)
     taghelpEmbed.add_field(name="~taginfo", value="An in-depth breakdown of how Train Tag works.", inline=False)
+    taghelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=taghelpEmbed)
 
 
@@ -574,6 +580,7 @@ async def taginfo(ctx):
                                                  "so if you stall in an area for too long trying to farm coins, you might get "
                                                  "tagged and lose before you even get the chance to get to your end location!", inline=False)
     taginfoEmbed.add_field(name="Good Luck!", value="This game is still a WIP, so expect bugs or some 'unfinished' content!", inline=False)
+    taginfoEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=taginfoEmbed)
 
 
@@ -588,7 +595,22 @@ async def xphelp(ctx):
 
     xphelpEmbed.add_field(name="~xp", value="View your/another users current XP and level!", inline=False)
     xphelpEmbed.add_field(name="~xptg", value="View the top global users in XP earned!", inline=False)
+    xphelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=xphelpEmbed)
+
+
+
+@bot.command()
+async def invhelp(ctx):
+    invHelpEmbed = discord.Embed(
+        title="Kyoko's Inventory Commands",
+        description="I love being a hoarder! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    invHelpEmbed.add_field(name="~inv", value="View your inventory contents!", inline=False)
+    invHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+    await ctx.send(embed=invHelpEmbed)
 
 
 
@@ -601,6 +623,7 @@ async def adminhelp(ctx):
     )
 
     adminEmbed.add_field(name="~updates (channel ID)", value="Sets the designated channel as a Kyoko Live Updates Feed", inline=False)
+    adminEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=adminEmbed)
 
 
@@ -824,12 +847,12 @@ async def xp(ctx, user_id: str = None):
             )
 
             xpBarEmbed = discord.Embed(
-                title = f'{user.display_name}\'s XP PROGRESS',
+                title = f"**˖ ݁𖥔 ݁˖  {user.display_name}\'s XP PROGRESS  ˖ ݁𖥔 ݁˖**",
                 description = f"Level {xpFileNew['level']}:\n ║{bars}║\n ({xpFileNew['xp']}/{newlevelxp})\n",
                 color = discord.Color.blue()
             )
 
-            xpBarEmbed.set_footer(text="Play some games to earn more XP! :3")
+            xpBarEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
 
             await ctx.send(embed=xpBarEmbed)
 
@@ -880,7 +903,7 @@ async def xptg(ctx):
                 for count, (name, lvl, xp) in enumerate(globalRanks[i:i + per_page], start=start_rank):
                     embed.add_field(name=f"#{count}: {name} - Level {lvl} - ({xp} XP)", value="", inline=False)
 
-                embed.set_footer(text="Play games to earn more XP! :3")
+                embed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
                 pages_list.append(embed)
 
         view = PageView(pages_list)
@@ -895,6 +918,10 @@ async def xptg(ctx):
 
 
 
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# INVENTORY
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+
 @bot.command()
 async def inv(ctx):
     try:
@@ -902,19 +929,57 @@ async def inv(ctx):
         user = ctx.author
 
         invFile = inventory.find_one({"user_id": userID})
+        koinFile = kyokoins.find_one({"user_id": userID})
 
         rerolls = (invFile["rerolls"])
+        koins = (koinFile["kyokoins"])
 
 
         invEmbed = discord.Embed(
-            title = f'{user.display_name}\'s Inventory',
-            description = f"**__Rerolls:__** {rerolls}",
+            title = f"**˖ ݁𖥔 ݁˖  {user.display_name}\'s Inventory  ˖ ݁𖥔 ݁˖**",
             color = discord.Color.blue()
         )
+
+        invEmbed.add_field(name="**__Kyokoins:__**", value=f"{koins}", inline=False)
+        invEmbed.add_field(name="**__Rerolls:__**", value=f"{rerolls}", inline=False)
+
+        invEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
 
         await ctx.send(embed=invEmbed)
     except Exception as e:
         print(e)
+
+
+
+
+
+
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+# SHOP
+# ────────────────────────────────────────────────────────────────────────────────────────────────
+
+@bot.command()
+async def shop(ctx):
+
+    userID = ctx.author.id
+    user = ctx.author
+
+    shopEmbed = discord.Embed(
+        title = "**˖ ݁𖥔 ݁˖  Kyoko's Shop  ˖ ݁𖥔 ݁˖**",
+        description = "All available items listed below followed by their price in Kyokoins!",
+        color = discord.Color.purple()
+    )
+
+    shopEmbed.add_field(name="\n", value="", inline=False)
+    shopEmbed.add_field(name="**Reroll** ⊹ (3)", value="", inline=False)
+
+    shopEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+
+    await ctx.send(embed=shopEmbed)
+
+
+
+
 
 
 
@@ -1080,6 +1145,7 @@ async def gr(ctx):
         # Set the girl name as title, show as description, and side color as blue
         embed = discord.Embed(title=name, description=show, color=discord.Color.blue())
         embed.set_image(url=url) # Set the image to the url given
+
 
         await ctx.send(embed=embed) # Send the final embed
         await asyncio.sleep(2)
@@ -1441,11 +1507,13 @@ async def grs(ctx, user_id: str = None):
 
     if fiveCount + tenCount > 0:
         if user and user.id == ctx.author.id:
-            title = f"{ctx.author.display_name}'s Girl Ranking Stats"
+            title = f"**˖ ݁𖥔 ݁˖  {ctx.author.display_name}'s Girl Ranking Stats  ˖ ݁𖥔 ݁˖**"
         elif user:
-            title = f"{user.display_name}'s Girl Ranking Stats"
+            title = f"**˖ ݁𖥔 ݁˖  {user.display_name}'s Girl Ranking Stats  ˖ ݁𖥔 ݁˖**"
         else:
             return
+
+
 
         grsembed = discord.Embed(
             title=title,
@@ -1459,6 +1527,7 @@ async def grs(ctx, user_id: str = None):
         grsembed.add_field(name="__Times Played (10 Girls)__", value=f"{tenCount}", inline=False)
         grsembed.add_field(name="__Average First Rank (10 Girls)__", value=f"{tenRankAvg}", inline=False)
 
+        grsembed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
         await ctx.send(embed=grsembed)
 
         await drop(ctx, 10)
@@ -1529,7 +1598,7 @@ async def gs(ctx, *, input):
         name = girlInfo["name"]
         url = girlInfo["url"]
 
-        embed = discord.Embed(title=f"{girlName.title()} Stats", description=f"for {user.display_name}\n\u200b",
+        embed = discord.Embed(title=f"**˖ ݁𖥔 ݁˖  {girlName.title()} Stats  ˖ ݁𖥔 ݁˖**", description=f"for {user.display_name}\n\u200b",
                               color=discord.Color.blue())
 
         embed.set_image(url=url)
@@ -1540,6 +1609,7 @@ async def gs(ctx, *, input):
         embed.add_field(name="__Times Rolled (10 Girls)__", value=len(userRanksTen), inline=False)
         embed.add_field(name="__Average Rank (10 Girls)__", value=avgTen, inline=False)
 
+        embed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
         await ctx.send(embed=embed)
 
     await drop(ctx, 10)
@@ -1602,8 +1672,7 @@ async def ggs(ctx, *, input):
         name = girlInfo["name"]
         url = girlInfo["url"]
 
-
-        embed = discord.Embed(title=f"{girlName.title()}'s Stats", description=f"Globally\n\u200b",
+        embed = discord.Embed(title=f"**˖ ݁𖥔 ݁˖  {girlName.title()}'s Stats  ˖ ݁𖥔 ݁˖**", description=f"Globally\n\u200b",
                               color=discord.Color.blue())
 
         embed.set_image(url=url)
@@ -1613,6 +1682,7 @@ async def ggs(ctx, *, input):
         embed.add_field(name="__Times Rolled (10 Girls)__", value=(totalCountTen), inline=False)
         embed.add_field(name="__Average Rank (10 Girls)__", value=avgTen, inline=False)
 
+        embed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
         await ctx.send(embed=embed)
 
     await drop(ctx, 10)
@@ -1671,10 +1741,10 @@ async def gt(ctx, user_id: str = None):
         end_rank = min(i + per_page, len(userAverages))
 
         if user and user.id == ctx.author.id:
-            title = f"{ctx.author.display_name}'s Highest Ranked Girls"
+            title = f"**˖ ݁𖥔 ݁˖  {ctx.author.display_name}'s Highest Ranked Girls  ˖ ݁𖥔 ݁˖**"
         else:
             userName = user.display_name if user else f"User {user_id}"
-            title = f"{userName}'s Highest Ranked Girls"
+            title = f"**˖ ݁𖥔 ݁˖  {userName}'s Highest Ranked Girls  ˖ ݁𖥔 ݁˖**"
 
 
         embed = discord.Embed(
@@ -1742,10 +1812,10 @@ async def gtt(ctx, user_id: str = None):
     topRanks = userAverages[:15]
 
     if user and user.id == ctx.author.id:
-        title = f"{ctx.author.display_name}'s Highest Ranked Girls"
+        title = f"**˖ ݁𖥔 ݁˖  {ctx.author.display_name}'s Highest Ranked Girls  ˖ ݁𖥔 ݁˖**"
     else:
         userName = user.display_name if user else f"User {user_id}"
-        title = f"{userName}'s Highest Ranked Girls"
+        title = f"**˖ ݁𖥔 ݁˖  {userName}'s Highest Ranked Girls  ˖ ݁𖥔 ݁˖**"
 
     embed = discord.Embed(title=title, description="**Rounds of 10**   -   Top 15 \n\u200b", color=discord.Color.blue())
 
@@ -1801,7 +1871,7 @@ async def gtg(ctx):
         end_rank = min(i + per_page, len(globalAverages))  # Last rank on this page
 
         embed = discord.Embed(
-            title=f"Globally Highest Ranked Girls",
+            title=f"**˖ ݁𖥔 ݁˖  Globally Highest Ranked Girls  ˖ ݁𖥔 ݁˖**",
             description=f"**Rounds of 5** - Top {start_rank}-{end_rank}\n\u200b",
             color=discord.Color.blue()
         )
@@ -1850,7 +1920,9 @@ async def gttg(ctx):
     globalAverages.sort(key=lambda x: x[1], reverse=False)
     topGlobalRanks = globalAverages[:15]
 
-    embed = discord.Embed(title="Globally Highest Ranked Girls", description="**Rounds of 10** - Top 15 \n\u200b", color=discord.Color.blue())
+
+
+    embed = discord.Embed(title="**˖ ݁𖥔 ݁˖  Globally Highest Ranked Girls  ˖ ݁𖥔 ݁˖**", description="**Rounds of 10** - Top 15 \n\u200b", color=discord.Color.blue())
 
     count = 1
     for name, avg in topGlobalRanks:
