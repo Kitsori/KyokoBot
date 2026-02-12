@@ -546,3 +546,6 @@ class jltg(commands.Cog):
 
         except Exception:
             await ctx.send(f"```{traceback.format_exc()}```")
+
+async def setup(bot):
+    await bot.add_cog(jltg(bot))
