@@ -141,7 +141,9 @@ class AnimeRPG(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(AnimeRPG(bot))
+    from main import rpgdb  # import your database object if needed
+    await bot.add_cog(AnimeRPG(bot, rpgdb))
+
 
 
 
