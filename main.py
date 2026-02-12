@@ -12,7 +12,7 @@ import asyncio
 
 import json
 
-#from cogs.animerpg import AnimeRPG
+from cogs.animerpg import AnimeRPG
 from cogs.jltg import jltg
 
 from girlimages import randomGirlGen, testGirlGen, girlDictionary, showDictionary
@@ -2040,8 +2040,11 @@ async def main():
     async with bot:
 
         # Load your cogs here
-        await bot.add_cog(AnimeRPG(bot, rpgdb))  # example
-        await bot.add_cog(jltg(bot))
+        #await bot.add_cog(AnimeRPG(bot, rpgdb))  # example
+        #await bot.add_cog(jltg(bot))
+
+        await bot.load_extension("cogs.animerpg")
+        await bot.load_extension("cogs.jltg")
 
 
         await bot.start(TOKEN)
