@@ -367,22 +367,14 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send("# Update 2/9/2026 - Rerolls and Economy Introduction!\n"
-                               "- Rerolls added!\n"
-                               "  - Rerolls allow you to reroll a character that appears in ~gr commands, giving you another chance "
-                               "to roll that character you desire... or not desire...\n"
-                               "  - To limit spamming a max of 3 rerolls can be used per round of ranking!\n"
-                               "  - Rerolls currently have a chance to appear in drops and will be accessible by other means soon!\n"
-                               "- ~inv (Inventory) command added!\n"
-                               "  - View your current inventory of items! Currently shows reroll count, and as time goes on more items "
-                               "will (hopefully) be added here too!\n"
-                               "- Kyokoins partialy added!\n"
-                               "  - Kyokoins will become the main currency for Kyoko!\n"
-                               "  - Currently can be earned from leveling up in XP and from drops!\n"
-                               "  - Will have actual functionality soon but can start being earned NOW!\n"
-                               "\n"
-                               "-# Expect some minor bugs but most of this content should be functioning properly!\n"
-                               "-# More functionality and features related to Kyokoins and economy coming soon!")
+            await channel.send("# Update 2/12/2026 - Basic Shop Introduction!\n"
+                               "- ~shop command added!\n"
+                               "  - Currently has rerolls available for 3 Kyokoins each!\n"
+                               "  - Allows for bulk purchasing.\n"
+                               "- Other small tweaks\n"
+                               "  - Kyokoins added to ~inv page\n"
+                               "  - Added some aesthetics to various embeds\n"
+                               "  - Added proper new pages to ~help command\n")
 
 
 
@@ -401,29 +393,43 @@ async def sut(ctx):
     if (ctx.author.id == 333414505750986753):
         try:
             channel = await bot.fetch_channel(1461414479911718986)
-            await channel.send("# Update 2/9/2026 - Rerolls and Economy Introduction!\n"
-                               "- Rerolls added!\n"
-                               "  - Rerolls allow you to reroll a character that appears in ~gr commands, giving you another chance "
-                               "to roll that character you desire... or not desire...\n"
-                               "  - To limit spamming a max of 3 rerolls can be used per round of ranking!\n"
-                               "  - Rerolls currently have a chance to appear in drops and will be accessible by other means soon!\n"
-                               "- ~inv (Inventory) command added!\n"
-                               "  - View your current inventory of items! Currently shows reroll count, and as time goes on more items "
-                               "will (hopefully) be added here too!\n"
-                               "- Kyokoins partialy added!\n"
-                               "  - Kyokoins will become the main currency for Kyoko!\n"
-                               "  - Currently can be earned from leveling up in XP and from drops!\n"
-                               "  - Will have actual functionality soon but can start being earned NOW!\n"
-                               "\n"
-                               "-# Expect some minor bugs but most of this content should be functioning properly!\n"
-                               "-# More functionality and features related to Kyokoins and economy coming soon!")
+            await channel.send("# Update 2/12/2026 - Basic Shop Introduction!\n"
+                               "- ~shop command added!\n"
+                               "  - Currently has rerolls available for 3 Kyokoins each!\n"
+                               "  - Allows for bulk purchasing.\n"
+                               "- Other small tweaks\n"
+                               "  - Kyokoins added to ~inv page\n"
+                               "  - Added some aesthetics to various embeds\n"
+                               "  - Added proper new pages to ~help command\n")
         except Exception as e:
             print(e)
     else:
         await ctx.send("Only Kyoko's favorite is allowed to run this command...!")
 
 
-            # UPDATE HISTORY
+
+
+
+
+
+        # UPDATE HISTORY
+
+        # "# Update 2/9/2026 - Rerolls and Economy Introduction!\n"
+        # "- Rerolls added!\n"
+        # "  - Rerolls allow you to reroll a character that appears in ~gr commands, giving you another chance "
+        # "to roll that character you desire... or not desire...\n"
+        # "  - To limit spamming a max of 3 rerolls can be used per round of ranking!\n"
+        # "  - Rerolls currently have a chance to appear in drops and will be accessible by other means soon!\n"
+        # "- ~inv (Inventory) command added!\n"
+        # "  - View your current inventory of items! Currently shows reroll count, and as time goes on more items "
+        # "will (hopefully) be added here too!\n"
+        # "- Kyokoins partialy added!\n"
+        # "  - Kyokoins will become the main currency for Kyoko!\n"
+        # "  - Currently can be earned from leveling up in XP and from drops!\n"
+        # "  - Will have actual functionality soon but can start being earned NOW!\n"
+        # "\n"
+        # "-# Expect some minor bugs but most of this content should be functioning properly!\n"
+        # "-# More functionality and features related to Kyokoins and economy coming soon!"
 
             #"# Update 2/9/2026 - Economy Introduction!\n"
             #"- Drops added!\n"
@@ -483,6 +489,7 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag, ~taginfo", inline=False)
     helpEmbed.add_field(name="__XP__ (~xphelp)", value="~xp, ~xpts", inline=False)
     helpEmbed.add_field(name="__Inventory__ (~invhelp)", value="~inv", inline=False)
+    helpEmbed.add_field(name="__Shop__ (~~shophelp)", value="~shop", inline=False)
     helpEmbed.add_field(name="__Admin Commands__ (~adminhelp)", value="~updates", inline=False)
     helpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=helpEmbed)
@@ -609,6 +616,19 @@ async def invhelp(ctx):
     )
 
     invHelpEmbed.add_field(name="~inv", value="View your inventory contents!", inline=False)
+    invHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+    await ctx.send(embed=invHelpEmbed)
+
+
+@bot.command()
+async def shophelp(ctx):
+    invHelpEmbed = discord.Embed(
+        title="Kyoko's Shop Commands",
+        description="Give me all your moneyyy!! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    invHelpEmbed.add_field(name="~shop", value="Open the shop page!", inline=False)
     invHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=invHelpEmbed)
 
@@ -964,9 +984,21 @@ async def shop(ctx):
     userID = ctx.author.id
     user = ctx.author
 
+    def check(message):
+        return message.author == ctx.author and message.channel == ctx.channel
+
+    invFile = inventory.find_one({"user_id": userID})
+    koinFile = kyokoins.find_one({"user_id": userID})
+
+    rerolls = (invFile["rerolls"])
+    koins = (koinFile["kyokoins"])
+
+
+
     shopEmbed = discord.Embed(
         title = "**˖ ݁𖥔 ݁˖  Kyoko's Shop  ˖ ݁𖥔 ݁˖**",
-        description = "All available items listed below followed by their price in Kyokoins!",
+        description = "All available items listed below followed by their price in Kyokoins!\n"
+                      "Just type the name of the item you want to buy! :3",
         color = discord.Color.purple()
     )
 
@@ -976,6 +1008,71 @@ async def shop(ctx):
     shopEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
 
     await ctx.send(embed=shopEmbed)
+
+
+    purchase = await bot.wait_for('message', check=check)
+    response = purchase.content.strip()
+
+    if response.lower() == "reroll":
+        if koins >= 6:
+            await ctx.send("How many rerolls do you want to buy?")
+            amountResponse = await bot.wait_for('message', check=check)
+            amountAns = amountResponse.content.strip()
+
+
+            if amountAns.isdigit():
+                amount = int(amountAns)
+
+                if koins >= amount * 3:
+                    koinNum = amount * 3
+                    koinLoss = koinNum * -1
+                    await ctx.send(f"You sure you want to buy {amount} rerolls for {amount * 3} Kyokoins? (y/n)")
+                    confirmationResponse = await bot.wait_for('message', check=check)
+                    confirmation = confirmationResponse.content.strip()
+
+                    if confirmation.lower() == "y":
+                        rerollEmbed = discord.Embed(
+                            title=f"PURCHASED {amount} REROLLS!",
+                            description=f"for {koinNum} Kyokoins.",
+                            color=discord.Color.purple()
+                        )
+
+                        rerollEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+                        await ctx.send(embed=rerollEmbed)
+
+                        await userInv(userID, amount)
+                        await userKoins(userID, koinLoss)
+                    else:
+                        await ctx.send("That is not a valid answer! Cancelling...")
+
+
+        elif koins >= 3:
+            await ctx.send("You sure you want to buy a reroll for 3 Kyokoins? (y/n)")
+
+            confirmationResponse = await bot.wait_for('message', check=check)
+            confirmation = confirmationResponse.content.strip()
+
+            if confirmation.lower() == "y":
+
+                rerollEmbed = discord.Embed(
+                    title="PURCHASED 1 REROLL!",
+                    description="for 3 Kyokoins.",
+                    color=discord.Color.purple()
+                )
+
+                rerollEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+                await ctx.send(embed=rerollEmbed)
+
+
+                await userInv(userID, 1)
+                await userKoins(userID, -3)
+            else:
+                await ctx.send("That is not a valid answer! Cancelling...")
+
+        else:
+            await ctx.send("You don't have enough Kyokoins silly...!")
+
+
 
 
 
