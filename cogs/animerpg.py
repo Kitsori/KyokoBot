@@ -3,6 +3,168 @@ from discord.ext import commands
 import asyncio
 import traceback
 import random
+import copy
+
+from cogs.rpggirls import rpgGirls, enemies
+
+
+rarityWeights = \
+    {
+        "Common": 60,
+        "Rare": 30,
+        "Epic": 10
+    }
+
+
+class AnimeRPG(commands.Cog):
+
+    def __init__(self, bot, db):
+        self.bot = bot
+        self.db = db
+        self.players = db["Players"]
+
+
+    def findPlayer(self, user_id: int):
+        player = self.players.find_one({"_id": user_id})
+        if not player:
+            player = {"_id": user_id, "characters": [], "coins": 0}
+            self.players.insert_one(player)
+        return player
+
+
+    def addCharacter(self, user_id: int, char_name: str):
+        self.players.update_one(
+            {"_id": user_id},
+            {"$addToSet": {"characters": char_name}},
+            upsert=True
+        )
+
+
+    def changeCoins(self, user_id: int, amount: int):
+        self.players.update_one(
+            {"_id": user_id},
+            {"$inc": {"coins": amount}},
+            upsert=True
+        )
+
+
+
+    @commands.command()
+    async def summon(self, ctx):
+        num = random.randint(1, 100)
+
+        if 60 >= num >= 1:
+            rarity = "Common"
+        elif 90 >= num >= 61:
+            rarity = "Rare"
+        elif 100 >= num >= 91:
+            rarity = "Epic"
+
+        chars = [c for c in rpgGirls.values() if c["rarity"] == rarity]
+
+        character = random.choice(chars)
+
+        await ctx.send(f"You summoned {character}!")
+
+        return character
+
+
+
+
+
+    @commands.command()
+    async def fight(self, ctx):
+
+        def check(m):
+            return m.author == ctx.author and m.channel == ctx.channel
+
+        await ctx.send("Choose your character:\n" +
+                       "\n".join([f"{i + 1} - {c['name']}" for i, c in enumerate(rpgGirls.values())]))
+
+
+        msg = await self.bot.wait_for('message', check=check)
+        playerChoice = msg.content
+
+        try:
+            index = int(playerChoice) - 1
+
+            if 2 >= index >= 0:
+                player = copy.deepcopy(list(rpgGirls.values())[index])
+            else:
+                await ctx.send("Invalid choice!")
+
+
+            enemy = copy.deepcopy(random.choice(list(enemies.values())))
+
+
+
+            while player["HP"] > 0 and enemy["HP"] > 0:
+                await ctx.send(f"Player HP: {player['HP']}\n"
+                               f"Enemy HP: {enemy['HP']}")
+
+
+                move_text = "\n".join([f"({k}) **{v['name']}** - {v['desc']}" for k, v in player["moves"].items()])
+                await ctx.send(f"Choose a move:\n{move_text}")
+
+
+                msg = await self.bot.wait_for('message', check=check)
+                choice = msg.content.strip()
+
+                if choice == "1":
+                    await ctx.send(f"You attacked the enemy for {player['ATK']} damage!")
+                    enemy["HP"] -= player["ATK"]
+                elif choice == "2":
+                    await ctx.send("You healed yourself for 2 HP!")
+                    player["HP"] += 2
+                else:
+                    await ctx.send("Invalid choice!")
+                    continue
+
+                if enemy["HP"] <= 0:
+                    break
+
+                # ENEMY TURN
+                await ctx.send(f"Enemy attacked you for {enemy['ATK']} damage!")
+                player["HP"] -= enemy["ATK"]
+
+
+
+            # RESULTS
+            if player["HP"] <= 0:
+                await ctx.send("You lost!")
+
+            elif enemy["HP"] <= 0:
+                await ctx.send("You won!")
+
+        except Exception as e:
+            print(e)
+
+
+async def setup(bot):
+    await bot.add_cog(AnimeRPG(bot))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # from .rpggirls import rpgDictionary, randomGirl, rpgGirls
