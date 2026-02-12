@@ -1,5 +1,88 @@
 import random
 
+rpgGirls = {
+        "Aqua":
+            {
+                "name": "Aqua",
+                "rarity": "Common",
+                "HP": 5,
+                "ATK": 1,
+                "moves": {
+                    "1": {"name": "Attack", "desc": "Deal ATK damage", "type": "damage", "value": "ATK"},
+                    "2": {"name": "Heal", "desc": "Heal 2 HP", "type": "heal", "value": 2}
+                }
+            },
+        "Darkness":
+            {
+                "name": "Darkness",
+                "rarity": "Rare",
+                "HP": 8,
+                "ATK": 1,
+                "moves": {
+                    "1": {"name": "Attack", "desc": "Deal ATK damage", "type": "damage", "value": "ATK"},
+                    "2": {"name": "Guard", "desc": "Heal 2 HP", "type": "heal", "value": 2}
+                }
+            },
+        "Megumin":
+            {
+                "name": "Megumin",
+                "rarity": "Epic",
+                "HP": 5,
+                "ATK": 2,
+                "moves": {
+                    "1": {"name": "Explosion", "desc": "Deal ATK damage", "type": "damage", "value": "ATK"},
+                    "2": {"name": "Heal", "desc": "Heal 1 HP", "type": "heal", "value": 1}
+                }
+            },
+    }
+
+
+
+
+
+
+
+enemies = {
+            "Demon":
+                {
+                    "name": "Demon",
+                    "HP": 6,
+                    "ATK": 2
+                },
+            "Slime":
+                {
+                    "name": "Slime",
+                    "HP": 2,
+                    "ATK": 1
+                },
+            "Goblin":
+                {
+                    "name": "Goblin",
+                    "HP": 4,
+                    "ATK": 1
+                },
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # class Move:
 #     def __init__(self, name, stat, value, target, desc):
 #         self.name = name
