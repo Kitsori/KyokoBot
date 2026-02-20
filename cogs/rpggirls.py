@@ -1,37 +1,85 @@
 import random
 
+
+# ATTACKS
+
+# AQUA
+async def aquaAttack1(ctx, player, enemy):
+    enemy['HP'] -= player['ATK']
+    await ctx.send(f"Aqua splashes water on {enemy['name']} for {player['ATK']} damage!")
+
+async def aquaAttack2(ctx, player, enemy):
+    player['HP'] += 2
+    await ctx.send("Aqua heals herself for 2 HP!")
+
+
+async def darknessAttack1(ctx, player, enemy):
+    enemy['HP'] -= player['ATK']
+    await ctx.send(f"Darkness slashes at {enemy['name']} and deals {player['ATK']} damage!")
+
+async def darknessAttack2(ctx, player, enemy):
+    player['BLOCKS'] += 1
+    await ctx.send("Darkness prepares to block the next attack!")
+
+
+async def meguminAttack1(ctx, player, enemy):
+    enemy['HP'] -= player['ATK']
+    await ctx.send(f"Megumin sets off an explosion on {enemy['name']} for {player['ATK']} damage!")
+
+
+
+
+
 rpgGirls = {
-        "Aqua":
+        "aqua":
             {
                 "name": "Aqua",
                 "rarity": "Common",
+                "image": "https://cdn.myanimelist.net/images/characters/13/327741.jpg",
                 "HP": 5,
+                "MAXHP": 5,
                 "ATK": 1,
+                "BLOCKS": 0,
                 "moves": {
-                    "1": {"name": "Attack", "desc": "Deal ATK damage", "type": "damage", "value": "ATK"},
-                    "2": {"name": "Heal", "desc": "Heal 2 HP", "type": "heal", "value": 2}
+                    "1": {"name": "Create Water!",
+                          "desc": "Shoot a beam of water at the enemy to deal 1 ATK.",
+                          "action": aquaAttack1},
+                    "2": {"name": "Heal",
+                          "desc": "Heals herself for 2 HP.",
+                          "action": aquaAttack2}
                 }
             },
-        "Darkness":
+        "darkness":
             {
                 "name": "Darkness",
                 "rarity": "Rare",
+                "image": "https://cdn.myanimelist.net/images/characters/7/301407.jpg",
                 "HP": 8,
+                "MAXHP": 8,
                 "ATK": 1,
+                "BLOCKS": 0,
                 "moves": {
-                    "1": {"name": "Attack", "desc": "Deal ATK damage", "type": "damage", "value": "ATK"},
-                    "2": {"name": "Guard", "desc": "Heal 2 HP", "type": "heal", "value": 2}
+                    "1": {"name": "Sword Slash",
+                          "desc": "Slash at the enemy to deal 1 ATK.",
+                          "action": darknessAttack1},
+                    "2": {"name": "Guard",
+                          "desc": "Blocks the next attack.",
+                          "action": darknessAttack2}
                 }
             },
-        "Megumin":
+        "megumin":
             {
                 "name": "Megumin",
                 "rarity": "Epic",
+                "image": "https://cdn.myanimelist.net/images/characters/2/309075.jpg",
                 "HP": 5,
-                "ATK": 2,
+                "MAXHP": 5,
+                "ATK": 3,
+                "BLOCKS": 0,
                 "moves": {
-                    "1": {"name": "Explosion", "desc": "Deal ATK damage", "type": "damage", "value": "ATK"},
-                    "2": {"name": "Heal", "desc": "Heal 1 HP", "type": "heal", "value": 1}
+                    "1": {"name": "Explosion",
+                          "desc": "Deal 3 damage",
+                          "action": ""},
                 }
             },
     }
@@ -40,22 +88,20 @@ rpgGirls = {
 
 
 
-
-
-enemies = {
-            "Demon":
+world1Enemies = {
+            "sprite":
                 {
-                    "name": "Demon",
-                    "HP": 6,
-                    "ATK": 2
-                },
-            "Slime":
-                {
-                    "name": "Slime",
+                    "name": "Sprite",
                     "HP": 2,
                     "ATK": 1
                 },
-            "Goblin":
+            "slime":
+                {
+                    "name": "Slime",
+                    "HP": 3,
+                    "ATK": 1
+                },
+            "goblin":
                 {
                     "name": "Goblin",
                     "HP": 4,
@@ -64,123 +110,18 @@ enemies = {
         }
 
 
+world1Bosses = {
+            "demon":
+                {
+                    "name": "Demon",
+                    "HP": 5,
+                    "ATK": 2
+                },
+            "dragon":
+                {
+                    "name": "Dragon",
+                    "HP": 7,
+                    "ATK": 2
+                },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class Move:
-#     def __init__(self, name, stat, value, target, desc):
-#         self.name = name
-#         self.stat = stat      # "HP" or "ATK"
-#         self.value = value    # number or "ATK"
-#         self.target = target  # "self" or "enemy"
-#         self.desc = desc
-#
-#     def apply(self, user, target):
-#         # Determine actual amount
-#         amount = user.atk if self.value == "ATK" else self.value
-#
-#         if self.stat == "HP":
-#             if self.target == "self":
-#                 user.hp += amount
-#             else:
-#                 target.hp -= amount
-#         elif self.stat == "ATK":
-#             if self.target == "self":
-#                 user.atk += amount
-#             else:
-#                 target.atk -= amount
-#         return amount
-#
-# class Character:
-#     def __init__(self, name, show, rarity, url, stats_by_level, moves_by_level):
-#         self.name = name
-#         self.show = show
-#         self.rarity = rarity
-#         self.url = url
-#         self.stats_by_level = stats_by_level
-#         self.moves_by_level = moves_by_level
-#
-#         self.level = 1
-#         self.hp = stats_by_level[self.level]["HP"]
-#         self.atk = stats_by_level[self.level]["ATK"]
-#
-#     @property
-#     def moves(self):
-#         return self.moves_by_level[self.level]
-#
-#
-#
-#
-#
-# # Define characters
-# rpgGirls = []
-#
-# # Aqua
-# aqua_moves = {
-#     1: Move("Attack", "HP", "ATK", "enemy", "Deals damage equal to ATK."),
-#     2: Move("Heal", "HP", 2, "self", "Heals 2 HP.")
-# }
-# aqua_stats = {
-#     1: {"HP": 5, "ATK": 1},
-#     2: {"HP": 6, "ATK": 1},
-#     3: {"HP": 7, "ATK": 2}
-# }
-# rpgGirls.append(Character("Aqua", "Konosuba", "Common", "https://cdn.myanimelist.net/images/characters/13/327741.jpg", aqua_stats, {1: aqua_moves}))
-#
-#
-#
-#
-#
-# # Darkness
-# darkness_moves = {
-#     1: Move("Attack", "HP", 2, "enemy", "Deals 2 damage."),
-#     2: Move("Heal", "HP", 2, "self", "Heals 2 HP.")
-# }
-# darkness_stats = {
-#     1: {"HP": 8, "ATK": 1},
-#     2: {"HP": 9, "ATK": 1},
-#     3: {"HP": 10, "ATK": 1}
-# }
-# rpgGirls.append(Character("Darkness", "Konosuba", "Uncommon", "https://cdn.myanimelist.net/images/characters/7/301407.jpg", darkness_stats, {1: darkness_moves}))
-#
-#
-#
-#
-#
-# # Megumin
-# megumin_moves = {
-#     1: Move("Attack", "HP", 2, "enemy", "Deals 2 damage."),
-#     2: Move("Heal", "HP", 1, "self", "Heals 1 HP.")
-# }
-# megumin_stats = {
-#     1: {"HP": 5, "ATK": 2},
-#     2: {"HP": 6, "ATK": 2},
-#     3: {"HP": 7, "ATK": 3}
-# }
-# rpgGirls.append(Character("Megumin", "Konosuba", "Epic", "https://cdn.myanimelist.net/images/characters/2/309075.jpg", megumin_stats, {1: megumin_moves}))
-#
-#
-#
-#
-#
-# def rpgDictionary():
-#     return {char.name.lower(): char for char in rpgGirls}
-#
-# def randomGirl():
-#     return random.choice(rpgGirls)
+}
