@@ -1,4 +1,5 @@
 import os
+
 from pymongo import MongoClient
 
 import discord
@@ -18,9 +19,16 @@ from cogs.jltg import jltg
 from girlimages import randomGirlGen, testGirlGen, girlDictionary, showDictionary
 from levels import XP_LEVELS, xp_to_level, level_up
 
+
+
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 MONGO = os.getenv('MONGO_URI')
+
+
+
+
 
 
 
@@ -2031,6 +2039,18 @@ async def gttg(ctx):
     await ctx.send(embed=embed)
 
     await drop(ctx, 10)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
