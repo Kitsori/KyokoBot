@@ -140,7 +140,7 @@ class AnimeRPG(commands.Cog):
 
         # Create the list of the player's characters
         charList = ""
-        await ctx.send("Choose your character: ")
+        await ctx.send("Choose your characters: ")
 
         for char in user["characters"]:
             charList += f"- {char}\n"
@@ -150,6 +150,9 @@ class AnimeRPG(commands.Cog):
         # Choose character
         msg = await self.bot.wait_for('message', check=check)
         playerChoice = msg.content
+
+        msg2 = await self.bot.wait_for('message', check=check)
+        playerChoice2 = msg2.content
 
 
         world = user["world"]
@@ -161,11 +164,18 @@ class AnimeRPG(commands.Cog):
                 char = c.lower()
                 if playerChoice.lower() == char:
                     player = copy.deepcopy(rpgGirls[char])
+                if playerChoice2.lower() == char:
+                    player2 = copy.deepcopy(rpgGirls[char])
 
 
-            # Enemy counter
+            # Room counter
             room = 1
+
             alive = True
+            player1Alive = True
+            player2Alive = True
+
+
 
 
             while alive == True:
@@ -173,104 +183,292 @@ class AnimeRPG(commands.Cog):
                 # Generate enemies, dependant on world
                 if world == 1 and room % 5 != 0:
                     enemy = copy.deepcopy(random.choice(list(world1Enemies.values())))
+                    enemy2 = copy.deepcopy(random.choice(list(world1Enemies.values())))
                 elif world == 1 and room % 5 == 0:
                     enemy = copy.deepcopy(random.choice(list(world1Bosses.values())))
 
                 # Setup turn counter
                 turn = 0
+                enemy1Alive = True
+                enemy2Alive = True
 
                 barValue = player['MAXHP'] / 10
+                barValue2 = player2['MAXHP'] / 10
+
                 barValueE = enemy['HP'] / 10
+                barValueE2 = enemy2['HP'] / 10
+
+                while (player['HP'] > 0 or player2['HP'] > 0) and (enemy['HP'] > 0 or enemy2['HP'] > 0):
+
+                    barCountDouble = player["HP"] / barValue
+                    barCountDouble2 = player2["HP"] / barValue2
+
+                    barCountDoubleE = enemy["HP"] / barValueE
+                    barCountDoubleE2 = enemy2["HP"] / barValueE2
+
+                    barCount = round(barCountDouble)
+                    barCount2 = round(barCountDouble2)
+
+                    barCountE = round(barCountDoubleE)
+                    barCountE2 = round(barCountDoubleE2)
+
+                    bars = ""
+                    bars2 = ""
+
+                    barsE = ""
+                    barsE2 = ""
+
+                    remBars = 10 - barCount
+                    remBars2 = 10 - barCount2
+
+                    remBarsE = 10 - barCountE
+                    remBarsE2 = 10 - barCountE2
+
+                    for i in range(barCount):
+                        bars += "█"
+
+                    for i in range(remBars):
+                        bars += "░"
+
+                    for i in range(barCount2):
+                        bars2 += "█"
+
+                    for i in range(remBars2):
+                        bars2 += "░"
 
 
-                while player["HP"] > 0 and enemy["HP"] > 0:
-                    if turn % 2 == 0:
 
-                        barCountDouble = player["HP"] / barValue
-                        barCountDoubleE = enemy["HP"] / barValueE
-                        barCount = round(barCountDouble)
-                        barCountE = round(barCountDoubleE)
+                    for i in range(barCountE):
+                        barsE += "█"
 
-                        bars = ""
-                        barsE = ""
-                        remBars = 10 - barCount
-                        remBarsE = 10 - barCountE
+                    for i in range(remBarsE):
+                        barsE += "░"
 
-                        for i in range(barCount):
-                            bars += "█"
+                    for i in range(barCountE2):
+                        barsE2 += "█"
 
-                        for i in range(remBars):
-                            bars += "░"
-
-                        for i in range(barCountE):
-                            barsE += "█"
-
-                        for i in range(remBarsE):
-                            barsE += "░"
-
-                        statusEmbed = discord.Embed(title=f"{player['name']}'s Turn!",
-                                                    color=self.rarityColor(player["rarity"]))
-
-                        statusEmbed.add_field(name=player['name'], value=f"{player['HP']} HP\n ║{bars}║")
-                        statusEmbed.add_field(name=enemy['name'], value=f"{enemy['HP']} HP\n ║{barsE}║")
-                        statusEmbed.set_image(url=player["image"])
-
-                        await ctx.send(embed=statusEmbed)
+                    for i in range(remBarsE2):
+                        barsE2 += "░"
 
 
-                        move_text = "\n".join([f"({k}) **{v['name']}** - {v['desc']}" for k, v in player["moves"].items()])
-                        await ctx.send(f"Choose a move:\n{move_text}")
+                    if turn % 4 == 0:
+                        active = player['name']
+                        image = player['image']
+                        rarity = player['rarity']
+                    elif turn % 4 == 1:
+                        active = player2['name']
+                        image = player2['image']
+                        rarity = player2['rarity']
+                    elif turn % 4 == 2:
+                        active = enemy['name']
+                    elif turn % 4 == 3:
+                        active = enemy2['name']
 
 
-                        msg = await self.bot.wait_for('message', check=check)
-                        choice = msg.content.strip()
 
-                        if choice in player['moves']:
-                            move = player['moves'][choice]
-                            await move['action'](ctx, player, enemy)
+                    statusEmbed = discord.Embed(title=f"{active}'s Turn!",
+                                                color=self.rarityColor(rarity))
+
+                    statusEmbed.add_field(name=player['name'], value=f"{player['HP']} HP\n ║{bars}║", inline=True)
+                    statusEmbed.add_field(name=player2['name'], value=f"{player2['HP']} HP\n ║{bars2}║", inline=True)
+
+                    statusEmbed.add_field(name="\u200b", value="─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ VS ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─", inline=False)
+
+                    statusEmbed.add_field(name=enemy['name'], value=f"{enemy['HP']} HP\n ║{barsE}║", inline=True)
+                    statusEmbed.add_field(name=enemy2['name'], value=f"{enemy2['HP']} HP\n ║{barsE2}║", inline=True)
+
+                    if turn % 4 == 0 or turn % 4 == 1:
+                        statusEmbed.set_image(url=image)
+
+                    await ctx.send(embed=statusEmbed)
+
+
+                    if turn % 4 == 0:
+
+                        if player1Alive == False:
+                            turn += 1
+
                         else:
-                            await ctx.send("Invalid choice!")
-                            continue
+                            move_text = "\n".join([f"({k}) **{v['name']}** - {v['desc']}" for k, v in player["moves"].items()])
+                            await ctx.send(f"Choose a move:\n{move_text}")
 
-                        if enemy["HP"] <= 0:
-                            break
+                            msg = await self.bot.wait_for('message', check=check)
+                            choice = msg.content.strip()
 
-                        await asyncio.sleep(1)
-                        turn += 1
+                            if choice in player['moves']:
+                                move = player['moves'][choice]
+                            else:
+                                await ctx.send("Pick a proper attack dummy!")
 
-                        # ENEMY TURN
-                    elif turn % 2 == 1:
-                        if player['BLOCKS'] >= 1:
-                            await ctx.send(f"{player['name']} blocks the attack!")
-                            player['BLOCKS'] -= 1
+
+
+                            await ctx.send(f"Choose a target (1 or 2)")
+
+                            msg2 = await self.bot.wait_for('message', check=check)
+                            enemyChoice = msg2.content.strip()
+
+                            if enemyChoice == "1":
+                                if enemy['HP'] > 0:
+                                    target = enemy
+                                else:
+                                    await ctx.send("This enemy is already defeated silly!")
+
+                            elif enemyChoice == "2":
+                                if enemy2['HP'] > 0:
+                                    target = enemy2
+                                else:
+                                    await ctx.send("This enemy is already defeated silly!")
+
+
+                            await move['action'](ctx, player, target)
+
+
+                            await asyncio.sleep(1)
+                            turn += 1
+
+                    elif turn % 4 == 1:
+
+                        if player2Alive == False:
+                            turn += 1
+
                         else:
-                            enemyEmbed = discord.Embed(title=f"{enemy['name']}'s Turn!",
-                                                       description=f"dealt {enemy['ATK']} damage to {player['name']}!",
-                                                       color=discord.Color.red())
+                            move_text = "\n".join(
+                                [f"({k}) **{v['name']}** - {v['desc']}" for k, v in player2["moves"].items()])
+                            await ctx.send(f"Choose a move:\n{move_text}")
 
-                            await ctx.send(embed=enemyEmbed)
-                            player["HP"] -= enemy["ATK"]
+                            await ctx.send(f"Choose a target (1 or 2)")
 
-                        await asyncio.sleep(1)
-                        turn += 1
+                            msg = await self.bot.wait_for('message', check=check)
+                            choice = msg.content.strip()
+
+                            msg2 = await self.bot.wait_for('message', check=check)
+                            enemyChoice = msg2.content.strip()
+
+                            if enemyChoice == "1":
+                                target = enemy
+                            elif enemyChoice == "2":
+                                target = enemy2
+
+
+                            if choice in player2['moves']:
+                                move = player2['moves'][choice]
+                                await move['action'](ctx, player2, target)
+                            else:
+                                await ctx.send("Invalid choice!")
+                                continue
+
+                            await asyncio.sleep(1)
+                            turn += 1
+
+
+                    # ENEMY TURN
+                    elif turn % 4 == 2:
+
+                        if enemy1Alive == False:
+                            turn += 1
+
+                        else:
+
+                            activeEnemy = enemy
+                            choice = random.randint(1, 2)
+
+                            if choice == 1:
+                                target = player
+                            elif choice == 2:
+                                target = player2
+
+                            await asyncio.sleep(2)
+
+                            if player['BLOCKS'] >= 1:
+                                await ctx.send(f"{player['name']} blocks the attack!")
+                                player['BLOCKS'] -= 1
+
+                            else:
+                                enemyEmbed = discord.Embed(title=f"{activeEnemy['name']}'s Turn!",
+                                                           description=f"dealt {activeEnemy['ATK']} damage to {target['name']}!",
+                                                           color=discord.Color.red())
+
+                                await ctx.send(embed=enemyEmbed)
+                                target["HP"] -= activeEnemy["ATK"]
+
+                            await asyncio.sleep(2)
+                            turn += 1
+
+                    elif turn % 4 == 3:
+
+                        if enemy2Alive == False:
+                            turn += 1
+
+                        else:
+
+                            activeEnemy = enemy2
+                            choice = random.randint(1, 2)
+
+                            await asyncio.sleep(2)
+
+                            if choice == 1:
+                                target = player
+                            elif choice == 2:
+                                target = player2
+
+                            if player['BLOCKS'] >= 1:
+                                await ctx.send(f"{player['name']} blocks the attack!")
+                                player['BLOCKS'] -= 1
+
+                            else:
+                                enemyEmbed = discord.Embed(title=f"{activeEnemy['name']}'s Turn!",
+                                                           description=f"dealt {activeEnemy['ATK']} damage to {target['name']}!",
+                                                           color=discord.Color.red())
+
+                                await ctx.send(embed=enemyEmbed)
+                                target["HP"] -= activeEnemy["ATK"]
+
+                            await asyncio.sleep(2)
+                            turn += 1
 
 
 
                 # RESULTS
-                if player["HP"] <= 0:
-                    await ctx.send(f"You were defeated by {enemy['name']}!")
+                if player['HP'] <= 0 and player2['HP'] <= 0:
+                    await ctx.send(f"Both {player['name']} and {player2['name']} have been defeated!")
                     alive = False
+                    break
 
-                elif enemy["HP"] <= 0:
+                if player["HP"] <= 0:
+                    await ctx.send(f"{player['name']} was defeated!")
+
+                if player2["HP"] <= 0:
+                    await ctx.send(f"{player2['name']} was defeated!")
+
+                if enemy["HP"] <= 0:
                     await ctx.send(f"You defeated {enemy['name']}!")
                     await asyncio.sleep(2)
+
+                    enemy1Alive = False
 
                     coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
                     await ctx.send(embed=coinsEmbed)
 
                     self.changeCoins(ctx.author.id, 1)
-                    room += 1
                     await asyncio.sleep(1)
+
+                if enemy2['HP'] <= 0:
+                    await ctx.send(f"You defeated {enemy2['name']}!")
+                    await asyncio.sleep(2)
+
+                    enemy2Alive = False
+
+                    coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
+                    await ctx.send(embed=coinsEmbed)
+
+                    self.changeCoins(ctx.author.id, 1)
+                    await asyncio.sleep(1)
+
+                if enemy1Alive == False and enemy2Alive == False:
+                    curRoom = room + 1
+                    await ctx.send(f"Room {curRoom} cleared!")
+                    room += 1
+                    break
 
 
 
