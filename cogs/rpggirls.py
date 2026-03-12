@@ -10,6 +10,10 @@ async def aquaAttack1(ctx, player, enemy):
 
 async def aquaAttack2(ctx, player, enemy):
     player['HP'] += 2
+
+    if player['HP'] > player['MAXHP']:
+        player['HP'] = player['MAXHP']
+
     await ctx.send("Aqua heals herself for 2 HP!")
 
 
@@ -17,9 +21,9 @@ async def darknessAttack1(ctx, player, enemy):
     enemy['HP'] -= player['ATK']
     await ctx.send(f"Darkness slashes at {enemy['name']} and deals {player['ATK']} damage!")
 
-async def darknessAttack2(ctx, player, enemy):
+async def darknessAttack2(ctx, player):
     player['BLOCKS'] += 1
-    await ctx.send("Darkness prepares to block the next attack!")
+    await ctx.send(f"Darkness shields {player['name']} from the next attack on them!")
 
 
 async def meguminAttack1(ctx, player, enemy):
@@ -43,9 +47,11 @@ rpgGirls = {
                 "moves": {
                     "1": {"name": "Create Water!",
                           "desc": "Shoot a beam of water at the enemy to deal 1 ATK.",
+                          "target": "Enemy",
                           "action": aquaAttack1},
                     "2": {"name": "Heal",
                           "desc": "Heals herself for 2 HP.",
+                          "target": "Self",
                           "action": aquaAttack2}
                 }
             },
@@ -61,9 +67,11 @@ rpgGirls = {
                 "moves": {
                     "1": {"name": "Sword Slash",
                           "desc": "Slash at the enemy to deal 1 ATK.",
+                          "target": "Enemy",
                           "action": darknessAttack1},
                     "2": {"name": "Guard",
-                          "desc": "Blocks the next attack.",
+                          "desc": "Blocks the next attack. Give to any team member.",
+                          "target": "Team",
                           "action": darknessAttack2}
                 }
             },
@@ -79,6 +87,7 @@ rpgGirls = {
                 "moves": {
                     "1": {"name": "Explosion",
                           "desc": "Deal 3 damage",
+                          "target": "Enemy",
                           "action": ""},
                 }
             },

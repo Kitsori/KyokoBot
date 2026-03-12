@@ -129,6 +129,35 @@ class AnimeRPG(commands.Cog):
 
 
     @commands.command()
+    async def rrr(self, ctx):
+
+        def check(m):
+            return m.author == ctx.author and m.channel == ctx.channel
+
+        user = self.findPlayer(ctx.author.id)
+
+        charList = ""
+        await ctx.send("Choose your characters: ")
+
+        for char in user["characters"]:
+            charList += f"- {char}\n"
+
+        await ctx.send(charList)
+
+        msg = await self.bot.wait_for('message', check=check)
+        playerChoice = msg.content
+
+        for c in user["characters"]:
+            char = c.lower()
+            if playerChoice.lower() == char:
+                player = copy.deepcopy(rpgGirls[char])
+
+
+        await ctx.send(player['moves']['1']['name'])
+
+
+
+    @commands.command()
     async def run(self, ctx):
 
         # Setup Check
@@ -301,26 +330,45 @@ class AnimeRPG(commands.Cog):
                                 await ctx.send("Pick a proper attack dummy!")
 
 
+                            if (player['moves'][choice]['target'] == "Enemy"):
+                                await ctx.send(f"Choose a target (1 or 2)")
 
-                            await ctx.send(f"Choose a target (1 or 2)")
+                                msg2 = await self.bot.wait_for('message', check=check)
+                                enemyChoice = msg2.content.strip()
 
-                            msg2 = await self.bot.wait_for('message', check=check)
-                            enemyChoice = msg2.content.strip()
+                                if enemyChoice == "1":
+                                    if enemy['HP'] > 0:
+                                        target = enemy
+                                    else:
+                                        await ctx.send("This enemy is already defeated silly!")
 
-                            if enemyChoice == "1":
-                                if enemy['HP'] > 0:
-                                    target = enemy
-                                else:
-                                    await ctx.send("This enemy is already defeated silly!")
+                                elif enemyChoice == "2":
+                                    if enemy2['HP'] > 0:
+                                        target = enemy2
+                                    else:
+                                        await ctx.send("This enemy is already defeated silly!")
 
-                            elif enemyChoice == "2":
-                                if enemy2['HP'] > 0:
-                                    target = enemy2
-                                else:
-                                    await ctx.send("This enemy is already defeated silly!")
+                                await move['action'](ctx, player, target)
 
 
-                            await move['action'](ctx, player, target)
+                            elif (player['moves'][choice]['target'] == "Self"):
+                                await move['action'](ctx, player, target)
+
+
+                            elif (player['moves'][choice]['target'] == "Team"):
+                                await ctx.send("Which character do you want to perform this to?")
+                                await ctx.send(f"- {player['name']}")
+                                await ctx.send(f"- {player2['name']}")
+
+                                msg3 = await self.bot.wait_for('message', check=check)
+                                playerChoice = msg3.content.strip()
+
+
+                                if playerChoice.lower() == player['name'].lower():
+                                    await move['action'](ctx, player)
+
+                                elif playerChoice.lower() == player2['name'].lower():
+                                    await move['action'](ctx, player2)
 
 
                             await asyncio.sleep(1)
@@ -336,26 +384,56 @@ class AnimeRPG(commands.Cog):
                                 [f"({k}) **{v['name']}** - {v['desc']}" for k, v in player2["moves"].items()])
                             await ctx.send(f"Choose a move:\n{move_text}")
 
-                            await ctx.send(f"Choose a target (1 or 2)")
 
                             msg = await self.bot.wait_for('message', check=check)
                             choice = msg.content.strip()
 
-                            msg2 = await self.bot.wait_for('message', check=check)
-                            enemyChoice = msg2.content.strip()
-
-                            if enemyChoice == "1":
-                                target = enemy
-                            elif enemyChoice == "2":
-                                target = enemy2
-
 
                             if choice in player2['moves']:
                                 move = player2['moves'][choice]
-                                await move['action'](ctx, player2, target)
                             else:
-                                await ctx.send("Invalid choice!")
-                                continue
+                                await ctx.send("Pick a proper attack dummy!")
+
+
+                            if (player2['moves'][choice]['target'] == "Enemy"):
+                                await ctx.send(f"Choose a target (1 or 2)")
+
+                                msg2 = await self.bot.wait_for('message', check=check)
+                                enemyChoice = msg2.content.strip()
+
+                                if enemyChoice == "1":
+                                    if enemy['HP'] > 0:
+                                        target = enemy
+                                    else:
+                                        await ctx.send("This enemy is already defeated silly!")
+
+                                elif enemyChoice == "2":
+                                    if enemy2['HP'] > 0:
+                                        target = enemy2
+                                    else:
+                                        await ctx.send("This enemy is already defeated silly!")
+
+                                await move['action'](ctx, player, target)
+
+
+                            elif (player2['moves'][choice]['target'] == "Self"):
+                                await move['action'](ctx, player, target)
+
+
+                            elif (player2['moves'][choice]['target'] == "Team"):
+                                await ctx.send("Which character do you want to perform this to?")
+                                await ctx.send(f"- {player['name']}")
+                                await ctx.send(f"- {player2['name']}")
+
+                                msg3 = await self.bot.wait_for('message', check=check)
+                                playerChoice = msg3.content.strip()
+
+                                if playerChoice.lower() == player['name'].lower():
+                                    await move['action'](ctx, player)
+
+                                elif playerChoice.lower() == player2['name'].lower():
+                                    await move['action'](ctx, player2)
+
 
                             await asyncio.sleep(1)
                             turn += 1
@@ -379,9 +457,9 @@ class AnimeRPG(commands.Cog):
 
                             await asyncio.sleep(2)
 
-                            if player['BLOCKS'] >= 1:
+                            if target['BLOCKS'] >= 1:
                                 await ctx.send(f"{player['name']} blocks the attack!")
-                                player['BLOCKS'] -= 1
+                                target['BLOCKS'] -= 1
 
                             else:
                                 enemyEmbed = discord.Embed(title=f"{activeEnemy['name']}'s Turn!",
@@ -411,9 +489,9 @@ class AnimeRPG(commands.Cog):
                             elif choice == 2:
                                 target = player2
 
-                            if player['BLOCKS'] >= 1:
+                            if target['BLOCKS'] >= 1:
                                 await ctx.send(f"{player['name']} blocks the attack!")
-                                player['BLOCKS'] -= 1
+                                target['BLOCKS'] -= 1
 
                             else:
                                 enemyEmbed = discord.Embed(title=f"{activeEnemy['name']}'s Turn!",
