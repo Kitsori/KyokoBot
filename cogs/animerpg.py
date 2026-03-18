@@ -18,6 +18,9 @@ rarityWeights = \
 
 class AnimeRPG(commands.Cog):
 
+    rpgColor = 0x4B9DAD
+
+
     def __init__(self, bot, db):
         self.bot = bot
         self.db = db
@@ -68,7 +71,7 @@ class AnimeRPG(commands.Cog):
 
 
     @commands.command()
-    async def coins(self, ctx):
+    async def ccccc(self, ctx):
         player = self.findPlayer(ctx.author.id)
         self.changeCoins(ctx.author.id, 10)
         await ctx.send("+10 Coins!")
@@ -78,51 +81,136 @@ class AnimeRPG(commands.Cog):
     async def summon(self, ctx):
         player = self.findPlayer(ctx.author.id)
 
-        if player["coins"] < 10:
-            await ctx.send("You don't have enough coins.")
-            return
+        def check(m):
+            return m.author == ctx.author and m.channel == ctx.channel
 
-        self.changeCoins(ctx.author.id, -10)
+        await ctx.send("A character summon costs 10 coins. Do you want to summon? ('y' to confirm) \n"
+                       "View rarity chances with ~summonrates")
 
-        num = random.randint(1, 100)
+        msg = await self.bot.wait_for('message', check=check)
+        choice = msg.content.strip()
 
-        if 60 >= num >= 1:
-            rarity = "Common"
-        elif 90 >= num >= 61:
-            rarity = "Rare"
-        elif 100 >= num >= 91:
-            rarity = "Epic"
+        if choice.lower() == "y":
+
+            if player["coins"] < 10:
+                await ctx.send("You don't have enough coins.")
+                return
+
+            self.changeCoins(ctx.author.id, -10)
+
+            num = random.randint(1, 100)
+
+            if 60 >= num >= 1:
+                rarity = "Common"
+            elif 90 >= num >= 61:
+                rarity = "Rare"
+            elif 100 >= num >= 91:
+                rarity = "Epic"
 
 
-        chars = [c for c in rpgGirls.values() if c["rarity"] == rarity]
-        character = random.choice(chars)
+            chars = [c for c in rpgGirls.values() if c["rarity"] == rarity]
+            character = random.choice(chars)
 
-        msg = await ctx.send("Summoning.")
-        await asyncio.sleep(1)
-        await msg.edit(content="Summoning..")
-        await asyncio.sleep(1)
-        if rarity == "Rare":
-            await msg.edit(content="Summoning...")
+            msg = await ctx.send("Summoning.")
             await asyncio.sleep(1)
-        if rarity == "Epic":
-            await msg.edit(content="Summoning...")
+            await msg.edit(content="Summoning..")
             await asyncio.sleep(1)
-            await msg.edit(content="Summoning....")
-            await asyncio.sleep(1)
-        if rarity == "Legendary":
-            await msg.edit(content="Summoning...")
-            await asyncio.sleep(1)
-            await msg.edit(content="Summoning....")
-            await asyncio.sleep(1)
-            await msg.edit(content="Summoning.....")
-            await asyncio.sleep(1)
+            if rarity == "Rare":
+                await msg.edit(content="Summoning...")
+                await asyncio.sleep(1)
+            if rarity == "Epic":
+                await msg.edit(content="Summoning...")
+                await asyncio.sleep(1)
+                await msg.edit(content="Summoning....")
+                await asyncio.sleep(1)
+            if rarity == "Legendary":
+                await msg.edit(content="Summoning...")
+                await asyncio.sleep(1)
+                await msg.edit(content="Summoning....")
+                await asyncio.sleep(1)
+                await msg.edit(content="Summoning.....")
+                await asyncio.sleep(1)
 
-        summonEmbed = discord.Embed(title=f"You summoned {character['name']}!", color=self.rarityColor(character["rarity"]))
-        summonEmbed.set_image(url=character["image"])
+            summonEmbed = discord.Embed(title=f"You summoned {character['name']}!", color=self.rarityColor(character["rarity"]))
+            summonEmbed.set_image(url=character["image"])
 
-        await ctx.send(embed=summonEmbed)
+            await ctx.send(embed=summonEmbed)
 
-        self.addCharacter(ctx.author.id, character["name"])
+            self.addCharacter(ctx.author.id, character["name"])
+        else:
+            await ctx.send("Okay... I'll be waiting for your next summon!")
+
+
+
+    @commands.command()
+    async def summonrates(self, ctx):
+        ratesEmbed = discord.Embed(title="KyokoRPG Summon Rates",
+                                   description="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─",
+                                   color=self.rpgColor)
+
+        ratesEmbed.add_field(name="Common: 60%", value='', inline=False)
+        ratesEmbed.add_field(name="Rare: 30%", value='', inline=False)
+        ratesEmbed.add_field(name="Epic: 10%", value='', inline=False)
+
+        await ctx.send(embed=ratesEmbed)
+
+
+
+    @commands.command()
+    async def coins(self, ctx):
+        player = self.findPlayer(ctx.author.id)
+
+        coinEmbed = discord.Embed(title=f"You have {player['coins']} coins!",
+                                  color=self.rpgColor)
+        coinEmbed.set_footer(text="KyokoRPG")
+
+        await ctx.send(embed=coinEmbed)
+
+
+
+    @commands.command()
+    async def characterlist(self, ctx):
+
+        player = self.findPlayer(ctx.author.id)
+
+        commonEmbed = discord.Embed(title="COMMON (2)", color=0x34cceb)
+        rareEmbed = discord.Embed(title="RARE (2)", color=0x34eb3a)
+        epicEmbed = discord.Embed(title="EPIC (1)", color=0xf538ff)
+
+
+        for char in rpgGirls.values():
+            if char["rarity"] == "Common":
+                found = False
+                name = char["name"]
+                for c in player['characters']:
+                    if c == name:
+                        commonEmbed.add_field(name=f"- {char['name']}", value='', inline=False)
+                        found = True
+                if found == False:
+                    commonEmbed.add_field(name=f"- ???", value='', inline=False)
+
+
+            elif char["rarity"] == "Rare":
+                found = False
+                name = char["name"]
+                for c in player['characters']:
+                    if c == name:
+                        rareEmbed.add_field(name=f"- {char['name']}", value='', inline=False)
+                        found = True
+                if found == False:
+                    rareEmbed.add_field(name=f"- ???", value='', inline=False)
+
+            elif char["rarity"] == "Epic":
+                found = False
+                name = char["name"]
+                for c in player['characters']:
+                    if c == name:
+                        epicEmbed.add_field(name=f"- {char['name']}", value='', inline=False)
+                        found = True
+                if found == False:
+                    epicEmbed.add_field(name=f"- ???", value='', inline=False)
+
+        await ctx.send(embeds=[commonEmbed, rareEmbed, epicEmbed])
 
 
 
@@ -199,6 +287,7 @@ class AnimeRPG(commands.Cog):
 
             # Room counter
             room = 1
+            roomCleared = False
 
             alive = True
             player1Alive = True
@@ -209,23 +298,37 @@ class AnimeRPG(commands.Cog):
 
             while alive == True:
 
+                roomCleared = False
+
                 # Generate enemies, dependant on world
                 if world == 1 and room % 5 != 0:
                     enemy = copy.deepcopy(random.choice(list(world1Enemies.values())))
                     enemy2 = copy.deepcopy(random.choice(list(world1Enemies.values())))
                 elif world == 1 and room % 5 == 0:
                     enemy = copy.deepcopy(random.choice(list(world1Bosses.values())))
+                    enemy2 = {"name": "None", "HP": 0, "ATK": 0}
+                    color = 0xFF0000
+                    bossEmbed = discord.Embed(title="BOSS INCOMING...",
+                                              color=color)
+                    await ctx.send(embed=bossEmbed)
+                    await asyncio.sleep(2)
 
                 # Setup turn counter
                 turn = 0
                 enemy1Alive = True
                 enemy2Alive = True
+                enemy2Exists = True
 
                 barValue = player['MAXHP'] / 10
                 barValue2 = player2['MAXHP'] / 10
 
                 barValueE = enemy['HP'] / 10
-                barValueE2 = enemy2['HP'] / 10
+
+                if enemy2['HP'] > 0:
+                    barValueE2 = enemy2['HP'] / 10
+                else:
+                    barValueE2 = 0
+                    enemy2Exists = False
 
                 while (player['HP'] > 0 or player2['HP'] > 0) and (enemy['HP'] > 0 or enemy2['HP'] > 0):
 
@@ -233,7 +336,11 @@ class AnimeRPG(commands.Cog):
                     barCountDouble2 = player2["HP"] / barValue2
 
                     barCountDoubleE = enemy["HP"] / barValueE
-                    barCountDoubleE2 = enemy2["HP"] / barValueE2
+
+                    if enemy2Exists == True:
+                        barCountDoubleE2 = enemy2["HP"] / barValueE2
+                    else:
+                        barCountDoubleE2 = 0
 
                     barCount = round(barCountDouble)
                     barCount2 = round(barCountDouble2)
@@ -294,9 +401,13 @@ class AnimeRPG(commands.Cog):
                         active = enemy2['name']
 
 
+                    if turn % 4 == 0 or turn % 4 == 1:
+                        color = self.rarityColor(rarity)
+                    elif turn % 4 == 2 or turn % 4 == 3:
+                        color = 0x874545
 
                     statusEmbed = discord.Embed(title=f"{active}'s Turn!",
-                                                color=self.rarityColor(rarity))
+                                                color=color)
 
                     statusEmbed.add_field(name=player['name'], value=f"{player['HP']} HP\n ║{bars}║", inline=True)
                     statusEmbed.add_field(name=player2['name'], value=f"{player2['HP']} HP\n ║{bars2}║", inline=True)
@@ -304,7 +415,9 @@ class AnimeRPG(commands.Cog):
                     statusEmbed.add_field(name="\u200b", value="─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ VS ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─", inline=False)
 
                     statusEmbed.add_field(name=enemy['name'], value=f"{enemy['HP']} HP\n ║{barsE}║", inline=True)
-                    statusEmbed.add_field(name=enemy2['name'], value=f"{enemy2['HP']} HP\n ║{barsE2}║", inline=True)
+
+                    if enemy2Exists == True:
+                        statusEmbed.add_field(name=enemy2['name'], value=f"{enemy2['HP']} HP\n ║{barsE2}║", inline=True)
 
                     if turn % 4 == 0 or turn % 4 == 1:
                         statusEmbed.set_image(url=image)
@@ -330,25 +443,34 @@ class AnimeRPG(commands.Cog):
                                 await ctx.send("Pick a proper attack dummy!")
 
 
+
                             if (player['moves'][choice]['target'] == "Enemy"):
                                 await ctx.send(f"Choose a target (1 or 2)")
 
-                                msg2 = await self.bot.wait_for('message', check=check)
-                                enemyChoice = msg2.content.strip()
 
-                                if enemyChoice == "1":
-                                    if enemy['HP'] > 0:
-                                        target = enemy
-                                    else:
-                                        await ctx.send("This enemy is already defeated silly!")
+                                enemyChoiceLoop = True
+                                while enemyChoiceLoop == True:
 
-                                elif enemyChoice == "2":
-                                    if enemy2['HP'] > 0:
-                                        target = enemy2
-                                    else:
-                                        await ctx.send("This enemy is already defeated silly!")
+                                    msg2 = await self.bot.wait_for('message', check=check)
+                                    enemyChoice = msg2.content.strip()
 
-                                await move['action'](ctx, player, target)
+                                    if enemyChoice == "1":
+                                        if enemy['HP'] > 0:
+                                            target = enemy
+                                            target2 = enemy2
+                                            break
+                                        else:
+                                            await ctx.send("This enemy is already defeated silly!")
+
+                                    elif enemyChoice == "2":
+                                        if enemy2['HP'] > 0:
+                                            target = enemy2
+                                            target2 = enemy
+                                            break
+                                        else:
+                                            await ctx.send("This enemy is already defeated silly!")
+
+                                await move['action'](ctx, player, target, target2)
 
 
                             elif (player['moves'][choice]['target'] == "Self"):
@@ -366,9 +488,14 @@ class AnimeRPG(commands.Cog):
 
                                 if playerChoice.lower() == player['name'].lower():
                                     await move['action'](ctx, player)
+                                    break
 
                                 elif playerChoice.lower() == player2['name'].lower():
                                     await move['action'](ctx, player2)
+                                    break
+
+                                else:
+                                    await ctx.send("That isn't a valid team member silly!")
 
 
                             await asyncio.sleep(1)
@@ -384,7 +511,6 @@ class AnimeRPG(commands.Cog):
                                 [f"({k}) **{v['name']}** - {v['desc']}" for k, v in player2["moves"].items()])
                             await ctx.send(f"Choose a move:\n{move_text}")
 
-
                             msg = await self.bot.wait_for('message', check=check)
                             choice = msg.content.strip()
 
@@ -398,26 +524,34 @@ class AnimeRPG(commands.Cog):
                             if (player2['moves'][choice]['target'] == "Enemy"):
                                 await ctx.send(f"Choose a target (1 or 2)")
 
-                                msg2 = await self.bot.wait_for('message', check=check)
-                                enemyChoice = msg2.content.strip()
 
-                                if enemyChoice == "1":
-                                    if enemy['HP'] > 0:
-                                        target = enemy
-                                    else:
-                                        await ctx.send("This enemy is already defeated silly!")
+                                enemyChoiceLoop = True
+                                while enemyChoiceLoop == True:
 
-                                elif enemyChoice == "2":
-                                    if enemy2['HP'] > 0:
-                                        target = enemy2
-                                    else:
-                                        await ctx.send("This enemy is already defeated silly!")
+                                    msg2 = await self.bot.wait_for('message', check=check)
+                                    enemyChoice = msg2.content.strip()
 
-                                await move['action'](ctx, player, target)
+                                    if enemyChoice == "1":
+                                        if enemy['HP'] > 0:
+                                            target = enemy
+                                            target2 = enemy2
+                                            break
+                                        else:
+                                            await ctx.send("This enemy is already defeated silly!")
+
+                                    elif enemyChoice == "2":
+                                        if enemy2['HP'] > 0:
+                                            target = enemy2
+                                            target2 = enemy
+                                            break
+                                        else:
+                                            await ctx.send("This enemy is already defeated silly!")
+
+                                await move['action'](ctx, player2, target, target2)
 
 
                             elif (player2['moves'][choice]['target'] == "Self"):
-                                await move['action'](ctx, player, target)
+                                await move['action'](ctx, player2)
 
 
                             elif (player2['moves'][choice]['target'] == "Team"):
@@ -439,11 +573,57 @@ class AnimeRPG(commands.Cog):
                             turn += 1
 
 
+
+
+
+
+                    if enemy["HP"] <= 0 and enemy1Alive == True:
+                        await ctx.send(f"You defeated {enemy['name']}!")
+                        await asyncio.sleep(2)
+
+                        enemy1Alive = False
+
+                        coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
+                        await ctx.send(embed=coinsEmbed)
+
+                        self.changeCoins(ctx.author.id, 1)
+                        await asyncio.sleep(1)
+
+                    if enemy2Exists and enemy2['HP'] <= 0 and enemy2Alive == True:
+                        await ctx.send(f"You defeated {enemy2['name']}!")
+                        await asyncio.sleep(2)
+
+                        enemy2Alive = False
+
+                        coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
+                        await ctx.send(embed=coinsEmbed)
+
+                        self.changeCoins(ctx.author.id, 1)
+                        await asyncio.sleep(1)
+
+                    if enemy1Alive == False and enemy2Alive == False:
+                        await ctx.send(f"Room {room} cleared!")
+                        roomCleared = True
+                        break
+
+
+
+
+
+
                     # ENEMY TURN
                     elif turn % 4 == 2:
 
                         if enemy1Alive == False:
                             turn += 1
+                            continue
+
+                        if enemy['FROZEN'] >= 1:
+                            await ctx.send(f"{enemy['name']} can't attack!")
+                            enemy['FROZEN'] -= 1
+                            await asyncio.sleep(1)
+                            turn += 1
+                            continue
 
                         else:
 
@@ -464,7 +644,7 @@ class AnimeRPG(commands.Cog):
                             else:
                                 enemyEmbed = discord.Embed(title=f"{activeEnemy['name']}'s Turn!",
                                                            description=f"dealt {activeEnemy['ATK']} damage to {target['name']}!",
-                                                           color=discord.Color.red())
+                                                           color=0x874545)
 
                                 await ctx.send(embed=enemyEmbed)
                                 target["HP"] -= activeEnemy["ATK"]
@@ -474,8 +654,16 @@ class AnimeRPG(commands.Cog):
 
                     elif turn % 4 == 3:
 
-                        if enemy2Alive == False:
+                        if not enemy2Exists or enemy2Alive == False:
                             turn += 1
+                            continue
+
+                        if enemy2['FROZEN'] >= 1:
+                            await ctx.send(f"{enemy2['name']} can't attack!")
+                            enemy2['FROZEN'] -= 1
+                            await asyncio.sleep(1)
+                            turn += 1
+                            continue
 
                         else:
 
@@ -496,7 +684,7 @@ class AnimeRPG(commands.Cog):
                             else:
                                 enemyEmbed = discord.Embed(title=f"{activeEnemy['name']}'s Turn!",
                                                            description=f"dealt {activeEnemy['ATK']} damage to {target['name']}!",
-                                                           color=discord.Color.red())
+                                                           color=0x874545)
 
                                 await ctx.send(embed=enemyEmbed)
                                 target["HP"] -= activeEnemy["ATK"]
@@ -518,35 +706,10 @@ class AnimeRPG(commands.Cog):
                 if player2["HP"] <= 0:
                     await ctx.send(f"{player2['name']} was defeated!")
 
-                if enemy["HP"] <= 0:
-                    await ctx.send(f"You defeated {enemy['name']}!")
-                    await asyncio.sleep(2)
 
-                    enemy1Alive = False
-
-                    coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
-                    await ctx.send(embed=coinsEmbed)
-
-                    self.changeCoins(ctx.author.id, 1)
-                    await asyncio.sleep(1)
-
-                if enemy2['HP'] <= 0:
-                    await ctx.send(f"You defeated {enemy2['name']}!")
-                    await asyncio.sleep(2)
-
-                    enemy2Alive = False
-
-                    coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
-                    await ctx.send(embed=coinsEmbed)
-
-                    self.changeCoins(ctx.author.id, 1)
-                    await asyncio.sleep(1)
-
-                if enemy1Alive == False and enemy2Alive == False:
-                    curRoom = room + 1
-                    await ctx.send(f"Room {curRoom} cleared!")
+                if roomCleared == True:
                     room += 1
-                    break
+                    continue
 
 
 
