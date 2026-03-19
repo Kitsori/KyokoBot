@@ -527,10 +527,10 @@ class AnimeRPG(commands.Cog):
                 roomCleared = False
 
                 # Generate enemies, dependant on world
-                if world == 2 and room % 5 != 0:
+                if (world == 1 or world == 2) and room % 5 != 0:
                     enemy = copy.deepcopy(random.choice(list(world1Enemies.values())))
                     enemy2 = copy.deepcopy(random.choice(list(world1Enemies.values())))
-                elif world == 2 and room % 5 == 0:
+                elif (world == 1 or world == 2) and room % 5 == 0:
                     enemy = copy.deepcopy(random.choice(list(world1Bosses.values())))
                     enemy2 = {"name": "None", "HP": 0, "ATK": 0}
                     color = 0xFF0000
