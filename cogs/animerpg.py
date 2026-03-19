@@ -238,8 +238,8 @@ class AnimeRPG(commands.Cog):
             await ctx.send("Oh, its your first time playing! Take Aqua and Darkness for free to start! :3")
 
 
-        commonEmbed = discord.Embed(title="COMMON (2)", color=0x34cceb)
-        rareEmbed = discord.Embed(title="RARE (2)", color=0x34eb3a)
+        commonEmbed = discord.Embed(title="COMMON (3)", color=0x34cceb)
+        rareEmbed = discord.Embed(title="RARE (3)", color=0x34eb3a)
         epicEmbed = discord.Embed(title="EPIC (1)", color=0xf538ff)
 
 
