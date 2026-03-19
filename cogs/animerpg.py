@@ -304,21 +304,26 @@ class AnimeRPG(commands.Cog):
 
         level = user['levels'].get(charName)
         fragments = user['fragments'].get(charName)
+        coins = user['coins']
 
         if level == 1:
             required = 2
+            coinsRequired = 10
         elif level == 2:
             required = 3
+            coinsRequired = 15
         elif level == 3:
             required = 5
+            coinsRequired = 20
         elif level == 4:
             required = 8
+            coinsRequired = 30
         elif level == 5:
-            required = 12
+            await ctx.send("This character is currently at max level!")
 
-        if fragments >= required:
-            await ctx.send(f"You have {fragments} {charName} fragments. \n"
-                           f"You need {required} fragments to level up.")
+        if fragments >= required and coins >= coinsRequired:
+            await ctx.send(f"You have {fragments} {charName} fragments and {coins} coins.\n"
+                           f"You need {required} fragments and {coinsRequired} coins to level up.")
             await ctx.send(f"Do you want to level up {charName}? (y/n)")
 
             msg = await self.bot.wait_for("message", check=check, timeout=30)
@@ -327,12 +332,13 @@ class AnimeRPG(commands.Cog):
             if content.lower() == "y":
                 self.changeLevel(ctx.author.id, charName, 1)
                 self.changeFragments(ctx.author.id, charName, -required)
+                self.changeCoins(ctx.author.id, -coinsRequired)
                 await ctx.send(f"{charName} leveled up to level {level + 1}!")
             else:
                 await ctx.send("Come back when you're ready!")
         else:
-            await ctx.send(f"You need {required} fragments to level up to Level {level + 1}. \n"
-                           f"You don't have enough fragments/coins to level up currently.")
+            await ctx.send(f"You need {required} {charName} fragments and {coinsRequired} coins to level up to Level {level + 1}. \n"
+                           f"You only have {fragments} {charName} fragments and {coins} coins.")
 
 
 
