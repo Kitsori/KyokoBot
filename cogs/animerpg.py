@@ -16,6 +16,9 @@ rarityWeights = \
     }
 
 
+charOrder = ["Aqua", "Darkness", "Wiz", "Yunyun", "Megumin"]
+
+
 class AnimeRPG(commands.Cog):
 
     rpgColor = 0x4B9DAD
@@ -25,15 +28,28 @@ class AnimeRPG(commands.Cog):
         self.bot = bot
         self.db = db
         self.players = db["Players"]
+        self.fragments = db["Fragments"]
+
+
 
 
     # Find a player's file, if not existing create one with defaults
     def findPlayer(self, user_id: int):
         player = self.players.find_one({"_id": user_id})
         if not player:
-            player = {"_id": user_id, "world": 1, "characters": ["Aqua"], "coins": 0}
+            player = {
+                "_id": user_id,
+                "world": 1,
+                "characters": ["Aqua", "Darkness"],
+                "coins": 0,
+                "levels": {"Aqua": 1, "Darkness": 1},
+                "fragments": {"Aqua": 0, "Darkness": 0}
+            }
             self.players.insert_one(player)
-        return player
+            new = True
+        else:
+            new = False
+        return player, new
 
     # Find a player's character list and add one
     def addCharacter(self, user_id: int, char_name: str):
@@ -59,6 +75,20 @@ class AnimeRPG(commands.Cog):
             upsert=True
         )
 
+    def changeFragments(self, user_id: int, character: str, amount: int):
+        self.players.update_one(
+            {"_id": user_id},
+            {"$inc": {f"fragments.{character}": amount}},
+            upsert=True
+        )
+
+    def changeLevel(self, user_id: int, character: str, amount: int):
+        self.players.update_one(
+            {"_id": user_id},
+            {"$inc": {f"levels.{character}": amount}},
+            upsert=True
+        )
+
     # Colors for rarities for embeds
     def rarityColor(self, rarity):
 
@@ -79,7 +109,11 @@ class AnimeRPG(commands.Cog):
 
     @commands.command()
     async def summon(self, ctx):
-        player = self.findPlayer(ctx.author.id)
+        player, new = self.findPlayer(ctx.author.id)
+
+        if new == True:
+            await ctx.send("Oh, its your first time playing! Take Aqua and Darkness for free to start! :3")
+
 
         def check(m):
             return m.author == ctx.author and m.channel == ctx.channel
@@ -108,7 +142,7 @@ class AnimeRPG(commands.Cog):
                 rarity = "Epic"
 
 
-            chars = [c for c in rpgGirls.values() if c["rarity"] == rarity]
+            chars = [c for c in rpgGirls.values() if c["rarity"] == rarity and int(c["world"]) <= player["world"]]
             character = random.choice(chars)
 
             msg = await ctx.send("Summoning.")
@@ -136,7 +170,30 @@ class AnimeRPG(commands.Cog):
 
             await ctx.send(embed=summonEmbed)
 
-            self.addCharacter(ctx.author.id, character["name"])
+            if character["name"] in player["characters"]:
+                await ctx.send("You already own this character!")
+
+                fragmentEmbed = discord.Embed(
+                    title=f"+1 {character['name']} fragment!",
+                    color=self.rarityColor(character["rarity"])
+                )
+                await ctx.send(embed=fragmentEmbed)
+
+                self.changeFragments(ctx.author.id, character["name"], 1)
+
+            else:
+                # NEW CHARACTER
+                await ctx.send(f"New character unlocked: {character['name']}!")
+
+                self.addCharacter(ctx.author.id, character["name"])
+
+                # initialize level
+                self.players.update_one(
+                    {"_id": ctx.author.id},
+                    {"$set": {f"levels.{character['name']}": 1}},
+                    upsert=True
+                )
+
         else:
             await ctx.send("Okay... I'll be waiting for your next summon!")
 
@@ -158,7 +215,11 @@ class AnimeRPG(commands.Cog):
 
     @commands.command()
     async def coins(self, ctx):
-        player = self.findPlayer(ctx.author.id)
+        player, new = self.findPlayer(ctx.author.id)
+
+        if new == True:
+            await ctx.send("Oh, its your first time playing! Take Aqua and Darkness for free to start! :3")
+
 
         coinEmbed = discord.Embed(title=f"You have {player['coins']} coins!",
                                   color=self.rpgColor)
@@ -171,7 +232,11 @@ class AnimeRPG(commands.Cog):
     @commands.command()
     async def characterlist(self, ctx):
 
-        player = self.findPlayer(ctx.author.id)
+        player, new = self.findPlayer(ctx.author.id)
+
+        if new == True:
+            await ctx.send("Oh, its your first time playing! Take Aqua and Darkness for free to start! :3")
+
 
         commonEmbed = discord.Embed(title="COMMON (2)", color=0x34cceb)
         rareEmbed = discord.Embed(title="RARE (2)", color=0x34eb3a)
@@ -184,10 +249,11 @@ class AnimeRPG(commands.Cog):
                 name = char["name"]
                 for c in player['characters']:
                     if c == name:
-                        commonEmbed.add_field(name=f"- {char['name']}", value='', inline=False)
+                        level = player['levels'].get(c)
+                        commonEmbed.add_field(name=f"- {char['name']} (Lvl {level})", value='', inline=False)
                         found = True
                 if found == False:
-                    commonEmbed.add_field(name=f"- ???", value='', inline=False)
+                    commonEmbed.add_field(name=f"- ??? (W{char['world']})", value='', inline=False)
 
 
             elif char["rarity"] == "Rare":
@@ -195,53 +261,135 @@ class AnimeRPG(commands.Cog):
                 name = char["name"]
                 for c in player['characters']:
                     if c == name:
-                        rareEmbed.add_field(name=f"- {char['name']}", value='', inline=False)
+                        level = player['levels'].get(c)
+                        rareEmbed.add_field(name=f"- {char['name']} (Lvl {level})", value='', inline=False)
                         found = True
                 if found == False:
-                    rareEmbed.add_field(name=f"- ???", value='', inline=False)
+                    rareEmbed.add_field(name=f"- ??? (W{char['world']})", value='', inline=False)
 
             elif char["rarity"] == "Epic":
                 found = False
                 name = char["name"]
                 for c in player['characters']:
                     if c == name:
-                        epicEmbed.add_field(name=f"- {char['name']}", value='', inline=False)
+                        level = player['levels'].get(c)
+                        epicEmbed.add_field(name=f"- {char['name']} (Lvl {level})", value='', inline=False)
                         found = True
                 if found == False:
-                    epicEmbed.add_field(name=f"- ???", value='', inline=False)
+                    epicEmbed.add_field(name=f"- ??? (W{char['world']})", value='', inline=False)
 
         await ctx.send(embeds=[commonEmbed, rareEmbed, epicEmbed])
 
 
 
-
-
     @commands.command()
-    async def rrr(self, ctx):
+    async def levelup(self, ctx, character=None):
+        user, new = self.findPlayer(ctx.author.id)
 
         def check(m):
             return m.author == ctx.author and m.channel == ctx.channel
 
-        user = self.findPlayer(ctx.author.id)
+        if character is None:
+            await ctx.send("Who do you want to level up?")
 
-        charList = ""
-        await ctx.send("Choose your characters: ")
-
-        for char in user["characters"]:
-            charList += f"- {char}\n"
-
-        await ctx.send(charList)
-
-        msg = await self.bot.wait_for('message', check=check)
-        playerChoice = msg.content
-
-        for c in user["characters"]:
-            char = c.lower()
-            if playerChoice.lower() == char:
-                player = copy.deepcopy(rpgGirls[char])
+            msg = await self.bot.wait_for("message", check=check, timeout=30)
+            character = msg.content.strip()
 
 
-        await ctx.send(player['moves']['1']['name'])
+        charName = character.capitalize()
+
+        if charName not in user['characters']:
+            await ctx.send("You don't own that character!")
+            return
+
+        level = user['levels'].get(charName)
+        fragments = user['fragments'].get(charName)
+
+        if level == 1:
+            required = 2
+        elif level == 2:
+            required = 3
+        elif level == 3:
+            required = 5
+        elif level == 4:
+            required = 8
+        elif level == 5:
+            required = 12
+
+        if fragments >= required:
+            await ctx.send(f"You have {fragments} {charName} fragments. \n"
+                           f"You need {required} fragments to level up.")
+            await ctx.send(f"Do you want to level up {charName}? (y/n)")
+
+            msg = await self.bot.wait_for("message", check=check, timeout=30)
+            content = msg.content.strip()
+
+            if content.lower() == "y":
+                self.changeLevel(ctx.author.id, charName, 1)
+                self.changeFragments(ctx.author.id, charName, -required)
+                await ctx.send(f"{charName} leveled up to level {level + 1}!")
+            else:
+                await ctx.send("Come back when you're ready!")
+        else:
+            await ctx.send(f"You need {required} fragments to level up to Level {level + 1}. \n"
+                           f"You don't have enough fragments/coins to level up currently.")
+
+
+
+
+    @commands.command()
+    async def fragments(self, ctx):
+        player, new = self.findPlayer(ctx.author.id)
+
+        fragEmbed = discord.Embed(title=f"{ctx.author.display_name}'s Fragments", color=0xE6A0E8)
+
+        for char in charOrder:
+            frags = player["fragments"].get(char, 0)
+
+            if frags == 0:
+                continue
+
+            fragEmbed.add_field(name=f"**{char}**: {frags}", value='', inline=False)
+
+        await ctx.send(embed=fragEmbed)
+
+
+
+
+    @commands.command()
+    async def worldup(self, ctx):
+        player, new = self.findPlayer(ctx.author.id)
+
+        def check(m):
+            return m.author == ctx.author and m.channel == ctx.channel
+
+        coins = player["coins"]
+        world = player["world"]
+
+        if world == 1:
+            required = 50
+        if world == 2:
+            required = 150
+
+        if coins >= required:
+            await ctx.send(f"You need {required} coins to get to the next world. \n"
+                           f"You have {coins} coins. Do you want to advance to the next world? (y/n)")
+
+            msg = await self.bot.wait_for("message", check=check, timeout=30)
+            content = msg.content.strip()
+
+            if content.lower() == "y":
+                self.changeWorld(ctx.author.id, 1)
+                self.changeCoins(ctx.author.id, -required)
+                await ctx.send(f"{ctx.author.display_name} advanced to world {world + 1}!")
+            else:
+                await ctx.send("Come back when you're ready!")
+        else:
+            await ctx.send(f"You need {required} coins to get to the next world. \n"
+                           f"You only have {coins} coins currently.")
+
+
+
 
 
 
@@ -253,23 +401,107 @@ class AnimeRPG(commands.Cog):
             return m.author == ctx.author and m.channel == ctx.channel
 
         # Find the user running the command's RPG File
-        user = self.findPlayer(ctx.author.id)
+        user, new = self.findPlayer(ctx.author.id)
+
+        await ctx.send("Starting a new run!")
+        await asyncio.sleep(1)
+        await ctx.send("Type 'quit' at any time to end the run early!")
+
+        if new == True:
+            await ctx.send("Oh, its your first time playing! Take Aqua and Darkness for free to start! :3")
+
 
         # Create the list of the player's characters
         charList = ""
-        await ctx.send("Choose your characters: ")
+        await ctx.send("Choose your first character: ")
 
         for char in user["characters"]:
             charList += f"- {char}\n"
 
         await ctx.send(charList)
 
-        # Choose character
-        msg = await self.bot.wait_for('message', check=check)
-        playerChoice = msg.content
 
-        msg2 = await self.bot.wait_for('message', check=check)
-        playerChoice2 = msg2.content
+        # First character
+        try:
+            picking = True
+            while picking:
+                msg = await self.bot.wait_for('message', check=check)
+                playerChoice = msg.content
+
+                valid = False
+
+                if playerChoice.lower() == "quit":
+                    await ctx.send("Stopping run!")
+                    return
+
+                for c in user["characters"]:
+                    char = c.lower()
+                    if playerChoice.lower() == char:
+                        player = copy.deepcopy(rpgGirls[char])
+
+
+                        picking = False
+                        valid = True
+                        await ctx.send(f"You selected {char.capitalize()} as your first team member!")
+                        await asyncio.sleep(1)
+                        break
+
+                if not valid:
+                    await ctx.send("You don't have that character silly!")
+
+            level = user["levels"][player['name']]  # or whatever level system you use
+            stats = player["levels"][level]
+
+            player["HP"] = stats["HP"]
+            player["MAXHP"] = stats["MAXHP"]
+            player["ATK"] = stats["ATK"]
+
+
+
+
+            await ctx.send("Choose your second character: ")
+
+            # Second character
+            picking2 = True
+            while picking2:
+                msg2 = await self.bot.wait_for('message', check=check)
+                playerChoice2 = msg2.content
+
+                valid = False
+
+                if playerChoice.lower() == "quit":
+                    await ctx.send("Stopping run!")
+                    return
+
+                if playerChoice2.lower() == playerChoice.lower():
+                    await ctx.send("You already picked that character silly!")
+                    continue
+
+                for c in user["characters"]:
+                    char = c.lower()
+                    if playerChoice2.lower() == char:
+                        player2 = copy.deepcopy(rpgGirls[char])
+
+                        picking2 = False
+                        valid = True
+                        await ctx.send(f"You selected {char.capitalize()} as your second team member!")
+                        await asyncio.sleep(1)
+                        break
+
+                if not valid:
+                    await ctx.send("You don't have that character silly!")
+
+            level = user["levels"][player2['name']]  # or whatever level system you use
+            stats2 = player2["levels"][level]
+
+            player2["HP"] = stats2["HP"]
+            player2["MAXHP"] = stats2["MAXHP"]
+            player2["ATK"] = stats2["ATK"]
+
+
+        except Exception as e:
+            print(e)
+
 
 
         world = user["world"]
@@ -277,12 +509,6 @@ class AnimeRPG(commands.Cog):
 
         # Get that character's info
         try:
-            for c in user["characters"]:
-                char = c.lower()
-                if playerChoice.lower() == char:
-                    player = copy.deepcopy(rpgGirls[char])
-                if playerChoice2.lower() == char:
-                    player2 = copy.deepcopy(rpgGirls[char])
 
 
             # Room counter
@@ -301,10 +527,10 @@ class AnimeRPG(commands.Cog):
                 roomCleared = False
 
                 # Generate enemies, dependant on world
-                if world == 1 and room % 5 != 0:
+                if world == 2 and room % 5 != 0:
                     enemy = copy.deepcopy(random.choice(list(world1Enemies.values())))
                     enemy2 = copy.deepcopy(random.choice(list(world1Enemies.values())))
-                elif world == 1 and room % 5 == 0:
+                elif world == 2 and room % 5 == 0:
                     enemy = copy.deepcopy(random.choice(list(world1Bosses.values())))
                     enemy2 = {"name": "None", "HP": 0, "ATK": 0}
                     color = 0xFF0000
@@ -409,8 +635,8 @@ class AnimeRPG(commands.Cog):
                     statusEmbed = discord.Embed(title=f"{active}'s Turn!",
                                                 color=color)
 
-                    statusEmbed.add_field(name=player['name'], value=f"{player['HP']} HP\n ║{bars}║", inline=True)
-                    statusEmbed.add_field(name=player2['name'], value=f"{player2['HP']} HP\n ║{bars2}║", inline=True)
+                    statusEmbed.add_field(name=f"{player['name']} (Lvl {user['levels'][player['name']]})", value=f"{player['HP']} HP\n ║{bars}║", inline=True)
+                    statusEmbed.add_field(name=f"{player2['name']} (Lvl {user['levels'][player2['name']]})", value=f"{player2['HP']} HP\n ║{bars2}║", inline=True)
 
                     statusEmbed.add_field(name="\u200b", value="─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ VS ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─ · ─", inline=False)
 
@@ -436,6 +662,10 @@ class AnimeRPG(commands.Cog):
 
                             msg = await self.bot.wait_for('message', check=check)
                             choice = msg.content.strip()
+
+                            if choice.lower() == "quit":
+                                await ctx.send("Stopping run!")
+                                return
 
                             if choice in player['moves']:
                                 move = player['moves'][choice]
@@ -497,6 +727,9 @@ class AnimeRPG(commands.Cog):
                                 else:
                                     await ctx.send("That isn't a valid team member silly!")
 
+                            elif (player['moves'][choice]['target'] == "TeamFull"):
+                                await move['action'](ctx, player, player2)
+
 
                             await asyncio.sleep(1)
                             turn += 1
@@ -514,6 +747,9 @@ class AnimeRPG(commands.Cog):
                             msg = await self.bot.wait_for('message', check=check)
                             choice = msg.content.strip()
 
+                            if choice.lower() == "quit":
+                                await ctx.send("Stopping run!")
+                                return
 
                             if choice in player2['moves']:
                                 move = player2['moves'][choice]
@@ -583,11 +819,23 @@ class AnimeRPG(commands.Cog):
 
                         enemy1Alive = False
 
-                        coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
-                        await ctx.send(embed=coinsEmbed)
+                        if world == 1:
+                            if room % 5 != 0:
 
-                        self.changeCoins(ctx.author.id, 1)
-                        await asyncio.sleep(1)
+                                coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
+                                await ctx.send(embed=coinsEmbed)
+
+                                self.changeCoins(ctx.author.id, 1)
+                                await asyncio.sleep(1)
+
+                            elif room % 5 == 0:
+
+                                coinsEmbed = discord.Embed(title="You gained 5 coins!", color=discord.Color.pink())
+                                await ctx.send(embed=coinsEmbed)
+
+                                self.changeCoins(ctx.author.id, 5)
+                                await asyncio.sleep(1)
+
 
                     if enemy2Exists and enemy2['HP'] <= 0 and enemy2Alive == True:
                         await ctx.send(f"You defeated {enemy2['name']}!")
@@ -595,11 +843,22 @@ class AnimeRPG(commands.Cog):
 
                         enemy2Alive = False
 
-                        coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
-                        await ctx.send(embed=coinsEmbed)
+                        if world == 1:
+                            if room % 5 != 0:
 
-                        self.changeCoins(ctx.author.id, 1)
-                        await asyncio.sleep(1)
+                                coinsEmbed = discord.Embed(title="You gained 1 coin!", color=discord.Color.pink())
+                                await ctx.send(embed=coinsEmbed)
+
+                                self.changeCoins(ctx.author.id, 1)
+                                await asyncio.sleep(1)
+
+                            elif room % 5 == 0:
+
+                                coinsEmbed = discord.Embed(title="You gained 5 coins!", color=discord.Color.pink())
+                                await ctx.send(embed=coinsEmbed)
+
+                                self.changeCoins(ctx.author.id, 5)
+                                await asyncio.sleep(1)
 
                     if enemy1Alive == False and enemy2Alive == False:
                         await ctx.send(f"Room {room} cleared!")

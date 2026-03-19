@@ -1,4 +1,5 @@
 import random
+import asyncio
 
 
 # ATTACKS
@@ -50,11 +51,12 @@ async def yunyunAttack1(ctx, player, enemy, enemy2):
 
 
 async def yunyunAttack2(ctx, player, enemy, enemy2):
-    atk = player['ATK'] - 1
+    atk = player['ATK'] // 2
     chance = random.randint(1, 100)
     enemy['HP'] -= atk
     await ctx.send(f"Yunyun fires a bolt of lighting at {enemy['name']} for {atk} damage!")
-    if chance > 1:
+    if chance > 50:
+        await asyncio.sleep(1)
         enemy2['HP'] -= atk
         await ctx.send(f"The bolt bounced to {enemy2['name']} for {atk} damage!")
 
@@ -67,21 +69,50 @@ async def meguminAttack(ctx, player, enemy, enemy2):
 
 
 
+async def emiliaAttack(ctx, player, enemy, enemy2):
+    enemy['HP'] -= player['ATK']
+    chance = random.randint(1, 100)
+    await ctx.send(f"Emilia hits {enemy['name']} with an ice weapon for {player['ATK']} damage!")
+    if chance > 50:
+        enemy['FROZEN'] += 1
+        await ctx.send(f"Emilia also froze {enemy['name']} for 1 turn!")
+    else:
+        pass
+
+async def emiliaAttack2(ctx, player, player2):
+    player['HP'] += 1
+    player2['HP'] += 1
+
+    if player['HP'] > player['MAXHP']:
+        player['HP'] = player['MAXHP']
+
+    if player2['HP'] > player2['MAXHP']:
+        player2['HP'] = player2['MAXHP']
+
+    await ctx.send("Emilia heals the entire team for 1 HP!")
+
+
+
 
 
 rpgGirls = {
         "aqua":
             {
                 "name": "Aqua",
+                "world": "1",
                 "rarity": "Common",
                 "image": "https://cdn.myanimelist.net/images/characters/13/327741.jpg",
-                "HP": 5,
-                "MAXHP": 5,
-                "ATK": 1,
+                "levels": {
+                    1: {"HP": 5, "MAXHP": 5, "ATK": 1},
+                    2: {"HP": 6, "MAXHP": 6, "ATK": 1},
+                    3: {"HP": 6, "MAXHP": 6, "ATK": 2},
+                    4: {"HP": 7, "MAXHP": 7, "ATK": 2},
+                    5: {"HP": 7, "MAXHP": 7, "ATK": 3},
+                },
                 "BLOCKS": 0,
                 "moves": {
                     "1": {"name": "Create Water!",
-                          "desc": "Shoot a beam of water at the enemy to deal 1 ATK.",
+                          "desc": "Shoot a beam of water at the enemy to deal base ATK",
                           "target": "Enemy",
                           "action": aquaAttack1},
                     "2": {"name": "Heal",
@@ -93,15 +124,20 @@ rpgGirls = {
         "darkness":
             {
                 "name": "Darkness",
+                "world": "1",
                 "rarity": "Common",
                 "image": "https://cdn.myanimelist.net/images/characters/7/301407.jpg",
-                "HP": 7,
-                "MAXHP": 7,
-                "ATK": 1,
+                "levels": {
+                    1: {"HP": 7, "MAXHP": 7, "ATK": 1},
+                    2: {"HP": 8, "MAXHP": 8, "ATK": 1},
+                    3: {"HP": 8, "MAXHP": 8, "ATK": 2},
+                    4: {"HP": 9, "MAXHP": 9, "ATK": 2},
+                    5: {"HP": 9, "MAXHP": 9, "ATK": 3},
+                },
                 "BLOCKS": 0,
                 "moves": {
                     "1": {"name": "Sword Slash",
-                          "desc": "Slash at a target to deal 1 ATK.",
+                          "desc": "Slash at a target to deal base ATK.",
                           "target": "Enemy",
                           "action": darknessAttack1},
                     "2": {"name": "Guard",
@@ -113,15 +149,20 @@ rpgGirls = {
         "wiz":
             {
                 "name": "Wiz",
+                "world": "1",
                 "rarity": "Rare",
                 "image": "https://cdn.myanimelist.net/images/characters/14/312300.jpg",
-                "HP": 5,
-                "MAXHP": 5,
-                "ATK": 2,
+                "levels": {
+                    1: {"HP": 5, "MAXHP": 5, "ATK": 2},
+                    2: {"HP": 6, "MAXHP": 6, "ATK": 2},
+                    3: {"HP": 6, "MAXHP": 6, "ATK": 3},
+                    4: {"HP": 7, "MAXHP": 7, "ATK": 3},
+                    5: {"HP": 7, "MAXHP": 7, "ATK": 4},
+                },
                 "BLOCKS": 0,
                 "moves": {
                     "1": {"name": "Drain Touch",
-                          "desc": "Drains 2 HP from the target.",
+                          "desc": "Drains HP from the target equal to base ATK.",
                           "target": "Enemy",
                           "action": wizAttack1},
                     "2": {"name": "Petrification",
@@ -133,19 +174,24 @@ rpgGirls = {
         "yunyun":
             {
                 "name": "Yunyun",
+                "world": "1",
                 "rarity": "Rare",
                 "image": "https://cdn.myanimelist.net/images/characters/13/583284.jpg",
-                "HP": 5,
-                "MAXHP": 5,
-                "ATK": 2,
+                "levels": {
+                    1: {"HP": 5, "MAXHP": 5, "ATK": 2},
+                    2: {"HP": 6, "MAXHP": 6, "ATK": 2},
+                    3: {"HP": 6, "MAXHP": 6, "ATK": 3},
+                    4: {"HP": 7, "MAXHP": 7, "ATK": 3},
+                    5: {"HP": 7, "MAXHP": 7, "ATK": 4},
+                },
                 "BLOCKS": 0,
                 "moves": {
                     "1": {"name": "Fireball",
-                          "desc": "Blasts a fireball at the target for 2 ATK.",
+                          "desc": "Blasts a fireball at the target equal to base ATK.",
                           "target": "Enemy",
                           "action": yunyunAttack1},
                     "2": {"name": "Lighting",
-                          "desc": "Fires a lighting bolt at the target for 1 ATK, with a 50% chance to hit the other target as well.",
+                          "desc": "Fires a lighting bolt at the target for 1/2 of base ATK, with a 50% chance to hit the other target as well.",
                           "target": "Enemy",
                           "action": yunyunAttack2}
                 }
@@ -153,17 +199,74 @@ rpgGirls = {
         "megumin":
             {
                 "name": "Megumin",
+                "world": "1",
                 "rarity": "Epic",
                 "image": "https://cdn.myanimelist.net/images/characters/2/309075.jpg",
-                "HP": 4,
-                "MAXHP": 4,
-                "ATK": 4,
+                "levels": {
+                    1: {"HP": 4, "MAXHP": 4, "ATK": 4},
+                    2: {"HP": 5, "MAXHP": 5, "ATK": 4},
+                    3: {"HP": 5, "MAXHP": 5, "ATK": 5},
+                    4: {"HP": 6, "MAXHP": 7, "ATK": 5},
+                    5: {"HP": 6, "MAXHP": 7, "ATK": 6},
+                },
                 "BLOCKS": 0,
                 "moves": {
                     "1": {"name": "Explosion",
-                          "desc": "Create an explosion on an enemy for 4 ATK.",
+                          "desc": "Create an explosion on an enemy equal to base ATK.",
                           "target": "Enemy",
                           "action": meguminAttack},
+                }
+            },
+
+
+            "emilia":
+            {
+                "name": "Emilia",
+                "world": "2",
+                "rarity": "Common",
+                "image": "https://cdn.myanimelist.net/images/characters/12/524543.jpg",
+                "levels": {
+                    1: {"HP": 5, "MAXHP": 5, "ATK": 1},
+                    2: {"HP": 5, "MAXHP": 5, "ATK": 2},
+                    3: {"HP": 6, "MAXHP": 6, "ATK": 2},
+                    4: {"HP": 6, "MAXHP": 6, "ATK": 3},
+                    5: {"HP": 7, "MAXHP": 7, "ATK": 3},
+                },
+                "BLOCKS": 0,
+                "moves": {
+                    "1": {"name": "Ice Brand Arts",
+                          "desc": "Creates an ice weapon to deal damage equal to base ATK. 50% chance to freeze the target.",
+                          "target": "Enemy",
+                          "action": emiliaAttack},
+                    "2": {"name": "Healing Magic",
+                          "desc": "Heals the entire time for 1 HP.",
+                          "target": "TeamFull",
+                          "action": emiliaAttack2}
+                }
+            },
+            "beatrice":
+            {
+                "name": "Beatrice",
+                "world": "2",
+                "rarity": "Rare",
+                "image": "https://cdn.myanimelist.net/images/characters/2/591066.jpg",
+                "levels": {
+                    1: {"HP": 5, "MAXHP": 5, "ATK": 1},
+                    2: {"HP": 5, "MAXHP": 5, "ATK": 2},
+                    3: {"HP": 6, "MAXHP": 6, "ATK": 2},
+                    4: {"HP": 6, "MAXHP": 6, "ATK": 3},
+                    5: {"HP": 7, "MAXHP": 7, "ATK": 3},
+                },
+                "BLOCKS": 0,
+                "moves": {
+                    "1": {"name": "Ice Brand Arts",
+                          "desc": "Creates an ice weapon to deal damage equal to base ATK. 50% chance to freeze the target.",
+                          "target": "Enemy",
+                          "action": emiliaAttack},
+                    "2": {"name": "Healing Magic",
+                          "desc": "Heals the entire time for 1 HP.",
+                          "target": "TeamFull",
+                          "action": emiliaAttack2}
                 }
             },
     }
@@ -176,22 +279,22 @@ world1Enemies = {
             "sprite":
                 {
                     "name": "Sprite",
-                    "HP": 2,
+                    "HP": 3,
                     "ATK": 1,
                     "FROZEN": 0,
                 },
             "slime":
                 {
                     "name": "Slime",
-                    "HP": 3,
+                    "HP": 4,
                     "ATK": 1,
                     "FROZEN": 0,
                 },
             "goblin":
                 {
                     "name": "Goblin",
-                    "HP": 4,
-                    "ATK": 1,
+                    "HP": 5,
+                    "ATK": 2,
                     "FROZEN": 0,
                 },
         }
@@ -201,14 +304,14 @@ world1Bosses = {
             "demon":
                 {
                     "name": "Demon",
-                    "HP": 5,
+                    "HP": 7,
                     "ATK": 2
                 },
             "dragon":
                 {
                     "name": "Dragon",
-                    "HP": 7,
-                    "ATK": 2
+                    "HP": 9,
+                    "ATK": 3
                 },
 
 }
