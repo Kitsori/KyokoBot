@@ -29,11 +29,6 @@ MONGO = os.getenv('MONGO_URI')
 
 
 
-
-
-
-
-
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
 
@@ -547,7 +542,7 @@ async def grhelp(ctx):
     grHelpEmbed.add_field(name="__Stats Commands__", value="", inline=False)
     grHelpEmbed.add_field(name="~grs", value="View your general Girl Blind Ranking stats!!", inline=False)
     grHelpEmbed.add_field(name="~gs", value="View your stats for a specific girl..!!", inline=False)
-    grHelpEmbed.add_field(name="~gs", value="View global stats for a specific girl!!", inline=False)
+    grHelpEmbed.add_field(name="~ggs", value="View global stats for a specific girl!!", inline=False)
     grHelpEmbed.add_field(name="~gt", value="View your top ranked girls for rounds of 5..!", inline=False)
     grHelpEmbed.add_field(name="~gtg", value="View the top ranked girls globally for rounds of 5..!", inline=False)
     grHelpEmbed.add_field(name="~gtt", value="View your top ranked girls for rounds of 10..!", inline=False)
@@ -1290,9 +1285,9 @@ async def gr(ctx):
 
             await asyncio.sleep(0.5)
 
-
-            invFile = inventory.find_one({"user_id": ctx.author.id})
-            rerollsAvail = (invFile["rerolls"])
+            #invFile = inventory.find_one({"user_id": ctx.author.id})
+            rerollsAvail = 0 #invFile["rerolls"] if invFile else 0
+            print(f"DEBUG: rerollsAvail={rerollsAvail}, about to create countTask")
 
             if rerollsAvail > 0:
                 await ctx.send("I see you have rerolls available too!! Type 'rr' to use one! :3")
@@ -1315,6 +1310,7 @@ async def gr(ctx):
 
             # Make the countdown above a task so it can run at the same time as the code below
             countTask = asyncio.create_task(rankCountdown())
+            print("DEBUG: countTask created successfully")
 
 
 
@@ -1385,6 +1381,7 @@ async def gr(ctx):
 
                 else: # If not a digit just ignore the message
                     pass
+
 
             except asyncio.TimeoutError:
                 countTask.cancel()
