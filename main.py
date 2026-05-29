@@ -370,14 +370,19 @@ async def sendupdates(ctx):
             if not channel:
                 channel = await bot.fetch_channel(channel_id)
 
-            await channel.send("# Update 2/12/2026 - Basic Shop Introduction!\n"
-                               "- ~shop command added!\n"
-                               "  - Currently has rerolls available for 3 Kyokoins each!\n"
-                               "  - Allows for bulk purchasing.\n"
-                               "- Other small tweaks\n"
-                               "  - Kyokoins added to ~inv page\n"
-                               "  - Added some aesthetics to various embeds\n"
-                               "  - Added proper new pages to ~help command\n")
+            await channel.send("# Update 5/29/2026 - AnimeRPG Beta & First GeoGame Release!\n"
+                               "- AnimeRPG Beta released!\n"
+                               "  - Collect 7 characters to start, and do runs to battle monsters and get stronger!\n"
+                               "  - Collect coins from defeating monsters and use them to summon new characters!\n"
+                               "  - Level up your characters using character fragments and coins!\n"
+                               "  - Advance to new worlds (Currently only 2) to have access to a new pool of characters to collect and monsters to fight!\n"
+                               "\n"
+                               "-# For the past few months I've been trying to make a silly RPG like game, and I figured it's in an okay enough state to release a beta, as I'm not sure when I'd get it out otherwise..! I plan to slowly keep improving it and making it deeper!\n"
+                               "\n"
+                               "- GeoGames Added!\n"
+                               "  - ~geocap is the first tiny game added!\n"
+                               "  - This is just a simple capital guessing game, but you can follow it with 'gg' to only be given countries in GeoGuessr!\n"
+                               "  - Plans for more silly fun geography related games in the future!")
 
 
 
@@ -396,14 +401,20 @@ async def sut(ctx):
     if (ctx.author.id == 333414505750986753):
         try:
             channel = await bot.fetch_channel(1461414479911718986)
-            await channel.send("# Update 2/12/2026 - Basic Shop Introduction!\n"
-                               "- ~shop command added!\n"
-                               "  - Currently has rerolls available for 3 Kyokoins each!\n"
-                               "  - Allows for bulk purchasing.\n"
-                               "- Other small tweaks\n"
-                               "  - Kyokoins added to ~inv page\n"
-                               "  - Added some aesthetics to various embeds\n"
-                               "  - Added proper new pages to ~help command\n")
+            await channel.send("# Update 5/29/2026 - AnimeRPG Beta & First GeoGame Release!\n"
+                               "- AnimeRPG Beta released!\n"
+                               "  - Collect 7 characters to start, and do runs to battle monsters and get stronger!\n"
+                               "  - Collect coins from defeating monsters and use them to summon new characters!\n"
+                               "  - Level up your characters using character fragments and coins!\n"
+                               "  - Advance to new worlds (Currently only 2) to have access to a new pool of characters to collect and monsters to fight!\n"
+                               "\n"
+                               "-# For the past few months I've been trying to make a silly RPG like game, and I figured it's in an okay enough state to release a beta, as I'm not sure when I'd get it out otherwise..! I plan to slowly keep improving it and making it deeper!\n"
+                               "\n"
+                               "- GeoGames Added!\n"
+                               "  - ~geocap is the first tiny game added!\n"
+                               "  - This is just a simple capital guessing game, but you can follow it with 'gg' to only be given countries in GeoGuessr!\n"
+                               "  - Plans for more silly fun geography related games in the future!")
+
         except Exception as e:
             print(e)
     else:
@@ -412,10 +423,16 @@ async def sut(ctx):
 
 
 
-
-
-
         # UPDATE HISTORY
+
+        # "# Update 2/12/2026 - Basic Shop Introduction!\n"
+        # "- ~shop command added!\n"
+        # "  - Currently has rerolls available for 3 Kyokoins each!\n"
+        # "  - Allows for bulk purchasing.\n"
+        # "- Other small tweaks\n"
+        # "  - Kyokoins added to ~inv page\n"
+        # "  - Added some aesthetics to various embeds\n"
+        # "  - Added proper new pages to ~help command\n"
 
         # "# Update 2/9/2026 - Rerolls and Economy Introduction!\n"
         # "- Rerolls added!\n"
@@ -490,6 +507,8 @@ async def helpme(ctx):
     helpEmbed.add_field(name="__Random Girl__ (~rghelp)", value="~rg", inline=False)
     helpEmbed.add_field(name="__Girl Blind Ranking__ (~grhelp)", value="~gr, ~gl, ~gsl, ~grs, ~gs, ~ggs, ~gt, ~gtg, ~gtt, ~gttg", inline=False)
     helpEmbed.add_field(name="__Train Tag__ (~taghelp)", value="~tag, ~taginfo", inline=False)
+    helpEmbed.add_field(name="__AnimeRPG (Beta)__ (~rpghelp)", value="~run, ~summon, ~summonrates, ~characterlist, ~coins, ~fragments, ~levelup, ~worldup", inline=False)
+    helpEmbed.add_field(name="__GeoGames__ (~gghelp)", value="~geocap", inline=False)
     helpEmbed.add_field(name="__XP__ (~xphelp)", value="~xp, ~xpts", inline=False)
     helpEmbed.add_field(name="__Inventory__ (~invhelp)", value="~inv", inline=False)
     helpEmbed.add_field(name="__Shop__ (~~shophelp)", value="~shop", inline=False)
@@ -592,6 +611,40 @@ async def taginfo(ctx):
     taginfoEmbed.add_field(name="Good Luck!", value="This game is still a WIP, so expect bugs or some 'unfinished' content!", inline=False)
     taginfoEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
     await ctx.send(embed=taginfoEmbed)
+
+
+@bot.command()
+async def rpghelp(ctx):
+    rpgHelpEmbed = discord.Embed(
+        title="Kyoko's AnimeRPG Commands",
+        description="Fight to the death with your favorite anime girl! :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    rpgHelpEmbed.add_field(name="~run", value="Starts a run!\n\u200b", inline=False)
+    rpgHelpEmbed.add_field(name="~summon", value="Summon a new character!", inline=False)
+    rpgHelpEmbed.add_field(name="~summonrates", value="Check the summon rates!\n\u200b", inline=False)
+    rpgHelpEmbed.add_field(name="~characterlist", value="View the full list of characters!", inline=False)
+    rpgHelpEmbed.add_field(name="~coins", value="Check your current coin count!", inline=False)
+    rpgHelpEmbed.add_field(name="~fragments", value="View your character fragments!", inline=False)
+    rpgHelpEmbed.add_field(name="~levelup", value="Level up your characters!", inline=False)
+    rpgHelpEmbed.add_field(name="~worldup", value="Level up to the next world!", inline=False)
+    rpgHelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+    await ctx.send(embed=rpgHelpEmbed)
+
+
+
+@bot.command()
+async def gghelp(ctx):
+    gghelpEmbed = discord.Embed(
+        title="Kyoko's GeoGames Commands",
+        description="You think you know the world huh..? :3 \n\u200b",
+        color=discord.Color.blue()
+    )
+
+    gghelpEmbed.add_field(name="~geocap (gg)", value="Test your world capital knowledge! Include gg for geoguessr only countries!", inline=False)
+    gghelpEmbed.set_footer(text="─ · ─ · ─ · ─ · ─ · ─ ✴︎ ─ · ─ · ─ · ─ · ─ · ─")
+    await ctx.send(embed=gghelpEmbed)
 
 
 
@@ -1432,7 +1485,7 @@ async def gr(ctx):
                 await levelUp(ctx, ctx.author.id)
                 await asyncio.sleep(1)
 
-                await drop(ctx, 50)
+                await drop(ctx, 25)
 
 
 
@@ -2062,6 +2115,7 @@ async def main():
 
         await bot.load_extension("cogs.animerpg")
         await bot.load_extension("cogs.jltg")
+        await bot.load_extension("cogs.geogames")
 
 
         await bot.start(TOKEN)
