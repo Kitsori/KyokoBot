@@ -376,6 +376,7 @@ async def sendupdates(ctx):
                                "  - Collect coins from defeating monsters and use them to summon new characters!\n"
                                "  - Level up your characters using character fragments and coins!\n"
                                "  - Advance to new worlds (Currently only 2) to have access to a new pool of characters to collect and monsters to fight!\n"
+                               "  - (Expect bugs as this is the most complex feature this bot has so far, and is still a WIP)"
                                "\n"
                                "-# For the past few months I've been trying to make a silly RPG like game, and I figured it's in an okay enough state to release a beta, as I'm not sure when I'd get it out otherwise..! I plan to slowly keep improving it and making it deeper!\n"
                                "\n"
