@@ -710,7 +710,7 @@ class AnimeRPG(commands.Cog):
 
 
                             elif (player['moves'][choice]['target'] == "Self"):
-                                await move['action'](ctx, player, target)
+                                await move['action'](ctx, player)
 
 
                             elif (player['moves'][choice]['target'] == "Team"):
